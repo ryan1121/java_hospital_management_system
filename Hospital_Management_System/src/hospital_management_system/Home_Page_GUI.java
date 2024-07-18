@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package javaapplication1;
+package hospital_management_system;
 
 /**
  *
@@ -99,17 +99,25 @@ public class Home_Page_GUI extends javax.swing.JFrame {
 
         // Check the role type and open the corresponding user interface
         if (this.role == "Doctor"){
+            this.dispose(); // close the current GUI
+
             GUI_doctor Doctor_GUI = new GUI_doctor();
             Doctor_GUI.setVisible(true);
         } else if (this.role == "Nurse"){
+            this.dispose(); // close the current GUI
+
             GUI_nurse Nurse_GUI = new GUI_nurse();
             Nurse_GUI.setVisible(true);
         } else if (this.role == "Admin"){
+            this.dispose(); // close the current GUI
+
             GUI_admin Admin_GUI = new GUI_admin();
             Admin_GUI.setVisible(true);
         } else {    // this.role == "Patient"
-            GUI_doctor Doctor_GUI = new GUI_doctor();
-            Doctor_GUI.setVisible(true);
+        this.dispose(); // close the current GUI
+
+            GUI_patient Patient_GUI = new GUI_patient();
+            Patient_GUI.setVisible(true);
         }
     }//GEN-LAST:event_ManageInformationButtonActionPerformed
 

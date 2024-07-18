@@ -5,7 +5,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import javaapplication1.Home_Page;
 
 public class Hospital_Management_System {
     
