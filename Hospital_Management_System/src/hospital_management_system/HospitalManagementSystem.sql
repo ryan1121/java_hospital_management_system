@@ -6,11 +6,10 @@
  * Author:  User
  * Created: Jul 1, 2024
  */
+
 -- 创建数据库
 CREATE DATABASE hospital_management;
 USE hospital_management;
-
-
 
 -- 创建 Patients 表
 CREATE TABLE Patients (
@@ -218,21 +217,21 @@ CREATE TABLE PatientHistory (
 
 -- 创建 BillingAndInvoicing 表
 CREATE TABLE BillingAndInvoicing (
-    InvoiceID INT PRIMARY KEY,
-    PatientID INT,
-    DateOfServices DATE,
-    ServicesProvided TEXT,
-    CostPerService DECIMAL(10, 2),
-    TotalCosts DECIMAL(10, 2),
-    PaymentStatus VARCHAR(50),
-    PaymentDueDate DATE
+    InvoiceID_input INT PRIMARY KEY,
+    PatientID_input INT,
+    ServiceDate_input DATE,
+    ServicesProvided_input TEXT,
+    CostPerService_input DECIMAL(10, 2),
+    TotalCosts_input DECIMAL(10, 2),
+    PaymentStatus_dropdown VARCHAR(50),
+    PaymentDueDate_input DATE
 );
 
 -- 创建 PaymentProcessing 表
 CREATE TABLE PaymentProcessing (
     PaymentID_input INT PRIMARY KEY,
     InvoiceID_input INT,
-    PaymentProcessingDate DATE,
+    PaymentProcessingDate_input DATE,
     PaymentMethod_dropdown VARCHAR(50),
     PaymentAmount_input DECIMAL(10, 2),
     PaymentStatus_dropdown VARCHAR(50),
@@ -241,8 +240,9 @@ CREATE TABLE PaymentProcessing (
 
 -- 创建 TrackThePayment 表
 CREATE TABLE TrackThePayment (
-    PaymentID_input INT PRIMARY KEY,
+    PaymentID INT PRIMARY KEY,
     InvoiceID INT,
+    PatientID INT,
     DateOfPayment DATE,
     PaymentMethod VARCHAR(50),
     PaymentAmount DECIMAL(10, 2),
@@ -255,7 +255,7 @@ CREATE TABLE TrackThePayment (
 -- 创建 StaffScheduling 表
 CREATE TABLE StaffScheduling (
     StaffID_input INT,
-    StaffScheduleDate DATE,
+    StaffScheduleDate_input_input DATE,
     ShiftStartTime_input TIME,
     ShiftEndTime_input TIME,
     Department_dropdown VARCHAR(100),
@@ -273,7 +273,7 @@ CREATE TABLE InventoryManagement (
     InventoryMaximumStock_input INT,
     InventoryMinimunStock_input INT,
     SupplierInformation_input TEXT,
-    InventoryExpirydate DATE
+    InventoryExpirydate_input DATE
 );
 
 -- 创建 MedicalSupplyManagement 表
@@ -285,16 +285,16 @@ CREATE TABLE MedicalSupplyManagement (
     SupplyMinimunStock_input INT,
     SupplyMaximumStock_input INT,
     SupplierInformation_input TEXT,
-    SupplyExpiryDate DATE
+    SupplyExpiryDate_input DATE
 );
 
 -- 创建 TransferManagement 表
 CREATE TABLE TransferManagement (
     TransferID_input INT PRIMARY KEY,
-    PatientID INT,
+    PatientID_input INT,
     TransferFrom_input VARCHAR(100),
     TransferTo_input VARCHAR(100),
-    PatientTransferDate DATE,
+    PatientTransferDate_input DATE,
     TransferTime_input DATETIME,
     ReasonForTransfer_input TEXT,
     StatusOfTransfer_dropdown VARCHAR(50)
