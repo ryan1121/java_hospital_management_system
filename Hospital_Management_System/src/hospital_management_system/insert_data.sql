@@ -122,9 +122,9 @@ VALUES
 -- 插入假数据到 TrackThePayment 表
 INSERT INTO TrackThePayment (PaymentID, InvoiceID, PatientID, DateOfPayment, PaymentMethod, PaymentAmount, PaymentStatus, TransactionReference)
 VALUES
-(1, 1, '2024-07-15', 'Credit Card', 1500.00, 'Paid', 'Transaction ID: 123456789'),
-(2, 2, '2024-07-16', 'Cash', 1200.00, 'Paid', 'Transaction ID: 987654321'),
-(3, 3, '2024-07-17', 'Insurance', 200.00, 'Paid', 'Claim ID: ABCDEF123');
+(1, 1, 'P001', '2024-07-15', 'Credit Card', 1500.00, 'Paid', 'Transaction ID: 123456789'),
+(2, 2, 'P002', '2024-07-16', 'Cash', 1200.00, 'Paid', 'Transaction ID: 987654321'),
+(3, 3, 'P003', '2024-07-17', 'Insurance', 200.00, 'Paid', 'Claim ID: ABCDEF123');
 
 -- 插入假数据到 StaffScheduling 表
 INSERT INTO StaffScheduling (StaffID_input, StaffScheduleDate_input, ShiftStartTime_input, ShiftEndTime_input, Department_dropdown, AssignedTasks_input, StaffAvailability_dropdown)
