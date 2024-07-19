@@ -6,7 +6,7 @@ package hospital_management_system;
 
 /**
  *
- * @author yc
+ * @author zr
  */
 public class Data_Tables extends javax.swing.JFrame {
 
@@ -14,6 +14,8 @@ public class Data_Tables extends javax.swing.JFrame {
      * Creates new form Data_Tables
      */
     public Data_Tables() {
+		System.out.println("Test");
+		
         initComponents();
     }
 
