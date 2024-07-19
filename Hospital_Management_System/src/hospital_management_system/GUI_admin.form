@@ -157,11 +157,9 @@
                                               <Component id="save_doctor" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jScrollPane2" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jScrollPane2" alignment="0" pref="386" max="32767" attributes="0"/>
                                               <Component id="jScrollPane1" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="doctor_license_information" alignment="0" min="-2" pref="386" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -218,15 +216,9 @@
                                       <Component id="jScrollPane2" min="-2" pref="140" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="doctor_status" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="doctor_license_information" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="doctor_status" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="save_doctor" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -333,19 +325,6 @@
                           <Properties>
                             <Property name="text" type="java.lang.String" value="Status :"/>
                           </Properties>
-                        </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel9">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="License Information :"/>
-                          </Properties>
-                        </Component>
-                        <Component class="javax.swing.JTextField" name="doctor_license_information">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="license_information"/>
-                          </Properties>
-                          <Events>
-                            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="doctor_license_informationActionPerformed"/>
-                          </Events>
                         </Component>
                         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                           <AuxValues>
