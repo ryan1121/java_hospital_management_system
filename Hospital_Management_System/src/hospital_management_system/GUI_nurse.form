@@ -170,8 +170,6 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                                       <Component id="jScrollPane2" min="-2" pref="400" max="-2" attributes="0"/>
-                                      <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                      <Component id="nurse_license_information" alignment="0" min="-2" pref="386" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -201,12 +199,12 @@
                                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                                               <Component id="jScrollPane1" min="-2" pref="386" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                          <EmptySpace min="0" pref="712" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="705" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -277,13 +275,11 @@
                                   <Component id="jScrollPane2" min="-2" pref="140" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="nurse_license_information" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="nurse_supervising_doctor" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="nurse_assign_wards" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -395,19 +391,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Status :"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel9">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="License Information :"/>
-                  </Properties>
-                </Component>
-                <Component class="javax.swing.JTextField" name="nurse_license_information">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="license_information"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nurse_license_informationActionPerformed"/>
-                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                   <AuxValues>

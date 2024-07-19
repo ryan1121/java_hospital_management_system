@@ -46,8 +46,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         nurse_status = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        nurse_license_information = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         nurse_qualifications = new javax.swing.JTextPane();
         jLabel8 = new javax.swing.JLabel();
@@ -400,15 +398,6 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel10.setText("Status :");
 
-        jLabel9.setText("License Information :");
-
-        nurse_license_information.setText("license_information");
-        nurse_license_information.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nurse_license_informationActionPerformed(evt);
-            }
-        });
-
         jScrollPane2.setViewportView(nurse_qualifications);
 
         jLabel8.setText("Qualifications : ");
@@ -473,9 +462,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)
-                            .addComponent(nurse_license_information, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 400, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -498,8 +485,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(0, 712, Short.MAX_VALUE)))))
+                .addContainerGap(705, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -554,12 +541,10 @@ public class GUI_nurse extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
                             .addComponent(jLabel15)
                             .addComponent(jLabel14))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nurse_license_information, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nurse_supervising_doctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(nurse_assign_wards, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2692,10 +2677,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_nurse_positionActionPerformed
 
-    private void nurse_license_informationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_license_informationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nurse_license_informationActionPerformed
-
     private void nurse_assign_wardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_assign_wardsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nurse_assign_wardsActionPerformed
@@ -3124,7 +3105,6 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel78;
     private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -3171,7 +3151,6 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTextField nurse_email;
     private javax.swing.JTextPane nurse_experience;
     private javax.swing.JTextField nurse_id;
-    private javax.swing.JTextField nurse_license_information;
     private javax.swing.JTextField nurse_name;
     private javax.swing.JTextField nurse_phone;
     private javax.swing.JTextField nurse_position;

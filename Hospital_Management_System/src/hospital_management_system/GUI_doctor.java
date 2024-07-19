@@ -43,8 +43,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         doctor_status = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        doctor_license_information = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         doctor_qualifications = new javax.swing.JTextPane();
         jLabel8 = new javax.swing.JLabel();
@@ -189,15 +187,6 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jLabel10.setText("Status :");
 
-        jLabel9.setText("License Information :");
-
-        doctor_license_information.setText("license_information");
-        doctor_license_information.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_license_informationActionPerformed(evt);
-            }
-        });
-
         jScrollPane2.setViewportView(doctor_qualifications);
 
         jLabel8.setText("Qualifications : ");
@@ -239,12 +228,10 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel7)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jScrollPane2)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
                         .addComponent(jScrollPane1)
-                        .addComponent(jLabel8)
-                        .addComponent(jLabel9)
-                        .addComponent(doctor_license_information, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jLabel8)))
+                .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
@@ -296,13 +283,9 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(jLabel9))
+                        .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(doctor_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(doctor_license_information, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(doctor_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 61, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -995,10 +978,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_patient_idActionPerformed
 
-    private void doctor_license_informationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_license_informationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_license_informationActionPerformed
-
     private void doctor_departmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_departmentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_doctor_departmentActionPerformed
@@ -1096,7 +1075,6 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JTextField doctor_email;
     private javax.swing.JTextPane doctor_experience;
     private javax.swing.JTextField doctor_id;
-    private javax.swing.JTextField doctor_license_information;
     private javax.swing.JTextField doctor_name;
     private javax.swing.JTextField doctor_phone;
     private javax.swing.JTextPane doctor_qualifications;
@@ -1125,7 +1103,6 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
