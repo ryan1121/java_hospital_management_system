@@ -106,14 +106,14 @@ VALUES
 ('H003', 'P003', 'Admission', '2024-07-03', 'Admitted for knee consultation');
 
 -- 插入假数据到 BillingAndInvoicing 表
-INSERT INTO BillingAndInvoicing (InvoiceID_input, PatientID_input, ServiceDate_input, ServicesProvided_input, CostPerService_input, TotalCosts_input, PaymentStatus_dropdown, PaymentDueDate_input)
+INSERT INTO BillingAndInvoicing (InvoiceID, PatientID, ServiceDate, ServicesDescription, CostPerService, Quantity, TotalCosts)
 VALUES
-(1, 'P001', '2024-07-05', 'Appendectomy', 1500.00, 1500.00, 'Unpaid', '2024-07-15'),
-(2, 'P002', '2024-07-06', 'Tonsillectomy', 1200.00, 1200.00, 'Unpaid', '2024-07-16'),
-(3, 'P003', '2024-07-07', 'Consultation', 200.00, 200.00, 'Unpaid', '2024-07-17');
+(1, 'P001', '2024-07-05', 'Appendectomy', 1500.00, 1, 1500.00),
+(2, 'P002', '2024-07-06', 'Tonsillectomy', 1200.00, 1, 1200.00),
+(3, 'P003', '2024-07-07', 'Consultation', 200.00, 1, 200.00);
 
 -- 插入假数据到 PaymentProcessing 表
-INSERT INTO PaymentProcessing (PaymentID_input, InvoiceID_input, PaymentProcessingDate_input, PaymentMethod_dropdown, PaymentAmount_input, PaymentStatus_dropdown)
+INSERT INTO PaymentProcessing (PaymentID, InvoiceID, PaymentProcessingDate, PaymentMethod, PaymentAmount, PaymentStatus)
 VALUES
 (1, 1, '2024-07-15', 'Credit Card', 1500.00, 'Paid'),
 (2, 2, '2024-07-16', 'Cash', 1200.00, 'Paid'),
@@ -127,31 +127,37 @@ VALUES
 (3, 3, 'P003', '2024-07-17', 'Insurance', 200.00, 'Paid', 'Claim ID: ABCDEF123');
 
 -- 插入假数据到 StaffScheduling 表
-INSERT INTO StaffScheduling (StaffID_input, StaffScheduleDate_input, ShiftStartTime_input, ShiftEndTime_input, Department_dropdown, AssignedTasks_input, StaffAvailability_dropdown)
+INSERT INTO StaffScheduling (StaffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks, StaffAvailability)
 VALUES
 (1, '2024-07-01', '08:00:00', '16:00:00', 'Cardiology', 'Patient rounds and consultations', 'Available'),
 (2, '2024-07-02', '09:00:00', '17:00:00', 'Pediatrics', 'Surgical assistance and patient care', 'Available'),
 (3, '2024-07-03', '10:00:00', '18:00:00', 'Orthopedics', 'Orthopedic surgeries and consultations', 'Available');
 
 -- 插入假数据到 InventoryManagement 表
-INSERT INTO InventoryManagement (InventoryID_input, ItemCode_input, ItemName_input, InventoryStockQuantity_input, InventoryMaximumStock_input, InventoryMinimunStock_input, SupplierInformation_input, InventoryExpirydate_input)
+INSERT INTO InventoryManagement (InventoryID, ItemCode, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimunStock, SupplierInformation, InventoryExpirydate)
 VALUES
 (1, 'ITEM001', 'Bandages', 500, 1000, 100, 'Supplier: Medical Supplies Inc.', '2025-01-01'),
 (2, 'ITEM002', 'Antibiotics', 300, 800, 50, 'Supplier: Pharma Supplies Ltd.', '2024-12-31'),
 (3, 'ITEM003', 'Surgical Instruments', 200, 500, 20, 'Supplier: SurgiTech Solutions', '2024-12-31');
 
 -- 插入假数据到 MedicalSupplyManagement 表
-INSERT INTO MedicalSupplyManagement (SupplyID_input, SupplyName_input, SupplyCode_input, SupplyStockQuantity_input, SupplyMinimunStock_input, SupplyMaximumStock_input, SupplierInformation_input, SupplyExpiryDate_input)
+INSERT INTO MedicalSupplyManagement (SupplyID, SupplyName, SupplyCode, SupplyStockQuantity, SupplyMinimunStock, SupplyMaximumStock, SupplierInformation, SupplyExpiryDate)
 VALUES
 (1, 'Oxygen Tanks', 'SUP001', 50, 10, 100, 'Supplier: Medical Supplies Inc.', '2025-01-01'),
 (2, 'Ventilators', 'SUP002', 20, 5, 50, 'Supplier: Life Support Systems', '2024-12-31'),
 (3, 'Wheelchairs', 'SUP003', 30, 10, 50, 'Supplier: Mobility Solutions Ltd.', '2024-12-31');
 
 -- 插入假数据到 TransferManagement 表
-INSERT INTO TransferManagement (TransferID_input, PatientID_input, TransferFrom_input, TransferTo_input, PatientTransferDate_input, PatientTransferTime_input, ReasonForTransfer_input, StatusOfTransfer_dropdown)
+INSERT INTO TransferManagement (TransferID, PatientID, TransferFrom, TransferTo, PatientTransferDate, PatientTransferTime, ReasonForTransfer, StatusOfTransfer)
 VALUES
 (1, 'P001', 'ER', 'Surgical Ward', '2024-07-01', '10:00:00', 'Emergency surgery required', 'Completed'),
 (2, 'P002', 'Pediatrics Ward', 'Operating Room', '2024-07-02', '11:00:00', 'Scheduled surgery', 'Completed'),
 (3, 'P003', 'Orthopedics Ward', 'Consultation Room', '2024-07-03', '12:00:00', 'Routine consultation', 'Completed');
 
+-- 插入假数据到 Invoice 表
+INSERT INTO Invoice (InvoiceNo, InvoiceDate, InvoiceDue, PatientID, PatientName, ServicesDescription, CostPerService, Quantity, TotalCosts, TotalPayment, AmountPaid, BalanceDue)
+VALUES
+(1, '2024-07-05', '2024-10-05', 'P001', 'John Doe', 'Appendectomy', 1500.00, 1, 1500.00, 1500.00, 1000.00, 500.00),
+(2, '2024-07-06', '2024-10-06', 'P002', 'Jane Smith', 'Tonsillectomy', 1200.00, 1, 1200.00, 1200.00, 600.00, 600.00),
+(3, '2024-07-07', '2024-10-07', 'P003', 'Mike Johnson', 'Consultation', 200.00, 1, 200.00, 200.00, 200.00, 0.00);
 

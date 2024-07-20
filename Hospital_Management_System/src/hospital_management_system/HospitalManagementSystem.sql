@@ -217,25 +217,24 @@ CREATE TABLE PatientHistory (
 
 -- 创建 BillingAndInvoicing 表
 CREATE TABLE BillingAndInvoicing (
-    InvoiceID_input INT PRIMARY KEY,
-    PatientID_input INT,
-    ServiceDate_input DATE,
-    ServicesProvided_input TEXT,
-    CostPerService_input DECIMAL(10, 2),
-    TotalCosts_input DECIMAL(10, 2),
-    PaymentStatus_dropdown VARCHAR(50),
-    PaymentDueDate_input DATE
+    InvoiceID INT PRIMARY KEY,
+    PatientID INT,
+    ServiceDate DATE,
+    ServicesDescription VARCHAR(100),
+    CostPerService DECIMAL(10, 2),
+    Quantity INT,
+    TotalCosts DECIMAL(10, 2)
 );
 
 -- 创建 PaymentProcessing 表
 CREATE TABLE PaymentProcessing (
-    PaymentID_input INT PRIMARY KEY,
-    InvoiceID_input INT,
-    PaymentProcessingDate_input DATE,
-    PaymentMethod_dropdown VARCHAR(50),
-    PaymentAmount_input DECIMAL(10, 2),
-    PaymentStatus_dropdown VARCHAR(50),
-    FOREIGN KEY (InvoiceID_input) REFERENCES BillingAndInvoicing(InvoiceID)
+    PaymentID INT PRIMARY KEY,
+    InvoiceID INT,
+    PaymentProcessingDate DATE,
+    PaymentMethod VARCHAR(50),
+    PaymentAmount DECIMAL(10, 2),
+    PaymentStatus VARCHAR(50),
+    FOREIGN KEY (InvoiceID) REFERENCES BillingAndInvoicing(InvoiceID)
 );
 
 -- 创建 TrackThePayment 表
@@ -248,55 +247,71 @@ CREATE TABLE TrackThePayment (
     PaymentAmount DECIMAL(10, 2),
     PaymentStatus VARCHAR(50),
     TransactionsReference VARCHAR(255),
-    FOREIGN KEY (PaymentID_input) REFERENCES PaymentProcessing(PaymentID_input),
+    FOREIGN KEY (PaymentID) REFERENCES PaymentProcessing(PaymentID),
     FOREIGN KEY (InvoiceID) REFERENCES BillingAndInvoicing(InvoiceID)
 );
 
 -- 创建 StaffScheduling 表
 CREATE TABLE StaffScheduling (
-    StaffID_input INT,
-    StaffScheduleDate_input_input DATE,
-    ShiftStartTime_input TIME,
-    ShiftEndTime_input TIME,
-    Department_dropdown VARCHAR(100),
-    AssignedTasks_input TEXT,
-    StaffAvailability_dropdown VARCHAR(50),
-    PRIMARY KEY (StaffID_input, StaffScheduleDate)
+    StaffID INT,
+    StaffScheduleDate DATE,
+    ShiftStartTime TIME,
+    ShiftEndTime TIME,
+    Department VARCHAR(100),
+    AssignedTasks TEXT,
+    StaffAvailability VARCHAR(50),
+    PRIMARY KEY (StaffID, StaffScheduleDate)
 );
 
 -- 创建 InventoryManagement 表
 CREATE TABLE InventoryManagement (
-    InventoryID_input INT PRIMARY KEY,
-    ItemCode_input VARCHAR(50),
-    ItemName_input VARCHAR(100),
-    InventoryStockQuantity_input INT,
-    InventoryMaximumStock_input INT,
-    InventoryMinimunStock_input INT,
-    SupplierInformation_input TEXT,
-    InventoryExpirydate_input DATE
+    InventoryID INT PRIMARY KEY,
+    ItemCode VARCHAR(50),
+    ItemName VARCHAR(100),
+    InventoryStockQuantity INT,
+    InventoryMaximumStock INT,
+    InventoryMinimunStock INT,
+    SupplierInformation TEXT,
+    InventoryExpirydate DATE
 );
 
 -- 创建 MedicalSupplyManagement 表
 CREATE TABLE MedicalSupplyManagement (
-    SupplyID_input INT PRIMARY KEY,
-    SupplyName_input VARCHAR(100),
-    SupplyCode_input VARCHAR(50),
-    SupplyStockQuantity_input INT,
-    SupplyMinimunStock_input INT,
-    SupplyMaximumStock_input INT,
-    SupplierInformation_input TEXT,
-    SupplyExpiryDate_input DATE
+    SupplyID INT PRIMARY KEY,
+    SupplyName VARCHAR(100),
+    SupplyCode VARCHAR(50),
+    SupplyStockQuantity INT,
+    SupplyMinimunStock INT,
+    SupplyMaximumStock INT,
+    SupplierInformation TEXT,
+    SupplyExpiryDate DATE
 );
 
 -- 创建 TransferManagement 表
 CREATE TABLE TransferManagement (
-    TransferID_input INT PRIMARY KEY,
-    PatientID_input INT,
-    TransferFrom_input VARCHAR(100),
-    TransferTo_input VARCHAR(100),
-    PatientTransferDate_input DATE,
-    TransferTime_input DATETIME,
-    ReasonForTransfer_input TEXT,
-    StatusOfTransfer_dropdown VARCHAR(50)
+    TransferID INT PRIMARY KEY,
+    PatientID INT,
+    TransferFrom VARCHAR(100),
+    TransferTo VARCHAR(100),
+    PatientTransferDate DATE,
+    TransferTime DATETIME,
+    ReasonForTransfer TEXT,
+    StatusOfTransfer VARCHAR(50)
+);
+
+-- 创建 Invoice 表
+CREATE TABLE Invoice (
+    InvoiceNo INT PRIMARY KEY,
+    InvoiceDate DATE,
+    InvoiceDue DATE,
+    PatientID VARCHAR(25),
+    PatientName VARCHAR(255),
+    ServicesDescription VARCHAR(100),
+    CostPerService DECIMAL(10, 2),
+    Quantity INT,
+    TotalCosts DECIMAL(10, 2),
+    TotalPayment DECIMAL(10, 2),
+    AmountPaid DECIMAL(10, 2),
+    BalanceDue DATE
 );
 
