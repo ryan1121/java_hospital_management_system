@@ -130,51 +130,20 @@ public class GUI_LOGIN extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void mysql_connect(){
-        String url = "jdbc:mysql://localhost:3306/mydb";
-        String username = "root";
-        String password = "123456";
-
-        System.out.println("Connecting database ...");
-        
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Driver loaded!");
-        } catch (ClassNotFoundException e) {
-            throw new IllegalStateException("Cannot find the driver in the classpath!", e);
-        }
-        
-        // Try to establish a connection to the database
-        try (Connection connection = DriverManager.getConnection(url, username, password)) {
-            // If connection is successful, print a success message
-            System.out.println("Database connected!");
-            
-            // Execute SQL query
-            try (Statement statement = connection.createStatement();
-                    ResultSet resultSet = statement.executeQuery("SELECT * FROM designation")) {
-                // Process the results
-                while (resultSet.next()) {
-                    // Retrieve data from the result set
-                    String designationName = resultSet.getString("title");
-                    // Print data or perform further processing
-                    System.out.println("Designation Name: " + designationName);
-                }
-            }
-        } catch (SQLException e) {
-            // If an SQL exception occurs, print an error message
-            System.err.println("Cannot connect to the database or execute SQL query!");
-            // Print the stack trace for debugging purposes
-            e.printStackTrace();
-        }
-    }
+    
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
         this.dispose();
 
-        // Create an object for the home page gui
-        Home_Page_GUI homepage_GUI = new Home_Page_GUI(this.role);
-        homepage_GUI.setVisible(true);
-        
+        if (!(this.role == "Patient")){ // if the role type is not patient
+            // Create an object for the home page gui
+            Home_Page_GUI homepage_GUI = new Home_Page_GUI(this.role);
+            homepage_GUI.setVisible(true);
+        } else {    // if the role type is patient
+            GUI_patient PatientGUI = new GUI_patient();
+            PatientGUI.setVisible(true);
+        }
+
 
     }//GEN-LAST:event_loginActionPerformed
 
