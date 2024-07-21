@@ -4,8 +4,7 @@ USE hospital_management;
 
 -- 创建 Patients 表
 CREATE TABLE Patients (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    patient_id VARCHAR(25) NOT NULL UNIQUE,
+    patient_id VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     patient_DOB DATE NOT NULL,
     patient_gender ENUM('Male', 'Female') NOT NULL,
     patient_phone VARCHAR(255),
@@ -29,8 +28,7 @@ CREATE TABLE Patients (
 
 -- 创建 Doctors 表
 CREATE TABLE Doctors (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    doctor_id VARCHAR(25) NOT NULL UNIQUE,
+    doctor_id VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     doctor_name VARCHAR(255) NOT NULL,
     doctor_password VARCHAR(255) NOT NULL,
     doctor_phone VARCHAR(20),
@@ -139,8 +137,7 @@ CREATE TABLE Admin(
 
 -- 创建 Prescription 表
 CREATE TABLE Prescription (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    PrescriptionID_textField VARCHAR(25) NOT NULL UNIQUE,
+    PrescriptionID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
     Medication_comboxBox VARCHAR(255) NOT NULL,
@@ -153,8 +150,7 @@ CREATE TABLE Prescription (
 
 -- 创建 MedicalRecords 表
 CREATE TABLE MedicalRecords (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    medicalRecordID_textField VARCHAR(25) NOT NULL UNIQUE,
+    medicalRecordID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
     DateOfVisit_textField DATE NOT NULL,
@@ -166,8 +162,7 @@ CREATE TABLE MedicalRecords (
 
 -- 创建 Surgeries 表
 CREATE TABLE Surgeries (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    surgeryID_textField VARCHAR(25) NOT NULL UNIQUE,
+    surgeryID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
     surgeryType_comboBox VARCHAR(255) NOT NULL,
@@ -179,8 +174,7 @@ CREATE TABLE Surgeries (
 
 -- 创建 Consultations 表
 CREATE TABLE Consultations (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    ConsultationID_textField VARCHAR(25) NOT NULL UNIQUE,
+    ConsultationID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
     DateOfConsultation_textField DATE NOT NULL,
@@ -191,8 +185,7 @@ CREATE TABLE Consultations (
 
 -- 创建 Diagnoses 表
 CREATE TABLE Diagnoses (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    diagonisisID_textField VARCHAR(25) NOT NULL UNIQUE,
+    diagonisisID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
     diagonosisDescription_TextArea TEXT NOT NULL,
@@ -205,8 +198,7 @@ CREATE TABLE Diagnoses (
 
 -- 创建 PatientHistory 表
 CREATE TABLE PatientHistory (
-    ID INT AUTO_INCREMENT PRIMARY KEY,
-    HistoryID VARCHAR(25) NOT NULL UNIQUE,
+    HistoryID VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     EventType VARCHAR(255) NOT NULL,
     EventDate DATE NOT NULL,
@@ -214,47 +206,30 @@ CREATE TABLE PatientHistory (
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
 );
 
--- 创建 BillingAndInvoicing 表
-CREATE TABLE BillingAndInvoicing (
-    InvoiceID INT PRIMARY KEY,
-    PatientID VARCHAR(25),
-    ServiceDate DATE,
+-- 创建 Billing 表
+CREATE TABLE Billing (
     ServicesDescription VARCHAR(100),
     CostPerService DECIMAL(10, 2),
     Quantity INT,
-    TotalCosts DECIMAL(10, 2),
-    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
+    TotalPayment DECIMAL(10, 2),
+    FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID)
 );
 
 -- 创建 PaymentProcessing 表
 CREATE TABLE PaymentProcessing (
-    PaymentID INT PRIMARY KEY,
+    PaymentID VARCHAR(25) PRIMARY KEY,
     PaymentProcessingDate DATE,
     PaymentMethod VARCHAR(50),
     PaymentAmount DECIMAL(10, 2),
     PaymentStatus VARCHAR(50),
-    InvoiceID INT,
-    FOREIGN KEY (InvoiceID) REFERENCES BillingAndInvoicing(InvoiceID)
+    InvoiceID VARCHAR(25),
+    FOREIGN KEY (InvoiceID) REFERENCES Billing(InvoiceID)
 );
 
--- 创建 TrackThePayment 表
-CREATE TABLE TrackThePayment (
-    PaymentID INT PRIMARY KEY,
-    InvoiceID INT,
-    PatientID VARCHAR(25),
-    DateOfPayment DATE,
-    PaymentMethod VARCHAR(50),
-    PaymentAmount DECIMAL(10, 2),
-    PaymentStatus VARCHAR(50),
-    TransactionsReference VARCHAR(255),
-    FOREIGN KEY (PaymentID) REFERENCES PaymentProcessing(PaymentID),
-    FOREIGN KEY (InvoiceID) REFERENCES BillingAndInvoicing(InvoiceID),
-    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
-);
 
 -- 创建 StaffScheduling 表
 CREATE TABLE StaffScheduling (
-    StaffID INT,
+    StaffID VARCHAR(25),
     StaffScheduleDate DATE,
     ShiftStartTime TIME,
     ShiftEndTime TIME,
@@ -266,7 +241,7 @@ CREATE TABLE StaffScheduling (
 
 -- 创建 InventoryManagement 表
 CREATE TABLE InventoryManagement (
-    InventoryID INT PRIMARY KEY,
+    InventoryID VARCHAR(25) PRIMARY KEY,
     ItemCode VARCHAR(50),
     ItemName VARCHAR(100),
     InventoryStockQuantity INT,
@@ -278,7 +253,7 @@ CREATE TABLE InventoryManagement (
 
 -- 创建 MedicalSupplyManagement 表
 CREATE TABLE MedicalSupplyManagement (
-    SupplyID INT PRIMARY KEY,
+    SupplyID VARCHAR(25) PRIMARY KEY,
     SupplyName VARCHAR(100),
     SupplyCode VARCHAR(50),
     SupplyStockQuantity INT,
@@ -290,7 +265,7 @@ CREATE TABLE MedicalSupplyManagement (
 
 -- 创建 TransferManagement 表
 CREATE TABLE TransferManagement (
-    TransferID INT PRIMARY KEY,
+    TransferID VARCHAR(25) PRIMARY KEY,
     PatientID VARCHAR(25),
     TransferFrom VARCHAR(100),
     TransferTo VARCHAR(100),
@@ -303,15 +278,10 @@ CREATE TABLE TransferManagement (
 
 -- 创建 Invoice 表
 CREATE TABLE Invoice (
-    InvoiceNo INT PRIMARY KEY,
+    InvoiceID VARCHAR(25) PRIMARY KEY,
     InvoiceDate DATE,
-    InvoiceDue DATE,
+    InvoiceDue DATE,    -- 自动算出InvoiceDate后的三个月
     PatientID VARCHAR(25),
-    PatientName VARCHAR(255),
-    ServicesDescription VARCHAR(100),
-    CostPerService DECIMAL(10, 2),
-    Quantity INT,
-    TotalCosts DECIMAL(10, 2),
     TotalPayment DECIMAL(10, 2),
     AmountPaid DECIMAL(10, 2),
     BalanceDue DATE,
