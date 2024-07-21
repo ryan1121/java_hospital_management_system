@@ -90,8 +90,8 @@ VALUES
 ('C002', 'P002', 'D002', '2023-07-21', 'Follow-up visit.'),
 ('C003', 'P003', 'D003', '2023-07-22', 'Initial consultation.');
 
--- 为 Diagnoses 表添加数据
-INSERT INTO Diagnoses (diagonisisID_textField, PatientID, DoctorID, diagonosisDescription_TextArea, DateOfDiagonosis_textField, treatmentPlans_TextArea, surgeryID_textField)
+-- 为 Diagnosis 表添加数据
+INSERT INTO Diagnosis (DiagnosisID_textField, PatientID, DoctorID, DiagnosisDescription_TextArea, DateOfDiagnosis_textField, treatmentPlans_TextArea, surgeryID_textField)
 VALUES 
 ('DI001', 'P001', 'D001', 'Hypertension', '2023-07-20', 'Medication and lifestyle changes.', NULL),
 ('DI002', 'P002', 'D002', 'Appendicitis', '2023-07-21', 'Surgery required.', 'S001'),
@@ -104,6 +104,15 @@ VALUES
 ('H002', 'P002', 'Surgery', '2023-07-21', 'Appendectomy performed.'),
 ('H003', 'P003', 'Consultation', '2023-07-22', 'Initial consultation for asthma.');
 
+
+-- 为 Invoice 表添加数据
+INSERT INTO Invoice (InvoiceID, InvoiceDate, InvoiceDue, PatientID, TotalPayment, AmountPaid, BalanceDue)
+VALUES 
+('INV001', '2023-07-20', '2023-10-20', 'P001', 50.00, 50.00, 0.00),
+('INV002', '2023-07-21', '2023-10-21', 'P002', 1000.00, 1000.00, 0.00),
+('INV003', '2023-07-22', '2023-10-22', 'P003', 100.00, 0.00, 100.00);
+
+
 -- 为 Billing 表添加数据
 INSERT INTO Billing (ServicesDescription, CostPerService, Quantity, TotalPayment)
 VALUES 
@@ -114,9 +123,10 @@ VALUES
 -- 为 Payment 表添加数据
 INSERT INTO Payment (PaymentID, PaymentDate, PaymentMethod, PaymentAmount, PaymentStatus, InvoiceID)
 VALUES 
-('PAY001', '2023-07-20', 'Credit Card', 50.00, 'Paid', 'INV001'),
-('PAY002', '2023-07-21', 'Cash', 1000.00, 'Paid', 'INV002'),
-('PAY003', '2023-07-22', 'Insurance', 100.00, 'Pending', 'INV003');
+('PAY001', '2023-07-21', 'Credit Card', 50.00, 'Completed', 'INV001'),
+('PAY002', '2023-07-22', 'Credit Card', 1000.00, 'Completed', 'INV002'),
+('PAY003', '2023-07-23', 'Credit Card', 100.00, 'Pending', 'INV003');
+
 
 -- 为 StaffScheduling 表添加数据
 INSERT INTO StaffScheduling (StaffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks, StaffAvailability)
@@ -140,15 +150,8 @@ VALUES
 ('MS003', 'Syringes', 'SUP003', 200, 50, 500, 'Supplier Z', '2024-07-22');
 
 -- 为 TransferManagement 表添加数据
-INSERT INTO TransferManagement (TransferID, PatientID, TransferFrom, TransferTo, PatientTransferDate, TransferTime, ReasonForTransfer, StatusOfTransfer)
+INSERT INTO TransferManagement (TransferID, PatientID, TransferFrom, TransferTo, PatientTransferDate, TransferTime, ReasonForTransfer, StatusOfTransfer) 
 VALUES 
 ('T001', 'P001', 'ER', 'Cardiology', '2023-07-20', '08:00:00', 'Chest pain', 'Completed'),
 ('T002', 'P002', 'ER', 'Surgery', '2023-07-21', '09:00:00', 'Appendicitis', 'Completed'),
 ('T003', 'P003', 'ER', 'Pediatrics', '2023-07-22', '10:00:00', 'Asthma', 'Completed');
-
--- 为 Invoice 表添加数据
-INSERT INTO Invoice (InvoiceID, InvoiceDate, InvoiceDue, PatientID, TotalPayment, AmountPaid, BalanceDue)
-VALUES 
-('INV001', '2023-07-20', '2023-10-20', 'P001', 50.00, 50.00, 0.00),
-('INV002', '2023-07-21', '2023-10-21', 'P002', 1000.00, 1000.00, 0.00),
-('INV003', '2023-07-22', '2023-10-22', 'P003', 100.00, 0.00, 100.00);

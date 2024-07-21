@@ -183,13 +183,13 @@ CREATE TABLE Consultations (
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
 );
 
--- 创建 Diagnoses 表
-CREATE TABLE Diagnoses (
-    diagonisisID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
+-- 创建 Diagnosis 表
+CREATE TABLE Diagnosis (
+    DiagnosisID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
-    diagonosisDescription_TextArea TEXT NOT NULL,
-    DateOfDiagonosis_textField DATE NOT NULL,
+    DiagnosisDescription_TextArea TEXT NOT NULL,
+    DateOfDiagnosis_textField DATE NOT NULL,
     treatmentPlans_TextArea TEXT,
     surgeryID_textField VARCHAR(25),
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
@@ -206,24 +206,30 @@ CREATE TABLE PatientHistory (
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
 );
 
+
+
+-- 创建 Invoice 表
+CREATE TABLE Invoice (
+    InvoiceID VARCHAR(25) PRIMARY KEY,
+    InvoiceDate DATE,
+    InvoiceDue DATE,    -- 自动算出三个月后位due
+    PatientID VARCHAR(25),
+    TotalPayment DECIMAL(10, 2),
+    AmountPaid DECIMAL(10, 2),
+    BalanceDue DECIMAL(10, 2),
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
+);
+
+
+
 -- 创建 Billing 表
 CREATE TABLE Billing (
+    InvoiceID VARCHAR(25),
     ServicesDescription VARCHAR(100),
     CostPerService DECIMAL(10, 2),
     Quantity INT,
     TotalPayment DECIMAL(10, 2),
     FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID)
-);
-
--- 创建 Payment 表
-CREATE TABLE Payment (
-    PaymentID VARCHAR(25) PRIMARY KEY,
-    PaymentDate DATE,
-    PaymentMethod VARCHAR(50),
-    PaymentAmount DECIMAL(10, 2),
-    PaymentStatus VARCHAR(50),
-    InvoiceID VARCHAR(25),
-    FOREIGN KEY (InvoiceID) REFERENCES Billing(InvoiceID)
 );
 
 
@@ -270,20 +276,21 @@ CREATE TABLE TransferManagement (
     TransferFrom VARCHAR(100),
     TransferTo VARCHAR(100),
     PatientTransferDate DATE,
-    TransferTime DATETIME,
+    TransferTime TIME,
     ReasonForTransfer TEXT,
     StatusOfTransfer VARCHAR(50),
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
 );
 
--- 创建 Invoice 表
-CREATE TABLE Invoice (
-    InvoiceID VARCHAR(25) PRIMARY KEY,
-    InvoiceDate DATE,
-    InvoiceDue DATE,    -- 自动算出InvoiceDate后的三个月
-    PatientID VARCHAR(25),
-    TotalPayment DECIMAL(10, 2),
-    AmountPaid DECIMAL(10, 2),
-    BalanceDue DATE,
-    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
+
+
+-- 创建 Payment 表
+CREATE TABLE Payment (
+    PaymentID VARCHAR(25) PRIMARY KEY,
+    PaymentDate DATE,
+    PaymentMethod VARCHAR(50),
+    PaymentAmount DECIMAL(10, 2),
+    PaymentStatus VARCHAR(50),
+    InvoiceID VARCHAR(25),
+    FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID)
 );
