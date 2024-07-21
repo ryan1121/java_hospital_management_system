@@ -2453,8 +2453,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="SupplyName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="InventoryManagement" min="-2" pref="373" max="-2" attributes="0"/>
-                          <EmptySpace pref="1415" max="32767" attributes="0"/>
+                          <Component id="InventoryManagement" min="-2" pref="378" max="-2" attributes="0"/>
+                          <EmptySpace pref="1410" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2462,9 +2462,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="InventoryManagement" min="-2" max="-2" attributes="0"/>
-                              <Component id="SupplyName" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="SupplyName" max="32767" attributes="0"/>
+                              <Component id="InventoryManagement" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace pref="49" max="32767" attributes="0"/>
                       </Group>
@@ -2757,18 +2757,18 @@
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="InventoryExpirydate" min="-2" pref="100" max="-2" attributes="0"/>
                                           </Group>
-                                          <Component id="jScrollPane9" alignment="0" min="-2" pref="345" max="-2" attributes="0"/>
+                                          <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="inventory_save" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="inventory_clear" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="jScrollPane9" min="-2" pref="354" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="-2" pref="142" max="-2" attributes="0"/>
-                              <Component id="inventory_save" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="inventory_clear" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="39" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
