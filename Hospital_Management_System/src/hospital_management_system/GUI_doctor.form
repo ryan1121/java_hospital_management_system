@@ -945,7 +945,7 @@
                                           </Group>
                                           <Group type="103" alignment="1" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="diagonosisDescription_label" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="DiagnosisDescription_label" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="jScrollPane9" min="-2" max="-2" attributes="0"/>
                                               </Group>
@@ -955,12 +955,12 @@
                                                       <Group type="102" attributes="0">
                                                           <Component id="DiagnosisID_label" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="diagonisisID_textField" min="-2" pref="72" max="-2" attributes="0"/>
+                                                          <Component id="DiagnosisID_textField" min="-2" pref="72" max="-2" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" attributes="0">
-                                                          <Component id="DateOfDiagonosis_label" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="DateOfDiagnosis_label" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                          <Component id="DateOfDiagonosis_textField" min="-2" pref="74" max="-2" attributes="0"/>
+                                                          <Component id="DateOfDiagnosis_textField" min="-2" pref="74" max="-2" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
@@ -985,16 +985,16 @@
                               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="DiagnosisID_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="diagonisisID_textField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DiagnosisID_textField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="DateOfDiagonosis_label" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="DateOfDiagonosis_textField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DateOfDiagnosis_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DateOfDiagnosis_textField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="diagonosisDescription_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="DiagnosisDescription_label" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jScrollPane9" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
@@ -1038,24 +1038,24 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JLabel" name="DateOfDiagonosis_label">
+                    <Component class="javax.swing.JLabel" name="DateOfDiagnosis_label">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Date of diagonosis : "/>
+                        <Property name="text" type="java.lang.String" value="Date of Diagnosis : "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="DateOfDiagonosis_textField">
+                    <Component class="javax.swing.JFormattedTextField" name="DateOfDiagnosis_textField">
                       <Properties>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                           <Format subtype="1" type="1"/>
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DateOfDiagonosis_textFieldActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DateOfDiagnosis_textFieldActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JLabel" name="diagonosisDescription_label">
+                    <Component class="javax.swing.JLabel" name="DiagnosisDescription_label">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Diagonosis Description : "/>
+                        <Property name="text" type="java.lang.String" value="Diagnosis Description : "/>
                       </Properties>
                     </Component>
                     <Container class="javax.swing.JScrollPane" name="jScrollPane9">
@@ -1065,7 +1065,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="diagonosisDescription_TextArea">
+                        <Component class="javax.swing.JTextArea" name="DiagnosisDescription_TextArea">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
@@ -1073,7 +1073,7 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JTextField" name="diagonisisID_textField">
+                    <Component class="javax.swing.JTextField" name="DiagnosisID_textField">
                     </Component>
                     <Component class="javax.swing.JButton" name="Diagnosis_SaveButton">
                       <Properties>

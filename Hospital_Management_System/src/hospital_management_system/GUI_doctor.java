@@ -26,8 +26,6 @@ public class GUI_doctor extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        System.out.println("GUI_doctor initialization ~~~");
-
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -95,12 +93,12 @@ public class GUI_doctor extends javax.swing.JFrame {
         treatmentPlans_label = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
         treatmentPlans_TextArea = new javax.swing.JTextArea();
-        DateOfDiagonosis_label = new javax.swing.JLabel();
-        DateOfDiagonosis_textField = new javax.swing.JFormattedTextField();
-        diagonosisDescription_label = new javax.swing.JLabel();
+        DateOfDiagnosis_label = new javax.swing.JLabel();
+        DateOfDiagnosis_textField = new javax.swing.JFormattedTextField();
+        DiagnosisDescription_label = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        diagonosisDescription_TextArea = new javax.swing.JTextArea();
-        diagonisisID_textField = new javax.swing.JTextField();
+        DiagnosisDescription_TextArea = new javax.swing.JTextArea();
+        DiagnosisID_textField = new javax.swing.JTextField();
         Diagnosis_SaveButton = new javax.swing.JButton();
         Diagnosis_ClearButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -624,20 +622,20 @@ public class GUI_doctor extends javax.swing.JFrame {
         treatmentPlans_TextArea.setRows(5);
         jScrollPane8.setViewportView(treatmentPlans_TextArea);
 
-        DateOfDiagonosis_label.setText("Date of diagonosis : ");
+        DateOfDiagnosis_label.setText("Date of Diagnosis : ");
 
-        DateOfDiagonosis_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        DateOfDiagonosis_textField.addActionListener(new java.awt.event.ActionListener() {
+        DateOfDiagnosis_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        DateOfDiagnosis_textField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DateOfDiagonosis_textFieldActionPerformed(evt);
+                DateOfDiagnosis_textFieldActionPerformed(evt);
             }
         });
 
-        diagonosisDescription_label.setText("Diagonosis Description : ");
+        DiagnosisDescription_label.setText("Diagnosis Description : ");
 
-        diagonosisDescription_TextArea.setColumns(20);
-        diagonosisDescription_TextArea.setRows(5);
-        jScrollPane9.setViewportView(diagonosisDescription_TextArea);
+        DiagnosisDescription_TextArea.setColumns(20);
+        DiagnosisDescription_TextArea.setRows(5);
+        jScrollPane9.setViewportView(DiagnosisDescription_TextArea);
 
         Diagnosis_SaveButton.setText("Save");
         Diagnosis_SaveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -668,7 +666,7 @@ public class GUI_doctor extends javax.swing.JFrame {
                                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel4Layout.createSequentialGroup()
-                                    .addComponent(diagonosisDescription_label)
+                                    .addComponent(DiagnosisDescription_label)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel4Layout.createSequentialGroup()
@@ -677,11 +675,11 @@ public class GUI_doctor extends javax.swing.JFrame {
                                         .addGroup(jPanel4Layout.createSequentialGroup()
                                             .addComponent(DiagnosisID_label)
                                             .addGap(18, 18, 18)
-                                            .addComponent(diagonisisID_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(DiagnosisID_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel4Layout.createSequentialGroup()
-                                            .addComponent(DateOfDiagonosis_label)
+                                            .addComponent(DateOfDiagnosis_label)
                                             .addGap(18, 18, 18)
-                                            .addComponent(DateOfDiagonosis_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(DateOfDiagnosis_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(0, 25, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -696,14 +694,14 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DiagnosisID_label)
-                    .addComponent(diagonisisID_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DiagnosisID_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DateOfDiagonosis_label)
-                    .addComponent(DateOfDiagonosis_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DateOfDiagnosis_label)
+                    .addComponent(DateOfDiagnosis_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(diagonosisDescription_label)
+                    .addComponent(DiagnosisDescription_label)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -993,9 +991,9 @@ public class GUI_doctor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_Outcomes_textFieldActionPerformed
 
-    private void DateOfDiagonosis_textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateOfDiagonosis_textFieldActionPerformed
+    private void DateOfDiagnosis_textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateOfDiagnosis_textFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_DateOfDiagonosis_textFieldActionPerformed
+    }//GEN-LAST:event_DateOfDiagnosis_textFieldActionPerformed
 
     private void consult_timeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consult_timeActionPerformed
         // TODO add your handling code here:
@@ -1063,23 +1061,40 @@ public class GUI_doctor extends javax.swing.JFrame {
 
     private void Diagnosis_SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagnosis_SaveButtonActionPerformed
         // TODO add your handling code here:
+
         String patientID = patientID_textField.getText();
         String doctorID = doctorID_textField.getText();
 
         System.out.println("PatientID: " + patientID);
         System.out.println("DoctorID: " + doctorID);
-        if (patientID==null) {
+        if (patientID == null || patientID.isEmpty() && (doctorID == null || doctorID.isEmpty())){
+            JOptionPane.showMessageDialog(jPanel3, "You MUST enter patient ID and doctor ID !!");
+        } else if (patientID == null || patientID.isEmpty()) {
             System.out.println("Patient ID is blank");
             JOptionPane.showMessageDialog(jPanel3, "You MUST enter patient ID !!");
-        };
+        } else if (doctorID == null || doctorID.isEmpty()) {
+            JOptionPane.showMessageDialog(jPanel3, "You MUST enter doctor ID !!");
+        }
 
-        // if (doctorID=="") JOptionPane.showMessageDialog(jPanel4, "You MUST enter doctor ID !!");
+        String DiagnosisID = DiagnosisID_textField.getText();
+        String dateOfDiagnosis = DateOfDiagnosis_textField.getText();
+        String DiagnosisDesc = DiagnosisDescription_TextArea.getText();
+        String treatmentPlan = treatmentPlans_TextArea.getText();
+
+        System.out.println(DiagnosisID);
+        System.out.println(dateOfDiagnosis);
+        System.out.println(DiagnosisDesc);
+        System.out.println(treatmentPlan);
 
 
     }//GEN-LAST:event_Diagnosis_SaveButtonActionPerformed
 
     private void Diagnosis_ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagnosis_ClearButtonActionPerformed
         // TODO add your handling code here:
+        DiagnosisID_textField.setText("");
+        DateOfDiagnosis_textField.setText("");
+        DiagnosisDescription_TextArea.setText("");
+        treatmentPlans_TextArea.setText("");
     }//GEN-LAST:event_Diagnosis_ClearButtonActionPerformed
 
     private void MedRecord_SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedRecord_SaveButtonActionPerformed
@@ -1134,8 +1149,8 @@ public class GUI_doctor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel DateOfDiagonosis_label;
-    private javax.swing.JFormattedTextField DateOfDiagonosis_textField;
+    private javax.swing.JLabel DateOfDiagnosis_label;
+    private javax.swing.JFormattedTextField DateOfDiagnosis_textField;
     private javax.swing.JLabel DateOfSurgery_label;
     private javax.swing.JFormattedTextField DateOfSurgery_textField;
     private javax.swing.JLabel DateOfVisit_label8;
@@ -1155,9 +1170,9 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JTextField consult_date;
     private javax.swing.JTextPane consult_record;
     private javax.swing.JTextField consult_time;
-    private javax.swing.JTextField diagonisisID_textField;
-    private javax.swing.JTextArea diagonosisDescription_TextArea;
-    private javax.swing.JLabel diagonosisDescription_label;
+    private javax.swing.JTextField DiagnosisID_textField;
+    private javax.swing.JTextArea DiagnosisDescription_TextArea;
+    private javax.swing.JLabel DiagnosisDescription_label;
     private javax.swing.JTextField doctorID_textField;
     private javax.swing.JTextField doctor_department;
     private javax.swing.JTextField doctor_email;
