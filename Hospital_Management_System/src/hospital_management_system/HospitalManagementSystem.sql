@@ -229,7 +229,6 @@ CREATE TABLE BillingAndInvoicing (
 -- 创建 PaymentProcessing 表
 CREATE TABLE PaymentProcessing (
     PaymentID INT PRIMARY KEY,
-    InvoiceID INT,
     PaymentProcessingDate DATE,
     PaymentMethod VARCHAR(50),
     PaymentAmount DECIMAL(10, 2),

@@ -113,11 +113,11 @@ VALUES
 (3, 'P003', '2024-07-07', 'Consultation', 200.00, 1, 200.00);
 
 -- 插入假数据到 PaymentProcessing 表
-INSERT INTO PaymentProcessing (PaymentID, InvoiceID, PaymentProcessingDate, PaymentMethod, PaymentAmount, PaymentStatus)
+INSERT INTO PaymentProcessing (PaymentID, PaymentProcessingDate, PaymentMethod, PaymentAmount, PaymentStatus)
 VALUES
-(1, 1, '2024-07-15', 'Credit Card', 1500.00, 'Paid'),
-(2, 2, '2024-07-16', 'Cash', 1200.00, 'Paid'),
-(3, 3, '2024-07-17', 'Insurance', 200.00, 'Paid');
+(1, '2024-07-15', 'Credit Card', 1500.00, 'Paid'),
+(2, '2024-07-16', 'Cash', 1200.00, 'Paid'),
+(3, '2024-07-17', 'Insurance', 200.00, 'Paid');
 
 -- 插入假数据到 TrackThePayment 表
 INSERT INTO TrackThePayment (PaymentID, InvoiceID, PatientID, DateOfPayment, PaymentMethod, PaymentAmount, PaymentStatus, TransactionReference)
