@@ -1,12 +1,3 @@
-/* 
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Other/SQLTemplate.sql to edit this template
- */
-/**
- * Author:  User
- * Created: Jul 1, 2024
- */
-
 -- 创建数据库
 CREATE DATABASE hospital_management;
 USE hospital_management;
@@ -65,14 +56,15 @@ CREATE TABLE Nurse(
     nurse_position VARCHAR(255),
     nurse_department VARCHAR(255),
     nurse_assign_wards VARCHAR(255),
-    nurse_supervising_doctor VARCHAR(255),
+    nurse_supervising_doctor VARCHAR(25),
     nurse_qualifications TEXT,
     nurse_experience TEXT,
     nurse_license_information TEXT,
     nurse_status VARCHAR(50),
     schedule_date DATE,
     schedule_time TIME,
-    schedule_details TEXT
+    schedule_details TEXT,
+    FOREIGN KEY (nurse_supervising_doctor) REFERENCES Doctors(doctor_id)
 );
 
 -- 创建 PatientCare 表
@@ -81,7 +73,9 @@ CREATE TABLE PatientCare(
     assigned_nurse_id VARCHAR(25),
     dietary_restrictions TEXT,
     patient_progress_note TEXT,
-    discharge_date DATE
+    discharge_date DATE,
+    FOREIGN KEY (Primary_doctor_id) REFERENCES Doctors(doctor_id),
+    FOREIGN KEY (assigned_nurse_id) REFERENCES Nurse(nurse_id)
 );
 
 -- 创建 Admission 表
@@ -94,7 +88,8 @@ CREATE TABLE Admission(
     Reason1 TEXT,
     admission_Patient_ID VARCHAR(25),
     Insurance_Details TEXT,
-    medical_equipment_need TEXT
+    medical_equipment_need TEXT,
+    FOREIGN KEY (admission_Patient_ID) REFERENCES Patients(patient_id)
 );
 
 -- 创建 Appointment 表
@@ -111,7 +106,10 @@ CREATE TABLE Appointment(
     app_location VARCHAR(255),
     Admitting_Staff_ID VARCHAR(25),
     booking_date DATE,
-    app_cancel BOOLEAN
+    app_cancel BOOLEAN,
+    FOREIGN KEY (app_patient_id) REFERENCES Patients(patient_id),
+    FOREIGN KEY (app_doctor_id) REFERENCES Doctors(doctor_id),
+    FOREIGN KEY (Admitting_Staff_ID) REFERENCES Nurse(nurse_id)
 );
 
 -- 创建 BedAllocation 表
@@ -126,7 +124,8 @@ CREATE TABLE BedAllocation(
     allocate_date DATE,
     discharge_date DATE,
     pre_occ TEXT,
-    emergency_equipment TEXT
+    emergency_equipment TEXT,
+    FOREIGN KEY (bed_patient_id) REFERENCES Patients(patient_id)
 );
 
 -- 创建 Admin 表
@@ -218,12 +217,13 @@ CREATE TABLE PatientHistory (
 -- 创建 BillingAndInvoicing 表
 CREATE TABLE BillingAndInvoicing (
     InvoiceID INT PRIMARY KEY,
-    PatientID INT,
+    PatientID VARCHAR(25),
     ServiceDate DATE,
     ServicesDescription VARCHAR(100),
     CostPerService DECIMAL(10, 2),
     Quantity INT,
-    TotalCosts DECIMAL(10, 2)
+    TotalCosts DECIMAL(10, 2),
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
 );
 
 -- 创建 PaymentProcessing 表
@@ -233,6 +233,7 @@ CREATE TABLE PaymentProcessing (
     PaymentMethod VARCHAR(50),
     PaymentAmount DECIMAL(10, 2),
     PaymentStatus VARCHAR(50),
+    InvoiceID INT,
     FOREIGN KEY (InvoiceID) REFERENCES BillingAndInvoicing(InvoiceID)
 );
 
@@ -240,14 +241,15 @@ CREATE TABLE PaymentProcessing (
 CREATE TABLE TrackThePayment (
     PaymentID INT PRIMARY KEY,
     InvoiceID INT,
-    PatientID INT,
+    PatientID VARCHAR(25),
     DateOfPayment DATE,
     PaymentMethod VARCHAR(50),
     PaymentAmount DECIMAL(10, 2),
     PaymentStatus VARCHAR(50),
     TransactionsReference VARCHAR(255),
     FOREIGN KEY (PaymentID) REFERENCES PaymentProcessing(PaymentID),
-    FOREIGN KEY (InvoiceID) REFERENCES BillingAndInvoicing(InvoiceID)
+    FOREIGN KEY (InvoiceID) REFERENCES BillingAndInvoicing(InvoiceID),
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
 );
 
 -- 创建 StaffScheduling 表
@@ -289,13 +291,14 @@ CREATE TABLE MedicalSupplyManagement (
 -- 创建 TransferManagement 表
 CREATE TABLE TransferManagement (
     TransferID INT PRIMARY KEY,
-    PatientID INT,
+    PatientID VARCHAR(25),
     TransferFrom VARCHAR(100),
     TransferTo VARCHAR(100),
     PatientTransferDate DATE,
     TransferTime DATETIME,
     ReasonForTransfer TEXT,
-    StatusOfTransfer VARCHAR(50)
+    StatusOfTransfer VARCHAR(50),
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
 );
 
 -- 创建 Invoice 表
@@ -311,6 +314,6 @@ CREATE TABLE Invoice (
     TotalCosts DECIMAL(10, 2),
     TotalPayment DECIMAL(10, 2),
     AmountPaid DECIMAL(10, 2),
-    BalanceDue DATE
+    BalanceDue DATE,
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
 );
-
