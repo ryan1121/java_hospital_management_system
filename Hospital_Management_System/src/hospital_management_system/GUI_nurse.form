@@ -2453,8 +2453,8 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="SupplyName" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="InventoryManagement" max="32767" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="InventoryManagement" min="-2" pref="373" max="-2" attributes="0"/>
+                          <EmptySpace pref="1415" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2462,9 +2462,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="SupplyName" max="32767" attributes="0"/>
-                              <Component id="InventoryManagement" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="InventoryManagement" min="-2" max="-2" attributes="0"/>
+                              <Component id="SupplyName" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="49" max="32767" attributes="0"/>
                       </Group>
@@ -2548,9 +2548,7 @@
                               <Component id="medical_supply_save" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="medical_supply_clear" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="medical_supply_cancel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2596,13 +2594,12 @@
                                   <Component id="ExpiryDate" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                                   <Component id="SupplyExpiryDate" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="medical_supply_save" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="medical_supply_clear" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="medical_supply_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="14" max="32767" attributes="0"/>
+                              <EmptySpace pref="8" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2691,11 +2688,6 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="medical_supply_saveActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="medical_supply_cancel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Cancel"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JButton" name="medical_supply_clear">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Clear"/>
@@ -2724,7 +2716,7 @@
                                       <Component id="SupplierInformation1" max="32767" attributes="0"/>
                                       <EmptySpace min="-2" pref="304" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
@@ -2760,20 +2752,14 @@
                                                   <Component id="InventoryMinimunStock_input1" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                      </Group>
-                                      <EmptySpace max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jScrollPane9" alignment="0" max="32767" attributes="0"/>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Component id="ExpiryDate1" min="-2" pref="74" max="-2" attributes="0"/>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Component id="InventoryExpirydate" min="-2" pref="100" max="-2" attributes="0"/>
-                                              <EmptySpace pref="204" max="-2" attributes="0"/>
                                           </Group>
+                                          <Component id="jScrollPane9" alignment="0" min="-2" pref="345" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace max="-2" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -2782,15 +2768,7 @@
                               <Component id="inventory_save" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="inventory_clear" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="inventory_cancel" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="SaveButton2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="ClearButton2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="CancelButton1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                              <EmptySpace min="39" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2837,17 +2815,9 @@
                                   <Component id="InventoryExpirydate" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                                      <Component id="inventory_save" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="inventory_clear" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="inventory_cancel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="SaveButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ClearButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="CancelButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                              <Group type="103" groupAlignment="3" attributes="0">
+                                  <Component id="inventory_save" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="inventory_clear" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -2932,29 +2902,6 @@
                     <Component class="javax.swing.JSpinner" name="InventoryMaximumStock_input1">
                     </Component>
                     <Component class="javax.swing.JFormattedTextField" name="InventoryExpirydate">
-                    </Component>
-                    <Component class="javax.swing.JButton" name="ClearButton2">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Clear"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="CancelButton1">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Cancel"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="SaveButton2">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Save"/>
-                      </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SaveButton2ActionPerformed"/>
-                      </Events>
-                    </Component>
-                    <Component class="javax.swing.JButton" name="inventory_cancel">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Cancel"/>
-                      </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="inventory_save">
                       <Properties>
