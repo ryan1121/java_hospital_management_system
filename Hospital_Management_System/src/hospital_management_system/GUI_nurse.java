@@ -1741,7 +1741,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addGroup(jPanel13Layout.createSequentialGroup()
                         .addComponent(jPanel14, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(InventoryManagement4, javax.swing.GroupLayout.PREFERRED_SIZE, 385, Short.MAX_VALUE)))
+                        .addComponent(InventoryManagement4, javax.swing.GroupLayout.DEFAULT_SIZE, 385, Short.MAX_VALUE)))
                 .addContainerGap(1405, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel13Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -2015,7 +2015,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                                     .addComponent(ItemCode_input, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(InventoryManagementLayout.createSequentialGroup()
                                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(MaximumStock1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, Short.MAX_VALUE)
+                                    .addComponent(MaximumStock1, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
                                     .addComponent(MinimunStock1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2117,7 +2117,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Resources", jPanel16);
 
-        PaymentProcessing.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Payment Processing", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        PaymentProcessing.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Payment ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         PaymentID1.setText("Payment ID:");
 

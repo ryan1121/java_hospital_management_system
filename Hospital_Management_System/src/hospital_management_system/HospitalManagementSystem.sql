@@ -215,10 +215,10 @@ CREATE TABLE Billing (
     FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID)
 );
 
--- 创建 PaymentProcessing 表
-CREATE TABLE PaymentProcessing (
+-- 创建 Payment 表
+CREATE TABLE Payment (
     PaymentID VARCHAR(25) PRIMARY KEY,
-    PaymentProcessingDate DATE,
+    PaymentDate DATE,
     PaymentMethod VARCHAR(50),
     PaymentAmount DECIMAL(10, 2),
     PaymentStatus VARCHAR(50),
