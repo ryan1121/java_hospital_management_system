@@ -231,7 +231,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         SupplyMaximumStock_input = new javax.swing.JSpinner();
         SupplyExpiryDate = new javax.swing.JFormattedTextField();
         medical_supply_save = new javax.swing.JButton();
-        medical_supply_cancel = new javax.swing.JButton();
         medical_supply_clear = new javax.swing.JButton();
         InventoryManagement = new javax.swing.JPanel();
         ItemName = new javax.swing.JLabel();
@@ -251,10 +250,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         InventoryMinimunStock_input1 = new javax.swing.JSpinner();
         InventoryMaximumStock_input1 = new javax.swing.JSpinner();
         InventoryExpirydate = new javax.swing.JFormattedTextField();
-        ClearButton2 = new javax.swing.JButton();
-        CancelButton1 = new javax.swing.JButton();
-        SaveButton2 = new javax.swing.JButton();
-        inventory_cancel = new javax.swing.JButton();
         inventory_save = new javax.swing.JButton();
         inventory_clear = new javax.swing.JButton();
         jPanel17 = new javax.swing.JPanel();
@@ -1766,8 +1761,6 @@ public class GUI_nurse extends javax.swing.JFrame {
             }
         });
 
-        medical_supply_cancel.setText("Cancel");
-
         medical_supply_clear.setText("Clear");
 
         javax.swing.GroupLayout SupplyNameLayout = new javax.swing.GroupLayout(SupplyName);
@@ -1820,9 +1813,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addComponent(medical_supply_save)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(medical_supply_clear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(medical_supply_cancel)
-                .addContainerGap())
+                .addGap(14, 14, 14))
         );
         SupplyNameLayout.setVerticalGroup(
             SupplyNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1859,12 +1850,11 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addGroup(SupplyNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SupplyExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(SupplyNameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medical_supply_save)
-                    .addComponent(medical_supply_clear)
-                    .addComponent(medical_supply_cancel))
-                .addContainerGap(14, Short.MAX_VALUE))
+                    .addComponent(medical_supply_clear))
+                .addContainerGap(8, Short.MAX_VALUE))
         );
 
         InventoryManagement.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Inventory Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
@@ -1906,19 +1896,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         MinimunStock1.setText("Minimum Stock Level:");
 
         MaximumStock1.setText("Maximum Stock Level:");
-
-        ClearButton2.setText("Clear");
-
-        CancelButton1.setText("Cancel");
-
-        SaveButton2.setText("Save");
-        SaveButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SaveButton2ActionPerformed(evt);
-            }
-        });
-
-        inventory_cancel.setText("Cancel");
 
         inventory_save.setText("Save");
         inventory_save.addActionListener(new java.awt.event.ActionListener() {
@@ -1966,31 +1943,19 @@ public class GUI_nurse extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(InventoryMaximumStock_input1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(InventoryMinimunStock_input1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InventoryManagementLayout.createSequentialGroup()
-                        .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane9)
+                                    .addComponent(InventoryMinimunStock_input1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(InventoryManagementLayout.createSequentialGroup()
                                 .addComponent(ExpiryDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(InventoryExpirydate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 204, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap())))
+                                .addComponent(InventoryExpirydate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InventoryManagementLayout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addComponent(inventory_save)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(inventory_clear)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(inventory_cancel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(SaveButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ClearButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CancelButton1)
-                .addGap(39, 39, 39))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         InventoryManagementLayout.setVerticalGroup(
             InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2028,15 +1993,9 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addComponent(ExpiryDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(InventoryExpirydate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(inventory_save)
-                        .addComponent(inventory_clear)
-                        .addComponent(inventory_cancel))
-                    .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(SaveButton2)
-                        .addComponent(ClearButton2)
-                        .addComponent(CancelButton1)))
+                .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inventory_save)
+                    .addComponent(inventory_clear))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2048,16 +2007,16 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(SupplyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(InventoryManagement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(InventoryManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(1415, Short.MAX_VALUE))
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel16Layout.createSequentialGroup()
                 .addGap(15, 15, 15)
-                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(SupplyName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(InventoryManagement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(InventoryManagement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(SupplyName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
@@ -2657,10 +2616,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_medical_supply_saveActionPerformed
 
-    private void SaveButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SaveButton2ActionPerformed
-
     private void TransferID_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TransferID_inputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TransferID_inputActionPerformed
@@ -2785,10 +2740,8 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTextField Admission_Status1;
     private javax.swing.JTextField Admitting_Staff_ID1;
     private javax.swing.JTextField Appointment_ID;
-    private javax.swing.JButton CancelButton1;
     private javax.swing.JButton CheckButton;
     private javax.swing.JButton ClearButton;
-    private javax.swing.JButton ClearButton2;
     private javax.swing.JLabel ConsultationID_label;
     private javax.swing.JTextField ConsultationID_textField;
     private javax.swing.JLabel CostPerService;
@@ -2870,7 +2823,6 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JLabel ReasonForTransfer;
     private javax.swing.JTextArea ReasonForTransfer_input;
     private javax.swing.JButton SaveButton;
-    private javax.swing.JButton SaveButton2;
     private javax.swing.JFormattedTextField ServiceDate;
     private javax.swing.JFormattedTextField ServiceDate1;
     private javax.swing.JPanel ServiceDetails;
@@ -2937,7 +2889,6 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JSpinner dosage_Spinner;
     private javax.swing.JList<String> emergency_equipment;
     private javax.swing.JTextArea instructions;
-    private javax.swing.JButton inventory_cancel;
     private javax.swing.JButton inventory_clear;
     private javax.swing.JButton inventory_save;
     private javax.swing.JButton jButton1;
@@ -3030,7 +2981,6 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JList<String> medical_equipment_need;
-    private javax.swing.JButton medical_supply_cancel;
     private javax.swing.JButton medical_supply_clear;
     private javax.swing.JButton medical_supply_save;
     private javax.swing.JLabel mgUnit_label;
