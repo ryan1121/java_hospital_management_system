@@ -1,17 +1,50 @@
-import java.sql.*;
+package hospital_management_system;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+/*
+Example usage: 
+    // 1. Get Data
+    try {
+        ResultSet rs = db.getData("designation", "userID = 1");
+        while (rs != null && rs.next()) {
+            System.out.println("Title: " + rs.getString("title"));
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    // 2. Save Data
+    boolean saveSuccess = db.saveData("designation", "title", "'New Title'");
+    System.out.println("Data saved: " + saveSuccess);
+
+    // 3. Update Data
+    boolean updateSuccess = db.updateData("designation", "title = 'Updated Title'", "userID = 1");
+    System.out.println("Data updated: " + updateSuccess);
+
+    // 4. Delete Data
+    boolean deleteSuccess = db.deleteData("designation", "userID = 1");
+    System.out.println("Data deleted: " + deleteSuccess); 
+*/
 
 public class MysqlConnect {
-    private static final String url = "jdbc:mysql://localhost:3306/mydb";
-    private static final String username = "root";
-    private static final String password = "123456";
-
+    private final String url = "jdbc:mysql://localhost:3306/hospital_management";
+    private final String username = "root";
+    private final String password = "123456";
     private Connection connection;
 
     public MysqlConnect() {
-        connectDatabase();
+        connect();
     }
 
-    private void connectDatabase() {
+    private void connect() {
+        System.out.println("Connecting database ...");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             System.out.println("Driver loaded!");
@@ -22,91 +55,51 @@ public class MysqlConnect {
         }
     }
 
-    // Getter method to retrieve data
-    public void getData(String tableName, String fieldName) {
-        String query = "SELECT " + fieldName + " FROM " + tableName;
-        try (Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
-            while (resultSet.next()) {
-                String data = resultSet.getString(fieldName);
-                System.out.println(fieldName + ": " + data);
-            }
+    public ResultSet getData(String tableName, String condition) {
+        String query = "SELECT * FROM " + tableName + " WHERE " + condition;
+        try {
+            Statement statement = connection.createStatement();
+            return statement.executeQuery(query);
         } catch (SQLException e) {
             System.err.println("Cannot execute SQL query!");
             e.printStackTrace();
+            return null;
         }
     }
 
-    // Setter method to save data
-    public void saveData(String tableName, String[] fields, String[] values) {
-        if (fields.length != values.length) {
-            throw new IllegalArgumentException("Fields and values length must match.");
-        }
-
-        StringBuilder fieldList = new StringBuilder();
-        StringBuilder valueList = new StringBuilder();
-
-        for (String field : fields) {
-            fieldList.append(field).append(",");
-        }
-
-        for (String value : values) {
-            valueList.append("'").append(value).append("',");
-        }
-
-        // Remove trailing commas
-        fieldList.setLength(fieldList.length() - 1);
-        valueList.setLength(valueList.length() - 1);
-
-        String query = "INSERT INTO " + tableName + " (" + fieldList + ") VALUES (" + valueList + ")";
-
+    public boolean saveData(String tableName, String fieldNames, String values) {
+        String query = "INSERT INTO " + tableName + " (" + fieldNames + ") VALUES (" + values + ")";
         try (Statement statement = connection.createStatement()) {
-            statement.executeUpdate(query);
-            System.out.println("Data saved successfully!");
+            int rowsInserted = statement.executeUpdate(query);
+            return rowsInserted > 0;
         } catch (SQLException e) {
             System.err.println("Cannot execute SQL query!");
             e.printStackTrace();
+            return false;
         }
     }
 
-    // Setter method to update data
-    public void updateData(String tableName, String[] fields, String[] values, String condition) {
-        if (fields.length != values.length) {
-            throw new IllegalArgumentException("Fields and values length must match.");
-        }
-
-        StringBuilder updateList = new StringBuilder();
-
-        for (int i = 0; i < fields.length; i++) {
-            updateList.append(fields[i]).append(" = '").append(values[i]).append("',");
-        }
-
-        // Remove trailing comma
-        updateList.setLength(updateList.length() - 1);
-
-        String query = "UPDATE " + tableName + " SET " + updateList + " WHERE " + condition;
-
+    public boolean updateData(String tableName, String updates, String condition) {
+        String query = "UPDATE " + tableName + " SET " + updates + " WHERE " + condition;
         try (Statement statement = connection.createStatement()) {
-            statement.executeUpdate(query);
-            System.out.println("Data updated successfully!");
+            int rowsUpdated = statement.executeUpdate(query);
+            return rowsUpdated > 0;
         } catch (SQLException e) {
             System.err.println("Cannot execute SQL query!");
             e.printStackTrace();
+            return false;
         }
     }
 
-    public static void main(String[] args) {
-        MysqlConnect db = new MysqlConnect();
-
-        // Example usage:
-        db.getData("designation", "title");
-        
-        String[] fields = {"field1", "field2"};
-        String[] values = {"value1", "value2"};
-        db.saveData("your_table_name", fields, values);
-        
-        String[] updateFields = {"field1"};
-        String[] updateValues = {"new_value1"};
-        db.updateData("your_table_name", updateFields, updateValues, "field2 = 'value2'");
+    public boolean deleteData(String tableName, String condition) {
+        String query = "DELETE FROM " + tableName + " WHERE " + condition;
+        try (Statement statement = connection.createStatement()) {
+            int rowsDeleted = statement.executeUpdate(query);
+            return rowsDeleted > 0;
+        } catch (SQLException e) {
+            System.err.println("Cannot execute SQL query!");
+            e.printStackTrace();
+            return false;
+        }
     }
 }

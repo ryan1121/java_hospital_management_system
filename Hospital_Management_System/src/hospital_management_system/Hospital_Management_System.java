@@ -47,12 +47,6 @@ public class Hospital_Management_System {
     }
     
     public static void main(String[] args) {
-        MysqlConnect db = new MysqlConnect();
-
-        // Example usage:
-        db.getData("nurse", "nurse_id");
-        
-
         // Create an object for the home page gui
         Role_Page_GUI home_pageGUI = new Role_Page_GUI();
 
