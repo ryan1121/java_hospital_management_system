@@ -26,6 +26,7 @@ public class GUI_doctor extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -52,14 +53,8 @@ public class GUI_doctor extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jLabel14 = new javax.swing.JLabel();
-        workDate = new javax.swing.JFormattedTextField();
-        jLabel15 = new javax.swing.JLabel();
-        workTime = new javax.swing.JFormattedTextField();
-        jLabel16 = new javax.swing.JLabel();
-        workDetails = new javax.swing.JTextField();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        StaffScheduleTable1 = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         patient_id = new javax.swing.JTextField();
@@ -301,88 +296,40 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Information", jPanel7);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        StaffScheduleTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Name", "Date", "Time", "Details"
+                "Staff ID", "Name", "Start Time ", "End Time", "Date", "Department", "Tasks"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(jTable1);
-
-        jLabel14.setText("Date :");
-
-        workDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-
-        jLabel15.setText("Time :");
-
-        workTime.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance())));
-
-        jLabel16.setText("Details :");
-
-        workDetails.setText("Details about what are going to do ");
+        ));
+        StaffScheduleTable1.setIntercellSpacing(new java.awt.Dimension(1, 1));
+        StaffScheduleTable1.setShowHorizontalLines(true);
+        StaffScheduleTable1.setShowVerticalLines(true);
+        jScrollPane11.setViewportView(StaffScheduleTable1);
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel15))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(workTime, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(workDate, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel8Layout.createSequentialGroup()
-                        .addComponent(jLabel16)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(workDetails)))
-                .addContainerGap(591, Short.MAX_VALUE))
-            .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 840, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE)
+                .addGap(23, 23, 23))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel14)
-                    .addComponent(workDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel15)
-                    .addComponent(workTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel16)
-                    .addComponent(workDetails, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(44, 44, 44)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(135, Short.MAX_VALUE))
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Work Schedule", jPanel8);
@@ -773,7 +720,7 @@ public class GUI_doctor extends javax.swing.JFrame {
                             .addComponent(DateOfSurgery_textField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(surgeryID_textField, javax.swing.GroupLayout.DEFAULT_SIZE, 154, Short.MAX_VALUE)
+                        .addComponent(surgeryID_textField)
                         .addGap(121, 121, 121))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -925,7 +872,7 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 1, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -1155,7 +1102,10 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField DateOfSurgery_textField;
     private javax.swing.JLabel DateOfVisit_label8;
     private javax.swing.JFormattedTextField DateOfVisit_textField8;
+    private javax.swing.JTextArea DiagnosisDescription_TextArea;
+    private javax.swing.JLabel DiagnosisDescription_label;
     private javax.swing.JLabel DiagnosisID_label;
+    private javax.swing.JTextField DiagnosisID_textField;
     private javax.swing.JButton Diagnosis_ClearButton;
     private javax.swing.JButton Diagnosis_SaveButton;
     private javax.swing.JLabel DoctorID_label;
@@ -1165,14 +1115,12 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JLabel Outcomes_label;
     private java.awt.TextField Outcomes_textField;
     private javax.swing.JLabel PatientID_label;
+    private javax.swing.JTable StaffScheduleTable1;
     private javax.swing.JButton SurgManage_ClearButton;
     private javax.swing.JButton SurgManage_SaveButton;
     private javax.swing.JTextField consult_date;
     private javax.swing.JTextPane consult_record;
     private javax.swing.JTextField consult_time;
-    private javax.swing.JTextField DiagnosisID_textField;
-    private javax.swing.JTextArea DiagnosisDescription_TextArea;
-    private javax.swing.JLabel DiagnosisDescription_label;
     private javax.swing.JTextField doctorID_textField;
     private javax.swing.JTextField doctor_department;
     private javax.swing.JTextField doctor_email;
@@ -1187,9 +1135,6 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -1217,15 +1162,14 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel medicalRecordID_label8;
     private javax.swing.JTextField medicalRecordID_textField8;
     private javax.swing.JTextArea medical_record_treatmentPlans;
@@ -1248,8 +1192,5 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JTextArea treatmentPlans_TextArea;
     private javax.swing.JLabel treatmentPlans_label;
     private javax.swing.JLabel treatmentPlans_label10;
-    private javax.swing.JFormattedTextField workDate;
-    private javax.swing.JTextField workDetails;
-    private javax.swing.JFormattedTextField workTime;
     // End of variables declaration//GEN-END:variables
 }
