@@ -478,7 +478,7 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medical History", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
-        jLabel25.setText("Consultation Record :");
+        jLabel25.setText("Medical Record :");
 
         consult_date.setText("Date");
         consult_date.addActionListener(new java.awt.event.ActionListener() {

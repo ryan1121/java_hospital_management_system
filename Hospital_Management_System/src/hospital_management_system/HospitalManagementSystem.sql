@@ -38,7 +38,6 @@ CREATE TABLE Doctors (
     doctor_status VARCHAR(50),
     doctor_experience TEXT,
     doctor_qualifications TEXT,
-    doctor_license_information TEXT,
     workDate DATE,
     workTime TIME,
     workDetails TEXT
@@ -57,7 +56,6 @@ CREATE TABLE Nurse(
     nurse_supervising_doctor VARCHAR(25),
     nurse_qualifications TEXT,
     nurse_experience TEXT,
-    nurse_license_information TEXT,
     nurse_status VARCHAR(50),
     schedule_date DATE,
     schedule_time TIME,

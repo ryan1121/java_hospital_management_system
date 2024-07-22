@@ -710,7 +710,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JLabel" name="jLabel25">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Consultation Record :"/>
+                        <Property name="text" type="java.lang.String" value="Medical Record :"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="consult_date">
