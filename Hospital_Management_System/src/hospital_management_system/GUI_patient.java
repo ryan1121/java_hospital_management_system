@@ -304,7 +304,7 @@ public class GUI_patient extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton1.setText("Submit");
+        jButton1.setText("Save");
 
         jButton2.setText("Reset");
 
