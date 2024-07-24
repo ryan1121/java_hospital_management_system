@@ -278,7 +278,7 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="ShiftDate" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
+                                      <Component id="shiftDate" alignment="0" min="-2" pref="38" max="-2" attributes="0"/>
                                       <Component id="StaffID" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -305,7 +305,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="ShiftDate" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
+                      <Component id="shiftDate" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                       <Component id="StaffScheduleDate" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
@@ -387,7 +387,7 @@
             <Property name="text" type="java.lang.String" value="Shift End Time:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="ShiftDate">
+        <Component class="javax.swing.JLabel" name="shiftDate">
           <Properties>
             <Property name="text" type="java.lang.String" value="Date:"/>
           </Properties>
@@ -410,7 +410,7 @@
         <Component class="javax.swing.JFormattedTextField" name="ShiftStartTime_input">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="2"/>
+              <Format subtype="0" type="2"/>
             </Property>
           </Properties>
           <Events>
@@ -420,7 +420,7 @@
         <Component class="javax.swing.JFormattedTextField" name="ShiftEndTime_input">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="1" type="2"/>
+              <Format subtype="0" type="2"/>
             </Property>
           </Properties>
           <Events>
@@ -428,6 +428,11 @@
           </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="StaffScheduleDate">
+          <Properties>
+            <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
+              <Format subtype="1" type="1"/>
+            </Property>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

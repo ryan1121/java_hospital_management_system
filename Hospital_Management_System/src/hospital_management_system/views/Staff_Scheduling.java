@@ -4,6 +4,10 @@
  */
 package hospital_management_system;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import hospital_management_system.controllers.*;
 
@@ -28,41 +32,63 @@ public class Staff_Scheduling extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        
+        StaffScheduling = new javax.swing.JPanel();
+        StaffID = new javax.swing.JLabel();
+        StaffID_input = new javax.swing.JTextField();
+        ShiftStartTime = new javax.swing.JLabel();
+        ShiftStartTime_input = new javax.swing.JFormattedTextField();
+        ShiftEndTime = new javax.swing.JLabel();
+        ShiftEndTime_input = new javax.swing.JFormattedTextField();
+        shiftDate = new javax.swing.JLabel();
+        StaffScheduleDate = new javax.swing.JFormattedTextField();
+        Department = new javax.swing.JLabel();
+        Department_dropdown = new javax.swing.JComboBox<>();
+        AssignedTasks = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        AssignedTasks_input = new javax.swing.JTextArea();
+        SaveButton = new javax.swing.JButton();
+        ClearButton = new javax.swing.JButton();
+        CancelButton = new javax.swing.JButton();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         StaffScheduling.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Staff Scheduling", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         StaffID.setText("Staff ID:");
+        
+        shiftDate.setText("Date:");
 
+        StaffScheduleDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        
         ShiftStartTime.setText("Shift Start Time:");
 
-        ShiftEndTime.setText("Shift End Time:");
-
-        ShiftDate.setText("Date:");
-
-        Department.setText("Department/Unit:");
-
-        AssignedTasks.setText("Assigned Tasks:");
-        
         ShiftStartTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         ShiftStartTime_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShiftStartTime_inputActionPerformed(evt);
             }
         });
-        
+
+        ShiftEndTime.setText("Shift End Time:");
+
         ShiftEndTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
         ShiftEndTime_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShiftEndTime_inputActionPerformed(evt);
             }
         });
-        
+
+        Department.setText("Department/Unit:");
+
         Department_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Emergency", "Cardiology", "Neurology", "Pediatrics", "Radiology", "Oncology", "Orthopedics", "Gynecology", "General Surgery", "Intensive Care Unit (ICU)", "Neonatal Intensive Care Unit (NICU)", "Anesthesiology", "Gastroenterology" }));
-        Department_dropdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Department_dropdownActionPerformed(evt);
-            }
-        });
+        // Department_dropdown.addActionListener(new java.awt.event.ActionListener() {
+        //     public void actionPerformed(java.awt.event.ActionEvent evt) {
+        //         Department_dropdownActionPerformed(evt);
+        //     }
+        // });
+
+        AssignedTasks.setText("Assigned Tasks:");
 
         AssignedTasks_input.setColumns(20);
         AssignedTasks_input.setRows(5);
@@ -93,7 +119,7 @@ public class Staff_Scheduling extends javax.swing.JFrame {
                                 .addComponent(Department_dropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(StaffSchedulingLayout.createSequentialGroup()
                                 .addGroup(StaffSchedulingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ShiftDate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(shiftDate, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(StaffID))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(StaffSchedulingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -111,7 +137,7 @@ public class Staff_Scheduling extends javax.swing.JFrame {
                     .addComponent(StaffID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(StaffSchedulingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ShiftDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(shiftDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(StaffScheduleDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(StaffSchedulingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -187,45 +213,62 @@ public class Staff_Scheduling extends javax.swing.JFrame {
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // Retrieve values from the form fields
         String staffID = StaffID_input.getText();
+        String shiftDate = StaffScheduleDate.getText();
         String shiftStartTime = ShiftStartTime_input.getText();
         String shiftEndTime = ShiftEndTime_input.getText();
-        String Department = Department_dropdown.getSelectedItem();
-        String AssignedTasks = AssignedTasks_input.getText();
-        String shiftDate = StaffScheduleDate.getText();
+        String department = (String)Department_dropdown.getSelectedItem();
+        String tasks = AssignedTasks_input.getText();
 
-        // Perform validation and save logic
-        if (staffID.isEmpty() || shiftStartTime.isEmpty() || shiftEndTime.isEmpty() || shiftDate.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            // Save data to database or any other storage
-            JOptionPane.showMessageDialog(this, "Staff schedule saved successfully.", "Success", JOptionPane.INFORMATION_MESSAGE);
+        // Validate inputs
+        if (staffId.isEmpty() || shiftStartTime.isEmpty() || shiftEndTime.isEmpty() || shiftDate.isEmpty() || department.isEmpty() || assignedTasks.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Save to database
+        try {
+            MysqlConnect mysql = new MysqlConnect();
+            String fieldName = "staffId, shiftDate, shiftStartTime, shiftEndTime, department, tasks";
+            String values = String.format("%s, %tF, %tT, %tT, %s, %s", staffId, shiftDate, shiftStartTime, shiftEndTime, department, tasks);
+            mysql.saveData(StaffScheduling, fieldName, values);
+            JOptionPane.showMessageDialog(this, "Data saved successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(this, "Error saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_SaveButtonActionPerformed
     
-        private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
-            StaffID_input.setText("");
-            ShiftStartTime_input.setText("");
-            ShiftEndTime_input.setText("");
-            Department_dropdown.setSelectedIndex(0);
-            AssignedTasks_input.setText("");
-            StaffScheduleDate.setText("");
-        }                                           
-    
-        private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
-            this.dispose(); // Close the current window
-        }            
+    private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        StaffID_input.setText("");
+        StaffScheduleDate.setText("");
+        ShiftStartTime_input.setText("");
+        ShiftEndTime_input.setText("");
+        Department_dropdown.setSelectedIndex(0);
+        AssignedTasks_input.setText("");
+    }                                           
+
+    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {                                             
+        this.dispose(); // Close the current window
+    }            
                     
     private void ShiftStartTime_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShiftStartTime_inputActionPerformed
-        // TODO add your handling code here:
+        String startTime = ShiftStartTime_input.getText();
+        if (!startTime.matches("\\d{2}:\\d{2}:\\d{2}")) { // Simple time format validation (HH:mm:ss)
+            JOptionPane.showMessageDialog(this, "Please enter a valid start time in HH:mm:ss format.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_ShiftStartTime_inputActionPerformed
 
     private void ShiftEndTime_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShiftEndTime_inputActionPerformed
-        // TODO add your handling code here:
+        String endTime = ShiftEndTime_input.getText();
+        if (!endTime.matches("\\d{2}:\\d{2}:\\d{2}")) { // Simple time format validation (HH:mm:ss)
+            JOptionPane.showMessageDialog(this, "Please enter a valid end time in HH:mm:ss format.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_ShiftEndTime_inputActionPerformed
 
-    private void Department_dropdownActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Department_dropdownActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Department_dropdownActionPerformed
+    // private void Department_dropdownActionPerformed(java.awt.event.ActionEvent evt) {                                                
+    //     String selectedDepartment = (String) Department_dropdown.getSelectedItem();
+    //     JOptionPane.showMessageDialog(this, "You selected: " + selectedDepartment, "Department Selected", JOptionPane.INFORMATION_MESSAGE);
+    // }   
+
     /**
      * @param args the command line arguments
      */
@@ -269,7 +312,7 @@ public class Staff_Scheduling extends javax.swing.JFrame {
     private javax.swing.JLabel Department;
     private javax.swing.JComboBox<String> Department_dropdown;
     private javax.swing.JButton SaveButton;
-    private javax.swing.JLabel ShiftDate;
+    private javax.swing.JLabel shiftDate;
     private javax.swing.JLabel ShiftEndTime;
     private javax.swing.JFormattedTextField ShiftEndTime_input;
     private javax.swing.JLabel ShiftStartTime;

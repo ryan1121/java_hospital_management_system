@@ -1321,6 +1321,8 @@ public class GUI_admin extends javax.swing.JFrame {
 
     private void nurseAdd_new_schedule_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurseAdd_new_schedule_ButtonActionPerformed
         // TODO add your handling code here:
+        Staff_Scheduling staff_schedule_gui = new Staff_Scheduling();
+        staff_schedule_gui.setVisible(true);
     }//GEN-LAST:event_nurseAdd_new_schedule_ButtonActionPerformed
 
     private void doctorAdd_new_schedule_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorAdd_new_schedule_ButtonActionPerformed
