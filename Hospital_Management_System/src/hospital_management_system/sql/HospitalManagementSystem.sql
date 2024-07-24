@@ -239,7 +239,6 @@ CREATE TABLE StaffScheduling (
     ShiftEndTime TIME,
     Department VARCHAR(100),
     AssignedTasks TEXT,
-    StaffAvailability VARCHAR(50),
     PRIMARY KEY (StaffID, StaffScheduleDate)
 );
 

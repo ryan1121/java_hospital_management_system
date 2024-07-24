@@ -111,11 +111,11 @@ VALUES
 ('INV003', 'Medication', 50.00, 20, 1000.00);
 
 -- 插入 StaffScheduling 表的数据
-INSERT INTO StaffScheduling (StaffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks, StaffAvailability)
+INSERT INTO StaffScheduling (StaffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks)
 VALUES 
-('S001', '2024-07-21', '08:00:00', '16:00:00', 'Cardiology', 'Morning rounds', 'Available'),
-('S002', '2024-07-20', '10:00:00', '18:00:00', 'Neurology', 'Afternoon rounds', 'Available'),
-('S003', '2024-07-19', '12:00:00', '20:00:00', 'Pediatrics', 'Evening rounds', 'Available');
+('S001', '2024-07-21', '08:00:00', '16:00:00', 'Cardiology', 'Morning rounds'),
+('S002', '2024-07-20', '10:00:00', '18:00:00', 'Neurology', 'Afternoon rounds'),
+('S003', '2024-07-19', '12:00:00', '20:00:00', 'Pediatrics', 'Evening rounds');
 
 -- 插入 InventoryManagement 表的数据
 INSERT INTO InventoryManagement (InventoryID, ItemCode, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimunStock, SupplierInformation, InventoryExpirydate)

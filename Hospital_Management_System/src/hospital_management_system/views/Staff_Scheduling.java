@@ -5,6 +5,7 @@
 package hospital_management_system;
 
 import javax.swing.JOptionPane;
+import hospital_management_system.controllers.*;
 
 /**
  *
