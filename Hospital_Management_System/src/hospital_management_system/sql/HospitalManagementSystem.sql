@@ -135,12 +135,12 @@ CREATE TABLE Admin(
 
 -- 创建 Prescription 表
 CREATE TABLE Prescription (
-    PrescriptionID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
+    PrescriptionID VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
     Medication_comboxBox VARCHAR(255) NOT NULL,
     dosage_Spinner VARCHAR(255) NOT NULL,
-    PrescriptionDate_textField DATE NOT NULL,
+    PrescriptionDate DATE NOT NULL,
     instructions TEXT,
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
@@ -148,11 +148,11 @@ CREATE TABLE Prescription (
 
 -- 创建 MedicalRecords 表
 CREATE TABLE MedicalRecords (
-    medicalRecordID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
+    medicalRecordID VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
-    DateOfVisit_textField DATE NOT NULL,
-    notes_textField8 TEXT,
+    DateOfVisit DATE NOT NULL,
+    notes TEXT,
     medical_record_treatmentPlans TEXT,
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
@@ -160,36 +160,36 @@ CREATE TABLE MedicalRecords (
 
 -- 创建 Surgeries 表
 CREATE TABLE Surgeries (
-    surgeryID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
+    surgeryID VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
-    surgeryType_comboBox VARCHAR(255) NOT NULL,
-    DateOfSurgery_textField DATE NOT NULL,
-    Outcomes_textField TEXT,
+    surgeryType VARCHAR(255) NOT NULL,
+    DateOfSurgery DATE NOT NULL,
+    Outcomes TEXT,
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
 );
 
 -- 创建 Consultations 表
 CREATE TABLE Consultations (
-    ConsultationID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
+    ConsultationID VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
-    DateOfConsultation_textField DATE NOT NULL,
-    notes_textField TEXT,
+    DateOfConsultation DATE NOT NULL,
+    notes TEXT,
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
 );
 
 -- 创建 Diagnosis 表
 CREATE TABLE Diagnosis (
-    DiagnosisID_textField VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
+    DiagnosisID VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
-    DiagnosisDescription_TextArea TEXT NOT NULL,
-    DateOfDiagnosis_textField DATE NOT NULL,
-    treatmentPlans_TextArea TEXT,
-    surgeryID_textField VARCHAR(25),
+    DiagnosisDescription TEXT NOT NULL,
+    DateOfDiagnosis DATE NOT NULL,
+    treatmentPlans TEXT,
+    surgeryID VARCHAR(25),
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
 );
