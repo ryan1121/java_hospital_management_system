@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package hospital_management_system;
+import hospital_management_system.controllers.*;
+
+
 import javax.swing.JOptionPane;
+
+import hospital_management_system.controllers.Diagnosis;
 
 /**
  *
@@ -587,7 +592,8 @@ public class GUI_doctor extends javax.swing.JFrame {
         Diagnosis_SaveButton.setText("Save");
         Diagnosis_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Diagnosis_SaveButtonActionPerformed(evt);
+                Diagnosis DiagnosisObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
+                Diagnosis.Diagnosis_SaveButtonActionPerformed(evt);
             }
         });
 
@@ -1007,6 +1013,7 @@ public class GUI_doctor extends javax.swing.JFrame {
     }//GEN-LAST:event_notes_textField8ActionPerformed
 
     private void Diagnosis_SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagnosis_SaveButtonActionPerformed
+
         // TODO add your handling code here:
 
         String patientID = patientID_textField.getText();
