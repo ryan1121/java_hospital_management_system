@@ -10,27 +10,33 @@ import java.sql.Statement;
 
 /*
 Example usage: 
+    // 创建 MysqlConnect 对象
+    MysqlConnect db = new MysqlConnect();
+
     // 1. Get Data
     try {
-        ResultSet rs = db.getData("designation", "userID = 1");
+        ResultSet rs = db.getData("Diagnosis", "PatientID = '1'");
         while (rs != null && rs.next()) {
-            System.out.println("Title: " + rs.getString("title"));
+            System.out.println("DiagnosisID: " + rs.getString("DiagnosisID"));
+            System.out.println("DiagnosisDescription: " + rs.getString("DiagnosisDescription"));
         }
     } catch (SQLException e) {
         e.printStackTrace();
     }
 
     // 2. Save Data
-    boolean saveSuccess = db.saveData("designation", "title", "'New Title'");
+    boolean saveSuccess = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans, surgeryID",
+            "'3', '1', '2', 'Severe Cold', '2024-07-21', 'Rest and Medication', 'NULL'");
     System.out.println("Data saved: " + saveSuccess);
 
     // 3. Update Data
-    boolean updateSuccess = db.updateData("designation", "title = 'Updated Title'", "userID = 1");
+    boolean updateSuccess = db.updateData("Diagnosis", "DiagnosisDescription = 'Mild Cold'", "DiagnosisID = '3'");
     System.out.println("Data updated: " + updateSuccess);
 
     // 4. Delete Data
-    boolean deleteSuccess = db.deleteData("designation", "userID = 1");
-    System.out.println("Data deleted: " + deleteSuccess); 
+    boolean deleteSuccess = db.deleteData("Diagnosis", "DiagnosisID = '3'");
+    System.out.println("Data deleted: " + deleteSuccess);
+
 */
 
 public class MysqlConnect {
