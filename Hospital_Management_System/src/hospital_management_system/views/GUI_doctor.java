@@ -6,7 +6,7 @@ package hospital_management_system;
 import hospital_management_system.controllers.*;
 
 
-import javax.swing.JOptionPane;
+import javax.swing.JOptionPane;f
 
 import hospital_management_system.controllers.Diagnosis;
 
@@ -99,6 +99,7 @@ public class GUI_doctor extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         DiagnosisDescription_TextArea = new javax.swing.JTextArea();
         DiagnosisID_textField = new javax.swing.JTextField();
+
         Diagnosis_SaveButton = new javax.swing.JButton();
         Diagnosis_ClearButton = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -128,6 +129,12 @@ public class GUI_doctor extends javax.swing.JFrame {
         medicalRecordID_textField8 = new javax.swing.JTextField();
         MedRecord_SaveButton = new javax.swing.JButton();
         MedRecord_ClearButton = new javax.swing.JButton();
+
+        // 创建一个Diagnosis Controller object
+        Diagnosis getNewDiagnosisIdObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
+        String newDiagnosisId = getNewDiagnosisIdObj.getNewDiagnosisId();
+        DiagnosisID_textField.setText(newDiagnosisId);
+        DiagnosisID_textField.setEnabled(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -576,7 +583,7 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         DateOfDiagnosis_label.setText("Date of Diagnosis : ");
 
-        DateOfDiagnosis_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        DateOfDiagnosis_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
         DateOfDiagnosis_textField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DateOfDiagnosis_textFieldActionPerformed(evt);
@@ -592,8 +599,9 @@ public class GUI_doctor extends javax.swing.JFrame {
         Diagnosis_SaveButton.setText("Save");
         Diagnosis_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // 创建一个Diagnosis Object
                 Diagnosis DiagnosisObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
-                Diagnosis.Diagnosis_SaveButtonActionPerformed(evt);
+                DiagnosisObj.Diagnosis_SaveButtonActionPerformed(evt);
             }
         });
 

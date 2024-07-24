@@ -1,15 +1,13 @@
 package hospital_management_system.controllers;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 /*
-Example usage: 
+Example Usage: 
     // 创建 MysqlConnect 对象
     MysqlConnect db = new MysqlConnect();
 
@@ -25,8 +23,8 @@ Example usage:
     }
 
     // 2. Save Data
-    boolean saveSuccess = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans, surgeryID",
-            "'3', '1', '2', 'Severe Cold', '2024-07-21', 'Rest and Medication', 'NULL'");
+    String[] values = {"3", "1", "2", "Severe Cold", "2024-07-21", "Rest and Medication"};
+    boolean saveSuccess = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", values);
     System.out.println("Data saved: " + saveSuccess);
 
     // 3. Update Data
@@ -38,11 +36,9 @@ Example usage:
     System.out.println("Data deleted: " + deleteSuccess);
 
     // Generate New ID
-    String newPatientId = db.generateNewId("Patients", "patient_id", "P");
+    String newPatientId = db.generateNewId("Patients", "P");
     System.out.println("New Patient ID: " + newPatientId);
-
 */
-
 public class MysqlConnect {
     private final String url = "jdbc:mysql://localhost:3306/hospital_management";
     private final String username = "root";
@@ -68,8 +64,8 @@ public class MysqlConnect {
     public ResultSet getData(String tableName, String condition) {
         String query = "SELECT * FROM " + tableName + " WHERE " + condition;
         try {
-            Statement statement = connection.createStatement();
-            return statement.executeQuery(query);
+            PreparedStatement statement = connection.prepareStatement(query);
+            return statement.executeQuery();
         } catch (SQLException e) {
             System.err.println("Cannot execute SQL query!");
             e.printStackTrace();
@@ -77,10 +73,13 @@ public class MysqlConnect {
         }
     }
 
-    public boolean saveData(String tableName, String fieldNames, String values) {
-        String query = "INSERT INTO " + tableName + " (" + fieldNames + ") VALUES (" + values + ")";
-        try (Statement statement = connection.createStatement()) {
-            int rowsInserted = statement.executeUpdate(query);
+    public boolean saveData(String tableName, String fieldNames, String[] values) {
+        String query = "INSERT INTO " + tableName + " (" + fieldNames + ") VALUES (?, ?, ?, ?, ?, ?)";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            for (int i = 0; i < values.length; i++) {
+                statement.setString(i + 1, values[i]);
+            }
+            int rowsInserted = statement.executeUpdate();
             return rowsInserted > 0;
         } catch (SQLException e) {
             System.err.println("Cannot execute SQL query!");
@@ -91,8 +90,8 @@ public class MysqlConnect {
 
     public boolean updateData(String tableName, String updates, String condition) {
         String query = "UPDATE " + tableName + " SET " + updates + " WHERE " + condition;
-        try (Statement statement = connection.createStatement()) {
-            int rowsUpdated = statement.executeUpdate(query);
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            int rowsUpdated = statement.executeUpdate();
             return rowsUpdated > 0;
         } catch (SQLException e) {
             System.err.println("Cannot execute SQL query!");
@@ -103,8 +102,8 @@ public class MysqlConnect {
 
     public boolean deleteData(String tableName, String condition) {
         String query = "DELETE FROM " + tableName + " WHERE " + condition;
-        try (Statement statement = connection.createStatement()) {
-            int rowsDeleted = statement.executeUpdate(query);
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            int rowsDeleted = statement.executeUpdate();
             return rowsDeleted > 0;
         } catch (SQLException e) {
             System.err.println("Cannot execute SQL query!");
@@ -113,10 +112,10 @@ public class MysqlConnect {
         }
     }
 
-    public String generateNewId(String tableName, String idColumn, String idPrefix) {
+    public String generateNewId(String tableName, String idPrefix) {
         String query = "SELECT COUNT(*) AS total FROM " + tableName;
-        try (Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+        try (PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
             if (resultSet.next()) {
                 int total = resultSet.getInt("total") + 1;
                 return idPrefix + String.format("%03d", total);
@@ -127,5 +126,4 @@ public class MysqlConnect {
         }
         return null;
     }
-
 }

@@ -959,7 +959,7 @@
                     <Component class="javax.swing.JFormattedTextField" name="DateOfDiagnosis_textField">
                       <Properties>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                          <Format subtype="1" type="1"/>
+                          <Format format="dd/mm/y" subtype="-1" type="1"/>
                         </Property>
                       </Properties>
                       <Events>
