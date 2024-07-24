@@ -37,6 +37,10 @@ Example usage:
     boolean deleteSuccess = db.deleteData("Diagnosis", "DiagnosisID = '3'");
     System.out.println("Data deleted: " + deleteSuccess);
 
+    // Generate New ID
+    String newPatientId = db.generateNewId("Patients", "patient_id", "P");
+    System.out.println("New Patient ID: " + newPatientId);
+
 */
 
 public class MysqlConnect {
@@ -108,4 +112,20 @@ public class MysqlConnect {
             return false;
         }
     }
+
+    public String generateNewId(String tableName, String idColumn, String idPrefix) {
+        String query = "SELECT COUNT(*) AS total FROM " + tableName;
+        try (Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery(query)) {
+            if (resultSet.next()) {
+                int total = resultSet.getInt("total") + 1;
+                return idPrefix + String.format("%03d", total);
+            }
+        } catch (SQLException e) {
+            System.err.println("Cannot execute SQL query!");
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }
