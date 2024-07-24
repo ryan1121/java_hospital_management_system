@@ -132,8 +132,7 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         // 创建一个Diagnosis Controller object
         Diagnosis getNewDiagnosisIdObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
-        String newDiagnosisId = getNewDiagnosisIdObj.getNewDiagnosisId();
-        DiagnosisID_textField.setText(newDiagnosisId);
+        getNewDiagnosisIdObj.setNewDiagnosisId(DiagnosisID_textField);
         DiagnosisID_textField.setEnabled(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -601,7 +600,7 @@ public class GUI_doctor extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 // 创建一个Diagnosis Object
                 Diagnosis DiagnosisObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
-                DiagnosisObj.Diagnosis_SaveButtonActionPerformed(evt);
+                DiagnosisObj.Diagnosis_SaveButtonActionPerformed(evt, DiagnosisID_textField);
             }
         });
 

@@ -1,4 +1,6 @@
 package hospital_management_system.controllers;
+import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 
 
@@ -32,7 +34,7 @@ public class Diagnosis {
     }
     
 
-    public static void Diagnosis_SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagnosis_SaveButtonActionPerformed
+    public static void Diagnosis_SaveButtonActionPerformed(java.awt.event.ActionEvent evt, javax.swing.JTextField DiagnosisID_textField) {//GEN-FIRST:event_Diagnosis_SaveButtonActionPerformed
         // TODO add your handling code here:
         System.out.println("PatientID: " + patientID);
         System.out.println("DoctorID: " + doctorID);
@@ -53,9 +55,20 @@ public class Diagnosis {
             // 创建 MysqlConnect 对象
             MysqlConnect db = new MysqlConnect();
             String[] values = {DiagnosisID, patientID, doctorID, DiagnosisDesc, dateOfDiagnosis, treatmentPlan};
-            boolean saveResult = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", values);
-
-            System.out.println("Data saved: " + saveResult);
+            try {
+                boolean saveResult = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", values);
+                if (saveResult){
+                    JOptionPane.showMessageDialog(panel, "Data saved successfully !");
+                } else {
+                    JOptionPane.showMessageDialog(panel, "Data saved unsuccessfully !");
+                }
+                setNewDiagnosisId(DiagnosisID_textField);    // reset the new diagnosis ID
+            } catch (SQLException e) {
+                System.err.println("Error while saving data!");
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(panel, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
         }
 
         
@@ -63,12 +76,12 @@ public class Diagnosis {
     }//GEN-LAST:event_Diagnosis_SaveButtonActionPerformed
 
 
-    public static String getNewDiagnosisId(){
+    public static String setNewDiagnosisId(javax.swing.JTextField DiagnosisID_textField){
         // 创建 MysqlConnect 对象
         MysqlConnect db = new MysqlConnect();
-        String newDiagnosisId = db.generateNewId("Patients", "DI");
-        System.out.println("New newDiagnosisId: " + newDiagnosisId);
+        String newDiagnosisId = db.generateNewId("diagnosis", "DI");
         
+        DiagnosisID_textField.setText(newDiagnosisId);
         return newDiagnosisId;
     }
 }
