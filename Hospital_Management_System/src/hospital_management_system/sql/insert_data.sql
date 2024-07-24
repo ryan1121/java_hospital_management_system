@@ -1,146 +1,148 @@
--- 插入 Patients 表的数据
+USE hospital_management;
+
+-- 插入 Patients 表的三条数据
 INSERT INTO Patients (patient_id, patient_DOB, patient_gender, patient_phone, patient_name, patient_password, patient_email, patient_address, patient_address_line2, patient_address_line3, patient_emergency_name, patient_emergency_phone, patient_emergency_relationship, insuranceID, providerName, policyNumber, consult_date, consult_time, consult_record, patient_allergies)
 VALUES 
-('P001', '1990-01-01', 'Male', '1234567890', 'John Doe', 'password123', 'john.doe@example.com', '123 Main St', 'Apt 1', 'Floor 2', 'Jane Doe', '0987654321', 'Wife', 'INS123', 'Provider A', 'POL123', '2024-07-21', '10:00:00', 'Consultation record 1', 'None'),
-('P002', '1985-05-05', 'Female', '2345678901', 'Mary Smith', 'password456', 'mary.smith@example.com', '456 Elm St', '', '', 'Paul Smith', '1122334455', 'Brother', 'INS456', 'Provider B', 'POL456', '2024-07-20', '11:00:00', 'Consultation record 2', 'Penicillin'),
-('P003', '1995-09-09', 'Male', '3456789012', 'James Brown', 'password789', 'james.brown@example.com', '789 Oak St', 'Suite 3', '', 'Linda Brown', '6677889900', 'Mother', 'INS789', 'Provider C', 'POL789', '2024-07-19', '09:00:00', 'Consultation record 3', 'Peanuts');
+('P001', '1985-05-15', 'Male', '1234567890', 'John Doe', 'password123', 'john.doe@example.com', '123 Main St', 'Apt 101', 'City', 'Jane Doe', '0987654321', 'Spouse', 'INS001', 'Provider A', 'POL001', '2024-01-01', '10:00:00', 'Consultation notes', 'None'),
+('P002', '1990-10-20', 'Female', '2345678901', 'Jane Smith', 'password456', 'jane.smith@example.com', '456 Elm St', 'Apt 202', 'Town', 'John Smith', '1098765432', 'Parent', 'INS002', 'Provider B', 'POL002', '2024-02-01', '11:00:00', 'Consultation notes', 'Peanuts'),
+('P003', '1978-03-10', 'Male', '3456789012', 'Robert Brown', 'password789', 'robert.brown@example.com', '789 Oak St', 'Apt 303', 'Village', 'Rebecca Brown', '2109876543', 'Sibling', 'INS003', 'Provider C', 'POL003', '2024-03-01', '12:00:00', 'Consultation notes', 'Latex');
 
--- 插入 Doctors 表的数据
+-- 插入 Doctors 表的三条数据
 INSERT INTO Doctors (doctor_id, doctor_name, doctor_password, doctor_phone, doctor_email, doctor_specialization, doctor_department, doctor_status, doctor_experience, doctor_qualifications, workDate, workTime, workDetails)
 VALUES 
-('D001', 'Dr. Alice Johnson', 'docpassword1', '4567890123', 'alice.johnson@example.com', 'Cardiology', 'Cardiology Dept', 'Active', '10 years', 'MD, Cardiology', '2024-07-21', '08:00:00', 'Morning shift'),
-('D002', 'Dr. Bob Williams', 'docpassword2', '5678901234', 'bob.williams@example.com', 'Neurology', 'Neurology Dept', 'Active', '8 years', 'MD, Neurology', '2024-07-20', '10:00:00', 'Afternoon shift'),
-('D003', 'Dr. Carol Taylor', 'docpassword3', '6789012345', 'carol.taylor@example.com', 'Pediatrics', 'Pediatrics Dept', 'Active', '5 years', 'MD, Pediatrics', '2024-07-19', '12:00:00', 'Evening shift');
+('D001', 'Dr. Alice Johnson', 'docpass123', '1231231234', 'alice.johnson@example.com', 'Cardiology', 'Cardiology Dept', 'Active', '10 years of experience', 'MD, PhD', '2024-01-01', '09:00:00', 'Details about work'),
+('D002', 'Dr. Bob Smith', 'docpass456', '2342342345', 'bob.smith@example.com', 'Neurology', 'Neurology Dept', 'Active', '8 years of experience', 'MD', '2024-02-01', '10:00:00', 'Details about work'),
+('D003', 'Dr. Carol Davis', 'docpass789', '3453453456', 'carol.davis@example.com', 'Orthopedics', 'Orthopedics Dept', 'Active', '12 years of experience', 'MD, MSc', '2024-03-01', '11:00:00', 'Details about work');
 
--- 插入 Nurse 表的数据
+-- 插入 Nurse 表的三条数据
 INSERT INTO Nurse (nurse_id, nurse_name, nurse_password, nurse_email, nurse_phone, nurse_position, nurse_department, nurse_assign_wards, nurse_supervising_doctor, nurse_qualifications, nurse_experience, nurse_status, schedule_date, schedule_time, schedule_details)
 VALUES 
-('N001', 'Nancy White', 'nursepass1', 'nancy.white@example.com', '7890123456', 'Head Nurse', 'General Ward', 'Ward A', 'D001', 'RN, BSN', '15 years', 'Active', '2024-07-21', '07:00:00', 'Morning shift in Ward A'),
-('N002', 'Oliver Black', 'nursepass2', 'oliver.black@example.com', '8901234567', 'Staff Nurse', 'Emergency Dept', 'Ward B', 'D002', 'RN', '10 years', 'Active', '2024-07-20', '09:00:00', 'Afternoon shift in Ward B'),
-('N003', 'Sophia Green', 'nursepass3', 'sophia.green@example.com', '9012345678', 'Junior Nurse', 'Pediatrics Dept', 'Ward C', 'D003', 'RN', '3 years', 'Active', '2024-07-19', '11:00:00', 'Evening shift in Ward C');
+('N001', 'Nurse Emma Wilson', 'nursepass123', 'emma.wilson@example.com', '1231231235', 'Senior Nurse', 'Cardiology Dept', 'Ward 1', 'D001', 'RN, BSN', '5 years of experience', 'Active', '2024-01-02', '08:00:00', 'Details about schedule'),
+('N002', 'Nurse Liam Johnson', 'nursepass456', 'liam.johnson@example.com', '2342342346', 'Junior Nurse', 'Neurology Dept', 'Ward 2', 'D002', 'RN', '3 years of experience', 'Active', '2024-02-02', '09:00:00', 'Details about schedule'),
+('N003', 'Nurse Olivia Brown', 'nursepass789', 'olivia.brown@example.com', '3453453457', 'Head Nurse', 'Orthopedics Dept', 'Ward 3', 'D003', 'RN, MSN', '7 years of experience', 'Active', '2024-03-02', '10:00:00', 'Details about schedule');
 
--- 插入 PatientCare 表的数据
+-- 插入 PatientCare 表的三条数据
 INSERT INTO PatientCare (Primary_doctor_id, assigned_nurse_id, dietary_restrictions, patient_progress_note, discharge_date)
 VALUES 
-('D001', 'N001', 'Gluten-free', 'Patient recovering well', '2024-07-22'),
-('D002', 'N002', 'Low-sodium', 'Patient needs more rest', '2024-07-23'),
-('D003', 'N003', 'Diabetic', 'Patient showing improvement', '2024-07-24');
+('D001', 'N001', 'No dairy', 'Patient is recovering well', '2024-04-01'),
+('D002', 'N002', 'No gluten', 'Patient shows improvement', '2024-05-01'),
+('D003', 'N003', 'Low sugar', 'Patient is stable', '2024-06-01');
 
--- 插入 Admission 表的数据
+-- 插入 Admission 表的三条数据
 INSERT INTO Admission (Admission_ID, Admission_Date1, Admitting_Staff_ID, Admission_Status, Admission_Notes, Reason1, admission_Patient_ID, Insurance_Details, medical_equipment_need)
 VALUES 
-('A001', '2024-07-18', 'N001', 'Admitted', 'Patient admitted for observation', 'Chest pain', 'P001', 'Insurance details for P001', 'Oxygen mask'),
-('A002', '2024-07-17', 'N002', 'Admitted', 'Patient admitted for surgery', 'Appendicitis', 'P002', 'Insurance details for P002', 'Surgical instruments'),
-('A003', '2024-07-16', 'N003', 'Admitted', 'Patient admitted for treatment', 'Asthma', 'P003', 'Insurance details for P003', 'Nebulizer');
+('A001', '2024-01-05', 'N001', 'Admitted', 'Patient admitted for surgery', 'Appendicitis', 'P001', 'Insurance details A', 'Need for ventilator'),
+('A002', '2024-02-10', 'N002', 'Admitted', 'Patient admitted for observation', 'Severe headache', 'P002', 'Insurance details B', 'Need for ECG'),
+('A003', '2024-03-15', 'N003', 'Admitted', 'Patient admitted for treatment', 'Fractured leg', 'P003', 'Insurance details C', 'Need for crutches');
 
--- 插入 Appointment 表的数据
+-- 插入 Appointment 表的三条数据
 INSERT INTO Appointment (Appointment_ID, app_patient_id, app_doctor_id, app_date, app_time, appointment_notes, appointment_type, app_status, app_reason, app_location, Admitting_Staff_ID, booking_date, app_cancel)
 VALUES 
-('AP001', 'P001', 'D001', '2024-07-25', '14:00:00', 'Regular checkup', 'Consultation', 'Scheduled', 'Routine checkup', 'Room 101', 'N001', '2024-07-20', FALSE),
-('AP002', 'P002', 'D002', '2024-07-26', '15:00:00', 'Follow-up visit', 'Consultation', 'Scheduled', 'Post-surgery follow-up', 'Room 202', 'N002', '2024-07-21', FALSE),
-('AP003', 'P003', 'D003', '2024-07-27', '16:00:00', 'Initial consultation', 'Consultation', 'Scheduled', 'New symptoms', 'Room 303', 'N003', '2024-07-22', FALSE);
+('AP001', 'P001', 'D001', '2024-01-10', '09:30:00', 'Routine check-up', 'Check-up', 'Scheduled', 'Regular check-up', 'Room 101', 'N001', '2024-01-01', FALSE),
+('AP002', 'P002', 'D002', '2024-02-15', '10:30:00', 'Follow-up visit', 'Follow-up', 'Scheduled', 'Post-surgery follow-up', 'Room 202', 'N002', '2024-02-01', FALSE),
+('AP003', 'P003', 'D003', '2024-03-20', '11:30:00', 'Consultation', 'Consultation', 'Scheduled', 'Consultation for treatment', 'Room 303', 'N003', '2024-03-01', FALSE);
 
--- 插入 BedAllocation 表的数据
+-- 插入 BedAllocation 表的三条数据
 INSERT INTO BedAllocation (bed_allocate_number, room_allocate_number, ward_allocate_number, bed_allocation_department, bed_allocation_status, bed_type, bed_patient_id, allocate_date, discharge_date, pre_occ, emergency_equipment)
 VALUES 
-('B001', 'R001', 'W001', 'General Ward', 'Occupied', 'Single', 'P001', '2024-07-18', '2024-07-22', 'Clean', 'None'),
-('B002', 'R002', 'W002', 'Surgical Ward', 'Occupied', 'Double', 'P002', '2024-07-17', '2024-07-23', 'Clean', 'None'),
-('B003', 'R003', 'W003', 'Pediatrics Ward', 'Occupied', 'Single', 'P003', '2024-07-16', '2024-07-24', 'Clean', 'None');
+('B001', 'R001', 'W001', 'Cardiology Dept', 'Occupied', 'Single', 'P001', '2024-01-05', '2024-01-15', 'Pre-occ A', 'Ventilator'),
+('B002', 'R002', 'W002', 'Neurology Dept', 'Occupied', 'Double', 'P002', '2024-02-10', '2024-02-20', 'Pre-occ B', 'ECG'),
+('B003', 'R003', 'W003', 'Orthopedics Dept', 'Occupied', 'Single', 'P003', '2024-03-15', '2024-03-25', 'Pre-occ C', 'Crutches');
 
--- 插入 Admin 表的数据
+-- 插入 Admin 表的三条数据
 INSERT INTO Admin (admin_id, admin_name, admin_password, admin_phone, admin_email)
 VALUES 
-('AD001', 'Admin One', 'adminpass1', '0123456789', 'admin.one@example.com'),
-('AD002', 'Admin Two', 'adminpass2', '1234567890', 'admin.two@example.com'),
-('AD003', 'Admin Three', 'adminpass3', '2345678901', 'admin.three@example.com');
+('AD001', 'Admin John', 'adminpass123', '1231231238', 'admin.john@example.com'),
+('AD002', 'Admin Alice', 'adminpass456', '2342342349', 'admin.alice@example.com'),
+('AD003', 'Admin Bob', 'adminpass789', '3453453450', 'admin.bob@example.com');
 
--- 插入 Prescription 表的数据
-INSERT INTO Prescription (PrescriptionID_textField, PatientID, DoctorID, Medication_comboxBox, dosage_Spinner, PrescriptionDate_textField, instructions)
+-- 插入 Prescription 表的三条数据
+INSERT INTO Prescription (PrescriptionID, PatientID, DoctorID, Medication_comboxBox, dosage_Spinner, PrescriptionDate, instructions)
 VALUES 
-('PR001', 'P001', 'D001', 'Medication A', 'Once daily', '2024-07-21', 'Take after meals'),
-('PR002', 'P002', 'D002', 'Medication B', 'Twice daily', '2024-07-20', 'Take with water'),
-('PR003', 'P003', 'D003', 'Medication C', 'Once weekly', '2024-07-19', 'Take before bed');
+('PR001', 'P001', 'D001', 'Med A', 'Dosage A', '2024-01-10', 'Take once daily'),
+('PR002', 'P002', 'D002', 'Med B', 'Dosage B', '2024-02-15', 'Take twice daily'),
+('PR003', 'P003', 'D003', 'Med C', 'Dosage C', '2024-03-20', 'Take thrice daily');
 
--- 插入 MedicalRecords 表的数据
-INSERT INTO MedicalRecords (medicalRecordID_textField, PatientID, DoctorID, DateOfVisit_textField, notes_textField8, medical_record_treatmentPlans)
+-- 插入 MedicalRecords 表的三条数据
+INSERT INTO MedicalRecords (medicalRecordID, PatientID, DoctorID, DateOfVisit, notes, medical_record_treatmentPlans)
 VALUES 
-('MR001', 'P001', 'D001', '2024-07-21', 'Patient stable', 'Continue current medication'),
-('MR002', 'P002', 'D002', '2024-07-20', 'Patient improving', 'Reduce dosage of medication'),
-('MR003', 'P003', 'D003', '2024-07-19', 'Patient needs further tests', 'Schedule follow-up');
+('MR001', 'P001', 'D001', '2024-01-10', 'Notes for patient P001', 'Treatment plan A'),
+('MR002', 'P002', 'D002', '2024-02-15', 'Notes for patient P002', 'Treatment plan B'),
+('MR003', 'P003', 'D003', '2024-03-20', 'Notes for patient P003', 'Treatment plan C');
 
--- 插入 Surgeries 表的数据
-INSERT INTO Surgeries (surgeryID_textField, PatientID, DoctorID, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField)
+-- 插入 Surgeries 表的三条数据
+INSERT INTO Surgeries (surgeryID, PatientID, DoctorID, surgeryType, DateOfSurgery, Outcomes)
 VALUES 
-('S001', 'P001', 'D001', 'Appendectomy', '2024-07-22', 'Successful'),
-('S002', 'P002', 'D002', 'Cholecystectomy', '2024-07-21', 'Successful'),
-('S003', 'P003', 'D003', 'Hernia Repair', '2024-07-20', 'Complications, needs follow-up');
+('S001', 'P001', 'D001', 'Appendectomy', '2024-01-12', 'Successful'),
+('S002', 'P002', 'D002', 'Craniotomy', '2024-02-17', 'Successful'),
+('S003', 'P003', 'D003', 'Knee Replacement', '2024-03-22', 'Successful');
 
--- 插入 Consultations 表的数据
-INSERT INTO Consultations (ConsultationID_textField, PatientID, DoctorID, DateOfConsultation_textField, notes_textField)
+-- 插入 Consultations 表的三条数据
+INSERT INTO Consultations (ConsultationID, PatientID, DoctorID, DateOfConsultation, notes)
 VALUES 
-('C001', 'P001', 'D001', '2024-07-21', 'Routine checkup, patient stable'),
-('C002', 'P002', 'D002', '2024-07-20', 'Follow-up, patient improving'),
-('C003', 'P003', 'D003', '2024-07-19', 'Initial consultation, further tests needed');
+('C001', 'P001', 'D001', '2024-01-10', 'Consultation notes for P001'),
+('C002', 'P002', 'D002', '2024-02-15', 'Consultation notes for P002'),
+('C003', 'P003', 'D003', '2024-03-20', 'Consultation notes for P003');
 
--- 插入 Diagnosis 表的数据
-INSERT INTO Diagnosis (DiagnosisID_textField, PatientID, DoctorID, DiagnosisDescription_TextArea, DateOfDiagnosis_textField, treatmentPlans_TextArea, surgeryID_textField)
+-- 插入 Diagnosis 表的三条数据
+INSERT INTO Diagnosis (DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans)
 VALUES 
-('DI001', 'P001', 'D001', 'Diagnosed with hypertension', '2024-07-21', 'Medication and lifestyle changes', 'S001'),
-('DI002', 'P002', 'D002', 'Diagnosed with diabetes', '2024-07-20', 'Insulin and diet management', 'S002'),
-('DI003', 'P003', 'D003', 'Diagnosed with asthma', '2024-07-19', 'Inhaler and avoid triggers', 'S003');
+('DI001', 'P001', 'D001', 'Appendicitis', '2024-01-10', 'Surgery required'),
+('DI002', 'P002', 'D002', 'Migraine', '2024-02-15', 'Medication prescribed'),
+('DI003', 'P003', 'D003', 'Arthritis', '2024-03-20', 'Physical therapy recommended');
 
--- 插入 PatientHistory 表的数据
+-- 插入 PatientHistory 表的三条数据
 INSERT INTO PatientHistory (HistoryID, PatientID, EventType, EventDate, Details)
 VALUES 
-('H001', 'P001', 'Admission', '2024-07-18', 'Admitted for chest pain'),
-('H002', 'P002', 'Surgery', '2024-07-17', 'Underwent appendectomy'),
-('H003', 'P003', 'Consultation', '2024-07-16', 'Initial consultation for asthma symptoms');
+('H001', 'P001', 'Surgery', '2024-01-12', 'Appendectomy performed'),
+('H002', 'P002', 'Treatment', '2024-02-17', 'Migraine treatment initiated'),
+('H003', 'P003', 'Consultation', '2024-03-22', 'Consultation for knee pain');
 
--- 插入 Invoice 表的数据
+-- 插入 Invoice 表的三条数据
 INSERT INTO Invoice (InvoiceID, InvoiceDate, InvoiceDue, PatientID, TotalPayment, AmountPaid, BalanceDue)
 VALUES 
-('INV001', '2024-07-21', '2024-10-21', 'P001', 1000.00, 500.00, 500.00),
-('INV002', '2024-07-20', '2024-10-20', 'P002', 1500.00, 750.00, 750.00),
-('INV003', '2024-07-19', '2024-10-19', 'P003', 2000.00, 1000.00, 1000.00);
+('INV001', '2024-01-15', DATE_ADD('2024-01-15', INTERVAL 3 MONTH), 'P001', 1500.00, 500.00, 1000.00),
+('INV002', '2024-02-20', DATE_ADD('2024-02-20', INTERVAL 3 MONTH), 'P002', 2000.00, 1000.00, 1000.00),
+('INV003', '2024-03-25', DATE_ADD('2024-03-25', INTERVAL 3 MONTH), 'P003', 2500.00, 1500.00, 1000.00);
 
--- 插入 Billing 表的数据
+-- 插入 Billing 表的三条数据
 INSERT INTO Billing (InvoiceID, ServicesDescription, CostPerService, Quantity, TotalPayment)
 VALUES 
-('INV001', 'Consultation', 100.00, 5, 500.00),
-('INV002', 'Surgery', 300.00, 5, 1500.00),
-('INV003', 'Medication', 50.00, 20, 1000.00);
+('INV001', 'Appendectomy', 500.00, 3, 1500.00),
+('INV002', 'Migraine treatment', 1000.00, 2, 2000.00),
+('INV003', 'Knee Replacement', 1250.00, 2, 2500.00);
 
--- 插入 StaffScheduling 表的数据
+-- 插入 StaffScheduling 表的三条数据
 INSERT INTO StaffScheduling (StaffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks)
 VALUES 
-('S001', '2024-07-21', '08:00:00', '16:00:00', 'Cardiology', 'Morning rounds'),
-('S002', '2024-07-20', '10:00:00', '18:00:00', 'Neurology', 'Afternoon rounds'),
-('S003', '2024-07-19', '12:00:00', '20:00:00', 'Pediatrics', 'Evening rounds');
+('D001', '2024-01-05', '08:00:00', '16:00:00', 'Cardiology Dept', 'Routine check-ups'),
+('N001', '2024-01-06', '09:00:00', '17:00:00', 'Cardiology Dept', 'Ward rounds'),
+('AD001', '2024-01-07', '10:00:00', '18:00:00', 'Administration Dept', 'Admin tasks');
 
--- 插入 InventoryManagement 表的数据
+-- 插入 InventoryManagement 表的三条数据
 INSERT INTO InventoryManagement (InventoryID, ItemCode, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimunStock, SupplierInformation, InventoryExpirydate)
 VALUES 
-('INV001', 'IC001', 'Bandages', 100, 500, 50, 'Supplier A', '2025-07-21'),
-('INV002', 'IC002', 'Syringes', 200, 1000, 100, 'Supplier B', '2025-07-20'),
-('INV003', 'IC003', 'Gloves', 300, 1500, 150, 'Supplier C', '2025-07-19');
+('I001', 'ITM001', 'Bandages', 100, 500, 50, 'Supplier A', '2025-01-01'),
+('I002', 'ITM002', 'Syringes', 200, 1000, 100, 'Supplier B', '2025-02-01'),
+('I003', 'ITM003', 'Gloves', 300, 1500, 150, 'Supplier C', '2025-03-01');
 
--- 插入 MedicalSupplyManagement 表的数据
+-- 插入 MedicalSupplyManagement 表的三条数据
 INSERT INTO MedicalSupplyManagement (SupplyID, SupplyName, SupplyCode, SupplyStockQuantity, SupplyMinimunStock, SupplyMaximumStock, SupplierInformation, SupplyExpiryDate)
 VALUES 
-('MS001', 'Stethoscopes', 'SC001', 50, 10, 200, 'Supplier D', '2025-07-21'),
-('MS002', 'Thermometers', 'TC002', 75, 15, 300, 'Supplier E', '2025-07-20'),
-('MS003', 'Scalpels', 'SC003', 25, 5, 100, 'Supplier F', '2025-07-19');
+('S001', 'IV Drips', 'SPLY001', 50, 300, 30, 'Supplier X', '2024-12-01'),
+('S002', 'Masks', 'SPLY002', 100, 600, 60, 'Supplier Y', '2024-11-01'),
+('S003', 'Sanitizers', 'SPLY003', 200, 900, 90, 'Supplier Z', '2024-10-01');
 
--- 插入 TransferManagement 表的数据
+-- 插入 TransferManagement 表的三条数据
 INSERT INTO TransferManagement (TransferID, PatientID, TransferFrom, TransferTo, PatientTransferDate, TransferTime, ReasonForTransfer, StatusOfTransfer)
 VALUES 
-('TR001', 'P001', 'General Ward', 'ICU', '2024-07-21', '14:00:00', 'Critical condition', 'Completed'),
-('TR002', 'P002', 'Surgical Ward', 'Recovery Room', '2024-07-20', '15:00:00', 'Post-surgery recovery', 'Completed'),
-('TR003', 'P003', 'Pediatrics Ward', 'General Ward', '2024-07-19', '16:00:00', 'Improvement in condition', 'Completed');
+('T001', 'P001', 'Room 101', 'Room 201', '2024-01-20', '14:00:00', 'Need for specialized care', 'Completed'),
+('T002', 'P002', 'Room 202', 'Room 302', '2024-02-25', '15:00:00', 'Closer monitoring required', 'Completed'),
+('T003', 'P003', 'Room 303', 'Room 403', '2024-03-30', '16:00:00', 'Post-surgery recovery', 'Completed');
 
--- 插入 Payment 表的数据
+-- 插入 Payment 表的三条数据
 INSERT INTO Payment (PaymentID, PaymentDate, PaymentMethod, PaymentAmount, PaymentStatus, InvoiceID)
 VALUES 
-('PAY001', '2024-07-21', 'Credit Card', 500.00, 'Paid', 'INV001'),
-('PAY002', '2024-07-20', 'Debit Card', 750.00, 'Paid', 'INV002'),
-('PAY003', '2024-07-19', 'Cash', 1000.00, 'Paid', 'INV003');
+('PAY001', '2024-01-15', 'Credit Card', 500.00, 'Completed', 'INV001'),
+('PAY002', '2024-02-20', 'Cash', 1000.00, 'Completed', 'INV002'),
+('PAY003', '2024-03-25', 'Insurance', 1500.00, 'Completed', 'INV003');
