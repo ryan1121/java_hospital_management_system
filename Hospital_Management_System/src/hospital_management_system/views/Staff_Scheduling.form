@@ -410,7 +410,7 @@
         <Component class="javax.swing.JFormattedTextField" name="ShiftStartTime_input">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="0" type="2"/>
+              <Format format="h:mm a" subtype="-1" type="2"/>
             </Property>
           </Properties>
           <Events>
@@ -420,7 +420,7 @@
         <Component class="javax.swing.JFormattedTextField" name="ShiftEndTime_input">
           <Properties>
             <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-              <Format subtype="0" type="2"/>
+              <Format format="h:mm a" subtype="-1" type="2"/>
             </Property>
           </Properties>
           <Events>

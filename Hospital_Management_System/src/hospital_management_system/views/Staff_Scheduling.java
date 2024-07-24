@@ -32,67 +32,178 @@ public class Staff_Scheduling extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        
+
+        InvoiceDetails = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         StaffScheduling = new javax.swing.JPanel();
         StaffID = new javax.swing.JLabel();
         StaffID_input = new javax.swing.JTextField();
         ShiftStartTime = new javax.swing.JLabel();
-        ShiftStartTime_input = new javax.swing.JFormattedTextField();
-        ShiftEndTime = new javax.swing.JLabel();
-        ShiftEndTime_input = new javax.swing.JFormattedTextField();
-        shiftDate = new javax.swing.JLabel();
-        StaffScheduleDate = new javax.swing.JFormattedTextField();
         Department = new javax.swing.JLabel();
-        Department_dropdown = new javax.swing.JComboBox<>();
         AssignedTasks = new javax.swing.JLabel();
+        Department_dropdown = new javax.swing.JComboBox<>();
+        ShiftEndTime = new javax.swing.JLabel();
+        shiftDate = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         AssignedTasks_input = new javax.swing.JTextArea();
+        ShiftStartTime_input = new javax.swing.JFormattedTextField();
+        ShiftEndTime_input = new javax.swing.JFormattedTextField();
+        StaffScheduleDate = new javax.swing.JFormattedTextField();
         SaveButton = new javax.swing.JButton();
         ClearButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
+
+        InvoiceDetails.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Payment Processing", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+
+        jLabel1.setText("Invoice ID:");
+
+        jLabel2.setText("Payment ID:");
+
+        jTextField1.setText("123");
+
+        jTextField2.setText("456");
+
+        jLabel4.setText("Date of Payment:");
+
+        jLabel5.setText("Payment Method: ");
+
+        jLabel6.setText("Payment Amount:");
+
+        jTextField4.setText("RM 100");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Credit Card", "Cash", "E-Wallet", "Insurance" }));
+
+        jLabel7.setText("Payment Status:");
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Completed", "Pending", "Failed" }));
+
+        javax.swing.GroupLayout InvoiceDetailsLayout = new javax.swing.GroupLayout(InvoiceDetails);
+        InvoiceDetails.setLayout(InvoiceDetailsLayout);
+        InvoiceDetailsLayout.setHorizontalGroup(
+            InvoiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InvoiceDetailsLayout.createSequentialGroup()
+                .addGroup(InvoiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InvoiceDetailsLayout.createSequentialGroup()
+                        .addGap(7, 7, 7)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel1)
+                        .addGap(11, 11, 11)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InvoiceDetailsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(InvoiceDetailsLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(InvoiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(InvoiceDetailsLayout.createSequentialGroup()
+                                .addGroup(InvoiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel7))
+                                .addGap(15, 15, 15)
+                                .addGroup(InvoiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jTextField4)
+                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(InvoiceDetailsLayout.createSequentialGroup()
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(15, Short.MAX_VALUE))
+        );
+        InvoiceDetailsLayout.setVerticalGroup(
+            InvoiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InvoiceDetailsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(InvoiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(InvoiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5)
+                    .addComponent(jComboBox1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(InvoiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(InvoiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+
+        jButton1.setText("Save");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Clear");
+
+        jButton3.setText("Cancel");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         StaffScheduling.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Staff Scheduling", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         StaffID.setText("Staff ID:");
-        
-        shiftDate.setText("Date:");
 
-        StaffScheduleDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        
         ShiftStartTime.setText("Shift Start Time:");
 
-        ShiftStartTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        Department.setText("Department/Unit:");
+
+        AssignedTasks.setText("Assigned Tasks:");
+
+        Department_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Emergency", "Cardiology", "Neurology", "Pediatrics", "Radiology", "Oncology", "Orthopedics", "Gynecology", "General Surgery", "Intensive Care Unit (ICU)", "Neonatal Intensive Care Unit (NICU)", "Anesthesiology", "Gastroenterology" }));
+        Department_dropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Department_dropdownActionPerformed(evt);
+            }
+        });
+
+        ShiftEndTime.setText("Shift End Time:");
+
+        shiftDate.setText("Date:");
+
+        AssignedTasks_input.setColumns(20);
+        AssignedTasks_input.setRows(5);
+        jScrollPane1.setViewportView(AssignedTasks_input);
+
+        ShiftStartTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("h:mm a"))));
         ShiftStartTime_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShiftStartTime_inputActionPerformed(evt);
             }
         });
 
-        ShiftEndTime.setText("Shift End Time:");
-
-        ShiftEndTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        ShiftEndTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("h:mm a"))));
         ShiftEndTime_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ShiftEndTime_inputActionPerformed(evt);
             }
         });
 
-        Department.setText("Department/Unit:");
-
-        Department_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Emergency", "Cardiology", "Neurology", "Pediatrics", "Radiology", "Oncology", "Orthopedics", "Gynecology", "General Surgery", "Intensive Care Unit (ICU)", "Neonatal Intensive Care Unit (NICU)", "Anesthesiology", "Gastroenterology" }));
-        // Department_dropdown.addActionListener(new java.awt.event.ActionListener() {
-        //     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        //         Department_dropdownActionPerformed(evt);
-        //     }
-        // });
-
-        AssignedTasks.setText("Assigned Tasks:");
-
-        AssignedTasks_input.setColumns(20);
-        AssignedTasks_input.setRows(5);
-        jScrollPane1.setViewportView(AssignedTasks_input);
+        StaffScheduleDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         javax.swing.GroupLayout StaffSchedulingLayout = new javax.swing.GroupLayout(StaffScheduling);
         StaffScheduling.setLayout(StaffSchedulingLayout);
@@ -166,18 +277,8 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         });
 
         ClearButton.setText("Clear");
-        ClearButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ClearButtonActionPerformed(evt);
-            }
-        });
 
         CancelButton.setText("Cancel");
-        CancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -311,8 +412,8 @@ public class Staff_Scheduling extends javax.swing.JFrame {
     private javax.swing.JButton ClearButton;
     private javax.swing.JLabel Department;
     private javax.swing.JComboBox<String> Department_dropdown;
+    private javax.swing.JPanel InvoiceDetails;
     private javax.swing.JButton SaveButton;
-    private javax.swing.JLabel shiftDate;
     private javax.swing.JLabel ShiftEndTime;
     private javax.swing.JFormattedTextField ShiftEndTime_input;
     private javax.swing.JLabel ShiftStartTime;
@@ -321,6 +422,21 @@ public class Staff_Scheduling extends javax.swing.JFrame {
     private javax.swing.JTextField StaffID_input;
     private javax.swing.JFormattedTextField StaffScheduleDate;
     private javax.swing.JPanel StaffScheduling;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JLabel shiftDate;
     // End of variables declaration//GEN-END:variables
 }
