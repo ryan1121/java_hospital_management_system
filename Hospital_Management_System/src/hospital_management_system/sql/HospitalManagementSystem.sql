@@ -189,7 +189,6 @@ CREATE TABLE Diagnosis (
     DiagnosisDescription TEXT NOT NULL,
     DateOfDiagnosis DATE NOT NULL,
     treatmentPlans TEXT,
-    surgeryID VARCHAR(25),
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
 );
