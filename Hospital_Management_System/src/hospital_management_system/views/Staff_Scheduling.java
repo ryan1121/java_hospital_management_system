@@ -225,7 +225,7 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         // Save to database
             MysqlConnect db = new MysqlConnect();
             String fieldName = "staffID, shiftDate, shiftStartTime, shiftEndTime, department, tasks";
-            String values = String.format("%s, %s, %s, %s, %s, %s", staffID, shiftDate, shiftStartTime, shiftEndTime, department, tasks);
+            String values = String.format("'%s', '%s', '%s', '%s', '%s', '%s'", staffID, shiftDate, shiftStartTime, shiftEndTime, department, tasks);
             db.saveData("StaffScheduling", fieldName, values);
             JOptionPane.showMessageDialog(this, "Data saved successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_SaveButtonActionPerformed
