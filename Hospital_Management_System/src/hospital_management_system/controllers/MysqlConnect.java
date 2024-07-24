@@ -12,13 +12,12 @@ Example Usage:
     MysqlConnect db = new MysqlConnect();
 
     // 1. Get Data
+    String[] values = {"3", "1", "2", "Severe Cold", "2024-07-21", "Rest and Medication"};
     try {
-        ResultSet rs = db.getData("Diagnosis", "PatientID = '1'");
-        while (rs != null && rs.next()) {
-            System.out.println("DiagnosisID: " + rs.getString("DiagnosisID"));
-            System.out.println("DiagnosisDescription: " + rs.getString("DiagnosisDescription"));
-        }
+        boolean saveResult = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", values);
+        System.out.println("Data saved: " + saveResult);
     } catch (SQLException e) {
+        System.err.println("Error while saving data!");
         e.printStackTrace();
     }
 
@@ -73,7 +72,7 @@ public class MysqlConnect {
         }
     }
 
-    public boolean saveData(String tableName, String fieldNames, String[] values) {
+    public boolean saveData(String tableName, String fieldNames, String[] values) throws SQLException {
         String query = "INSERT INTO " + tableName + " (" + fieldNames + ") VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             for (int i = 0; i < values.length; i++) {
@@ -84,9 +83,10 @@ public class MysqlConnect {
         } catch (SQLException e) {
             System.err.println("Cannot execute SQL query!");
             e.printStackTrace();
-            return false;
+            throw e;
         }
     }
+    
 
     public boolean updateData(String tableName, String updates, String condition) {
         String query = "UPDATE " + tableName + " SET " + updates + " WHERE " + condition;
