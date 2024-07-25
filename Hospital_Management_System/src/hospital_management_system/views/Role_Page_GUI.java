@@ -4,8 +4,6 @@
  */
 package hospital_management_system.views;
 
-import hospital_management_system.GUI_LOGIN;
-
 /**
  *
  * @author DELL
