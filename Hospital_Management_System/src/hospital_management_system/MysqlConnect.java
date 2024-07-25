@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+
 
 /*
 Example Usage: 
@@ -21,20 +23,36 @@ Example Usage:
         e.printStackTrace();
     }
 
-    // 2. Save Data
+    2. Execute command
+    // 查询每个部门的患者数量
+    String query = "SELECT doctor_department, COUNT(patient_id) AS patient_count FROM Patients " +
+                    "JOIN Doctors ON Patients.doctor_id = Doctors.doctor_id " +
+                    "GROUP BY doctor_department";
+
+    try (ResultSet rs = db.executeQuery(query)) {
+        while (rs.next()) {
+            String department = rs.getString("doctor_department");
+            int count = rs.getInt("patient_count");
+            dataset.setValue(department, count);
+        }
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+        
+    // 3. Save Data
     String[] values = {"3", "1", "2", "Severe Cold", "2024-07-21", "Rest and Medication"};
     boolean saveSuccess = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", values);
     System.out.println("Data saved: " + saveSuccess);
 
-    // 3. Update Data
+    // 4. Update Data
     boolean updateSuccess = db.updateData("Diagnosis", "DiagnosisDescription = 'Mild Cold'", "DiagnosisID = '3'");
     System.out.println("Data updated: " + updateSuccess);
 
-    // 4. Delete Data
+    // 5. Delete Data
     boolean deleteSuccess = db.deleteData("Diagnosis", "DiagnosisID = '3'");
     System.out.println("Data deleted: " + deleteSuccess);
 
-    // Generate New ID
+    // 6. Generate New ID
     String newPatientId = db.generateNewId("Patients", "P");
     System.out.println("New Patient ID: " + newPatientId);
 */
@@ -59,6 +77,18 @@ public class MysqlConnect {
             throw new IllegalStateException("Cannot connect to the database!", e);
         }
     }
+
+    public ResultSet executeQuery(String query) {
+        try {
+            Statement statement = connection.createStatement();
+            return statement.executeQuery(query);
+        } catch (SQLException e) {
+            System.err.println("Cannot execute SQL query!");
+            e.printStackTrace();
+            return null;
+        }
+    }
+    
 
     public ResultSet getData(String tableName, String condition) {
         String query = "SELECT * FROM " + tableName + " WHERE " + condition;
