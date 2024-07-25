@@ -128,6 +128,8 @@ public class GUI_doctor extends javax.swing.JFrame {
         // 设置 JTextField 的大小
         Dimension size = new Dimension(200, 20); // 宽度200，高度20
         medicalRecordID_textField.setPreferredSize(size);
+        // 设置Combobox的大小
+        surgeryType_comboBox.setPreferredSize(size);
 
         MedRecord_SaveButton = new javax.swing.JButton();
         MedRecord_ClearButton = new javax.swing.JButton();
@@ -759,7 +761,8 @@ public class GUI_doctor extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(SurgManage_SaveButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SurgManage_ClearButton))))
+                        .addComponent(SurgManage_ClearButton)
+                        .addGap(10, 10, 10)))) // 在这里修改参数，将按钮向左移动
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
