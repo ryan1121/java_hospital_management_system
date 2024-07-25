@@ -106,7 +106,7 @@ public class Data_Tables extends javax.swing.JFrame {
 
         PatientRoleButton5.setText("Billing");
 
-        NurseRoleButton2.setText("Surgeries");
+        NurseRoleButton2.setText("Surgery");
 
         PatientRoleButton6.setText("Payment");
 

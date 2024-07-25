@@ -228,7 +228,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="NurseRoleButton2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Surgeries"/>
+        <Property name="text" type="java.lang.String" value="Surgery"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="PatientRoleButton6">
