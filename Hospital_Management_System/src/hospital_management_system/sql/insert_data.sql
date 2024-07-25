@@ -17,9 +17,9 @@ VALUES
 -- 插入 Nurse 表的三条数据
 INSERT INTO Nurse (nurse_id, nurse_name, nurse_password, nurse_email, nurse_phone, nurse_position, nurse_department, nurse_assign_wards, nurse_supervising_doctor, nurse_qualifications, nurse_experience, nurse_status, schedule_date, schedule_time, schedule_details)
 VALUES 
-('N001', 'Nurse Emma Wilson', 'nursepass123', 'emma.wilson@example.com', '1231231235', 'Senior Nurse', 'Cardiology Dept', 'Ward 1', 'D001', 'RN, BSN', '5 years of experience', 'Active', '2024-01-02', '08:00:00', 'Details about schedule'),
-('N002', 'Nurse Liam Johnson', 'nursepass456', 'liam.johnson@example.com', '2342342346', 'Junior Nurse', 'Neurology Dept', 'Ward 2', 'D002', 'RN', '3 years of experience', 'Active', '2024-02-02', '09:00:00', 'Details about schedule'),
-('N003', 'Nurse Olivia Brown', 'nursepass789', 'olivia.brown@example.com', '3453453457', 'Head Nurse', 'Orthopedics Dept', 'Ward 3', 'D003', 'RN, MSN', '7 years of experience', 'Active', '2024-03-02', '10:00:00', 'Details about schedule');
+('N001', 'Emma Wilson', 'nursepass123', 'emma.wilson@example.com', '1231231235', 'Senior Nurse', 'Cardiology Dept', 'Ward 1', 'D001', 'RN, BSN', '5 years of experience', 'Active', '2024-01-02', '08:00:00', 'Details about schedule'),
+('N002', 'Liam Johnson', 'nursepass456', 'liam.johnson@example.com', '2342342346', 'Junior Nurse', 'Neurology Dept', 'Ward 2', 'D002', 'RN', '3 years of experience', 'Active', '2024-02-02', '09:00:00', 'Details about schedule'),
+('N003', 'Olivia Brown', 'nursepass789', 'olivia.brown@example.com', '3453453457', 'Head Nurse', 'Orthopedics Dept', 'Ward 3', 'D003', 'RN, MSN', '7 years of experience', 'Active', '2024-03-02', '10:00:00', 'Details about schedule');
 
 -- 插入 PatientCare 表的三条数据
 INSERT INTO PatientCare (Primary_doctor_id, assigned_nurse_id, dietary_restrictions, patient_progress_note, discharge_date)
