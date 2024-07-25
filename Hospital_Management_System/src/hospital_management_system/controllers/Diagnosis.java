@@ -88,7 +88,6 @@ public class Diagnosis {
 
     public void Diagnosis_ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagnosis_ClearButtonActionPerformed
         // TODO add your handling code here:
-        this.DiagnosisID_textField.setText("");
         this.DateOfDiagnosis_textField.setText("");
         this.DiagnosisDescription_TextArea.setText("");
         this.treatmentPlanss_TextArea.setText("");

@@ -5,10 +5,8 @@
 package hospital_management_system;
 import hospital_management_system.controllers.*;
 
-
-import javax.swing.JOptionPane;f
-
-import hospital_management_system.controllers.Diagnosis;
+import java.awt.*;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -126,7 +124,11 @@ public class GUI_doctor extends javax.swing.JFrame {
         DateOfVisit_textField8 = new javax.swing.JFormattedTextField();
         Notes_label8 = new javax.swing.JLabel();
         notes_textField8 = new java.awt.TextField();
-        medicalRecordID_textField8 = new javax.swing.JTextField();
+        medicalRecordID_textField = new javax.swing.JTextField();
+        // 设置 JTextField 的大小
+        Dimension size = new Dimension(200, 20); // 宽度200，高度20
+        medicalRecordID_textField.setPreferredSize(size);
+
         MedRecord_SaveButton = new javax.swing.JButton();
         MedRecord_ClearButton = new javax.swing.JButton();
 
@@ -134,6 +136,12 @@ public class GUI_doctor extends javax.swing.JFrame {
         Diagnosis getNewDiagnosisIdObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
         getNewDiagnosisIdObj.setNewDiagnosisId(DiagnosisID_textField);
         DiagnosisID_textField.setEnabled(false);
+
+
+        // 创建一个Diagnosis Controller object
+        Surgery getNewSurgeryIdObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
+        getNewSurgeryIdObj.setNewSurgeryId(surgeryID_textField);
+        surgeryID_textField.setEnabled(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -607,7 +615,9 @@ public class GUI_doctor extends javax.swing.JFrame {
         Diagnosis_ClearButton.setText("Clear");
         Diagnosis_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Diagnosis_ClearButtonActionPerformed(evt);
+                // 创建一个Diagnosis Object
+                Diagnosis DiagnosisObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
+                DiagnosisObj.Diagnosis_ClearButtonActionPerformed(evt);
             }
         });
 
@@ -688,7 +698,7 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         surgeryType_label.setText("Surgery Type : ");
 
-        surgeryType_comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        surgeryType_comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Appendectomy", "Cholecystectomy (Gallbladder removal)", "Hernia repair", "Colon resection", "Mastectomy", "Thyroidectomy", "Coronary artery bypass grafting (CABG)", "Heart valve repair/replacement", "Lung resection", "Heart transplant", "Thoracic aortic aneurysm repair", "Joint replacement (hip, knee, shoulder)", "Arthroscopy (knee, shoulder)", "Spinal fusion", "Fracture repair", "Rotator cuff repair", "Craniotomy", "Spinal decompression and fusion", "Brain tumor removal", "Aneurysm repair", "Chiari decompression", "Rhinoplasty", "Breast augmentation/reduction", "Abdominoplasty (tummy tuck)", "Liposuction", "Facelift", "Prostatectomy", "Cystectomy (bladder removal)", "Kidney stone removal", "Vasectomy", "Nephrectomy (kidney removal)", "Cesarean section", "Hysterectomy", "Tubal ligation", "Oophorectomy (ovary removal)", "Myomectomy (fibroid removal)", "Carotid endarterectomy", "Aortic aneurysm repair", "Varicose vein surgery", "Peripheral artery bypass", "Dialysis access creation", "Tonsillectomy", "Adenoidectomy", "Septoplasty", "Cochlear implants", "Sinus surgery", "Cataract surgery", "LASIK", "Glaucoma surgery", "Retinal detachment repair", "Corneal transplant", "Congenital heart defect repair", "Pyloromyotomy (for pyloric stenosis)", "Hirschsprung's disease surgery", "Repair of congenital diaphragmatic hernia" }));
 
         DateOfSurgery_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         DateOfSurgery_textField.addActionListener(new java.awt.event.ActionListener() {
@@ -702,14 +712,18 @@ public class GUI_doctor extends javax.swing.JFrame {
         SurgManage_SaveButton.setText("Save");
         SurgManage_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SurgManage_SaveButtonActionPerformed(evt);
+                // 创建一个Diagnosis Object
+                Surgery SurgeryObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
+                SurgeryObj.SurgeryManage_SaveButtonActionPerformed(evt);
             }
         });
 
         SurgManage_ClearButton.setText("Clear");
         SurgManage_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SurgManage_ClearButtonActionPerformed(evt);
+                // 创建一个Diagnosis Object
+                Surgery SurgeryObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
+                SurgeryObj.SurgManage_ClearButtonActionPerformed(evt);
             }
         });
 
@@ -823,7 +837,7 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DateOfVisit_textField8, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(medicalRecordID_textField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(medicalRecordID_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(notes_textField8, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -840,7 +854,7 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addGap(22, 22, 22)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medicalRecordID_label8)
-                    .addComponent(medicalRecordID_textField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(medicalRecordID_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DateOfVisit_label8)
@@ -1050,14 +1064,6 @@ public class GUI_doctor extends javax.swing.JFrame {
 
     }//GEN-LAST:event_Diagnosis_SaveButtonActionPerformed
 
-    private void Diagnosis_ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagnosis_ClearButtonActionPerformed
-        // TODO add your handling code here:
-        DiagnosisID_textField.setText("");
-        DateOfDiagnosis_textField.setText("");
-        DiagnosisDescription_TextArea.setText("");
-        treatmentPlans_TextArea.setText("");
-    }//GEN-LAST:event_Diagnosis_ClearButtonActionPerformed
-
     private void MedRecord_SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MedRecord_SaveButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MedRecord_SaveButtonActionPerformed
@@ -1185,7 +1191,7 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel medicalRecordID_label8;
-    private javax.swing.JTextField medicalRecordID_textField8;
+    private javax.swing.JTextField medicalRecordID_textField;
     private javax.swing.JTextArea medical_record_treatmentPlans;
     private java.awt.TextField notes_textField8;
     private javax.swing.JTextField patientID_textField;
