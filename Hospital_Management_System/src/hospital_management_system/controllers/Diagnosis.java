@@ -15,7 +15,7 @@ public class Diagnosis {
 
     public static javax.swing.JTextField DiagnosisID_textField;
     public static javax.swing.JTextField DateOfDiagnosis_textField;
-    public static javax.swing.JTextArea DiagnosisDescriptionription_TextArea;
+    public static javax.swing.JTextArea DiagnosisDescription_TextArea;
     public static javax.swing.JTextArea treatmentPlanss_TextArea;
 
     public Diagnosis(
@@ -24,7 +24,7 @@ public class Diagnosis {
         javax.swing.JTextField DoctorID_textField,
         javax.swing.JTextField DiagnosisID_textField,
         javax.swing.JTextField DateOfDiagnosis_textField,
-        javax.swing.JTextArea DiagnosisDescriptionription_TextArea,
+        javax.swing.JTextArea DiagnosisDescription_TextArea,
         javax.swing.JTextArea treatmentPlanss_TextArea
     ){
         this.panel = panel;
@@ -35,13 +35,13 @@ public class Diagnosis {
         // 将日期格式调整为 YYYY-MM-DD
         this.DateOfDiagnosis = DateTimeUtils.formatDate(DateOfDiagnosis);
 
-        this.DiagnosisDescription = DiagnosisDescriptionription_TextArea.getText();
+        this.DiagnosisDescription = DiagnosisDescription_TextArea.getText();
         this.treatmentPlans = treatmentPlanss_TextArea.getText();
 
 
         this.DiagnosisID_textField = DiagnosisID_textField;
         this.DateOfDiagnosis_textField = DateOfDiagnosis_textField;
-        this.DiagnosisDescriptionription_TextArea = DiagnosisDescriptionription_TextArea;
+        this.DiagnosisDescription_TextArea = DiagnosisDescription_TextArea;
         this.treatmentPlanss_TextArea = treatmentPlanss_TextArea;
     }
     
@@ -90,7 +90,7 @@ public class Diagnosis {
         // TODO add your handling code here:
         this.DiagnosisID_textField.setText("");
         this.DateOfDiagnosis_textField.setText("");
-        this.DiagnosisDescriptionription_TextArea.setText("");
+        this.DiagnosisDescription_TextArea.setText("");
         this.treatmentPlanss_TextArea.setText("");
     }//GEN-LAST:event_Diagnosis_ClearButtonActionPerformed
 
