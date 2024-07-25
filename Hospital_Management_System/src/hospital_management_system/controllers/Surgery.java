@@ -34,6 +34,10 @@ public class Surgery {
         this.DoctorID = doctorID_textField.getText();
         this.surgeryType = (String) surgeryType_comboBox.getSelectedItem();
         this.DateOfSurgery = DateOfSurgery_textField.getText();
+        // 将日期格式调整为 YYYY-MM-DD
+        this.DateOfSurgery = DateTimeUtils.formatDate(DateOfSurgery);
+
+
         this.Outcomes = Outcomes_textField.getText();
         this.surgeryID_textField = surgeryID_textField;
         this.surgeryType_comboBox = surgeryType_comboBox;
