@@ -5,6 +5,9 @@
 package hospital_management_system.views;
 
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
+import hospital_management_system.controllers.*;
 
 /**
  *
@@ -356,23 +359,26 @@ public class GUI_admin extends javax.swing.JFrame {
             }
         });
 
-        DoctorScheduleTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
+        // Setup DoctorScheduleTable
+        DefaultTableModel doctorModel = new DefaultTableModel(
+            new Object[][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
-            new String [] {
-                "Staff ID", "Name", "Start Time ", "End Time", "Date", "Department", "Tasks"
+            new String[] {"Doctor ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Make all cells non-editable
             }
-        ));
+        };
+
+        DoctorScheduleTable.setModel(doctorModel);
         DoctorScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
         DoctorScheduleTable.setShowHorizontalLines(true);
         DoctorScheduleTable.setShowVerticalLines(true);
+        DoctorScheduleTable.setCellSelectionEnabled(false);
+
         jScrollPane7.setViewportView(DoctorScheduleTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -616,23 +622,26 @@ public class GUI_admin extends javax.swing.JFrame {
             }
         });
 
-        NurseScheduleTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
+        // Setup NurseScheduleTable
+        DefaultTableModel nurseModel = new DefaultTableModel(
+            new Object[][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null}
             },
-            new String [] {
-                "Staff ID", "Name", "Start Time ", "End Time", "Date", "Department", "Tasks"
+            new String[] {"Nurse ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // Make all cells non-editable
             }
-        ));
+        };
+
+        NurseScheduleTable.setModel(nurseModel);
         NurseScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
         NurseScheduleTable.setShowHorizontalLines(true);
         NurseScheduleTable.setShowVerticalLines(true);
+        NurseScheduleTable.setCellSelectionEnabled(false);
+
         jScrollPane11.setViewportView(NurseScheduleTable);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -659,6 +668,8 @@ public class GUI_admin extends javax.swing.JFrame {
         );
 
         jTabbedPane4.addTab("Work Schedule", jPanel4);
+
+        loadSchedules();
 
         jTabbedPane1.addTab("Nurse", jTabbedPane4);
 
@@ -1265,6 +1276,7 @@ public class GUI_admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
     private void nurse_supervising_doctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_supervising_doctorActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_nurse_supervising_doctorActionPerformed
@@ -1330,6 +1342,13 @@ public class GUI_admin extends javax.swing.JFrame {
             e.printStackTrace();
             JOptionPane.showMessageDialog(this, "Error opening scheduling form: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
+    }
+
+    private void loadSchedules() {
+        // Create a WorkScheduleViewer instance and load data
+        WorkScheduleViewer scheduleViewer = new WorkScheduleViewer(DoctorScheduleTable, NurseScheduleTable, jScrollPane7, jScrollPane11);
+        scheduleViewer.loadDoctorSchedule();
+        scheduleViewer.loadNurseSchedule();
     }
 
     private void assigned_nurse_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assigned_nurse_idActionPerformed
