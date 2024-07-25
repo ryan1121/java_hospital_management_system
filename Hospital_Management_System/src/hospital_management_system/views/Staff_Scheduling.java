@@ -235,7 +235,7 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         try {
             MysqlConnect db = new MysqlConnect();
             String[] values = {staffID, formattedDate, formattedStartTime, formattedEndTime, department, tasks};
-            String columns = "staffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, Tasks"; // Ensure column names match your table
+            String columns = "staffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks"; 
             boolean saveResult = db.saveData("StaffScheduling", columns, values);
 
             if (saveResult) {
