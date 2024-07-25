@@ -2,7 +2,9 @@ package hospital_management_system.controllers;
 
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import hospital_management_system.controllers.DateTimeUtils;
+
+import hospital_management_system.MysqlConnect;
+import hospital_management_system.utils.DateTimeUtils;
 
 public class Transfer {
     public static String TransferID;

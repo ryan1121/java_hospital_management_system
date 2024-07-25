@@ -4,6 +4,9 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 
+import hospital_management_system.MysqlConnect;
+import hospital_management_system.utils.DateTimeUtils;
+
 public class Surgery {
     public static javax.swing.JPanel panel;
 

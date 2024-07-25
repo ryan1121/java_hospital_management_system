@@ -1,4 +1,4 @@
-package hospital_management_system.controllers;
+package hospital_management_system.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

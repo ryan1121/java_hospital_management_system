@@ -8,7 +8,10 @@ import java.sql.*;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+
+import hospital_management_system.MysqlConnect;
 import hospital_management_system.controllers.*;
+import hospital_management_system.utils.DateTimeUtils;
 
 /**
  *
