@@ -1,9 +1,7 @@
 package hospital_management_system;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+
+import hospital_management_system.views.*;
+
 
 
 public class Hospital_Management_System {

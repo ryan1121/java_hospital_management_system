@@ -4,7 +4,7 @@
  */
 package hospital_management_system.views;
 import hospital_management_system.controllers.*;
-import hospital_management_system.models.DiagnosisModel;
+import hospital_management_system.models.*;
 
 import java.awt.*;
 import javax.swing.JOptionPane;
@@ -142,12 +142,12 @@ public class GUI_doctor extends javax.swing.JFrame {
 
 
         // 创建一个Surgery Controller object
-        Surgery getNewSurgeryIdObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
+        SurgeryModel getNewSurgeryIdObj = new SurgeryModel(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
         getNewSurgeryIdObj.setNewSurgeryId(surgeryID_textField);
         surgeryID_textField.setEnabled(false);
 
         // 创建一个Surgery Controller object
-        MedicalRecords getNewMedicalRecordIdObj = new MedicalRecords(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
+        MedicalRecordsModel getNewMedicalRecordIdObj = new MedicalRecordsModel(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
         getNewMedicalRecordIdObj.setNewMedicalRecordId(medicalRecordID_textField);
         medicalRecordID_textField.setEnabled(false);
         
@@ -721,18 +721,18 @@ public class GUI_doctor extends javax.swing.JFrame {
         SurgManage_SaveButton.setText("Save");
         SurgManage_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个Surgery Object
-                Surgery SurgeryObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
-                SurgeryObj.SurgeryManage_SaveButtonActionPerformed(evt);
+                // 创建一个SurgeryController Object
+                SurgeryController SurgeryObj = new SurgeryController(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
+                SurgeryObj.handleSaveButtonActionPerformed(evt);
             }
         });
 
         SurgManage_ClearButton.setText("Clear");
         SurgManage_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个Surgery Object
-                Surgery SurgeryObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
-                SurgeryObj.SurgManage_ClearButtonActionPerformed(evt);
+                // 创建一个SurgeryController Object
+                SurgeryController SurgeryObj = new SurgeryController(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
+                SurgeryObj.handleClearButtonActionPerformed(evt);
             }
         });
 
@@ -822,18 +822,18 @@ public class GUI_doctor extends javax.swing.JFrame {
         MedRecord_SaveButton.setText("Save");
         MedRecord_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个MedicalRecords Object
-                MedicalRecords MedicalRecordsObj = new MedicalRecords(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
-                MedicalRecordsObj.MedRecord_SaveButtonActionPerformed(evt, medicalRecordID_textField);
+                // 创建一个MedicalRecordsController Object
+                MedicalRecordsController MedicalRecordsObj = new MedicalRecordsController(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
+                MedicalRecordsObj.handleSaveButtonActionPerformed(evt);
             }
         });
 
         MedRecord_ClearButton.setText("Clear");
         MedRecord_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个MedicalRecords Object
-                MedicalRecords MedicalRecordsObj = new MedicalRecords(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
-                MedicalRecordsObj.MedRecord_ClearButtonActionPerformed(evt);
+                // 创建一个MedicalRecordsController Object
+                MedicalRecordsController MedicalRecordsObj = new MedicalRecordsController(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
+                MedicalRecordsObj.handleClearButtonActionPerformed(evt);
             }
         });
 

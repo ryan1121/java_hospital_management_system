@@ -1,20 +1,19 @@
 package hospital_management_system.controllers;
 
+import hospital_management_system.models.MedicalRecordsModel;
+
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
-import hospital_management_system.models.MedicalRecordsModel;
-import javax.swing.JOptionPane;
+import java.awt.TextField;
 
 public class MedicalRecordsController {
     private MedicalRecordsModel model;
     private JPanel panel;
-    private JTextField patientIDTextField;
-    private JTextField doctorIDTextField;
     private JTextField medicalRecordIDTextField;
     private JTextField dateOfVisitTextField;
-    private java.awt.TextField notesTextField;
+    private TextField notesTextField;
     private JTextArea treatmentPlansTextArea;
 
     public MedicalRecordsController(
@@ -23,43 +22,28 @@ public class MedicalRecordsController {
         JTextField doctorIDTextField,
         JTextField medicalRecordIDTextField,
         JTextField dateOfVisitTextField,
-        java.awt.TextField notesTextField,
+        TextField notesTextField,
         JTextArea treatmentPlansTextArea
     ) {
         this.panel = panel;
-        this.patientIDTextField = patientIDTextField;
-        this.doctorIDTextField = doctorIDTextField;
         this.medicalRecordIDTextField = medicalRecordIDTextField;
         this.dateOfVisitTextField = dateOfVisitTextField;
         this.notesTextField = notesTextField;
         this.treatmentPlansTextArea = treatmentPlansTextArea;
-
-        // Initialize the model with current values
         this.model = new MedicalRecordsModel(
-            patientIDTextField.getText(),
-            doctorIDTextField.getText(),
-            medicalRecordIDTextField.getText(),
-            dateOfVisitTextField.getText(),
-            notesTextField.getText(),
-            treatmentPlansTextArea.getText()
+            panel,
+            patientIDTextField,
+            doctorIDTextField,
+            medicalRecordIDTextField,
+            dateOfVisitTextField,
+            notesTextField,
+            treatmentPlansTextArea
         );
     }
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
-        // Update model with current values
-        model = new MedicalRecordsModel(
-            patientIDTextField.getText(),
-            doctorIDTextField.getText(),
-            medicalRecordIDTextField.getText(),
-            dateOfVisitTextField.getText(),
-            notesTextField.getText(),
-            treatmentPlansTextArea.getText()
-        );
-        
         if (model.save()) {
             MedicalRecordsModel.setNewMedicalRecordId(medicalRecordIDTextField);  // reset the new medical record ID
-        } else {
-            JOptionPane.showMessageDialog(panel, "Data saved unsuccessfully !");
         }
     }
 
