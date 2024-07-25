@@ -230,16 +230,28 @@ CREATE TABLE Billing (
 );
 
 
--- 创建 StaffScheduling 表
-CREATE TABLE StaffScheduling (
-    StaffID VARCHAR(25),
+-- 创建 DoctorStaffScheduling 表
+CREATE TABLE DoctorStaffScheduling (
+    DoctorID VARCHAR(25),
     StaffScheduleDate DATE,
     ShiftStartTime TIME,
     ShiftEndTime TIME,
     Department VARCHAR(100),
     AssignedTasks TEXT,
-    PRIMARY KEY (StaffID, StaffScheduleDate)
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
 );
+
+-- 创建 NurseStaffScheduling 表
+CREATE TABLE NurseStaffScheduling (
+    NurseID VARCHAR(25),
+    StaffScheduleDate DATE,
+    ShiftStartTime TIME,
+    ShiftEndTime TIME,
+    Department VARCHAR(100),
+    AssignedTasks TEXT,
+    FOREIGN KEY (NurseID) REFERENCES Nurse(nurse_id)
+);
+
 
 -- 创建 InventoryManagement 表
 CREATE TABLE InventoryManagement (

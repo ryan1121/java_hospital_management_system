@@ -111,13 +111,21 @@ VALUES
 ('INV001', 'Appendectomy', 500.00, 3, 1500.00),
 ('INV002', 'Migraine treatment', 1000.00, 2, 2000.00),
 ('INV003', 'Knee Replacement', 1250.00, 2, 2500.00);
+USE hospital_management;
 
--- 插入 StaffScheduling 表的三条数据
-INSERT INTO StaffScheduling (StaffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks)
+-- 插入 DoctorStaffScheduling 表的三条数据
+INSERT INTO DoctorStaffScheduling (DoctorID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks)
 VALUES 
 ('D001', '2024-01-05', '08:00:00', '16:00:00', 'Cardiology Dept', 'Routine check-ups'),
+('D002', '2024-01-06', '09:00:00', '17:00:00', 'Neurology Dept', 'Patient consultations'),
+('D003', '2024-01-07', '10:00:00', '18:00:00', 'Orthopedics Dept', 'Surgery preparations');
+
+-- 插入 NurseStaffScheduling 表的三条数据
+INSERT INTO NurseStaffScheduling (NurseID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks)
+VALUES 
 ('N001', '2024-01-06', '09:00:00', '17:00:00', 'Cardiology Dept', 'Ward rounds'),
-('AD001', '2024-01-07', '10:00:00', '18:00:00', 'Administration Dept', 'Admin tasks');
+('N002', '2024-01-07', '08:00:00', '16:00:00', 'Neurology Dept', 'Patient monitoring'),
+('N003', '2024-01-08', '07:00:00', '15:00:00', 'Orthopedics Dept', 'Surgery assistance');
 
 -- 插入 InventoryManagement 表的三条数据
 INSERT INTO InventoryManagement (InventoryID, ItemCode, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimunStock, SupplierInformation, InventoryExpirydate)
