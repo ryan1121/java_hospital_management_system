@@ -141,12 +141,12 @@ public class GUI_doctor extends javax.swing.JFrame {
         DiagnosisID_textField.setEnabled(false);
 
 
-        // 创建一个Surgery Controller object
+        // 创建一个Surgery Model object
         SurgeryModel getNewSurgeryIdObj = new SurgeryModel(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
         getNewSurgeryIdObj.setNewSurgeryId(surgeryID_textField);
         surgeryID_textField.setEnabled(false);
 
-        // 创建一个Surgery Controller object
+        // 创建一个MedicalRecords Model object
         MedicalRecordsModel getNewMedicalRecordIdObj = new MedicalRecordsModel(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
         getNewMedicalRecordIdObj.setNewMedicalRecordId(medicalRecordID_textField);
         medicalRecordID_textField.setEnabled(false);
