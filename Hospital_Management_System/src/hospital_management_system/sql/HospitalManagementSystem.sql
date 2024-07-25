@@ -158,8 +158,8 @@ CREATE TABLE MedicalRecords (
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
 );
 
--- 创建 Surgeries 表
-CREATE TABLE Surgeries (
+-- 创建 Surgery 表
+CREATE TABLE Surgery (
     surgeryID VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,

@@ -70,8 +70,8 @@ VALUES
 ('MR002', 'P002', 'D002', '2024-02-15', 'Notes for patient P002', 'Treatment plan B'),
 ('MR003', 'P003', 'D003', '2024-03-20', 'Notes for patient P003', 'Treatment plan C');
 
--- 插入 Surgeries 表的三条数据
-INSERT INTO Surgeries (surgeryID, PatientID, DoctorID, surgeryType, DateOfSurgery, Outcomes)
+-- 插入 Surgery 表的三条数据
+INSERT INTO Surgery (surgeryID, PatientID, DoctorID, surgeryType, DateOfSurgery, Outcomes)
 VALUES 
 ('S001', 'P001', 'D001', 'Appendectomy', '2024-01-12', 'Successful'),
 ('S002', 'P002', 'D002', 'Craniotomy', '2024-02-17', 'Successful'),
