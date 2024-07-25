@@ -222,12 +222,32 @@ public class Staff_Scheduling extends javax.swing.JFrame {
             return;
         }
 
-        // Save to database
+        // Format the date and time using DateUtils
+        String formattedDate = DateTimeUtils.formatDate(shiftDate);
+        String formattedStartTime = DateTimeUtils.formatTime(shiftStartTime);
+        String formattedEndTime = DateTimeUtils.formatTime(shiftEndTime);
+
+        if (formattedDate == null || formattedStartTime == null || formattedEndTime == null) {
+            JOptionPane.showMessageDialog(this, "Invalid date or time format", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
             MysqlConnect db = new MysqlConnect();
-            String fieldName = "staffID, shiftDate, shiftStartTime, shiftEndTime, department, tasks";
-            String values = String.format("'%s', '%s', '%s', '%s', '%s', '%s'", staffID, shiftDate, shiftStartTime, shiftEndTime, department, tasks);
-            db.saveData("StaffScheduling", fieldName, values);
-            JOptionPane.showMessageDialog(this, "Data saved successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            String[] values = {staffID, formattedDate, formattedStartTime, formattedEndTime, department, tasks};
+            String columns = "staffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, Tasks"; // Ensure column names match your table
+            boolean saveResult = db.saveData("StaffScheduling", columns, values);
+
+            if (saveResult) {
+                JOptionPane.showMessageDialog(this, "Data saved successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Cannot execute SQL query!", "Database Error", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    
     }//GEN-LAST:event_SaveButtonActionPerformed
                    
     private void ShiftStartTime_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShiftStartTime_inputActionPerformed

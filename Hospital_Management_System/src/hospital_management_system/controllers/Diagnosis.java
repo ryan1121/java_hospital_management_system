@@ -33,7 +33,7 @@ public class Diagnosis {
         this.DiagnosisID = DiagnosisID_textField.getText();
         this.DateOfDiagnosis = DateOfDiagnosis_textField.getText();
         // 将日期格式调整为 YYYY-MM-DD
-        this.DateOfDiagnosis = DateUtils.formatDate(DateOfDiagnosis);
+        this.DateOfDiagnosis = DateTimeUtils.formatDate(DateOfDiagnosis);
 
         this.DiagnosisDescription = DiagnosisDescriptionription_TextArea.getText();
         this.treatmentPlans = treatmentPlanss_TextArea.getText();
