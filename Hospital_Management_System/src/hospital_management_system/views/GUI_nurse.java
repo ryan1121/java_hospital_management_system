@@ -1575,27 +1575,9 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         TransferID.setText("Transfer ID:");
 
-        TransferID_input.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TransferID_inputActionPerformed(evt);
-            }
-        });
-
-        TransferFrom_input.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TransferFrom_inputActionPerformed(evt);
-            }
-        });
-
         TransferDate.setText("Transfer Date:");
 
         PatientID.setText("Patient ID:");
-
-        TransferPatientID_input.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TransferPatientID_inputActionPerformed(evt);
-            }
-        });
 
         ReasonForTransfer.setText("Reason for Transfer:");
 
@@ -1614,19 +1596,25 @@ public class GUI_nurse extends javax.swing.JFrame {
         TransferTime.setText("Transfer Time:");
 
         TransferTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance())));
-        TransferTime_input.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TransferTime_inputActionPerformed(evt);
-            }
-        });
+        
 
         StatusOfTransfer.setText("Status of Transfer:");
 
         StatusOfTransfer_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Requested", "Approved", "Completed", "Cancelled" }));
 
         Transfer_clearButton.setText("Clear");
+        Transfer_clearButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hospital_management_system.controllers.Transfer.Transfer_clearButtonActionPerformed(evt);
+            }
+        });
 
         Transfer_saveButton.setText("Save");
+        Transfer_saveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hospital_management_system.controllers.Transfer.Transfer_saveButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout TranferManagement_PanelLayout = new javax.swing.GroupLayout(TranferManagement_Panel);
         TranferManagement_Panel.setLayout(TranferManagement_PanelLayout);

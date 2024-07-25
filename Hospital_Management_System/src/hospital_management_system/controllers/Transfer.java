@@ -1,8 +1,8 @@
 package hospital_management_system.controllers;
+
 import java.sql.SQLException;
-
 import javax.swing.JOptionPane;
-
+import hospital_management_system.controllers.DateTimeUtils;
 
 public class Transfer {
     public static String TransferID;
@@ -16,93 +16,91 @@ public class Transfer {
     public static javax.swing.JPanel PatientTransfer;
 
     public static javax.swing.JTextField TransferID_input;
-    public static javax.swing.JTextField DateOfDiagnosis_textField;
-    public static javax.swing.JTextArea DiagnosisDescription_TextArea;
-    public static javax.swing.JTextArea treatmentPlanss_TextArea;
+    public static javax.swing.JTextField TransferPatientID_input;
+    public static javax.swing.JTextField TransferFrom_input;
+    public static javax.swing.JTextField TransferTo_input;
+    public static javax.swing.JFormattedTextField PatientTransferDate;
+    public static javax.swing.JFormattedTextField TransferTime_input;
+    public static javax.swing.JTextArea ReasonForTransfer_input;
+    public static javax.swing.JComboBox<String> StatusOfTransfer_dropdown;
 
     public Transfer(
         javax.swing.JPanel PatientTransfer,
-        javax.swing.JTextField PatientID_textField,
-        javax.swing.JTextField DoctorID_textField,
-        javax.swing.JTextField DiagnosisID_textField,
-        javax.swing.JTextField DateOfDiagnosis_textField,
-        javax.swing.JTextArea DiagnosisDescription_TextArea,
-        javax.swing.JTextArea treatmentPlanss_TextArea
-    ){
+        javax.swing.JTextField TransferID_input,
+        javax.swing.JTextField TransferPatientID_input,
+        javax.swing.JTextField TransferFrom_input,
+        javax.swing.JTextField TransferTo_input,
+        javax.swing.JFormattedTextField PatientTransferDate,
+        javax.swing.JFormattedTextField TransferTime_input,
+        javax.swing.JTextArea ReasonForTransfer_input,
+        javax.swing.JComboBox<String> StatusOfTransfer_dropdown
+    ) {
         this.PatientTransfer = PatientTransfer;
+        this.TransferID_input = TransferID_input;
+        this.TransferPatientID_input = TransferPatientID_input;
+        this.TransferFrom_input = TransferFrom_input;
+        this.TransferTo_input = TransferTo_input;
+        this.PatientTransferDate = PatientTransferDate;
+        this.TransferTime_input = TransferTime_input;
+        this.ReasonForTransfer_input = ReasonForTransfer_input;
+        this.StatusOfTransfer_dropdown = StatusOfTransfer_dropdown;
+
         this.TransferID = TransferID_input.getText();
-        this.DoctorID = DoctorID_textField.getText();
-        this.DiagnosisID = DiagnosisID_textField.getText();
-        this.DateOfDiagnosis = DateOfDiagnosis_textField.getText();
-        // 将日期格式调整为 YYYY-MM-DD
-        this.DateOfDiagnosis = DateTimeUtils.formatDate(DateOfDiagnosis);
-
-        this.DiagnosisDescription = DiagnosisDescription_TextArea.getText();
-        this.treatmentPlans = treatmentPlanss_TextArea.getText();
-
-
-        this.DiagnosisID_textField = DiagnosisID_textField;
-        this.DateOfDiagnosis_textField = DateOfDiagnosis_textField;
-        this.DiagnosisDescription_TextArea = DiagnosisDescription_TextArea;
-        this.treatmentPlanss_TextArea = treatmentPlanss_TextArea;
+        this.TransferPatientID = TransferPatientID_input.getText();
+        this.TransferFrom = TransferFrom_input.getText();
+        this.TransferTo = TransferTo_input.getText();
+        this.TransferDate = DateTimeUtils.formatDate(PatientTransferDate.getText());
+        this.TransferTime = DateTimeUtils.formatTime(TransferTime_input.getText());
+        this.ReasonForTransfer = ReasonForTransfer_input.getText();
+        this.StatusOfTransfer = (String) StatusOfTransfer_dropdown.getSelectedItem();
     }
-    
 
-    public static void Diagnosis_SaveButtonActionPerformed(java.awt.event.ActionEvent evt, javax.swing.JTextField DiagnosisID_textField) {//GEN-FIRST:event_Diagnosis_SaveButtonActionPerformed
-        // TODO add your handling code here:
-        System.out.println("PatientID: " + PatientID);
-        System.out.println("DoctorID: " + DoctorID);
-        if (PatientID == null || PatientID.isEmpty() && (DoctorID == null || DoctorID.isEmpty())){
-            JOptionPane.showMessageDialog(panel, "You MUST enter patient ID and doctor ID !!");
-        } else if (PatientID == null || PatientID.isEmpty()) {
-            System.out.println("Patient ID is blank");
-            JOptionPane.showMessageDialog(panel, "You MUST enter patient ID !!");
-        } else if (DoctorID == null || DoctorID.isEmpty()) {
-            JOptionPane.showMessageDialog(panel, "You MUST enter doctor ID !!");
+    public static void Transfer_saveButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        if (TransferPatientID == null || TransferPatientID.isEmpty() || TransferFrom == null || TransferFrom.isEmpty()) {
+            JOptionPane.showMessageDialog(PatientTransfer, "You MUST enter patient ID and transfer from field !!");
         } else {
-            
-            System.out.println(DiagnosisID);
-            System.out.println(DateOfDiagnosis);
-            System.out.println(DiagnosisDescription);
-            System.out.println(treatmentPlans);
+            System.out.println(TransferID);
+            System.out.println(TransferPatientID);
+            System.out.println(TransferFrom);
+            System.out.println(TransferTo);
+            System.out.println(TransferDate);
+            System.out.println(TransferTime);
+            System.out.println(ReasonForTransfer);
+            System.out.println(StatusOfTransfer);
 
-            // 创建 MysqlConnect 对象
             MysqlConnect db = new MysqlConnect();
-            String[] values = {DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans};
+            String[] values = {TransferID, TransferPatientID, TransferFrom, TransferTo, TransferDate, TransferTime, ReasonForTransfer, StatusOfTransfer};
             try {
-                boolean saveResult = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", values);
-                if (saveResult){
-                    JOptionPane.showMessageDialog(panel, "Data saved successfully !");
+                boolean saveResult = db.saveData("Transfers", "TransferID, TransferPatientID, TransferFrom, TransferTo, TransferDate, TransferTime, ReasonForTransfer, StatusOfTransfer", values);
+                if (saveResult) {
+                    JOptionPane.showMessageDialog(PatientTransfer, "Data saved successfully!");
                 } else {
-                    JOptionPane.showMessageDialog(panel, "Data saved unsuccessfully !");
+                    JOptionPane.showMessageDialog(PatientTransfer, "Data saved unsuccessfully!");
                 }
-                setNewDiagnosisId(DiagnosisID_textField);    // reset the new diagnosis ID
+                setNewTransferId(TransferID_input);
             } catch (SQLException e) {
                 System.err.println("Error while saving data!");
-                JOptionPane.showMessageDialog(panel, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(PatientTransfer, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
+    }
 
-        
+    public static void Transfer_clearButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        TransferID_input.setText("");
+        TransferPatientID_input.setText("");
+        TransferFrom_input.setText("");
+        TransferTo_input.setText("");
+        PatientTransferDate.setText("");
+        TransferTime_input.setText("");
+        ReasonForTransfer_input.setText("");
+        StatusOfTransfer_dropdown.setSelectedIndex(0);
+    }
 
-    }//GEN-LAST:event_Diagnosis_SaveButtonActionPerformed
-
-
-    public void Diagnosis_ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagnosis_ClearButtonActionPerformed
-        // TODO add your handling code here:
-        this.DiagnosisID_textField.setText("");
-        this.DateOfDiagnosis_textField.setText("");
-        this.DiagnosisDescription_TextArea.setText("");
-        this.treatmentPlanss_TextArea.setText("");
-    }//GEN-LAST:event_Diagnosis_ClearButtonActionPerformed
-
-
-    public static String setNewDiagnosisId(javax.swing.JTextField DiagnosisID_textField){
-        // 创建 MysqlConnect 对象
+    public static String setNewTransferId(javax.swing.JTextField TransferID_input) {
         MysqlConnect db = new MysqlConnect();
-        String newDiagnosisId = db.generateNewId("diagnosis", "DI");
+        String newTransferId = db.generateNewId("transfers", "T");
         
-        DiagnosisID_textField.setText(newDiagnosisId);
-        return newDiagnosisId;
+        TransferID_input.setText(newTransferId);
+        return newTransferId;
     }
 }
