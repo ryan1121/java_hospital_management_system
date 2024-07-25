@@ -4,6 +4,7 @@
  */
 package hospital_management_system.views;
 import hospital_management_system.controllers.*;
+import hospital_management_system.models.DiagnosisModel;
 
 import java.awt.*;
 import javax.swing.JOptionPane;
@@ -134,9 +135,9 @@ public class GUI_doctor extends javax.swing.JFrame {
         MedRecord_SaveButton = new javax.swing.JButton();
         MedRecord_ClearButton = new javax.swing.JButton();
 
-        // 创建一个Diagnosis Controller object
-        Diagnosis getNewDiagnosisIdObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
-        getNewDiagnosisIdObj.setNewDiagnosisId(DiagnosisID_textField);
+        // 创建一个Diagnosis Model object
+        DiagnosisModel diagnosisModelObj = new DiagnosisModel(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
+        diagnosisModelObj.setNewDiagnosisId(DiagnosisID_textField);
         DiagnosisID_textField.setEnabled(false);
 
 
@@ -614,18 +615,18 @@ public class GUI_doctor extends javax.swing.JFrame {
         Diagnosis_SaveButton.setText("Save");
         Diagnosis_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个Diagnosis Object
-                Diagnosis DiagnosisObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
-                DiagnosisObj.Diagnosis_SaveButtonActionPerformed(evt, DiagnosisID_textField);
+                // 创建一个Diagnosis Controller Object
+                DiagnosisController DiagnosisControllerObj = new DiagnosisController(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
+                DiagnosisControllerObj.handleSaveButtonActionPerformed(evt);
             }
         });
 
         Diagnosis_ClearButton.setText("Clear");
         Diagnosis_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个Diagnosis Object
-                Diagnosis DiagnosisObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
-                DiagnosisObj.Diagnosis_ClearButtonActionPerformed(evt);
+                // 创建一个Diagnosis Controller Object
+                DiagnosisController DiagnosisControllerObj = new DiagnosisController(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
+                DiagnosisControllerObj.handleClearButtonActionPerformed(evt);
             }
         });
 
