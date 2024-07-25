@@ -247,8 +247,14 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         try {
             MysqlConnect db = new MysqlConnect();
             String[] values = {staffID, formattedDate, formattedStartTime, formattedEndTime, department, tasks};
-            String columns = "StaffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks"; 
             
+            String columns;
+            if (role.equalsIgnoreCase("Doctor")) {
+                columns = "DoctorID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks";
+            } else {
+                columns = "NurseID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks";
+            }     
+                   
             String tableName = role.equalsIgnoreCase("Doctor") ? "DoctorStaffScheduling" : "NurseStaffScheduling";
             
             boolean saveResult = db.saveData(tableName, columns, values);
