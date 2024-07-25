@@ -64,7 +64,7 @@ VALUES
 ('PR003', 'P003', 'D003', 'Med C', 'Dosage C', '2024-03-20', 'Take thrice daily');
 
 -- 插入 MedicalRecords 表的三条数据
-INSERT INTO MedicalRecords (medicalRecordID, PatientID, DoctorID, DateOfVisit, notes, medical_record_treatmentPlans)
+INSERT INTO MedicalRecords (medicalRecordID, PatientID, DoctorID, DateOfVisit, notes, treatmentPlans)
 VALUES 
 ('MR001', 'P001', 'D001', '2024-01-10', 'Notes for patient P001', 'Treatment plan A'),
 ('MR002', 'P002', 'D002', '2024-02-15', 'Notes for patient P002', 'Treatment plan B'),
