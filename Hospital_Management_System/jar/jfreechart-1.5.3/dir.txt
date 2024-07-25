@@ -1,0 +1,1358 @@
+Folder PATH listing
+Volume serial number is E453-D9DA
+C:.
+|   .gitignore
+|   dir.txt
+|   licence-LGPL.txt
+|   pom.xml
+|   README.md
+|   README_old.txt
+|   
++---src
+|   +---main
+|   |   +---java
+|   |   |   \---org
+|   |   |       \---jfree
+|   |   |           +---chart
+|   |   |           |   |   ChartColor.java
+|   |   |           |   |   ChartFactory.java
+|   |   |           |   |   ChartFrame.java
+|   |   |           |   |   ChartHints.java
+|   |   |           |   |   ChartMouseEvent.java
+|   |   |           |   |   ChartMouseListener.java
+|   |   |           |   |   ChartPanel.java
+|   |   |           |   |   ChartRenderingInfo.java
+|   |   |           |   |   ChartTheme.java
+|   |   |           |   |   ChartTransferable.java
+|   |   |           |   |   ChartUtils.java
+|   |   |           |   |   HashUtils.java
+|   |   |           |   |   JFreeChart.java
+|   |   |           |   |   LegendItem.java
+|   |   |           |   |   LegendItemCollection.java
+|   |   |           |   |   LegendItemSource.java
+|   |   |           |   |   LegendRenderingOrder.java
+|   |   |           |   |   MouseWheelHandler.java
+|   |   |           |   |   package.html
+|   |   |           |   |   PaintMap.java
+|   |   |           |   |   PolarChartPanel.java
+|   |   |           |   |   StandardChartTheme.java
+|   |   |           |   |   StrokeMap.java
+|   |   |           |   |   
+|   |   |           |   +---annotations
+|   |   |           |   |       AbstractAnnotation.java
+|   |   |           |   |       AbstractXYAnnotation.java
+|   |   |           |   |       Annotation.java
+|   |   |           |   |       CategoryAnnotation.java
+|   |   |           |   |       CategoryLineAnnotation.java
+|   |   |           |   |       CategoryPointerAnnotation.java
+|   |   |           |   |       CategoryTextAnnotation.java
+|   |   |           |   |       package.html
+|   |   |           |   |       TextAnnotation.java
+|   |   |           |   |       XYAnnotation.java
+|   |   |           |   |       XYAnnotationBoundsInfo.java
+|   |   |           |   |       XYBoxAnnotation.java
+|   |   |           |   |       XYDataImageAnnotation.java
+|   |   |           |   |       XYDrawableAnnotation.java
+|   |   |           |   |       XYImageAnnotation.java
+|   |   |           |   |       XYLineAnnotation.java
+|   |   |           |   |       XYPointerAnnotation.java
+|   |   |           |   |       XYPolygonAnnotation.java
+|   |   |           |   |       XYShapeAnnotation.java
+|   |   |           |   |       XYTextAnnotation.java
+|   |   |           |   |       XYTitleAnnotation.java
+|   |   |           |   |       
+|   |   |           |   +---axis
+|   |   |           |   |       Axis.java
+|   |   |           |   |       AxisCollection.java
+|   |   |           |   |       AxisLabelLocation.java
+|   |   |           |   |       AxisLocation.java
+|   |   |           |   |       AxisSpace.java
+|   |   |           |   |       AxisState.java
+|   |   |           |   |       CategoryAnchor.java
+|   |   |           |   |       CategoryAxis.java
+|   |   |           |   |       CategoryLabelPosition.java
+|   |   |           |   |       CategoryLabelPositions.java
+|   |   |           |   |       CategoryLabelWidthType.java
+|   |   |           |   |       CategoryTick.java
+|   |   |           |   |       CompassFormat.java
+|   |   |           |   |       CyclicNumberAxis.java
+|   |   |           |   |       DateAxis.java
+|   |   |           |   |       DateTick.java
+|   |   |           |   |       DateTickMarkPosition.java
+|   |   |           |   |       DateTickUnit.java
+|   |   |           |   |       DateTickUnitType.java
+|   |   |           |   |       ExtendedCategoryAxis.java
+|   |   |           |   |       LogarithmicAxis.java
+|   |   |           |   |       LogAxis.java
+|   |   |           |   |       LogTick.java
+|   |   |           |   |       MarkerAxisBand.java
+|   |   |           |   |       ModuloAxis.java
+|   |   |           |   |       MonthDateFormat.java
+|   |   |           |   |       NumberAxis.java
+|   |   |           |   |       NumberTick.java
+|   |   |           |   |       NumberTickUnit.java
+|   |   |           |   |       NumberTickUnitSource.java
+|   |   |           |   |       package.html
+|   |   |           |   |       PeriodAxis.java
+|   |   |           |   |       PeriodAxisLabelInfo.java
+|   |   |           |   |       QuarterDateFormat.java
+|   |   |           |   |       StandardTickUnitSource.java
+|   |   |           |   |       SubCategoryAxis.java
+|   |   |           |   |       SymbolAxis.java
+|   |   |           |   |       Tick.java
+|   |   |           |   |       TickType.java
+|   |   |           |   |       TickUnit.java
+|   |   |           |   |       TickUnits.java
+|   |   |           |   |       TickUnitSource.java
+|   |   |           |   |       Timeline.java
+|   |   |           |   |       ValueAxis.java
+|   |   |           |   |       ValueTick.java
+|   |   |           |   |       
+|   |   |           |   +---block
+|   |   |           |   |       AbstractBlock.java
+|   |   |           |   |       Arrangement.java
+|   |   |           |   |       Block.java
+|   |   |           |   |       BlockBorder.java
+|   |   |           |   |       BlockContainer.java
+|   |   |           |   |       BlockFrame.java
+|   |   |           |   |       BlockParams.java
+|   |   |           |   |       BlockResult.java
+|   |   |           |   |       BorderArrangement.java
+|   |   |           |   |       CenterArrangement.java
+|   |   |           |   |       ColorBlock.java
+|   |   |           |   |       ColumnArrangement.java
+|   |   |           |   |       EmptyBlock.java
+|   |   |           |   |       EntityBlockParams.java
+|   |   |           |   |       EntityBlockResult.java
+|   |   |           |   |       FlowArrangement.java
+|   |   |           |   |       GridArrangement.java
+|   |   |           |   |       LabelBlock.java
+|   |   |           |   |       LengthConstraintType.java
+|   |   |           |   |       LineBorder.java
+|   |   |           |   |       package.html
+|   |   |           |   |       RectangleConstraint.java
+|   |   |           |   |       
+|   |   |           |   +---date
+|   |   |           |   |       MonthConstants.java
+|   |   |           |   |       package-info.java
+|   |   |           |   |       SerialDate.java
+|   |   |           |   |       SpreadsheetDate.java
+|   |   |           |   |       
+|   |   |           |   +---editor
+|   |   |           |   |       ChartEditor.java
+|   |   |           |   |       ChartEditorFactory.java
+|   |   |           |   |       ChartEditorManager.java
+|   |   |           |   |       DefaultAxisEditor.java
+|   |   |           |   |       DefaultChartEditor.java
+|   |   |           |   |       DefaultChartEditorFactory.java
+|   |   |           |   |       DefaultLogAxisEditor.java
+|   |   |           |   |       DefaultNumberAxisEditor.java
+|   |   |           |   |       DefaultPlotEditor.java
+|   |   |           |   |       DefaultPolarPlotEditor.java
+|   |   |           |   |       DefaultTitleEditor.java
+|   |   |           |   |       DefaultValueAxisEditor.java
+|   |   |           |   |       package.html
+|   |   |           |   |       
+|   |   |           |   +---encoders
+|   |   |           |   |       EncoderUtil.java
+|   |   |           |   |       ImageEncoder.java
+|   |   |           |   |       ImageEncoderFactory.java
+|   |   |           |   |       ImageFormat.java
+|   |   |           |   |       package.html
+|   |   |           |   |       SunJPEGEncoderAdapter.java
+|   |   |           |   |       SunPNGEncoderAdapter.java
+|   |   |           |   |       
+|   |   |           |   +---entity
+|   |   |           |   |       AxisEntity.java
+|   |   |           |   |       CategoryItemEntity.java
+|   |   |           |   |       CategoryLabelEntity.java
+|   |   |           |   |       ChartEntity.java
+|   |   |           |   |       EntityCollection.java
+|   |   |           |   |       FlowEntity.java
+|   |   |           |   |       JFreeChartEntity.java
+|   |   |           |   |       LegendItemEntity.java
+|   |   |           |   |       NodeEntity.java
+|   |   |           |   |       package.html
+|   |   |           |   |       PieSectionEntity.java
+|   |   |           |   |       PlotEntity.java
+|   |   |           |   |       StandardEntityCollection.java
+|   |   |           |   |       TickLabelEntity.java
+|   |   |           |   |       TitleEntity.java
+|   |   |           |   |       XYAnnotationEntity.java
+|   |   |           |   |       XYItemEntity.java
+|   |   |           |   |       
+|   |   |           |   +---event
+|   |   |           |   |       AnnotationChangeEvent.java
+|   |   |           |   |       AnnotationChangeListener.java
+|   |   |           |   |       AxisChangeEvent.java
+|   |   |           |   |       AxisChangeListener.java
+|   |   |           |   |       ChartChangeEvent.java
+|   |   |           |   |       ChartChangeEventType.java
+|   |   |           |   |       ChartChangeListener.java
+|   |   |           |   |       ChartProgressEvent.java
+|   |   |           |   |       ChartProgressListener.java
+|   |   |           |   |       MarkerChangeEvent.java
+|   |   |           |   |       MarkerChangeListener.java
+|   |   |           |   |       OverlayChangeEvent.java
+|   |   |           |   |       OverlayChangeListener.java
+|   |   |           |   |       package.html
+|   |   |           |   |       PlotChangeEvent.java
+|   |   |           |   |       PlotChangeListener.java
+|   |   |           |   |       RendererChangeEvent.java
+|   |   |           |   |       RendererChangeListener.java
+|   |   |           |   |       TitleChangeEvent.java
+|   |   |           |   |       TitleChangeListener.java
+|   |   |           |   |       
+|   |   |           |   +---imagemap
+|   |   |           |   |       DynamicDriveToolTipTagFragmentGenerator.java
+|   |   |           |   |       ImageMapUtils.java
+|   |   |           |   |       OverLIBToolTipTagFragmentGenerator.java
+|   |   |           |   |       package.html
+|   |   |           |   |       StandardToolTipTagFragmentGenerator.java
+|   |   |           |   |       StandardURLTagFragmentGenerator.java
+|   |   |           |   |       ToolTipTagFragmentGenerator.java
+|   |   |           |   |       URLTagFragmentGenerator.java
+|   |   |           |   |       
+|   |   |           |   +---labels
+|   |   |           |   |       AbstractCategoryItemLabelGenerator.java
+|   |   |           |   |       AbstractPieItemLabelGenerator.java
+|   |   |           |   |       AbstractXYItemLabelGenerator.java
+|   |   |           |   |       BoxAndWhiskerToolTipGenerator.java
+|   |   |           |   |       BoxAndWhiskerXYToolTipGenerator.java
+|   |   |           |   |       BubbleXYItemLabelGenerator.java
+|   |   |           |   |       CategoryItemLabelGenerator.java
+|   |   |           |   |       CategorySeriesLabelGenerator.java
+|   |   |           |   |       CategoryToolTipGenerator.java
+|   |   |           |   |       CrosshairLabelGenerator.java
+|   |   |           |   |       CustomXYToolTipGenerator.java
+|   |   |           |   |       FlowLabelGenerator.java
+|   |   |           |   |       HighLowItemLabelGenerator.java
+|   |   |           |   |       IntervalCategoryItemLabelGenerator.java
+|   |   |           |   |       IntervalCategoryToolTipGenerator.java
+|   |   |           |   |       IntervalXYItemLabelGenerator.java
+|   |   |           |   |       IntervalXYToolTipGenerator.java
+|   |   |           |   |       ItemLabelAnchor.java
+|   |   |           |   |       ItemLabelPosition.java
+|   |   |           |   |       MultipleXYSeriesLabelGenerator.java
+|   |   |           |   |       package.html
+|   |   |           |   |       PieSectionLabelGenerator.java
+|   |   |           |   |       PieToolTipGenerator.java
+|   |   |           |   |       StandardCategoryItemLabelGenerator.java
+|   |   |           |   |       StandardCategorySeriesLabelGenerator.java
+|   |   |           |   |       StandardCategoryToolTipGenerator.java
+|   |   |           |   |       StandardCrosshairLabelGenerator.java
+|   |   |           |   |       StandardFlowLabelGenerator.java
+|   |   |           |   |       StandardPieSectionLabelGenerator.java
+|   |   |           |   |       StandardPieToolTipGenerator.java
+|   |   |           |   |       StandardXYItemLabelGenerator.java
+|   |   |           |   |       StandardXYSeriesLabelGenerator.java
+|   |   |           |   |       StandardXYToolTipGenerator.java
+|   |   |           |   |       StandardXYZToolTipGenerator.java
+|   |   |           |   |       SymbolicXYItemLabelGenerator.java
+|   |   |           |   |       XYItemLabelGenerator.java
+|   |   |           |   |       XYSeriesLabelGenerator.java
+|   |   |           |   |       XYToolTipGenerator.java
+|   |   |           |   |       XYZToolTipGenerator.java
+|   |   |           |   |       
+|   |   |           |   +---needle
+|   |   |           |   |       ArrowNeedle.java
+|   |   |           |   |       LineNeedle.java
+|   |   |           |   |       LongNeedle.java
+|   |   |           |   |       MeterNeedle.java
+|   |   |           |   |       MiddlePinNeedle.java
+|   |   |           |   |       package.html
+|   |   |           |   |       PinNeedle.java
+|   |   |           |   |       PlumNeedle.java
+|   |   |           |   |       PointerNeedle.java
+|   |   |           |   |       ShipNeedle.java
+|   |   |           |   |       WindNeedle.java
+|   |   |           |   |       
+|   |   |           |   +---panel
+|   |   |           |   |       AbstractOverlay.java
+|   |   |           |   |       CrosshairOverlay.java
+|   |   |           |   |       Overlay.java
+|   |   |           |   |       package.html
+|   |   |           |   |       
+|   |   |           |   +---plot
+|   |   |           |   |   |   AbstractPieLabelDistributor.java
+|   |   |           |   |   |   CategoryCrosshairState.java
+|   |   |           |   |   |   CategoryMarker.java
+|   |   |           |   |   |   CategoryPlot.java
+|   |   |           |   |   |   CenterTextMode.java
+|   |   |           |   |   |   CombinedDomainCategoryPlot.java
+|   |   |           |   |   |   CombinedDomainXYPlot.java
+|   |   |           |   |   |   CombinedRangeCategoryPlot.java
+|   |   |           |   |   |   CombinedRangeXYPlot.java
+|   |   |           |   |   |   CompassPlot.java
+|   |   |           |   |   |   Crosshair.java
+|   |   |           |   |   |   CrosshairState.java
+|   |   |           |   |   |   DatasetRenderingOrder.java
+|   |   |           |   |   |   DefaultDrawingSupplier.java
+|   |   |           |   |   |   DialShape.java
+|   |   |           |   |   |   DrawingSupplier.java
+|   |   |           |   |   |   FastScatterPlot.java
+|   |   |           |   |   |   IntervalMarker.java
+|   |   |           |   |   |   Marker.java
+|   |   |           |   |   |   MeterInterval.java
+|   |   |           |   |   |   MeterPlot.java
+|   |   |           |   |   |   MultiplePiePlot.java
+|   |   |           |   |   |   package.html
+|   |   |           |   |   |   Pannable.java
+|   |   |           |   |   |   PieLabelDistributor.java
+|   |   |           |   |   |   PieLabelLinkStyle.java
+|   |   |           |   |   |   PieLabelRecord.java
+|   |   |           |   |   |   PiePlot.java
+|   |   |           |   |   |   PiePlot3D.java
+|   |   |           |   |   |   PiePlotState.java
+|   |   |           |   |   |   Plot.java
+|   |   |           |   |   |   PlotOrientation.java
+|   |   |           |   |   |   PlotRenderingInfo.java
+|   |   |           |   |   |   PlotState.java
+|   |   |           |   |   |   PolarAxisLocation.java
+|   |   |           |   |   |   PolarPlot.java
+|   |   |           |   |   |   RingPlot.java
+|   |   |           |   |   |   SeriesRenderingOrder.java
+|   |   |           |   |   |   SpiderWebPlot.java
+|   |   |           |   |   |   ThermometerPlot.java
+|   |   |           |   |   |   ValueAxisPlot.java
+|   |   |           |   |   |   ValueMarker.java
+|   |   |           |   |   |   WaferMapPlot.java
+|   |   |           |   |   |   XYCrosshairState.java
+|   |   |           |   |   |   XYPlot.java
+|   |   |           |   |   |   Zoomable.java
+|   |   |           |   |   |   
+|   |   |           |   |   +---dial
+|   |   |           |   |   |       AbstractDialLayer.java
+|   |   |           |   |   |       ArcDialFrame.java
+|   |   |           |   |   |       DialBackground.java
+|   |   |           |   |   |       DialCap.java
+|   |   |           |   |   |       DialFrame.java
+|   |   |           |   |   |       DialLayer.java
+|   |   |           |   |   |       DialLayerChangeEvent.java
+|   |   |           |   |   |       DialLayerChangeListener.java
+|   |   |           |   |   |       DialPlot.java
+|   |   |           |   |   |       DialPointer.java
+|   |   |           |   |   |       DialScale.java
+|   |   |           |   |   |       DialTextAnnotation.java
+|   |   |           |   |   |       DialValueIndicator.java
+|   |   |           |   |   |       package.html
+|   |   |           |   |   |       StandardDialFrame.java
+|   |   |           |   |   |       StandardDialRange.java
+|   |   |           |   |   |       StandardDialScale.java
+|   |   |           |   |   |       
+|   |   |           |   |   \---flow
+|   |   |           |   |           FlowPlot.java
+|   |   |           |   |           package-info.java
+|   |   |           |   |           
+|   |   |           |   +---renderer
+|   |   |           |   |   |   AbstractRenderer.java
+|   |   |           |   |   |   AreaRendererEndType.java
+|   |   |           |   |   |   DefaultPolarItemRenderer.java
+|   |   |           |   |   |   GrayPaintScale.java
+|   |   |           |   |   |   LookupPaintScale.java
+|   |   |           |   |   |   NotOutlierException.java
+|   |   |           |   |   |   Outlier.java
+|   |   |           |   |   |   OutlierList.java
+|   |   |           |   |   |   OutlierListCollection.java
+|   |   |           |   |   |   package.html
+|   |   |           |   |   |   PaintScale.java
+|   |   |           |   |   |   PolarItemRenderer.java
+|   |   |           |   |   |   RendererState.java
+|   |   |           |   |   |   RendererUtils.java
+|   |   |           |   |   |   WaferMapRenderer.java
+|   |   |           |   |   |   
+|   |   |           |   |   +---category
+|   |   |           |   |   |       AbstractCategoryItemRenderer.java
+|   |   |           |   |   |       AreaRenderer.java
+|   |   |           |   |   |       BarPainter.java
+|   |   |           |   |   |       BarRenderer.java
+|   |   |           |   |   |       BoxAndWhiskerRenderer.java
+|   |   |           |   |   |       CategoryItemRenderer.java
+|   |   |           |   |   |       CategoryItemRendererState.java
+|   |   |           |   |   |       CategoryStepRenderer.java
+|   |   |           |   |   |       DefaultCategoryItemRenderer.java
+|   |   |           |   |   |       GanttRenderer.java
+|   |   |           |   |   |       GradientBarPainter.java
+|   |   |           |   |   |       GroupedStackedBarRenderer.java
+|   |   |           |   |   |       IntervalBarRenderer.java
+|   |   |           |   |   |       LayeredBarRenderer.java
+|   |   |           |   |   |       LevelRenderer.java
+|   |   |           |   |   |       LineAndShapeRenderer.java
+|   |   |           |   |   |       MinMaxCategoryRenderer.java
+|   |   |           |   |   |       package.html
+|   |   |           |   |   |       ScatterRenderer.java
+|   |   |           |   |   |       StackedAreaRenderer.java
+|   |   |           |   |   |       StackedBarRenderer.java
+|   |   |           |   |   |       StandardBarPainter.java
+|   |   |           |   |   |       StatisticalBarRenderer.java
+|   |   |           |   |   |       StatisticalLineAndShapeRenderer.java
+|   |   |           |   |   |       WaterfallBarRenderer.java
+|   |   |           |   |   |       
+|   |   |           |   |   \---xy
+|   |   |           |   |           AbstractXYItemRenderer.java
+|   |   |           |   |           CandlestickRenderer.java
+|   |   |           |   |           ClusteredXYBarRenderer.java
+|   |   |           |   |           CyclicXYItemRenderer.java
+|   |   |           |   |           DefaultXYItemRenderer.java
+|   |   |           |   |           DeviationRenderer.java
+|   |   |           |   |           DeviationStepRenderer.java
+|   |   |           |   |           GradientXYBarPainter.java
+|   |   |           |   |           HighLowRenderer.java
+|   |   |           |   |           package.html
+|   |   |           |   |           SamplingXYLineRenderer.java
+|   |   |           |   |           StackedXYAreaRenderer.java
+|   |   |           |   |           StackedXYAreaRenderer2.java
+|   |   |           |   |           StackedXYBarRenderer.java
+|   |   |           |   |           StandardXYBarPainter.java
+|   |   |           |   |           StandardXYItemRenderer.java
+|   |   |           |   |           VectorRenderer.java
+|   |   |           |   |           WindItemRenderer.java
+|   |   |           |   |           XYAreaRenderer.java
+|   |   |           |   |           XYAreaRenderer2.java
+|   |   |           |   |           XYBarPainter.java
+|   |   |           |   |           XYBarRenderer.java
+|   |   |           |   |           XYBlockRenderer.java
+|   |   |           |   |           XYBoxAndWhiskerRenderer.java
+|   |   |           |   |           XYBubbleRenderer.java
+|   |   |           |   |           XYDifferenceRenderer.java
+|   |   |           |   |           XYDotRenderer.java
+|   |   |           |   |           XYErrorRenderer.java
+|   |   |           |   |           XYItemRenderer.java
+|   |   |           |   |           XYItemRendererState.java
+|   |   |           |   |           XYLineAndShapeRenderer.java
+|   |   |           |   |           XYShapeRenderer.java
+|   |   |           |   |           XYSplineRenderer.java
+|   |   |           |   |           XYStepAreaRenderer.java
+|   |   |           |   |           XYStepRenderer.java
+|   |   |           |   |           YIntervalRenderer.java
+|   |   |           |   |           
+|   |   |           |   +---resources
+|   |   |           |   |       JFreeChartResources.java
+|   |   |           |   |       package.html
+|   |   |           |   |       
+|   |   |           |   +---servlet
+|   |   |           |   |       ChartDeleter.java
+|   |   |           |   |       DisplayChart.java
+|   |   |           |   |       package.html
+|   |   |           |   |       ServletUtilities.java
+|   |   |           |   |       
+|   |   |           |   +---text
+|   |   |           |   |       AttributedStringUtils.java
+|   |   |           |   |       G2TextMeasurer.java
+|   |   |           |   |       package-info.java
+|   |   |           |   |       TextBlock.java
+|   |   |           |   |       TextBlockAnchor.java
+|   |   |           |   |       TextBox.java
+|   |   |           |   |       TextFragment.java
+|   |   |           |   |       TextLine.java
+|   |   |           |   |       TextMeasurer.java
+|   |   |           |   |       TextUtils.java
+|   |   |           |   |       
+|   |   |           |   +---title
+|   |   |           |   |       CompositeTitle.java
+|   |   |           |   |       DateTitle.java
+|   |   |           |   |       ImageTitle.java
+|   |   |           |   |       LegendGraphic.java
+|   |   |           |   |       LegendItemBlockContainer.java
+|   |   |           |   |       LegendTitle.java
+|   |   |           |   |       package.html
+|   |   |           |   |       PaintScaleLegend.java
+|   |   |           |   |       ShortTextTitle.java
+|   |   |           |   |       TextTitle.java
+|   |   |           |   |       Title.java
+|   |   |           |   |       
+|   |   |           |   +---ui
+|   |   |           |   |       Align.java
+|   |   |           |   |       ApplicationFrame.java
+|   |   |           |   |       Drawable.java
+|   |   |           |   |       FontChooserPanel.java
+|   |   |           |   |       FontDisplayField.java
+|   |   |           |   |       GradientPaintTransformer.java
+|   |   |           |   |       GradientPaintTransformType.java
+|   |   |           |   |       HorizontalAlignment.java
+|   |   |           |   |       Layer.java
+|   |   |           |   |       LCBLayout.java
+|   |   |           |   |       LengthAdjustmentType.java
+|   |   |           |   |       NumberCellRenderer.java
+|   |   |           |   |       package.html
+|   |   |           |   |       PaintSample.java
+|   |   |           |   |       RectangleAnchor.java
+|   |   |           |   |       RectangleEdge.java
+|   |   |           |   |       RectangleInsets.java
+|   |   |           |   |       Size2D.java
+|   |   |           |   |       StandardGradientPaintTransformer.java
+|   |   |           |   |       StrokeChooserPanel.java
+|   |   |           |   |       StrokeSample.java
+|   |   |           |   |       TextAnchor.java
+|   |   |           |   |       UIUtils.java
+|   |   |           |   |       VerticalAlignment.java
+|   |   |           |   |       
+|   |   |           |   +---urls
+|   |   |           |   |       CategoryURLGenerator.java
+|   |   |           |   |       CustomCategoryURLGenerator.java
+|   |   |           |   |       CustomPieURLGenerator.java
+|   |   |           |   |       CustomXYURLGenerator.java
+|   |   |           |   |       package.html
+|   |   |           |   |       PieURLGenerator.java
+|   |   |           |   |       StandardCategoryURLGenerator.java
+|   |   |           |   |       StandardPieURLGenerator.java
+|   |   |           |   |       StandardXYURLGenerator.java
+|   |   |           |   |       StandardXYZURLGenerator.java
+|   |   |           |   |       TimeSeriesURLGenerator.java
+|   |   |           |   |       XYURLGenerator.java
+|   |   |           |   |       XYZURLGenerator.java
+|   |   |           |   |       
+|   |   |           |   \---util
+|   |   |           |           AbstractObjectList.java
+|   |   |           |           Args.java
+|   |   |           |           ArrayUtils.java
+|   |   |           |           AttrStringUtils.java
+|   |   |           |           BooleanList.java
+|   |   |           |           CloneUtils.java
+|   |   |           |           DefaultShadowGenerator.java
+|   |   |           |           DirectionalGradientPaintTransformer.java
+|   |   |           |           ExportUtils.java
+|   |   |           |           HexNumberFormat.java
+|   |   |           |           HMSNumberFormat.java
+|   |   |           |           LineUtils.java
+|   |   |           |           LogFormat.java
+|   |   |           |           ObjectList.java
+|   |   |           |           ObjectUtils.java
+|   |   |           |           package.html
+|   |   |           |           PaintAlpha.java
+|   |   |           |           PaintList.java
+|   |   |           |           PaintUtils.java
+|   |   |           |           PublicCloneable.java
+|   |   |           |           RelativeDateFormat.java
+|   |   |           |           ResourceBundleWrapper.java
+|   |   |           |           Rotation.java
+|   |   |           |           SerialUtils.java
+|   |   |           |           ShadowGenerator.java
+|   |   |           |           ShapeList.java
+|   |   |           |           ShapeUtils.java
+|   |   |           |           SortOrder.java
+|   |   |           |           StringUtils.java
+|   |   |           |           StrokeList.java
+|   |   |           |           TableOrder.java
+|   |   |           |           UnitType.java
+|   |   |           |           XYCoordinateType.java
+|   |   |           |           
+|   |   |           \---data
+|   |   |               |   ComparableObjectItem.java
+|   |   |               |   ComparableObjectSeries.java
+|   |   |               |   DataUtils.java
+|   |   |               |   DefaultKeyedValue.java
+|   |   |               |   DefaultKeyedValues.java
+|   |   |               |   DefaultKeyedValues2D.java
+|   |   |               |   DomainInfo.java
+|   |   |               |   DomainOrder.java
+|   |   |               |   ItemKey.java
+|   |   |               |   KeyedObject.java
+|   |   |               |   KeyedObjects.java
+|   |   |               |   KeyedObjects2D.java
+|   |   |               |   KeyedValue.java
+|   |   |               |   KeyedValueComparator.java
+|   |   |               |   KeyedValueComparatorType.java
+|   |   |               |   KeyedValues.java
+|   |   |               |   KeyedValues2D.java
+|   |   |               |   KeyedValues2DItemKey.java
+|   |   |               |   KeyedValuesItemKey.java
+|   |   |               |   KeyToGroupMap.java
+|   |   |               |   package.html
+|   |   |               |   Range.java
+|   |   |               |   RangeInfo.java
+|   |   |               |   RangeType.java
+|   |   |               |   UnknownKeyException.java
+|   |   |               |   Value.java
+|   |   |               |   Values.java
+|   |   |               |   Values2D.java
+|   |   |               |   
+|   |   |               +---category
+|   |   |               |       CategoryDataset.java
+|   |   |               |       CategoryRangeInfo.java
+|   |   |               |       CategoryToPieDataset.java
+|   |   |               |       DefaultCategoryDataset.java
+|   |   |               |       DefaultIntervalCategoryDataset.java
+|   |   |               |       IntervalCategoryDataset.java
+|   |   |               |       package.html
+|   |   |               |       SlidingCategoryDataset.java
+|   |   |               |       
+|   |   |               +---flow
+|   |   |               |       DefaultFlowDataset.java
+|   |   |               |       FlowDataset.java
+|   |   |               |       FlowDatasetUtils.java
+|   |   |               |       FlowKey.java
+|   |   |               |       NodeKey.java
+|   |   |               |       package-info.java
+|   |   |               |       
+|   |   |               +---function
+|   |   |               |       Function2D.java
+|   |   |               |       LineFunction2D.java
+|   |   |               |       NormalDistributionFunction2D.java
+|   |   |               |       package.html
+|   |   |               |       PolynomialFunction2D.java
+|   |   |               |       PowerFunction2D.java
+|   |   |               |       
+|   |   |               +---gantt
+|   |   |               |       GanttCategoryDataset.java
+|   |   |               |       package.html
+|   |   |               |       SlidingGanttCategoryDataset.java
+|   |   |               |       Task.java
+|   |   |               |       TaskSeries.java
+|   |   |               |       TaskSeriesCollection.java
+|   |   |               |       XYTaskDataset.java
+|   |   |               |       
+|   |   |               +---general
+|   |   |               |       AbstractDataset.java
+|   |   |               |       AbstractSeriesDataset.java
+|   |   |               |       Dataset.java
+|   |   |               |       DatasetChangeEvent.java
+|   |   |               |       DatasetChangeListener.java
+|   |   |               |       DatasetGroup.java
+|   |   |               |       DatasetUtils.java
+|   |   |               |       DefaultHeatMapDataset.java
+|   |   |               |       DefaultKeyedValueDataset.java
+|   |   |               |       DefaultKeyedValues2DDataset.java
+|   |   |               |       DefaultKeyedValuesDataset.java
+|   |   |               |       DefaultPieDataset.java
+|   |   |               |       DefaultValueDataset.java
+|   |   |               |       HeatMapDataset.java
+|   |   |               |       HeatMapUtils.java
+|   |   |               |       KeyedValueDataset.java
+|   |   |               |       KeyedValues2DDataset.java
+|   |   |               |       KeyedValuesDataset.java
+|   |   |               |       package.html
+|   |   |               |       PieDataset.java
+|   |   |               |       Series.java
+|   |   |               |       SeriesChangeEvent.java
+|   |   |               |       SeriesChangeListener.java
+|   |   |               |       SeriesDataset.java
+|   |   |               |       SeriesException.java
+|   |   |               |       ValueDataset.java
+|   |   |               |       WaferMapDataset.java
+|   |   |               |       
+|   |   |               +---io
+|   |   |               |       CSV.java
+|   |   |               |       package.html
+|   |   |               |       
+|   |   |               +---jdbc
+|   |   |               |       JDBCCategoryDataset.java
+|   |   |               |       JDBCPieDataset.java
+|   |   |               |       JDBCXYDataset.java
+|   |   |               |       package.html
+|   |   |               |       
+|   |   |               +---json
+|   |   |               |   |   JSONUtils.java
+|   |   |               |   |   package-info.java
+|   |   |               |   |   
+|   |   |               |   \---impl
+|   |   |               |           JSONArray.java
+|   |   |               |           JSONAware.java
+|   |   |               |           JSONObject.java
+|   |   |               |           JSONStreamAware.java
+|   |   |               |           JSONValue.java
+|   |   |               |           package-info.java
+|   |   |               |           
+|   |   |               +---resources
+|   |   |               |       DataPackageResources.java
+|   |   |               |       DataPackageResources_de.java
+|   |   |               |       DataPackageResources_es.java
+|   |   |               |       DataPackageResources_fr.java
+|   |   |               |       DataPackageResources_pl.java
+|   |   |               |       DataPackageResources_ru.java
+|   |   |               |       package.html
+|   |   |               |       
+|   |   |               +---statistics
+|   |   |               |       BoxAndWhiskerCalculator.java
+|   |   |               |       BoxAndWhiskerCategoryDataset.java
+|   |   |               |       BoxAndWhiskerItem.java
+|   |   |               |       BoxAndWhiskerXYDataset.java
+|   |   |               |       DefaultBoxAndWhiskerCategoryDataset.java
+|   |   |               |       DefaultBoxAndWhiskerXYDataset.java
+|   |   |               |       DefaultMultiValueCategoryDataset.java
+|   |   |               |       DefaultStatisticalCategoryDataset.java
+|   |   |               |       HistogramBin.java
+|   |   |               |       HistogramDataset.java
+|   |   |               |       HistogramType.java
+|   |   |               |       MeanAndStandardDeviation.java
+|   |   |               |       MultiValueCategoryDataset.java
+|   |   |               |       package.html
+|   |   |               |       Regression.java
+|   |   |               |       SimpleHistogramBin.java
+|   |   |               |       SimpleHistogramDataset.java
+|   |   |               |       StatisticalCategoryDataset.java
+|   |   |               |       Statistics.java
+|   |   |               |       
+|   |   |               +---time
+|   |   |               |   |   DateRange.java
+|   |   |               |   |   Day.java
+|   |   |               |   |   DynamicTimeSeriesCollection.java
+|   |   |               |   |   FixedMillisecond.java
+|   |   |               |   |   Hour.java
+|   |   |               |   |   Millisecond.java
+|   |   |               |   |   Minute.java
+|   |   |               |   |   Month.java
+|   |   |               |   |   MovingAverage.java
+|   |   |               |   |   package.html
+|   |   |               |   |   Quarter.java
+|   |   |               |   |   RegularTimePeriod.java
+|   |   |               |   |   Second.java
+|   |   |               |   |   SimpleTimePeriod.java
+|   |   |               |   |   TimePeriod.java
+|   |   |               |   |   TimePeriodAnchor.java
+|   |   |               |   |   TimePeriodFormatException.java
+|   |   |               |   |   TimePeriodValue.java
+|   |   |               |   |   TimePeriodValues.java
+|   |   |               |   |   TimePeriodValuesCollection.java
+|   |   |               |   |   TimeSeries.java
+|   |   |               |   |   TimeSeriesCollection.java
+|   |   |               |   |   TimeSeriesDataItem.java
+|   |   |               |   |   TimeSeriesTableModel.java
+|   |   |               |   |   TimeTableXYDataset.java
+|   |   |               |   |   Week.java
+|   |   |               |   |   Year.java
+|   |   |               |   |   
+|   |   |               |   \---ohlc
+|   |   |               |           OHLC.java
+|   |   |               |           OHLCItem.java
+|   |   |               |           OHLCSeries.java
+|   |   |               |           OHLCSeriesCollection.java
+|   |   |               |           package.html
+|   |   |               |           
+|   |   |               +---xml
+|   |   |               |       CategoryDatasetHandler.java
+|   |   |               |       CategorySeriesHandler.java
+|   |   |               |       DatasetReader.java
+|   |   |               |       DatasetTags.java
+|   |   |               |       ItemHandler.java
+|   |   |               |       KeyHandler.java
+|   |   |               |       package.html
+|   |   |               |       PieDatasetHandler.java
+|   |   |               |       RootHandler.java
+|   |   |               |       ValueHandler.java
+|   |   |               |       
+|   |   |               \---xy
+|   |   |                       AbstractIntervalXYDataset.java
+|   |   |                       AbstractXYDataset.java
+|   |   |                       AbstractXYZDataset.java
+|   |   |                       CategoryTableXYDataset.java
+|   |   |                       DefaultHighLowDataset.java
+|   |   |                       DefaultIntervalXYDataset.java
+|   |   |                       DefaultOHLCDataset.java
+|   |   |                       DefaultTableXYDataset.java
+|   |   |                       DefaultWindDataset.java
+|   |   |                       DefaultXYDataset.java
+|   |   |                       DefaultXYZDataset.java
+|   |   |                       IntervalXYDataset.java
+|   |   |                       IntervalXYDelegate.java
+|   |   |                       IntervalXYZDataset.java
+|   |   |                       MatrixSeries.java
+|   |   |                       MatrixSeriesCollection.java
+|   |   |                       NormalizedMatrixSeries.java
+|   |   |                       OHLCDataItem.java
+|   |   |                       OHLCDataset.java
+|   |   |                       package.html
+|   |   |                       TableXYDataset.java
+|   |   |                       Vector.java
+|   |   |                       VectorDataItem.java
+|   |   |                       VectorSeries.java
+|   |   |                       VectorSeriesCollection.java
+|   |   |                       VectorXYDataset.java
+|   |   |                       WindDataset.java
+|   |   |                       XIntervalDataItem.java
+|   |   |                       XIntervalSeries.java
+|   |   |                       XIntervalSeriesCollection.java
+|   |   |                       XisSymbolic.java
+|   |   |                       XYBarDataset.java
+|   |   |                       XYCoordinate.java
+|   |   |                       XYDataItem.java
+|   |   |                       XYDataset.java
+|   |   |                       XYDatasetTableModel.java
+|   |   |                       XYDomainInfo.java
+|   |   |                       XYInterval.java
+|   |   |                       XYIntervalDataItem.java
+|   |   |                       XYIntervalSeries.java
+|   |   |                       XYIntervalSeriesCollection.java
+|   |   |                       XYItemKey.java
+|   |   |                       XYRangeInfo.java
+|   |   |                       XYSeries.java
+|   |   |                       XYSeriesCollection.java
+|   |   |                       XYZDataset.java
+|   |   |                       YInterval.java
+|   |   |                       YIntervalDataItem.java
+|   |   |                       YIntervalSeries.java
+|   |   |                       YIntervalSeriesCollection.java
+|   |   |                       YisSymbolic.java
+|   |   |                       YWithXInterval.java
+|   |   |                       
+|   |   +---javadoc
+|   |   |   |   overview.html
+|   |   |   |   
+|   |   |   +---doc-files
+|   |   |   |       BarChartDemo1.svg
+|   |   |   |       FlowPlotDemo2.svg
+|   |   |   |       NormalDistributionDemo2.svg
+|   |   |   |       PieChartDemo1.svg
+|   |   |   |       
+|   |   |   \---org
+|   |   |       \---jfree
+|   |   |           \---chart
+|   |   |               +---plot
+|   |   |               |   +---dial
+|   |   |               |   |   \---doc-files
+|   |   |               |   |           DialPlotSample.png
+|   |   |               |   |           
+|   |   |               |   +---doc-files
+|   |   |               |   |       PieChartDemo2.svg
+|   |   |               |   |       
+|   |   |               |   \---flow
+|   |   |               |       \---doc-files
+|   |   |               |               FlowPlotDemo1.svg
+|   |   |               |               
+|   |   |               \---renderer
+|   |   |                   +---category
+|   |   |                   |   \---doc-files
+|   |   |                   |           AreaRendererSample.png
+|   |   |                   |           BarChartDemo1.svg
+|   |   |                   |           BoxAndWhiskerRendererSample.png
+|   |   |                   |           CategoryStepRendererSample.png
+|   |   |                   |           GanttRendererSample.png
+|   |   |                   |           GroupedStackedBarRendererSample.png
+|   |   |                   |           IntervalBarRendererSample.png
+|   |   |                   |           LayeredBarRendererSample.png
+|   |   |                   |           LevelRendererSample.png
+|   |   |                   |           LineAndShapeRendererSample.png
+|   |   |                   |           MinMaxCategoryRendererSample.png
+|   |   |                   |           ScatterRendererSample.png
+|   |   |                   |           StackedAreaRendererSample.png
+|   |   |                   |           StackedBarRendererSample.png
+|   |   |                   |           StatisticalBarRendererSample.png
+|   |   |                   |           StatisticalLineRendererSample.png
+|   |   |                   |           WaterfallBarRendererSample.png
+|   |   |                   |           
+|   |   |                   \---xy
+|   |   |                       \---doc-files
+|   |   |                               CandleStickRendererSample.png
+|   |   |                               ClusteredXYBarRendererSample.png
+|   |   |                               DeviationRendererSample.png
+|   |   |                               HighLowRendererSample.png
+|   |   |                               StackedXYAreaRenderer2Sample.png
+|   |   |                               StackedXYAreaRendererSample.png
+|   |   |                               StackedXYBarRendererSample.png
+|   |   |                               VectorRendererSample.png
+|   |   |                               WindItemRendererSample.png
+|   |   |                               XYAreaRenderer2Sample.png
+|   |   |                               XYAreaRendererSample.png
+|   |   |                               XYBarRendererSample.png
+|   |   |                               XYBlockRendererSample.png
+|   |   |                               XYBoxAndWhiskerRendererSample.png
+|   |   |                               XYBubbleRendererSample.png
+|   |   |                               XYDifferenceRendererSample.png
+|   |   |                               XYDotRendererSample.png
+|   |   |                               XYErrorRendererSample.png
+|   |   |                               XYLineAndShapeRendererSample.png
+|   |   |                               XYShapeRendererSample.png
+|   |   |                               XYSplineRendererSample.png
+|   |   |                               XYStepAreaRendererSample.png
+|   |   |                               XYStepRendererSample.png
+|   |   |                               YIntervalRendererSample.png
+|   |   |                               
+|   |   \---resources
+|   |       \---org
+|   |           \---jfree
+|   |               \---chart
+|   |                   |   LocalizationBundle.properties
+|   |                   |   LocalizationBundle_ca.properties
+|   |                   |   LocalizationBundle_cs.properties
+|   |                   |   LocalizationBundle_de.properties
+|   |                   |   LocalizationBundle_es.properties
+|   |                   |   LocalizationBundle_fr.properties
+|   |                   |   LocalizationBundle_it.properties
+|   |                   |   LocalizationBundle_ja.properties
+|   |                   |   LocalizationBundle_nl.properties
+|   |                   |   LocalizationBundle_pl.properties
+|   |                   |   LocalizationBundle_pt_BR.properties
+|   |                   |   LocalizationBundle_pt_PT.properties
+|   |                   |   LocalizationBundle_ru.properties
+|   |                   |   LocalizationBundle_zh_CN.properties
+|   |                   |   LocalizationBundle_zh_TW.properties
+|   |                   |   
+|   |                   +---editor
+|   |                   |       LocalizationBundle.properties
+|   |                   |       LocalizationBundle_ca.properties
+|   |                   |       LocalizationBundle_cs.properties
+|   |                   |       LocalizationBundle_de.properties
+|   |                   |       LocalizationBundle_es.properties
+|   |                   |       LocalizationBundle_fr.properties
+|   |                   |       LocalizationBundle_ja.properties
+|   |                   |       LocalizationBundle_nl.properties
+|   |                   |       LocalizationBundle_pl.properties
+|   |                   |       LocalizationBundle_pt_BR.properties
+|   |                   |       LocalizationBundle_pt_PT.properties
+|   |                   |       LocalizationBundle_ru.properties
+|   |                   |       LocalizationBundle_zh_CN.properties
+|   |                   |       
+|   |                   +---plot
+|   |                   |       LocalizationBundle.properties
+|   |                   |       LocalizationBundle_ca.properties
+|   |                   |       LocalizationBundle_cs.properties
+|   |                   |       LocalizationBundle_de.properties
+|   |                   |       LocalizationBundle_es.properties
+|   |                   |       LocalizationBundle_fr.properties
+|   |                   |       LocalizationBundle_ja.properties
+|   |                   |       LocalizationBundle_nl.properties
+|   |                   |       LocalizationBundle_pl.properties
+|   |                   |       LocalizationBundle_pt_PT.properties
+|   |                   |       LocalizationBundle_ru.properties
+|   |                   |       LocalizationBundle_zh_CN.properties
+|   |                   |       
+|   |                   \---ui
+|   |                           LocalizationBundle.properties
+|   |                           LocalizationBundle_de.properties
+|   |                           LocalizationBundle_es.properties
+|   |                           LocalizationBundle_fr.properties
+|   |                           LocalizationBundle_pt_PT.properties
+|   |                           
+|   \---test
+|       \---java
+|           \---org
+|               \---jfree
+|                   +---chart
+|                   |   |   AreaChartTest.java
+|                   |   |   BarChartTest.java
+|                   |   |   ChartPanelTest.java
+|                   |   |   ChartRenderingInfoTest.java
+|                   |   |   GanttChartTest.java
+|                   |   |   HashUtilsTest.java
+|                   |   |   JFreeChartTest.java
+|                   |   |   LegendItemCollectionTest.java
+|                   |   |   LegendItemTest.java
+|                   |   |   LineChartTest.java
+|                   |   |   MeterChartTest.java
+|                   |   |   package.html
+|                   |   |   PaintMapTest.java
+|                   |   |   PieChart3DTest.java
+|                   |   |   PieChartTest.java
+|                   |   |   ScatterPlotTest.java
+|                   |   |   StackedAreaChartTest.java
+|                   |   |   StackedBarChartTest.java
+|                   |   |   StandardChartThemeTest.java
+|                   |   |   StrokeMapTest.java
+|                   |   |   TestUtils.java
+|                   |   |   TimeSeriesChartTest.java
+|                   |   |   WaterfallChartTest.java
+|                   |   |   XYAreaChartTest.java
+|                   |   |   XYBarChartTest.java
+|                   |   |   XYLineChartTest.java
+|                   |   |   XYStepAreaChartTest.java
+|                   |   |   XYStepChartTest.java
+|                   |   |   
+|                   |   +---annotations
+|                   |   |       CategoryLineAnnotationTest.java
+|                   |   |       CategoryPointerAnnotationTest.java
+|                   |   |       CategoryTextAnnotationTest.java
+|                   |   |       package.html
+|                   |   |       TextAnnotationTest.java
+|                   |   |       XYBoxAnnotationTest.java
+|                   |   |       XYDrawableAnnotationTest.java
+|                   |   |       XYImageAnnotationTest.java
+|                   |   |       XYLineAnnotationTest.java
+|                   |   |       XYPointerAnnotationTest.java
+|                   |   |       XYPolygonAnnotationTest.java
+|                   |   |       XYShapeAnnotationTest.java
+|                   |   |       XYTextAnnotationTest.java
+|                   |   |       XYTitleAnnotationTest.java
+|                   |   |       
+|                   |   +---axis
+|                   |   |       AxisLocationTest.java
+|                   |   |       AxisSpaceTest.java
+|                   |   |       AxisTest.java
+|                   |   |       CategoryAnchorTest.java
+|                   |   |       CategoryAxisTest.java
+|                   |   |       CategoryLabelPositionsTest.java
+|                   |   |       CategoryLabelPositionTest.java
+|                   |   |       CategoryLabelWidthTypeTest.java
+|                   |   |       CategoryTickTest.java
+|                   |   |       CyclicNumberAxisTest.java
+|                   |   |       DateAxisTest.java
+|                   |   |       DateTickMarkPositionTest.java
+|                   |   |       DateTickTest.java
+|                   |   |       DateTickUnitTest.java
+|                   |   |       ExtendedCategoryAxisTest.java
+|                   |   |       LogarithmicAxisTest.java
+|                   |   |       LogAxisTest.java
+|                   |   |       MarkerAxisBandTest.java
+|                   |   |       ModuloAxisTest.java
+|                   |   |       MonthDateFormatTest.java
+|                   |   |       NumberAxisTest.java
+|                   |   |       NumberTickUnitTest.java
+|                   |   |       package.html
+|                   |   |       PeriodAxisLabelInfoTest.java
+|                   |   |       PeriodAxisTest.java
+|                   |   |       QuarterDateFormatTest.java
+|                   |   |       StandardTickUnitSourceTest.java
+|                   |   |       SubCategoryAxisTest.java
+|                   |   |       SymbolAxisTest.java
+|                   |   |       TickUnitsTest.java
+|                   |   |       ValueAxisTest.java
+|                   |   |       
+|                   |   +---block
+|                   |   |       AbstractBlockTest.java
+|                   |   |       BlockBorderTest.java
+|                   |   |       BlockContainerTest.java
+|                   |   |       BorderArrangementTest.java
+|                   |   |       ColorBlockTest.java
+|                   |   |       ColumnArrangementTest.java
+|                   |   |       EmptyBlockTest.java
+|                   |   |       FlowArrangementTest.java
+|                   |   |       GridArrangementTest.java
+|                   |   |       LabelBlockTest.java
+|                   |   |       LineBorderTest.java
+|                   |   |       RectangleConstraintTest.java
+|                   |   |       
+|                   |   +---entity
+|                   |   |       CategoryItemEntityTest.java
+|                   |   |       CategoryLabelEntityTest.java
+|                   |   |       FlowEntityTest.java
+|                   |   |       LegendItemEntityTest.java
+|                   |   |       PieSectionEntityTest.java
+|                   |   |       StandardEntityCollectionTest.java
+|                   |   |       TickLabelEntityTest.java
+|                   |   |       XYItemEntityTest.java
+|                   |   |       
+|                   |   +---imagemap
+|                   |   |       DynamicDriveToolTipTagFragmentGeneratorTest.java
+|                   |   |       ImageMapUtilsTest.java
+|                   |   |       OverLIBToolTipTagFragmentGeneratorTest.java
+|                   |   |       StandardToolTipTagFragmentGeneratorTest.java
+|                   |   |       StandardURLTagFragmentGeneratorTest.java
+|                   |   |       
+|                   |   +---labels
+|                   |   |       BoxAndWhiskerToolTipGeneratorTest.java
+|                   |   |       BoxAndWhiskerXYToolTipGeneratorTest.java
+|                   |   |       BubbleXYItemLabelGeneratorTest.java
+|                   |   |       CustomXYItemLabelGeneratorTest.java
+|                   |   |       HighLowItemLabelGeneratorTest.java
+|                   |   |       IntervalCategoryItemLabelGeneratorTest.java
+|                   |   |       IntervalCategoryToolTipGeneratorTest.java
+|                   |   |       ItemLabelAnchorTest.java
+|                   |   |       ItemLabelPositionTest.java
+|                   |   |       MultipleXYSeriesLabelGeneratorTest.java
+|                   |   |       package.html
+|                   |   |       StandardCategoryItemLabelGeneratorTest.java
+|                   |   |       StandardCategorySeriesLabelGeneratorTest.java
+|                   |   |       StandardCategoryToolTipGeneratorTest.java
+|                   |   |       StandardFlowLabelGeneratorTest.java
+|                   |   |       StandardPieSectionLabelGeneratorTest.java
+|                   |   |       StandardPieToolTipGeneratorTest.java
+|                   |   |       StandardXYItemLabelGeneratorTest.java
+|                   |   |       StandardXYSeriesLabelGeneratorTest.java
+|                   |   |       StandardXYToolTipGeneratorTest.java
+|                   |   |       StandardXYZToolTipGeneratorTest.java
+|                   |   |       SymbolicXYItemLabelGeneratorTest.java
+|                   |   |       
+|                   |   +---needle
+|                   |   |       ArrowNeedleTest.java
+|                   |   |       LineNeedleTest.java
+|                   |   |       LongNeedleTest.java
+|                   |   |       MeterNeedleTest.java
+|                   |   |       MiddlePinNeedleTest.java
+|                   |   |       PinNeedleTest.java
+|                   |   |       PlumNeedleTest.java
+|                   |   |       PointerNeedleTest.java
+|                   |   |       ShipNeedleTest.java
+|                   |   |       WindNeedleTest.java
+|                   |   |       
+|                   |   +---panel
+|                   |   |       CrosshairOverlayTest.java
+|                   |   |       
+|                   |   +---plot
+|                   |   |   |   CategoryMarkerTest.java
+|                   |   |   |   CategoryPlotTest.java
+|                   |   |   |   CombinedDomainCategoryPlotTest.java
+|                   |   |   |   CombinedDomainXYPlotTest.java
+|                   |   |   |   CombinedRangeCategoryPlotTest.java
+|                   |   |   |   CombinedRangeXYPlotTest.java
+|                   |   |   |   CompassPlotTest.java
+|                   |   |   |   CrosshairTest.java
+|                   |   |   |   DefaultDrawingSupplierTest.java
+|                   |   |   |   FastScatterPlotTest.java
+|                   |   |   |   IntervalMarkerTest.java
+|                   |   |   |   MarkerTest.java
+|                   |   |   |   MeterIntervalTest.java
+|                   |   |   |   MeterPlotTest.java
+|                   |   |   |   MultiplePiePlotTest.java
+|                   |   |   |   MyPlotChangeListener.java
+|                   |   |   |   package.html
+|                   |   |   |   PieLabelRecordTest.java
+|                   |   |   |   PiePlot3DTest.java
+|                   |   |   |   PiePlotTest.java
+|                   |   |   |   PlotOrientationTest.java
+|                   |   |   |   PlotRenderingInfoTest.java
+|                   |   |   |   PlotTest.java
+|                   |   |   |   PolarPlotTest.java
+|                   |   |   |   RingPlotTest.java
+|                   |   |   |   SpiderWebPlotTest.java
+|                   |   |   |   ThermometerPlotTest.java
+|                   |   |   |   ValueMarkerTest.java
+|                   |   |   |   XYPlotTest.java
+|                   |   |   |   
+|                   |   |   +---dial
+|                   |   |   |       AbstractDialLayerTest.java
+|                   |   |   |       ArcDialFrameTest.java
+|                   |   |   |       DialBackgroundTest.java
+|                   |   |   |       DialCapTest.java
+|                   |   |   |       DialPlotTest.java
+|                   |   |   |       DialPointerTest.java
+|                   |   |   |       DialTextAnnotationTest.java
+|                   |   |   |       DialValueIndicatorTest.java
+|                   |   |   |       MyDialLayerChangeListener.java
+|                   |   |   |       StandardDialFrameTest.java
+|                   |   |   |       StandardDialRangeTest.java
+|                   |   |   |       StandardDialScaleTest.java
+|                   |   |   |       
+|                   |   |   \---flow
+|                   |   |           FlowPlotTest.java
+|                   |   |           
+|                   |   +---renderer
+|                   |   |   |   AbstractRendererTest.java
+|                   |   |   |   AreaRendererEndTypeTest.java
+|                   |   |   |   DefaultPolarItemRendererTest.java
+|                   |   |   |   GrayPaintScaleTest.java
+|                   |   |   |   LookupPaintScaleTest.java
+|                   |   |   |   OutlierTest.java
+|                   |   |   |   package.html
+|                   |   |   |   RendererChangeDetector.java
+|                   |   |   |   RendererUtilsTest.java
+|                   |   |   |   
+|                   |   |   +---category
+|                   |   |   |       AbstractCategoryItemRendererTest.java
+|                   |   |   |       AreaRendererTest.java
+|                   |   |   |       BarRendererTest.java
+|                   |   |   |       BoxAndWhiskerRendererTest.java
+|                   |   |   |       CategoryStepRendererTest.java
+|                   |   |   |       DefaultCategoryItemRendererTest.java
+|                   |   |   |       GanttRendererTest.java
+|                   |   |   |       GradientBarPainterTest.java
+|                   |   |   |       GroupedStackedBarRendererTest.java
+|                   |   |   |       IntervalBarRendererTest.java
+|                   |   |   |       LayeredBarRendererTest.java
+|                   |   |   |       LevelRendererTest.java
+|                   |   |   |       LineAndShapeRendererTest.java
+|                   |   |   |       MinMaxCategoryRendererTest.java
+|                   |   |   |       ScatterRendererTest.java
+|                   |   |   |       StackedAreaRendererTest.java
+|                   |   |   |       StackedBarRendererTest.java
+|                   |   |   |       StandardBarPainterTest.java
+|                   |   |   |       StatisticalBarRendererTest.java
+|                   |   |   |       StatisticalLineAndShapeRendererTest.java
+|                   |   |   |       WaterfallBarRendererTest.java
+|                   |   |   |       
+|                   |   |   \---xy
+|                   |   |           AbstractXYItemRendererTest.java
+|                   |   |           CandlestickRendererTest.java
+|                   |   |           ClusteredXYBarRendererTest.java
+|                   |   |           DeviationRendererTest.java
+|                   |   |           DeviationStepRendererTest.java
+|                   |   |           GradientXYBarPainterTest.java
+|                   |   |           HighLowRendererTest.java
+|                   |   |           RendererXYPackageUtils.java
+|                   |   |           StackedXYAreaRenderer2Test.java
+|                   |   |           StackedXYAreaRendererTest.java
+|                   |   |           StackedXYBarRendererTest.java
+|                   |   |           StandardXYBarPainterTest.java
+|                   |   |           StandardXYItemRendererTest.java
+|                   |   |           VectorRendererTest.java
+|                   |   |           WindItemRendererTest.java
+|                   |   |           XYAreaRenderer2Test.java
+|                   |   |           XYAreaRendererTest.java
+|                   |   |           XYBarRendererTest.java
+|                   |   |           XYBlockRendererTest.java
+|                   |   |           XYBoxAndWhiskerRendererTest.java
+|                   |   |           XYBubbleRendererTest.java
+|                   |   |           XYDifferenceRendererTest.java
+|                   |   |           XYDotRendererTest.java
+|                   |   |           XYErrorRendererTest.java
+|                   |   |           XYLineAndShapeRendererTest.java
+|                   |   |           XYShapeRendererTest.java
+|                   |   |           XYSplineRendererTest.java
+|                   |   |           XYStepAreaRendererTest.java
+|                   |   |           XYStepRendererTest.java
+|                   |   |           YIntervalRendererTest.java
+|                   |   |           
+|                   |   +---title
+|                   |   |       CompositeTitleTest.java
+|                   |   |       DateTitleTest.java
+|                   |   |       ImageTitleTest.java
+|                   |   |       LegendGraphicTest.java
+|                   |   |       LegendTitleTest.java
+|                   |   |       PaintScaleLegendTest.java
+|                   |   |       ShortTextTitleTest.java
+|                   |   |       TextTitleTest.java
+|                   |   |       TitleTest.java
+|                   |   |       
+|                   |   +---urls
+|                   |   |       CustomCategoryURLGeneratorTest.java
+|                   |   |       CustomPieURLGeneratorTest.java
+|                   |   |       CustomXYURLGeneratorTest.java
+|                   |   |       package.html
+|                   |   |       StandardCategoryURLGeneratorTest.java
+|                   |   |       StandardPieURLGeneratorTest.java
+|                   |   |       StandardXYURLGeneratorTest.java
+|                   |   |       TimeSeriesURLGeneratorTest.java
+|                   |   |       
+|                   |   \---util
+|                   |           HMSNumberFormatTest.java
+|                   |           LineUtilsTest.java
+|                   |           LogFormatTest.java
+|                   |           RelativeDateFormatTest.java
+|                   |           
+|                   \---data
+|                       |   ComparableObjectItemTest.java
+|                       |   ComparableObjectSeriesTest.java
+|                       |   DataUtilsTest.java
+|                       |   DefaultKeyedValues2DTest.java
+|                       |   DefaultKeyedValuesTest.java
+|                       |   DefaultKeyedValueTest.java
+|                       |   DomainOrderTest.java
+|                       |   KeyedObjects2DTest.java
+|                       |   KeyedObjectsTest.java
+|                       |   KeyedObjectTest.java
+|                       |   KeyToGroupMapTest.java
+|                       |   package.html
+|                       |   RangeTest.java
+|                       |   RangeTypeTest.java
+|                       |   
+|                       +---category
+|                       |       CategoryToPieDatasetTest.java
+|                       |       DefaultCategoryDatasetTest.java
+|                       |       DefaultIntervalCategoryDatasetTest.java
+|                       |       SlidingCategoryDatasetTest.java
+|                       |       
+|                       +---flow
+|                       |       DefaultFlowDatasetTest.java
+|                       |       FlowKeyTest.java
+|                       |       NodeKeyTest.java
+|                       |       
+|                       +---function
+|                       |       LineFunction2DTest.java
+|                       |       NormalDistributionFunction2DTest.java
+|                       |       PolynomialFunction2DTest.java
+|                       |       PowerFunction2DTest.java
+|                       |       
+|                       +---gantt
+|                       |       SlidingGanttCategoryDatasetTest.java
+|                       |       TaskSeriesCollectionTest.java
+|                       |       TaskSeriesTest.java
+|                       |       TaskTest.java
+|                       |       XYTaskDatasetTest.java
+|                       |       
+|                       +---general
+|                       |       DatasetGroupTest.java
+|                       |       DatasetUtilsTest.java
+|                       |       DefaultHeatMapDatasetTest.java
+|                       |       DefaultKeyedValueDatasetTest.java
+|                       |       DefaultKeyedValues2DDatasetTest.java
+|                       |       DefaultKeyedValuesDatasetTest.java
+|                       |       DefaultPieDatasetTest.java
+|                       |       IntervalDataItem.java
+|                       |       TestIntervalCategoryDataset.java
+|                       |       
+|                       +---statistics
+|                       |       BoxAndWhiskerCalculatorTest.java
+|                       |       BoxAndWhiskerItemTest.java
+|                       |       DefaultBoxAndWhiskerCategoryDatasetTest.java
+|                       |       DefaultBoxAndWhiskerXYDatasetTest.java
+|                       |       DefaultMultiValueCategoryDatasetTest.java
+|                       |       DefaultStatisticalCategoryDatasetTest.java
+|                       |       HistogramBinTest.java
+|                       |       HistogramDatasetTest.java
+|                       |       MeanAndStandardDeviationTest.java
+|                       |       package.html
+|                       |       RegressionTest.java
+|                       |       SimpleHistogramBinTest.java
+|                       |       SimpleHistogramDatasetTest.java
+|                       |       StatisticsTest.java
+|                       |       
+|                       +---time
+|                       |   |   DateRangeTest.java
+|                       |   |   DayTest.java
+|                       |   |   FixedMillisecondTest.java
+|                       |   |   HourTest.java
+|                       |   |   MillisecondTest.java
+|                       |   |   MinuteTest.java
+|                       |   |   MonthTest.java
+|                       |   |   MovingAverageTest.java
+|                       |   |   package.html
+|                       |   |   QuarterTest.java
+|                       |   |   SecondTest.java
+|                       |   |   SimpleTimePeriodTest.java
+|                       |   |   TimePeriodAnchorTest.java
+|                       |   |   TimePeriodValuesCollectionTest.java
+|                       |   |   TimePeriodValuesTest.java
+|                       |   |   TimePeriodValueTest.java
+|                       |   |   TimeSeriesCollectionTest.java
+|                       |   |   TimeSeriesDataItemTest.java
+|                       |   |   TimeSeriesTest.java
+|                       |   |   TimeTableXYDatasetTest.java
+|                       |   |   WeekTest.java
+|                       |   |   YearTest.java
+|                       |   |   
+|                       |   \---ohlc
+|                       |           OHLCItemTest.java
+|                       |           OHLCSeriesCollectionTest.java
+|                       |           OHLCSeriesTest.java
+|                       |           OHLCTest.java
+|                       |           
+|                       \---xy
+|                               CategoryTableXYDatasetTest.java
+|                               DefaultHighLowDatasetTest.java
+|                               DefaultIntervalXYDatasetTest.java
+|                               DefaultOHLCDatasetTest.java
+|                               DefaultTableXYDatasetTest.java
+|                               DefaultWindDatasetTest.java
+|                               DefaultXYDatasetTest.java
+|                               DefaultXYZDatasetTest.java
+|                               IntervalXYDelegateTest.java
+|                               MatrixSeriesCollectionTest.java
+|                               MatrixSeriesTest.java
+|                               OHLCDataItemTest.java
+|                               TableXYDatasetTest.java
+|                               VectorDataItemTest.java
+|                               VectorSeriesCollectionTest.java
+|                               VectorSeriesTest.java
+|                               VectorTest.java
+|                               XIntervalDataItemTest.java
+|                               XIntervalSeriesCollectionTest.java
+|                               XIntervalSeriesTest.java
+|                               XYBarDatasetTest.java
+|                               XYCoordinateTest.java
+|                               XYDataItemTest.java
+|                               XYIntervalDataItemTest.java
+|                               XYIntervalSeriesCollectionTest.java
+|                               XYIntervalSeriesTest.java
+|                               XYIntervalTest.java
+|                               XYSeriesCollectionTest.java
+|                               XYSeriesTest.java
+|                               YIntervalDataItemTest.java
+|                               YIntervalSeriesCollectionTest.java
+|                               YIntervalSeriesTest.java
+|                               YIntervalTest.java
+|                               YWithXIntervalTest.java
+|                               
+\---svg
+    |   EQTBarChartDemo1.html
+    |   
+    +---js
+    |   |   build.sh
+    |   |   jfreechart_utils.js
+    |   |   README.txt
+    |   |   
+    |   \---src
+    |           KeyedValueLabels.js
+    |           KeyedValuesDataset.js
+    |           Utils.js
+    |           
+    \---lib
+            jfreechart_utils.js
+            
