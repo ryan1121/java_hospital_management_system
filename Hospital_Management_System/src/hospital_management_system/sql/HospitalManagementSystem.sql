@@ -232,7 +232,7 @@ CREATE TABLE Billing (
 
 -- 创建 DoctorStaffScheduling 表
 CREATE TABLE DoctorStaffScheduling (
-    StaffID VARCHAR(25),
+    DoctorID VARCHAR(25),
     StaffScheduleDate DATE,
     ShiftStartTime TIME,
     ShiftEndTime TIME,
@@ -243,7 +243,7 @@ CREATE TABLE DoctorStaffScheduling (
 
 -- 创建 NurseStaffScheduling 表
 CREATE TABLE NurseStaffScheduling (
-    StaffID VARCHAR(25),
+    NurseID VARCHAR(25),
     StaffScheduleDate DATE,
     ShiftStartTime TIME,
     ShiftEndTime TIME,

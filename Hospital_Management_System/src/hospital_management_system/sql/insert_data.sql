@@ -114,14 +114,14 @@ VALUES
 USE hospital_management;
 
 -- 插入 DoctorStaffScheduling 表的三条数据
-INSERT INTO DoctorStaffScheduling (StaffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks)
+INSERT INTO DoctorStaffScheduling (DoctorID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks)
 VALUES 
 ('D001', '2024-01-05', '08:00:00', '16:00:00', 'Cardiology Dept', 'Routine check-ups'),
 ('D002', '2024-01-06', '09:00:00', '17:00:00', 'Neurology Dept', 'Patient consultations'),
 ('D003', '2024-01-07', '10:00:00', '18:00:00', 'Orthopedics Dept', 'Surgery preparations');
 
 -- 插入 NurseStaffScheduling 表的三条数据
-INSERT INTO NurseStaffScheduling (StaffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks)
+INSERT INTO NurseStaffScheduling (NurseID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks)
 VALUES 
 ('N001', '2024-01-06', '09:00:00', '17:00:00', 'Cardiology Dept', 'Ward rounds'),
 ('N002', '2024-01-07', '08:00:00', '16:00:00', 'Neurology Dept', 'Patient monitoring'),

@@ -5,6 +5,8 @@
 package hospital_management_system.views;
 
 import java.sql.*;
+
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import hospital_management_system.controllers.*;
 
@@ -13,6 +15,8 @@ import hospital_management_system.controllers.*;
  * @author yc
  */
 public class Staff_Scheduling extends javax.swing.JFrame {
+
+    private String role;
 
     /**
      * Creates new form Staff_Scheduling
@@ -48,7 +52,7 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         ClearButton = new javax.swing.JButton();
         CancelButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         StaffScheduling.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Staff Scheduling", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -207,6 +211,11 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public void setRole(String role) {
+        this.role = role;
+        setTitle("Scheduling for " + role);
+    }
+
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
         // Retrieve values from the form fields
         String staffID = StaffID_input.getText();
@@ -235,8 +244,11 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         try {
             MysqlConnect db = new MysqlConnect();
             String[] values = {staffID, formattedDate, formattedStartTime, formattedEndTime, department, tasks};
-            String columns = "staffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks"; 
-            boolean saveResult = db.saveData("StaffScheduling", columns, values);
+            String columns = "StaffID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks"; 
+            
+            String tableName = role.equalsIgnoreCase("Doctor") ? "DoctorStaffScheduling" : "NurseStaffScheduling";
+            
+            boolean saveResult = db.saveData(tableName, columns, values);
 
             if (saveResult) {
                 JOptionPane.showMessageDialog(this, "Data saved successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
@@ -252,16 +264,10 @@ public class Staff_Scheduling extends javax.swing.JFrame {
                    
     private void ShiftStartTime_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShiftStartTime_inputActionPerformed
         ShiftStartTime_input.getText();
-        // if (!startTime.matches("\\d{2}:\\d{2}:\\d{2}")) { // Simple time format validation (HH:mm:ss)
-        //     JOptionPane.showMessageDialog(this, "Please enter a valid start time in HH:mm:ss format.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
-        // }
     }//GEN-LAST:event_ShiftStartTime_inputActionPerformed
 
     private void ShiftEndTime_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShiftEndTime_inputActionPerformed
         ShiftEndTime_input.getText();
-        // if (!endTime.matches("\\d{2}:\\d{2}:\\d{2}")) { // Simple time format validation (HH:mm:ss)
-        //     JOptionPane.showMessageDialog(this, "Please enter a valid end time in HH:mm:ss format.", "Invalid Input", JOptionPane.ERROR_MESSAGE);
-        // }
     }//GEN-LAST:event_ShiftEndTime_inputActionPerformed
 
     private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed

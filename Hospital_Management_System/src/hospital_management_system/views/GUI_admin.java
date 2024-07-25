@@ -4,6 +4,8 @@
  */
 package hospital_management_system.views;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -56,7 +58,7 @@ public class GUI_admin extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         doctorAdd_new_schedule_Button = new javax.swing.JButton();
         jScrollPane7 = new javax.swing.JScrollPane();
-        StaffScheduleTable = new javax.swing.JTable();
+        DoctorScheduleTable = new javax.swing.JTable();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -87,7 +89,7 @@ public class GUI_admin extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         nurseAdd_new_schedule_Button = new javax.swing.JButton();
         jScrollPane11 = new javax.swing.JScrollPane();
-        StaffScheduleTable1 = new javax.swing.JTable();
+        NurseScheduleTable = new javax.swing.JTable();
         jTabbedPane8 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
@@ -350,11 +352,11 @@ public class GUI_admin extends javax.swing.JFrame {
         doctorAdd_new_schedule_Button.setText("Add new schedule");
         doctorAdd_new_schedule_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctorAdd_new_schedule_ButtonActionPerformed(evt);
+                openStaffScheduling("Doctor");
             }
         });
 
-        StaffScheduleTable.setModel(new javax.swing.table.DefaultTableModel(
+        DoctorScheduleTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -368,10 +370,10 @@ public class GUI_admin extends javax.swing.JFrame {
                 "Staff ID", "Name", "Start Time ", "End Time", "Date", "Department", "Tasks"
             }
         ));
-        StaffScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
-        StaffScheduleTable.setShowHorizontalLines(true);
-        StaffScheduleTable.setShowVerticalLines(true);
-        jScrollPane7.setViewportView(StaffScheduleTable);
+        DoctorScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
+        DoctorScheduleTable.setShowHorizontalLines(true);
+        DoctorScheduleTable.setShowVerticalLines(true);
+        jScrollPane7.setViewportView(DoctorScheduleTable);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -610,11 +612,11 @@ public class GUI_admin extends javax.swing.JFrame {
         nurseAdd_new_schedule_Button.setText("Add new schedule");
         nurseAdd_new_schedule_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nurseAdd_new_schedule_ButtonActionPerformed(evt);
+                openStaffScheduling("Nurse");
             }
         });
 
-        StaffScheduleTable1.setModel(new javax.swing.table.DefaultTableModel(
+        NurseScheduleTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -628,10 +630,10 @@ public class GUI_admin extends javax.swing.JFrame {
                 "Staff ID", "Name", "Start Time ", "End Time", "Date", "Department", "Tasks"
             }
         ));
-        StaffScheduleTable1.setIntercellSpacing(new java.awt.Dimension(1, 1));
-        StaffScheduleTable1.setShowHorizontalLines(true);
-        StaffScheduleTable1.setShowVerticalLines(true);
-        jScrollPane11.setViewportView(StaffScheduleTable1);
+        NurseScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
+        NurseScheduleTable.setShowHorizontalLines(true);
+        NurseScheduleTable.setShowVerticalLines(true);
+        jScrollPane11.setViewportView(NurseScheduleTable);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -1319,17 +1321,16 @@ public class GUI_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_doctor_idActionPerformed
 
-    private void nurseAdd_new_schedule_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurseAdd_new_schedule_ButtonActionPerformed
-        // TODO add your handling code here:
-        Staff_Scheduling staff_schedule_gui = new Staff_Scheduling();
-        staff_schedule_gui.setVisible(true);
-    }//GEN-LAST:event_nurseAdd_new_schedule_ButtonActionPerformed
-
-    private void doctorAdd_new_schedule_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctorAdd_new_schedule_ButtonActionPerformed
-        // TODO add your handling code here:
-        Staff_Scheduling staff_schedule_gui = new Staff_Scheduling();
-        staff_schedule_gui.setVisible(true);
-    }//GEN-LAST:event_doctorAdd_new_schedule_ButtonActionPerformed
+    private void openStaffScheduling(String role) {
+        try {
+            Staff_Scheduling staffScheduling = new Staff_Scheduling();
+            staffScheduling.setRole(role);
+            staffScheduling.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error opening scheduling form: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
 
     private void assigned_nurse_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assigned_nurse_idActionPerformed
         // TODO add your handling code here:
@@ -1420,8 +1421,8 @@ public class GUI_admin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Primary_doctor_id;
-    private javax.swing.JTable StaffScheduleTable;
-    private javax.swing.JTable StaffScheduleTable1;
+    private javax.swing.JTable DoctorScheduleTable;
+    private javax.swing.JTable NurseScheduleTable;
     private javax.swing.JTextField admin_email;
     private javax.swing.JTextField admin_id;
     private javax.swing.JTextField admin_name;
