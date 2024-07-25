@@ -119,11 +119,11 @@ public class GUI_doctor extends javax.swing.JFrame {
         medicalRecordID_label8 = new javax.swing.JLabel();
         treatmentPlans_label10 = new javax.swing.JLabel();
         jScrollPane17 = new javax.swing.JScrollPane();
-        medical_record_treatmentPlans = new javax.swing.JTextArea();
+        medical_record_treatmentPlansTextField = new javax.swing.JTextArea();
         DateOfVisit_label8 = new javax.swing.JLabel();
-        DateOfVisit_textField8 = new javax.swing.JFormattedTextField();
+        medicalRecord_dateOfVisitTextField = new javax.swing.JFormattedTextField();
         Notes_label8 = new javax.swing.JLabel();
-        notes_textField8 = new java.awt.TextField();
+        medicalRecord_notesTextField = new java.awt.TextField();
         medicalRecordID_textField = new javax.swing.JTextField();
         // 设置 JTextField 的大小
         Dimension size = new Dimension(200, 20); // 宽度200，高度20
@@ -138,10 +138,16 @@ public class GUI_doctor extends javax.swing.JFrame {
         DiagnosisID_textField.setEnabled(false);
 
 
-        // 创建一个Diagnosis Controller object
+        // 创建一个Surgery Controller object
         Surgery getNewSurgeryIdObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
         getNewSurgeryIdObj.setNewSurgeryId(surgeryID_textField);
         surgeryID_textField.setEnabled(false);
+
+        // 创建一个Surgery Controller object
+        MedicalRecords getNewMedicalRecordIdObj = new MedicalRecords(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
+        getNewMedicalRecordIdObj.setNewMedicalRecordId(medicalRecordID_textField);
+        medicalRecordID_textField.setEnabled(false);
+        
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -700,7 +706,7 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         surgeryType_comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Appendectomy", "Cholecystectomy (Gallbladder removal)", "Hernia repair", "Colon resection", "Mastectomy", "Thyroidectomy", "Coronary artery bypass grafting (CABG)", "Heart valve repair/replacement", "Lung resection", "Heart transplant", "Thoracic aortic aneurysm repair", "Joint replacement (hip, knee, shoulder)", "Arthroscopy (knee, shoulder)", "Spinal fusion", "Fracture repair", "Rotator cuff repair", "Craniotomy", "Spinal decompression and fusion", "Brain tumor removal", "Aneurysm repair", "Chiari decompression", "Rhinoplasty", "Breast augmentation/reduction", "Abdominoplasty (tummy tuck)", "Liposuction", "Facelift", "Prostatectomy", "Cystectomy (bladder removal)", "Kidney stone removal", "Vasectomy", "Nephrectomy (kidney removal)", "Cesarean section", "Hysterectomy", "Tubal ligation", "Oophorectomy (ovary removal)", "Myomectomy (fibroid removal)", "Carotid endarterectomy", "Aortic aneurysm repair", "Varicose vein surgery", "Peripheral artery bypass", "Dialysis access creation", "Tonsillectomy", "Adenoidectomy", "Septoplasty", "Cochlear implants", "Sinus surgery", "Cataract surgery", "LASIK", "Glaucoma surgery", "Retinal detachment repair", "Corneal transplant", "Congenital heart defect repair", "Pyloromyotomy (for pyloric stenosis)", "Hirschsprung's disease surgery", "Repair of congenital diaphragmatic hernia" }));
 
-        DateOfSurgery_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        DateOfSurgery_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
         DateOfSurgery_textField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DateOfSurgery_textFieldActionPerformed(evt);
@@ -712,7 +718,7 @@ public class GUI_doctor extends javax.swing.JFrame {
         SurgManage_SaveButton.setText("Save");
         SurgManage_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个Diagnosis Object
+                // 创建一个Surgery Object
                 Surgery SurgeryObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
                 SurgeryObj.SurgeryManage_SaveButtonActionPerformed(evt);
             }
@@ -721,7 +727,7 @@ public class GUI_doctor extends javax.swing.JFrame {
         SurgManage_ClearButton.setText("Clear");
         SurgManage_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个Diagnosis Object
+                // 创建一个Surgery Object
                 Surgery SurgeryObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
                 SurgeryObj.SurgManage_ClearButtonActionPerformed(evt);
             }
@@ -793,33 +799,37 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         treatmentPlans_label10.setText("Treatment Plans :");
 
-        medical_record_treatmentPlans.setColumns(20);
-        medical_record_treatmentPlans.setRows(5);
-        jScrollPane17.setViewportView(medical_record_treatmentPlans);
+        medical_record_treatmentPlansTextField.setColumns(20);
+        medical_record_treatmentPlansTextField.setRows(5);
+        jScrollPane17.setViewportView(medical_record_treatmentPlansTextField);
 
         DateOfVisit_label8.setText("Date of visit : ");
 
-        DateOfVisit_textField8.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        medicalRecord_dateOfVisitTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
 
         Notes_label8.setText("Notes : ");
 
-        notes_textField8.addActionListener(new java.awt.event.ActionListener() {
+        medicalRecord_notesTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                notes_textField8ActionPerformed(evt);
+                medicalRecord_notesTextFieldActionPerformed(evt);
             }
         });
 
         MedRecord_SaveButton.setText("Save");
         MedRecord_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MedRecord_SaveButtonActionPerformed(evt);
+                // 创建一个MedicalRecords Object
+                MedicalRecords MedicalRecordsObj = new MedicalRecords(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
+                MedicalRecordsObj.MedRecord_SaveButtonActionPerformed(evt, medicalRecordID_textField);
             }
         });
 
         MedRecord_ClearButton.setText("Clear");
         MedRecord_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MedRecord_ClearButtonActionPerformed(evt);
+                // 创建一个MedicalRecords Object
+                MedicalRecords MedicalRecordsObj = new MedicalRecords(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
+                MedicalRecordsObj.MedRecord_ClearButtonActionPerformed(evt);
             }
         });
 
@@ -836,9 +846,9 @@ public class GUI_doctor extends javax.swing.JFrame {
                     .addComponent(treatmentPlans_label10, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DateOfVisit_textField8, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(medicalRecord_dateOfVisitTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(medicalRecordID_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(notes_textField8, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(medicalRecord_notesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane17, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
@@ -858,10 +868,10 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DateOfVisit_label8)
-                    .addComponent(DateOfVisit_textField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(medicalRecord_dateOfVisitTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(notes_textField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(medicalRecord_notesTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Notes_label8))
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel19Layout.createSequentialGroup()
@@ -1029,9 +1039,9 @@ public class GUI_doctor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_doctor_idActionPerformed
 
-    private void notes_textField8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notes_textField8ActionPerformed
+    private void medicalRecord_notesTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicalRecord_notesTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_notes_textField8ActionPerformed
+    }//GEN-LAST:event_medicalRecord_notesTextFieldActionPerformed
 
     private void Diagnosis_SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagnosis_SaveButtonActionPerformed
 
@@ -1121,7 +1131,7 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JLabel DateOfSurgery_label;
     private javax.swing.JFormattedTextField DateOfSurgery_textField;
     private javax.swing.JLabel DateOfVisit_label8;
-    private javax.swing.JFormattedTextField DateOfVisit_textField8;
+    private javax.swing.JFormattedTextField medicalRecord_dateOfVisitTextField;
     private javax.swing.JTextArea DiagnosisDescription_TextArea;
     private javax.swing.JLabel DiagnosisDescription_label;
     private javax.swing.JLabel DiagnosisID_label;
@@ -1192,8 +1202,8 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel medicalRecordID_label8;
     private javax.swing.JTextField medicalRecordID_textField;
-    private javax.swing.JTextArea medical_record_treatmentPlans;
-    private java.awt.TextField notes_textField8;
+    private javax.swing.JTextArea medical_record_treatmentPlansTextField;
+    private java.awt.TextField medicalRecord_notesTextField;
     private javax.swing.JTextField patientID_textField;
     private javax.swing.JFormattedTextField patient_DOB;
     private javax.swing.JTextField patient_address;

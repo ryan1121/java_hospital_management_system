@@ -1182,7 +1182,7 @@
                     <Component class="javax.swing.JFormattedTextField" name="DateOfSurgery_textField">
                       <Properties>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
-                          <Format subtype="1" type="1"/>
+                          <Format format="dd/MM/y" subtype="-1" type="1"/>
                         </Property>
                       </Properties>
                       <Events>
@@ -1252,9 +1252,9 @@
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="DateOfVisit_textField8" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
+                                  <Component id="medicalRecord_dateOfVisitTextField" alignment="0" min="-2" pref="74" max="-2" attributes="0"/>
                                   <Component id="medicalRecordID_textField" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="notes_textField8" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                                  <Component id="medicalRecord_notesTextField" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
                                   <Component id="jScrollPane17" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace pref="18" max="32767" attributes="0"/>
@@ -1279,11 +1279,11 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="DateOfVisit_label8" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="DateOfVisit_textField8" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="medicalRecord_dateOfVisitTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="notes_textField8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="medicalRecord_notesTextField" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="Notes_label8" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
@@ -1324,7 +1324,7 @@
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                       <SubComponents>
-                        <Component class="javax.swing.JTextArea" name="medical_record_treatmentPlans">
+                        <Component class="javax.swing.JTextArea" name="medical_record_treatmentPlansTextField">
                           <Properties>
                             <Property name="columns" type="int" value="20"/>
                             <Property name="rows" type="int" value="5"/>
@@ -1337,7 +1337,7 @@
                         <Property name="text" type="java.lang.String" value="Date of visit : "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JFormattedTextField" name="DateOfVisit_textField8">
+                    <Component class="javax.swing.JFormattedTextField" name="medicalRecord_dateOfVisitTextField">
                       <Properties>
                         <Property name="formatterFactory" type="javax.swing.JFormattedTextField$AbstractFormatterFactory" editor="org.netbeans.modules.form.editors.AbstractFormatterFactoryEditor">
                           <Format subtype="1" type="1"/>
@@ -1349,9 +1349,9 @@
                         <Property name="text" type="java.lang.String" value="Notes : "/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JTextField" name="notes_textField8">
+                    <Component class="javax.swing.JTextField" name="medicalRecord_notesTextField">
                       <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="notes_textField8ActionPerformed"/>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="medicalRecord_notesTextFieldActionPerformed"/>
                       </Events>
                     </Component>
                     <Component class="javax.swing.JTextField" name="medicalRecordID_textField">
