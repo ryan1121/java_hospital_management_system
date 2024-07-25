@@ -153,7 +153,7 @@ CREATE TABLE MedicalRecords (
     DoctorID VARCHAR(25) NOT NULL,
     DateOfVisit DATE NOT NULL,
     notes TEXT,
-    medical_record_treatmentPlans TEXT,
+    treatmentPlans TEXT,
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
 );
