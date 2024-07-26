@@ -6,6 +6,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
 import hospital_management_system.MysqlConnect;
+import hospital_management_system.views.Staff_Scheduling;
 
 import java.awt.*;
 import java.awt.event.MouseAdapter;
@@ -193,6 +194,18 @@ public class WorkScheduleViewer {
                 setToolTipText(value.toString());
             }
             return c;
+        }
+    }
+
+    
+    private void openStaffScheduling(String role) {
+        try {
+            Staff_Scheduling staffScheduling = new Staff_Scheduling();
+            staffScheduling.setRole(role);
+            staffScheduling.setVisible(true);
+        } catch (Exception e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error opening scheduling form: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 

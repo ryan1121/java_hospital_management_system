@@ -1289,17 +1289,6 @@ public class GUI_admin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_doctor_idActionPerformed
 
-    private void openStaffScheduling(String role) {
-        try {
-            Staff_Scheduling staffScheduling = new Staff_Scheduling();
-            staffScheduling.setRole(role);
-            staffScheduling.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error opening scheduling form: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
     private void loadSchedules() {
         // Create a WorkScheduleViewer instance and load data
         WorkScheduleViewer scheduleViewer = new WorkScheduleViewer(DoctorScheduleTable, NurseScheduleTable, jScrollPane7, jScrollPane11);
