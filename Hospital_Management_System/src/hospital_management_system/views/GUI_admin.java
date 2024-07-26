@@ -4,10 +4,13 @@
  */
 package hospital_management_system.views;
 
+import hospital_management_system.controllers.*;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
-import hospital_management_system.controllers.*;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -60,7 +63,7 @@ public class GUI_admin extends javax.swing.JFrame {
         reset_doctor = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         doctorAdd_new_schedule_Button = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
+        doctorScrollPane  = new javax.swing.JScrollPane();
         DoctorScheduleTable = new javax.swing.JTable();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
@@ -91,7 +94,7 @@ public class GUI_admin extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         nurseAdd_new_schedule_Button = new javax.swing.JButton();
-        jScrollPane11 = new javax.swing.JScrollPane();
+        nurseScrollPane  = new javax.swing.JScrollPane();
         NurseScheduleTable = new javax.swing.JTable();
         jTabbedPane8 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
@@ -355,7 +358,8 @@ public class GUI_admin extends javax.swing.JFrame {
         doctorAdd_new_schedule_Button.setText("Add new schedule");
         doctorAdd_new_schedule_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openStaffScheduling("Doctor");
+                WorkScheduleController viewer = new WorkScheduleController(DoctorScheduleTable, NurseScheduleTable, doctorScrollPane , nurseScrollPane);
+                viewer.openStaffScheduling("Doctor", doctorScrollPane);
             }
         });
 
@@ -369,14 +373,14 @@ public class GUI_admin extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 696, Short.MAX_VALUE)
                         .addComponent(doctorAdd_new_schedule_Button))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(doctorScrollPane , javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(doctorScrollPane , javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(doctorAdd_new_schedule_Button)
                 .addContainerGap(67, Short.MAX_VALUE))
@@ -596,7 +600,8 @@ public class GUI_admin extends javax.swing.JFrame {
         nurseAdd_new_schedule_Button.setText("Add new schedule");
         nurseAdd_new_schedule_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                openStaffScheduling("Nurse");
+                WorkScheduleController viewer = new WorkScheduleController(DoctorScheduleTable, NurseScheduleTable, doctorScrollPane, nurseScrollPane);
+                viewer.openStaffScheduling("Nurse", nurseScrollPane);
             }
         });
 
@@ -610,14 +615,14 @@ public class GUI_admin extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(0, 696, Short.MAX_VALUE)
                         .addComponent(nurseAdd_new_schedule_Button))
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE))
+                    .addComponent(nurseScrollPane , javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nurseScrollPane , javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nurseAdd_new_schedule_Button)
                 .addContainerGap(67, Short.MAX_VALUE))
@@ -1290,11 +1295,13 @@ public class GUI_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_doctor_idActionPerformed
 
     private void loadSchedules() {
-        // Create a WorkScheduleViewer instance and load data
-        WorkScheduleViewer scheduleViewer = new WorkScheduleViewer(DoctorScheduleTable, NurseScheduleTable, jScrollPane7, jScrollPane11);
+        // Create a WorkScheduleController instance and load data
+        WorkScheduleController scheduleViewer = new WorkScheduleController(DoctorScheduleTable, NurseScheduleTable, doctorScrollPane , nurseScrollPane);
         scheduleViewer.loadDoctorSchedule();
         scheduleViewer.loadNurseSchedule();
     }
+
+    
 
     private void assigned_nurse_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assigned_nurse_idActionPerformed
         // TODO add your handling code here:
@@ -1474,13 +1481,13 @@ public class GUI_admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane nurseScrollPane ;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane doctorScrollPane ;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;

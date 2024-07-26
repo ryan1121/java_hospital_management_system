@@ -68,12 +68,7 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         AssignedTasks.setText("Assigned Tasks:");
 
         Department_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Emergency", "Cardiology", "Neurology", "Pediatrics", "Radiology", "Oncology", "Orthopedics", "Gynecology", "General Surgery", "Intensive Care Unit (ICU)", "Neonatal Intensive Care Unit (NICU)", "Anesthesiology", "Gastroenterology" }));
-        Department_dropdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Department_dropdownActionPerformed(evt);
-            }
-        });
-
+   
         ShiftEndTime.setText("Shift End Time:");
 
         shiftDate.setText("Date:");
@@ -83,19 +78,9 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         jScrollPane1.setViewportView(AssignedTasks_input);
 
         ShiftStartTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("h:mm a"))));
-        ShiftStartTime_input.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShiftStartTime_inputActionPerformed(evt);
-            }
-        });
 
         ShiftEndTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("h:mm a"))));
-        ShiftEndTime_input.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShiftEndTime_inputActionPerformed(evt);
-            }
-        });
-
+     
         StaffScheduleDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         javax.swing.GroupLayout StaffSchedulingLayout = new javax.swing.GroupLayout(StaffScheduling);
@@ -216,7 +201,6 @@ public class Staff_Scheduling extends javax.swing.JFrame {
 
     public void setRole(String role) {
         this.role = role;
-        setTitle("Scheduling for " + role);
     }
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
@@ -270,15 +254,7 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         }
     
     }//GEN-LAST:event_SaveButtonActionPerformed
-                   
-    private void ShiftStartTime_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShiftStartTime_inputActionPerformed
-        ShiftStartTime_input.getText();
-    }//GEN-LAST:event_ShiftStartTime_inputActionPerformed
-
-    private void ShiftEndTime_inputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ShiftEndTime_inputActionPerformed
-        ShiftEndTime_input.getText();
-    }//GEN-LAST:event_ShiftEndTime_inputActionPerformed
-
+        
     private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
         StaffID_input.setText("");
         StaffScheduleDate.setText("");
@@ -291,10 +267,6 @@ public class Staff_Scheduling extends javax.swing.JFrame {
     private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
         this.dispose(); // Close the current window
     }//GEN-LAST:event_CancelButtonActionPerformed
-
-     private void Department_dropdownActionPerformed(java.awt.event.ActionEvent evt) {                                                
-        Department_dropdown.getSelectedItem();  
-     }
 
     /**
      * @param args the command line arguments

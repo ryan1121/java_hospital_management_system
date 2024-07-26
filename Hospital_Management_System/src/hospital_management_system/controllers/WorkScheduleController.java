@@ -14,15 +14,16 @@ import java.awt.event.MouseEvent;
 import java.sql.*;
 
 
-public class WorkScheduleViewer {
+public class WorkScheduleController {
 
-    private MysqlConnect db;
-    private JTable DoctorScheduleTable;
-    private JTable NurseScheduleTable;
-    private JScrollPane jScrollPane7;
-    private JScrollPane jScrollPane11;
+    public static MysqlConnect db;
+    public static JTable DoctorScheduleTable;
+    public static JTable NurseScheduleTable;
+    public static JScrollPane doctorScrollPane ;
+    public static JScrollPane nurseScrollPane ;
+    public static String roleType;
 
-    public WorkScheduleViewer(JTable doctorTable, JTable nurseTable, JScrollPane scrollPane7, JScrollPane scrollPane11) {
+    public WorkScheduleController (JTable doctorTable, JTable nurseTable, JScrollPane doctorPane, JScrollPane nursePane) {
         try {
             db = new MysqlConnect();
         } catch (Exception e) {
@@ -32,8 +33,8 @@ public class WorkScheduleViewer {
         }
         this.DoctorScheduleTable = doctorTable;
         this.NurseScheduleTable = nurseTable;
-        this.jScrollPane7 = scrollPane7;
-        this.jScrollPane11 = scrollPane11;
+        this.doctorScrollPane  = doctorPane;
+        this.nurseScrollPane  = nursePane;
     }
 
     public void loadDoctorSchedule() {
@@ -94,7 +95,7 @@ public class WorkScheduleViewer {
                     }
                 });
 
-                jScrollPane7.setViewportView(DoctorScheduleTable);
+                doctorScrollPane.setViewportView(DoctorScheduleTable);
 
             } catch (SQLException e) {
                 System.err.println("Error processing result set!");
@@ -163,7 +164,7 @@ public class WorkScheduleViewer {
                     }
                 });
 
-                jScrollPane11.setViewportView(NurseScheduleTable);
+                nurseScrollPane.setViewportView(NurseScheduleTable);
     
             } catch (SQLException e) {
                 System.err.println("Error processing result set!");
@@ -196,16 +197,15 @@ public class WorkScheduleViewer {
             return c;
         }
     }
-
     
-    private void openStaffScheduling(String role) {
+    public static void openStaffScheduling(String role, JScrollPane doctorScrollPane) {
         try {
             Staff_Scheduling staffScheduling = new Staff_Scheduling();
-            staffScheduling.setRole(role);
             staffScheduling.setVisible(true);
+            roleType = role;
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error opening scheduling form: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(doctorScrollPane, "Error opening scheduling form: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
@@ -214,10 +214,10 @@ public class WorkScheduleViewer {
             // Initialize your GUI components here
             JTable doctorTable = new JTable();
             JTable nurseTable = new JTable();
-            JScrollPane scrollPane7 = new JScrollPane(doctorTable);
-            JScrollPane scrollPane11 = new JScrollPane(nurseTable);
+            JScrollPane doctorPane = new JScrollPane(doctorTable);
+            JScrollPane nursePane = new JScrollPane(nurseTable);
 
-            WorkScheduleViewer viewer = new WorkScheduleViewer(doctorTable, nurseTable, scrollPane7, scrollPane11);
+            WorkScheduleViewer viewer = new WorkScheduleViewer(doctorTable, nurseTable, doctorPane, nursePane);
             viewer.loadDoctorSchedule();
             viewer.loadNurseSchedule();
         });
