@@ -1,156 +1,562 @@
 USE hospital_management;
 
 -- 插入 Patients 表的三条数据
-INSERT INTO Patients (patient_id, patient_DOB, patient_gender, patient_phone, patient_name, patient_password, patient_email, patient_address, patient_address_line2, patient_address_line3, patient_emergency_name, patient_emergency_phone, patient_emergency_relationship, insuranceID, providerName, policyNumber, consult_date, consult_time, consult_record, patient_allergies)
-VALUES 
-('P001', '1985-05-15', 'Male', '1234567890', 'John Doe', 'password123', 'john.doe@example.com', '123 Main St', 'Apt 101', 'City', 'Jane Doe', '0987654321', 'Spouse', 'INS001', 'Provider A', 'POL001', '2024-01-01', '10:00:00', 'Consultation notes', 'None'),
-('P002', '1990-10-20', 'Female', '2345678901', 'Jane Smith', 'password456', 'jane.smith@example.com', '456 Elm St', 'Apt 202', 'Town', 'John Smith', '1098765432', 'Parent', 'INS002', 'Provider B', 'POL002', '2024-02-01', '11:00:00', 'Consultation notes', 'Peanuts'),
-('P003', '1978-03-10', 'Male', '3456789012', 'Robert Brown', 'password789', 'robert.brown@example.com', '789 Oak St', 'Apt 303', 'Village', 'Rebecca Brown', '2109876543', 'Sibling', 'INS003', 'Provider C', 'POL003', '2024-03-01', '12:00:00', 'Consultation notes', 'Latex');
+INSERT INTO Patients (patient_id, patient_DOB, patient_gender, patient_phone, patient_name, patient_password, patient_email, patient_address, patient_address_line2, patient_address_line3, patient_emergency_name, patient_emergency_phone, patient_emergency_relationship, insuranceID, providerName, policyNumber, consult_date, consult_time, consult_record, patient_allergies) VALUES
+('P001', '1990-01-01', 'Male', '1234567890', 'John Doe', 'password1', 'john.doe@example.com', '123 Main St', '', '', 'Jane Doe', '0987654321', 'Sister', 'INS001', 'Provider A', 'POL001', '2024-01-01', '10:00:00', 'Consultation note 1', 'None'),
+('P002', '1991-02-01', 'Female', '2234567890', 'Jane Smith', 'password2', 'jane.smith@example.com', '456 Main St', '', '', 'John Smith', '1987654321', 'Brother', 'INS002', 'Provider B', 'POL002', '2024-02-01', '11:00:00', 'Consultation note 2', 'Peanuts'),
+('P003', '1992-03-01', 'Male', '3234567890', 'Alice Johnson', 'password3', 'alice.johnson@example.com', '789 Main St', '', '', 'Bob Johnson', '2987654321', 'Husband', 'INS003', 'Provider C', 'POL003', '2024-03-01', '12:00:00', 'Consultation note 3', 'Shellfish'),
+('P004', '1993-04-01', 'Female', '4234567890', 'Robert Brown', 'password4', 'robert.brown@example.com', '123 Oak St', '', '', 'Mary Brown', '3987654321', 'Wife', 'INS004', 'Provider D', 'POL004', '2024-04-01', '13:00:00', 'Consultation note 4', 'None'),
+('P005', '1994-05-01', 'Male', '5234567890', 'Mary Davis', 'password5', 'mary.davis@example.com', '456 Oak St', '', '', 'Peter Davis', '4987654321', 'Son', 'INS005', 'Provider E', 'POL005', '2024-05-01', '14:00:00', 'Consultation note 5', 'Latex'),
+('P006', '1995-06-01', 'Female', '6234567890', 'William Wilson', 'password6', 'william.wilson@example.com', '789 Oak St', '', '', 'Laura Wilson', '5987654321', 'Mother', 'INS006', 'Provider F', 'POL006', '2024-06-01', '15:00:00', 'Consultation note 6', 'None'),
+('P007', '1996-07-01', 'Male', '7234567890', 'Laura Moore', 'password7', 'laura.moore@example.com', '123 Pine St', '', '', 'Jack Moore', '6987654321', 'Father', 'INS007', 'Provider G', 'POL007', '2024-07-01', '16:00:00', 'Consultation note 7', 'Pollen'),
+('P008', '1997-08-01', 'Female', '8234567890', 'James Taylor', 'password8', 'james.taylor@example.com', '456 Pine St', '', '', 'Karen Taylor', '7987654321', 'Daughter', 'INS008', 'Provider H', 'POL008', '2024-08-01', '17:00:00', 'Consultation note 8', 'None'),
+('P009', '1998-09-01', 'Male', '9234567890', 'Karen Anderson', 'password9', 'karen.anderson@example.com', '789 Pine St', '', '', 'Michael Anderson', '8987654321', 'Son', 'INS009', 'Provider I', 'POL009', '2024-09-01', '18:00:00', 'Consultation note 9', 'Penicillin'),
+('P010', '1999-10-01', 'Female', '1234567891', 'Michael Thomas', 'password10', 'michael.thomas@example.com', '123 Elm St', '', '', 'Sarah Thomas', '9987654321', 'Husband', 'INS010', 'Provider J', 'POL010', '2024-10-01', '19:00:00', 'Consultation note 10', 'None'),
+('P011', '2000-11-01', 'Male', '2234567891', 'Sarah Jackson', 'password11', 'sarah.jackson@example.com', '456 Elm St', '', '', 'David Jackson', '2987654321', 'Wife', 'INS011', 'Provider K', 'POL011', '2024-11-01', '20:00:00', 'Consultation note 11', 'None'),
+('P012', '2001-12-01', 'Female', '3234567891', 'David White', 'password12', 'david.white@example.com', '789 Elm St', '', '', 'Emily White', '3987654321', 'Husband', 'INS012', 'Provider L', 'POL012', '2024-12-01', '21:00:00', 'Consultation note 12', 'None'),
+('P013', '2002-01-01', 'Male', '4234567891', 'Emily Harris', 'password13', 'emily.harris@example.com', '123 Cedar St', '', '', 'Thomas Harris', '4987654321', 'Wife', 'INS013', 'Provider M', 'POL013', '2024-01-01', '22:00:00', 'Consultation note 13', 'None'),
+('P014', '2003-02-01', 'Female', '5234567891', 'Thomas Martin', 'password14', 'thomas.martin@example.com', '456 Cedar St', '', '', 'Natalie Martin', '5987654321', 'Husband', 'INS014', 'Provider N', 'POL014', '2024-02-01', '23:00:00', 'Consultation note 14', 'None'),
+('P015', '2004-03-01', 'Male', '6234567891', 'Natalie Thompson', 'password15', 'natalie.thompson@example.com', '789 Cedar St', '', '', 'Christopher Thompson', '6987654321', 'Wife', 'INS015', 'Provider O', 'POL015', '2024-03-01', '00:00:00', 'Consultation note 15', 'None'),
+('P016', '2005-04-01', 'Female', '7234567891', 'Christopher Garcia', 'password16', 'christopher.garcia@example.com', '123 Birch St', '', '', 'Isabella Garcia', '7987654321', 'Husband', 'INS016', 'Provider P', 'POL016', '2024-04-01', '01:00:00', 'Consultation note 16', 'None'),
+('P017', '2006-05-01', 'Male', '8234567891', 'Isabella Martinez', 'password17', 'isabella.martinez@example.com', '456 Birch St', '', '', 'Ethan Martinez', '8987654321', 'Wife', 'INS017', 'Provider Q', 'POL017', '2024-05-01', '02:00:00', 'Consultation note 17', 'None'),
+('P018', '2007-06-01', 'Female', '9234567891', 'Ethan Robinson', 'password18', 'ethan.robinson@example.com', '789 Birch St', '', '', 'Olivia Robinson', '9987654321', 'Husband', 'INS018', 'Provider R', 'POL018', '2024-06-01', '03:00:00', 'Consultation note 18', 'None'),
+('P019', '2008-07-01', 'Male', '1234567892', 'Olivia Clark', 'password19', 'olivia.clark@example.com', '123 Walnut St', '', '', 'Mason Clark', '1234567890', 'Wife', 'INS019', 'Provider S', 'POL019', '2024-07-01', '04:00:00', 'Consultation note 19', 'None'),
+('P020', '2009-08-01', 'Female', '2234567892', 'Mason Lewis', 'password20', 'mason.lewis@example.com', '456 Walnut St', '', '', 'Sophia Lewis', '2234567890', 'Husband', 'INS020', 'Provider T', 'POL020', '2024-08-01', '05:00:00', 'Consultation note 20', 'None');
 
 -- 插入 Doctors 表的三条数据
-INSERT INTO Doctors (doctor_id, doctor_name, doctor_password, doctor_phone, doctor_email, doctor_specialization, doctor_department, doctor_status, doctor_experience, doctor_qualifications, workDate, workTime, workDetails)
-VALUES 
-('D001', 'Dr. Alice Johnson', 'docpass123', '1231231234', 'alice.johnson@example.com', 'Cardiology', 'Cardiology Dept', 'Active', '10 years of experience', 'MD, PhD', '2024-01-01', '09:00:00', 'Details about work'),
-('D002', 'Dr. Bob Smith', 'docpass456', '2342342345', 'bob.smith@example.com', 'Neurology', 'Neurology Dept', 'Active', '8 years of experience', 'MD', '2024-02-01', '10:00:00', 'Details about work'),
-('D003', 'Dr. Carol Davis', 'docpass789', '3453453456', 'carol.davis@example.com', 'Orthopedics', 'Orthopedics Dept', 'Active', '12 years of experience', 'MD, MSc', '2024-03-01', '11:00:00', 'Details about work');
+INSERT INTO Doctors (doctor_id, doctor_name, doctor_password, doctor_phone, doctor_email, doctor_specialization, doctor_department, doctor_status, doctor_experience, doctor_qualifications, workDate, workTime, workDetails) VALUES
+('D001', 'Dr. John Smith', 'password1', '1234567890', 'john.smith@example.com', 'Cardiology', 'Cardiology', 'Active', '10 years', 'MD', '2024-01-01', '09:00:00', 'Details 1'),
+('D002', 'Dr. Emily Johnson', 'password2', '2234567890', 'emily.johnson@example.com', 'Neurology', 'Neurology', 'Active', '8 years', 'MD', '2024-01-02', '10:00:00', 'Details 2'),
+('D003', 'Dr. Michael Brown', 'password3', '3234567890', 'michael.brown@example.com', 'Pediatrics', 'Pediatrics', 'Active', '5 years', 'MD', '2024-01-03', '11:00:00', 'Details 3'),
+('D004', 'Dr. Sarah Davis', 'password4', '4234567890', 'sarah.davis@example.com', 'Orthopedics', 'Orthopedics', 'Active', '12 years', 'MD', '2024-01-04', '12:00:00', 'Details 4'),
+('D005', 'Dr. David Wilson', 'password5', '5234567890', 'david.wilson@example.com', 'Dermatology', 'Dermatology', 'Active', '7 years', 'MD', '2024-01-05', '13:00:00', 'Details 5'),
+('D006', 'Dr. Lisa Martinez', 'password6', '6234567890', 'lisa.martinez@example.com', 'Oncology', 'Oncology', 'Active', '9 years', 'MD', '2024-01-06', '14:00:00', 'Details 6'),
+('D007', 'Dr. James Anderson', 'password7', '7234567890', 'james.anderson@example.com', 'Gastroenterology', 'Gastroenterology', 'Active', '6 years', 'MD', '2024-01-07', '15:00:00', 'Details 7'),
+('D008', 'Dr. Karen Moore', 'password8', '8234567890', 'karen.moore@example.com', 'Endocrinology', 'Endocrinology', 'Active', '11 years', 'MD', '2024-01-08', '16:00:00', 'Details 8'),
+('D009', 'Dr. Robert Taylor', 'password9', '9234567890', 'robert.taylor@example.com', 'Rheumatology', 'Rheumatology', 'Active', '4 years', 'MD', '2024-01-09', '17:00:00', 'Details 9'),
+('D010', 'Dr. Mary Jackson', 'password10', '1234567891', 'mary.jackson@example.com', 'Pulmonology', 'Pulmonology', 'Active', '10 years', 'MD', '2024-01-10', '18:00:00', 'Details 10'),
+('D011', 'Dr. John White', 'password11', '2234567891', 'john.white@example.com', 'Nephrology', 'Nephrology', 'Active', '7 years', 'MD', '2024-01-11', '19:00:00', 'Details 11'),
+('D012', 'Dr. Emily Harris', 'password12', '3234567891', 'emily.harris@example.com', 'Urology', 'Urology', 'Active', '5 years', 'MD', '2024-01-12', '20:00:00', 'Details 12'),
+('D013', 'Dr. Michael Clark', 'password13', '4234567891', 'michael.clark@example.com', 'Ophthalmology', 'Ophthalmology', 'Active', '8 years', 'MD', '2024-01-13', '21:00:00', 'Details 13'),
+('D014', 'Dr. Sarah Lewis', 'password14', '5234567891', 'sarah.lewis@example.com', 'Psychiatry', 'Psychiatry', 'Active', '9 years', 'MD', '2024-01-14', '22:00:00', 'Details 14'),
+('D015', 'Dr. David Martin', 'password15', '6234567891', 'david.martin@example.com', 'Allergy & Immunology', 'Allergy & Immunology', 'Active', '6 years', 'MD', '2024-01-15', '23:00:00', 'Details 15'),
+('D016', 'Dr. Lisa Thompson', 'password16', '7234567891', 'lisa.thompson@example.com', 'Hematology', 'Hematology', 'Active', '7 years', 'MD', '2024-01-16', '00:00:00', 'Details 16'),
+('D017', 'Dr. James Garcia', 'password17', '8234567891', 'james.garcia@example.com', 'Infectious Disease', 'Infectious Disease', 'Active', '5 years', 'MD', '2024-01-17', '01:00:00', 'Details 17'),
+('D018', 'Dr. Karen Rodriguez', 'password18', '9234567891', 'karen.rodriguez@example.com', 'Geriatrics', 'Geriatrics', 'Active', '12 years', 'MD', '2024-01-18', '02:00:00', 'Details 18'),
+('D019', 'Dr. Robert Lee', 'password19', '1234567892', 'robert.lee@example.com', 'Otolaryngology', 'Otolaryngology', 'Active', '10 years', 'MD', '2024-01-19', '03:00:00', 'Details 19'),
+('D020', 'Dr. Mary Walker', 'password20', '2234567892', 'mary.walker@example.com', 'Anesthesiology', 'Anesthesiology', 'Active', '11 years', 'MD', '2024-01-20', '04:00:00', 'Details 20');
 
 -- 插入 Nurse 表的三条数据
-INSERT INTO Nurse (nurse_id, nurse_name, nurse_password, nurse_email, nurse_phone, nurse_position, nurse_department, nurse_assign_wards, nurse_supervising_doctor, nurse_qualifications, nurse_experience, nurse_status, schedule_date, schedule_time, schedule_details)
-VALUES 
-('N001', 'Emma Wilson', 'nursepass123', 'emma.wilson@example.com', '1231231235', 'Senior Nurse', 'Cardiology Dept', 'Ward 1', 'D001', 'RN, BSN', '5 years of experience', 'Active', '2024-01-02', '08:00:00', 'Details about schedule'),
-('N002', 'Liam Johnson', 'nursepass456', 'liam.johnson@example.com', '2342342346', 'Junior Nurse', 'Neurology Dept', 'Ward 2', 'D002', 'RN', '3 years of experience', 'Active', '2024-02-02', '09:00:00', 'Details about schedule'),
-('N003', 'Olivia Brown', 'nursepass789', 'olivia.brown@example.com', '3453453457', 'Head Nurse', 'Orthopedics Dept', 'Ward 3', 'D003', 'RN, MSN', '7 years of experience', 'Active', '2024-03-02', '10:00:00', 'Details about schedule');
+INSERT INTO Nurse (nurse_id, nurse_name, nurse_password, nurse_email, nurse_phone, nurse_position, nurse_department, nurse_assign_wards, nurse_supervising_doctor, nurse_qualifications, nurse_experience, nurse_status, schedule_date, schedule_time, schedule_details) VALUES
+('N001', 'Nurse Alice', 'password1', 'nurse.alice@example.com', '1234567890', 'Staff Nurse', 'Cardiology', 'Ward 1', 'D001', 'RN', '5 years', 'Active', '2024-01-01', '08:00:00', 'Morning Shift'),
+('N002', 'Nurse Bob', 'password2', 'nurse.bob@example.com', '2234567890', 'Staff Nurse', 'Neurology', 'Ward 2', 'D002', 'RN', '6 years', 'Active', '2024-01-02', '09:00:00', 'Morning Shift'),
+('N003', 'Nurse Carol', 'password3', 'nurse.carol@example.com', '3234567890', 'Staff Nurse', 'Pediatrics', 'Ward 3', 'D003', 'RN', '4 years', 'Active', '2024-01-03', '10:00:00', 'Morning Shift'),
+('N004', 'Nurse Dave', 'password4', 'nurse.dave@example.com', '4234567890', 'Staff Nurse', 'Orthopedics', 'Ward 4', 'D004', 'RN', '7 years', 'Active', '2024-01-04', '11:00:00', 'Morning Shift'),
+('N005', 'Nurse Eve', 'password5', 'nurse.eve@example.com', '5234567890', 'Staff Nurse', 'Dermatology', 'Ward 5', 'D005', 'RN', '3 years', 'Active', '2024-01-05', '12:00:00', 'Afternoon Shift'),
+('N006', 'Nurse Frank', 'password6', 'nurse.frank@example.com', '6234567890', 'Staff Nurse', 'Oncology', 'Ward 6', 'D006', 'RN', '8 years', 'Active', '2024-01-06', '13:00:00', 'Afternoon Shift'),
+('N007', 'Nurse Grace', 'password7', 'nurse.grace@example.com', '7234567890', 'Staff Nurse', 'Gastroenterology', 'Ward 7', 'D007', 'RN', '5 years', 'Active', '2024-01-07', '14:00:00', 'Afternoon Shift'),
+('N008', 'Nurse Henry', 'password8', 'nurse.henry@example.com', '8234567890', 'Staff Nurse', 'Endocrinology', 'Ward 8', 'D008', 'RN', '6 years', 'Active', '2024-01-08', '15:00:00', 'Afternoon Shift'),
+('N009', 'Nurse Ivy', 'password9', 'nurse.ivy@example.com', '9234567890', 'Staff Nurse', 'Rheumatology', 'Ward 9', 'D009', 'RN', '4 years', 'Active', '2024-01-09', '16:00:00', 'Night Shift'),
+('N010', 'Nurse Jack', 'password10', 'nurse.jack@example.com', '1234567891', 'Staff Nurse', 'Pulmonology', 'Ward 10', 'D010', 'RN', '7 years', 'Active', '2024-01-10', '17:00:00', 'Night Shift'),
+('N011', 'Nurse Karen', 'password11', 'nurse.karen@example.com', '2234567891', 'Staff Nurse', 'Nephrology', 'Ward 11', 'D011', 'RN', '6 years', 'Active', '2024-01-11', '18:00:00', 'Night Shift'),
+('N012', 'Nurse Liam', 'password12', 'nurse.liam@example.com', '3234567891', 'Staff Nurse', 'Urology', 'Ward 12', 'D012', 'RN', '5 years', 'Active', '2024-01-12', '19:00:00', 'Night Shift'),
+('N013', 'Nurse Maria', 'password13', 'nurse.maria@example.com', '4234567891', 'Staff Nurse', 'Ophthalmology', 'Ward 13', 'D013', 'RN', '8 years', 'Active', '2024-01-13', '20:00:00', 'Night Shift'),
+('N014', 'Nurse Noah', 'password14', 'nurse.noah@example.com', '5234567891', 'Staff Nurse', 'Psychiatry', 'Ward 14', 'D014', 'RN', '9 years', 'Active', '2024-01-14', '21:00:00', 'Night Shift'),
+('N015', 'Nurse Olivia', 'password15', 'nurse.olivia@example.com', '6234567891', 'Staff Nurse', 'Allergy & Immunology', 'Ward 15', 'D015', 'RN', '6 years', 'Active', '2024-01-15', '22:00:00', 'Night Shift'),
+('N016', 'Nurse Paul', 'password16', 'nurse.paul@example.com', '7234567891', 'Staff Nurse', 'Hematology', 'Ward 16', 'D016', 'RN', '7 years', 'Active', '2024-01-16', '23:00:00', 'Night Shift'),
+('N017', 'Nurse Quinn', 'password17', 'nurse.quinn@example.com', '8234567891', 'Staff Nurse', 'Infectious Disease', 'Ward 17', 'D017', 'RN', '5 years', 'Active', '2024-01-17', '00:00:00', 'Night Shift'),
+('N018', 'Nurse Rachel', 'password18', 'nurse.rachel@example.com', '9234567891', 'Staff Nurse', 'Geriatrics', 'Ward 18', 'D018', 'RN', '12 years', 'Active', '2024-01-18', '01:00:00', 'Night Shift'),
+('N019', 'Nurse Steve', 'password19', 'nurse.steve@example.com', '1234567892', 'Staff Nurse', 'Otolaryngology', 'Ward 19', 'D019', 'RN', '10 years', 'Active', '2024-01-19', '02:00:00', 'Night Shift'),
+('N020', 'Nurse Tina', 'password20', 'nurse.tina@example.com', '2234567892', 'Staff Nurse', 'Anesthesiology', 'Ward 20', 'D020', 'RN', '11 years', 'Active', '2024-01-20', '03:00:00', 'Night Shift');
 
 -- 插入 PatientCare 表的三条数据
-INSERT INTO PatientCare (Primary_doctor_id, assigned_nurse_id, dietary_restrictions, patient_progress_note, discharge_date)
-VALUES 
-('D001', 'N001', 'No dairy', 'Patient is recovering well', '2024-04-01'),
-('D002', 'N002', 'No gluten', 'Patient shows improvement', '2024-05-01'),
-('D003', 'N003', 'Low sugar', 'Patient is stable', '2024-06-01');
+INSERT INTO PatientCare (Primary_doctor_id, assigned_nurse_id, dietary_restrictions, patient_progress_note, discharge_date) VALUES
+('D001', 'N001', 'No restrictions', 'Patient is recovering well.', '2024-02-01'),
+('D002', 'N002', 'Low sodium', 'Patient shows improvement.', '2024-02-02'),
+('D003', 'N003', 'Diabetic diet', 'Patient is stable.', '2024-02-03'),
+('D004', 'N004', 'Gluten-free', 'Patient needs further observation.', '2024-02-04'),
+('D005', 'N005', 'No restrictions', 'Patient is ready for discharge.', '2024-02-05'),
+('D006', 'N006', 'Low sugar', 'Patient is under treatment.', '2024-02-06'),
+('D007', 'N007', 'No restrictions', 'Patient is responding to medication.', '2024-02-07'),
+('D008', 'N008', 'Vegetarian', 'Patient is recovering as expected.', '2024-02-08'),
+('D009', 'N009', 'Low fat', 'Patient requires more tests.', '2024-02-09'),
+('D010', 'N010', 'No restrictions', 'Patient’s condition is stable.', '2024-02-10'),
+('D011', 'N011', 'High protein', 'Patient is making good progress.', '2024-02-11'),
+('D012', 'N012', 'No restrictions', 'Patient is showing positive signs.', '2024-02-12'),
+('D013', 'N013', 'Low cholesterol', 'Patient is stable and improving.', '2024-02-13'),
+('D014', 'N014', 'No restrictions', 'Patient is on the path to recovery.', '2024-02-14'),
+('D015', 'N015', 'Low sodium', 'Patient is recovering well.', '2024-02-15'),
+('D016', 'N016', 'No restrictions', 'Patient’s condition is stable.', '2024-02-16'),
+('D017', 'N017', 'Gluten-free', 'Patient is under observation.', '2024-02-17'),
+('D018', 'N018', 'Diabetic diet', 'Patient is responding well to treatment.', '2024-02-18'),
+('D019', 'N019', 'Low fat', 'Patient is recovering as expected.', '2024-02-19'),
+('D020', 'N020', 'No restrictions', 'Patient is in good condition.', '2024-02-20');
+
 
 -- 插入 Admission 表的三条数据
-INSERT INTO Admission (Admission_ID, Admission_Date1, Admitting_Staff_ID, Admission_Status, Admission_Notes, Reason1, admission_Patient_ID, Insurance_Details, medical_equipment_need)
-VALUES 
-('A001', '2024-01-05', 'N001', 'Admitted', 'Patient admitted for surgery', 'Appendicitis', 'P001', 'Insurance details A', 'Need for ventilator'),
-('A002', '2024-02-10', 'N002', 'Admitted', 'Patient admitted for observation', 'Severe headache', 'P002', 'Insurance details B', 'Need for ECG'),
-('A003', '2024-03-15', 'N003', 'Admitted', 'Patient admitted for treatment', 'Fractured leg', 'P003', 'Insurance details C', 'Need for crutches');
+INSERT INTO Admission (Admission_ID, Admission_Date, Admitting_Staff_ID, Admission_Status, Admission_Notes, Reason, admission_Patient_ID, Insurance_Details, medical_equipment_need
+) VALUES
+    ('A001', '2024-01-02', 'N001', 'Admitted', 'Emergency surgery required', 'Chest pain', 'P001', 'Insurance A: Policy 12345', 'ECG, Chest X-ray'),
+    ('A002', '2024-01-03', 'N002', 'Under Observation', 'Routine check-up', 'Severe headache', 'P002', 'Insurance B: Policy 67890', 'MRI, Blood test'),
+    ('A003', '2024-01-04', 'N003', 'Discharged', 'Follow-up required', 'Abdominal pain', 'P003', 'Insurance C: Policy 13579', 'CT scan, Pain management'),
+    ('A004', '2024-01-05', 'N004', 'Admitted', 'Post-operative care', 'Hip replacement surgery', 'P004', 'Insurance D: Policy 24680', 'Physical therapy, X-ray'),
+    ('A005', '2024-01-06', 'N005', 'Admitted', 'Routine check-up', 'Diabetes management', 'P005', 'Insurance E: Policy 11223', 'Blood glucose monitor, Lab tests'),
+    ('A006', '2024-01-07', 'N006', 'Discharged', 'Home care instructions provided', 'Respiratory issues', 'P006', 'Insurance F: Policy 33445', 'Nebulizer, Breathing exercises'),
+    ('A007', '2024-01-08', 'N007', 'Admitted', 'Recovery ongoing', 'Post-surgery care', 'P007', 'Insurance G: Policy 55667', 'Follow-up visit, Pain relief'),
+    ('A008', '2024-01-09', 'N008', 'Under Observation', 'Routine evaluation', 'Routine check-up', 'P008', 'Insurance H: Policy 77889', 'Blood pressure monitor, Medication'),
+    ('A009', '2024-01-10', 'N009', 'Discharged', 'Patient stable', 'Joint pain', 'P009', 'Insurance I: Policy 99001', 'Joint injections, Physical therapy'),
+    ('A010', '2024-01-11', 'N010', 'Admitted', 'Emergency treatment', 'Kidney stones', 'P010', 'Insurance J: Policy 22334', 'Ultrasound, Pain management'),
+    ('A011', '2024-01-12', 'N011', 'Admitted', 'Routine follow-up', 'Eye examination', 'P011', 'Insurance K: Policy 44556', 'Eye exam, Glasses prescription'),
+    ('A012', '2024-01-13', 'N012', 'Under Observation', 'Pre-surgical assessment', 'Pre-surgery check', 'P012', 'Insurance L: Policy 66778', 'Pre-op tests, Lab work'),
+    ('A013', '2024-01-14', 'N013', 'Discharged', 'Follow-up appointment scheduled', 'Allergy treatment', 'P013', 'Insurance M: Policy 88990', 'Allergy testing, Medication'),
+    ('A014', '2024-01-15', 'N014', 'Admitted', 'Monitoring ongoing', 'Severe injury', 'P014', 'Insurance N: Policy 10112', 'Emergency surgery, Recovery care'),
+    ('A015', '2024-01-16', 'N015', 'Admitted', 'Routine check-up', 'Chronic pain', 'P015', 'Insurance O: Policy 21324', 'Pain management, Physical therapy'),
+    ('A016', '2024-01-17', 'N016', 'Discharged', 'Patient stable', 'Back pain', 'P016', 'Insurance P: Policy 43556', 'MRI, Physical therapy'),
+    ('A017', '2024-01-18', 'N017', 'Under Observation', 'Post-surgical care', 'Post-surgery recovery', 'P017', 'Insurance Q: Policy 65778', 'Follow-up care, Pain management'),
+    ('A018', '2024-01-19', 'N018', 'Admitted', 'Emergency care required', 'Respiratory distress', 'P018', 'Insurance R: Policy 87990', 'Oxygen therapy, Monitoring'),
+    ('A019', '2024-01-20', 'N019', 'Discharged', 'Routine follow-up required', 'Routine check-up', 'P019', 'Insurance S: Policy 99012', 'Routine tests, Health check-up'),
+    ('A020', '2024-01-21', 'N020', 'Admitted', 'Recovery ongoing', 'Post-operative care', 'P020', 'Insurance T: Policy 11234', 'Post-op care, Monitoring');
 
 -- 插入 Appointment 表的三条数据
-INSERT INTO Appointment (Appointment_ID, app_patient_id, app_doctor_id, app_date, app_time, appointment_notes, appointment_type, app_status, app_reason, app_location, Admitting_Staff_ID, booking_date, app_cancel)
-VALUES 
-('AP001', 'P001', 'D001', '2024-01-10', '09:30:00', 'Routine check-up', 'Check-up', 'Scheduled', 'Regular check-up', 'Room 101', 'N001', '2024-01-01', FALSE),
-('AP002', 'P002', 'D002', '2024-02-15', '10:30:00', 'Follow-up visit', 'Follow-up', 'Scheduled', 'Post-surgery follow-up', 'Room 202', 'N002', '2024-02-01', FALSE),
-('AP003', 'P003', 'D003', '2024-03-20', '11:30:00', 'Consultation', 'Consultation', 'Scheduled', 'Consultation for treatment', 'Room 303', 'N003', '2024-03-01', FALSE);
+INSERT INTO Appointment (Appointment_ID, app_patient_id, app_doctor_id, app_date, app_time, appointment_notes, appointment_type, app_status, app_reason, app_location, Admitting_Staff_ID, booking_date, app_cancel) VALUES
+('AP001', 'P001', 'D001', '2024-01-01', '08:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Heart condition', 'Room 101', 'N001', '2024-01-01', FALSE),
+('AP002', 'P002', 'D002', '2024-01-02', '09:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Neurological symptoms', 'Room 102', 'N002', '2024-01-02', FALSE),
+('AP003', 'P003', 'D003', '2024-01-03', '10:00:00', 'Routine', 'Check-up', 'Scheduled', 'Diabetes management', 'Room 103', 'N003', '2024-01-03', FALSE),
+('AP004', 'P004', 'D004', '2024-01-04', '11:00:00', 'Surgical consultation', 'Surgery', 'Scheduled', 'Bone fracture', 'Room 104', 'N004', '2024-01-04', FALSE),
+('AP005', 'P005', 'D005', '2024-01-05', '12:00:00', 'Routine', 'Check-up', 'Scheduled', 'Skin rash', 'Room 105', 'N005', '2024-01-05', FALSE),
+('AP006', 'P006', 'D006', '2024-01-06', '13:00:00', 'Chemotherapy', 'Treatment', 'Scheduled', 'Cancer treatment', 'Room 106', 'N006', '2024-01-06', FALSE),
+('AP007', 'P007', 'D007', '2024-01-07', '14:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Abdominal pain', 'Room 107', 'N007', '2024-01-07', FALSE),
+('AP008', 'P008', 'D008', '2024-01-08', '15:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Breathing issues', 'Room 108', 'N008', '2024-01-08', FALSE),
+('AP009', 'P009', 'D009', '2024-01-09', '16:00:00', 'Routine', 'Check-up', 'Scheduled', 'Rheumatological care', 'Room 109', 'N009', '2024-01-09', FALSE),
+('AP010', 'P010', 'D010', '2024-01-10', '17:00:00', 'Routine', 'Check-up', 'Scheduled', 'Pulmonary issues', 'Room 110', 'N010', '2024-01-10', FALSE),
+('AP011', 'P011', 'D011', '2024-01-11', '18:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Kidney function monitoring', 'Room 111', 'N011', '2024-01-11', FALSE),
+('AP012', 'P012', 'D012', '2024-01-12', '19:00:00', 'Routine', 'Check-up', 'Scheduled', 'Urological care', 'Room 112', 'N012', '2024-01-12', FALSE),
+('AP013', 'P013', 'D013', '2024-01-13', '20:00:00', 'Surgical consultation', 'Surgery', 'Scheduled', 'Eye surgery', 'Room 113', 'N013', '2024-01-13', FALSE),
+('AP014', 'P014', 'D014', '2024-01-14', '21:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Mental health evaluation', 'Room 114', 'N014', '2024-01-14', FALSE),
+('AP015', 'P015', 'D015', '2024-01-15', '22:00:00', 'Routine', 'Check-up', 'Scheduled', 'Allergy testing', 'Room 115', 'N015', '2024-01-15', FALSE),
+('AP016', 'P016', 'D016', '2024-01-16', '23:00:00', 'Routine', 'Check-up', 'Scheduled', 'Blood disorder treatment', 'Room 116', 'N016', '2024-01-16', FALSE),
+('AP017', 'P017', 'D017', '2024-01-17', '08:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Infectious disease treatment', 'Room 117', 'N017', '2024-01-17', FALSE),
+('AP018', 'P018', 'D018', '2024-01-18', '09:00:00', 'Routine', 'Check-up', 'Scheduled', 'Geriatric care', 'Room 118', 'N018', '2024-01-18', FALSE),
+('AP019', 'P019', 'D019', '2024-01-19', '10:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Ear, nose, throat care', 'Room 119', 'N019', '2024-01-19', FALSE),
+('AP020', 'P020', 'D020', '2024-01-20', '11:00:00', 'Surgical consultation', 'Surgery', 'Scheduled', 'Anesthesia required', 'Room 120', 'N020', '2024-01-20', FALSE);
 
 -- 插入 BedAllocation 表的三条数据
-INSERT INTO BedAllocation (bed_allocate_number, room_allocate_number, ward_allocate_number, bed_allocation_department, bed_allocation_status, bed_type, bed_patient_id, allocate_date, discharge_date, pre_occ, emergency_equipment)
-VALUES 
-('B001', 'R001', 'W001', 'Cardiology Dept', 'Occupied', 'Single', 'P001', '2024-01-05', '2024-01-15', 'Pre-occ A', 'Ventilator'),
-('B002', 'R002', 'W002', 'Neurology Dept', 'Occupied', 'Double', 'P002', '2024-02-10', '2024-02-20', 'Pre-occ B', 'ECG'),
-('B003', 'R003', 'W003', 'Orthopedics Dept', 'Occupied', 'Single', 'P003', '2024-03-15', '2024-03-25', 'Pre-occ C', 'Crutches');
+INSERT INTO BedAllocation (bed_allocate_number, room_allocate_number, ward_allocate_number, bed_allocation_department, bed_allocation_status, bed_type, bed_patient_id, allocate_date, discharge_date, pre_occ, emergency_equipment) VALUES
+('B001', 'R001', 'W001', 'Cardiology', 'Occupied', 'ICU', 'P001', '2024-01-01', '2024-01-10', 'Stable', 'ECG machine'),
+('B002', 'R002', 'W002', 'Neurology', 'Occupied', 'General', 'P002', '2024-01-02', '2024-01-12', 'Critical', 'MRI scan'),
+('B003', 'R003', 'W003', 'Diabetes', 'Discharged', 'ICU', 'P003', '2024-01-03', '2024-01-07', 'Stable', 'Blood glucose monitor'),
+('B004', 'R004', 'W004', 'Orthopedics', 'Occupied', 'Surgical', 'P004', '2024-01-04', '2024-01-15', 'Post-surgery', 'X-ray machine'),
+('B005', 'R005', 'W005', 'Dermatology', 'Occupied', 'General', 'P005', '2024-01-05', '2024-01-14', 'Routine', 'Dermatology kit'),
+('B006', 'R006', 'W006', 'Oncology', 'Discharged', 'ICU', 'P006', '2024-01-06', '2024-01-20', 'Ongoing', 'IV drip'),
+('B007', 'R007', 'W007', 'Gastroenterology', 'Occupied', 'General', 'P007', '2024-01-07', '2024-01-16', 'Emergency', 'Ultrasound machine'),
+('B008', 'R008', 'W008', 'Pulmonology', 'Discharged', 'ICU', 'P008', '2024-01-08', '2024-01-17', 'Stable', 'Ventilator'),
+('B009', 'R009', 'W009', 'Rheumatology', 'Occupied', 'General', 'P009', '2024-01-09', '2024-01-18', 'Recovery', 'Joint therapy equipment'),
+('B010', 'R010', 'W010', 'Pulmonology', 'Occupied', 'Surgical', 'P010', '2024-01-10', '2024-01-19', 'Routine', 'Oxygen concentrator'),
+('B011', 'R011', 'W011', 'Nephrology', 'Occupied', 'ICU', 'P011', '2024-01-11', '2024-01-20', 'Monitoring', 'Dialysis machine'),
+('B012', 'R012', 'W012', 'Urology', 'Discharged', 'General', 'P012', '2024-01-12', '2024-01-15', 'Stable', 'Urology kit'),
+('B013', 'R013', 'W013', 'Ophthalmology', 'Occupied', 'Surgical', 'P013', '2024-01-13', '2024-01-22', 'Post-op', 'Ophthalmology equipment'),
+('B014', 'R014', 'W014', 'Psychiatry', 'Discharged', 'General', 'P014', '2024-01-14', '2024-01-18', 'Stable', 'Psychiatry kit'),
+('B015', 'R015', 'W015', 'Allergy', 'Occupied', 'General', 'P015', '2024-01-15', '2024-01-25', 'Routine', 'Allergy testing kit'),
+('B016', 'R016', 'W016', 'Hematology', 'Occupied', 'ICU', 'P016', '2024-01-16', '2024-01-26', 'Ongoing', 'Hematology kit'),
+('B017', 'R017', 'W017', 'Infectious Diseases', 'Discharged', 'ICU', 'P017', '2024-01-17', '2024-01-27', 'Stable', 'Infection control kit'),
+('B018', 'R018', 'W018', 'Geriatrics', 'Occupied', 'General', 'P018', '2024-01-18', '2024-01-28', 'Routine', 'Geriatrics kit'),
+('B019', 'R019', 'W019', 'ENT', 'Discharged', 'Surgical', 'P019', '2024-01-19', '2024-01-30', 'Stable', 'ENT equipment'),
+('B020', 'R020', 'W020', 'Anesthesia', 'Occupied', 'Surgical', 'P020', '2024-01-20', '2024-01-31', 'Routine', 'Anesthesia machine');
 
 -- 插入 Admin 表的三条数据
-INSERT INTO Admin (admin_id, admin_name, admin_password, admin_phone, admin_email)
-VALUES 
-('AD001', 'Admin John', 'adminpass123', '1231231238', 'admin.john@example.com'),
-('AD002', 'Admin Alice', 'adminpass456', '2342342349', 'admin.alice@example.com'),
-('AD003', 'Admin Bob', 'adminpass789', '3453453450', 'admin.bob@example.com');
+INSERT INTO Admin (admin_id, admin_name, admin_password, admin_phone, admin_email) VALUES
+('ADM001', 'John Doe', 'password123', '555-0101', 'john.doe@example.com'),
+('ADM002', 'Jane Smith', 'password123', '555-0102', 'jane.smith@example.com'),
+('ADM003', 'Alice Johnson', 'password123', '555-0103', 'alice.johnson@example.com'),
+('ADM004', 'Bob Brown', 'password123', '555-0104', 'bob.brown@example.com'),
+('ADM005', 'Charlie Davis', 'password123', '555-0105', 'charlie.davis@example.com'),
+('ADM006', 'Deborah Evans', 'password123', '555-0106', 'deborah.evans@example.com'),
+('ADM007', 'Emily Clark', 'password123', '555-0107', 'emily.clark@example.com'),
+('ADM008', 'Frank Miller', 'password123', '555-0108', 'frank.miller@example.com'),
+('ADM009', 'Grace Walker', 'password123', '555-0109', 'grace.walker@example.com'),
+('ADM010', 'Hannah Lee', 'password123', '555-0110', 'hannah.lee@example.com'),
+('ADM011', 'Ivy Wilson', 'password123', '555-0111', 'ivy.wilson@example.com'),
+('ADM012', 'Jack Allen', 'password123', '555-0112', 'jack.allen@example.com'),
+('ADM013', 'Katherine Young', 'password123', '555-0113', 'katherine.young@example.com'),
+('ADM014', 'Liam Scott', 'password123', '555-0114', 'liam.scott@example.com'),
+('ADM015', 'Mia Adams', 'password123', '555-0115', 'mia.adams@example.com'),
+('ADM016', 'Nathan Green', 'password123', '555-0116', 'nathan.green@example.com'),
+('ADM017', 'Olivia White', 'password123', '555-0117', 'olivia.white@example.com'),
+('ADM018', 'Paul Harris', 'password123', '555-0118', 'paul.harris@example.com'),
+('ADM019', 'Quinn Martin', 'password123', '555-0119', 'quinn.martin@example.com'),
+('ADM020', 'Rachel Thompson', 'password123', '555-0120', 'rachel.thompson@example.com');
 
 -- 插入 Prescription 表的三条数据
-INSERT INTO Prescription (PrescriptionID, PatientID, DoctorID, Medication_comboxBox, dosage_Spinner, PrescriptionDate, instructions)
-VALUES 
-('PR001', 'P001', 'D001', 'Med A', 'Dosage A', '2024-01-10', 'Take once daily'),
-('PR002', 'P002', 'D002', 'Med B', 'Dosage B', '2024-02-15', 'Take twice daily'),
-('PR003', 'P003', 'D003', 'Med C', 'Dosage C', '2024-03-20', 'Take thrice daily');
+INSERT INTO Prescription (PrescriptionID, PatientID, DoctorID, Medication, dosage_Spinner, PrescriptionDate, instructions) VALUES
+('PR001', 'P001', 'D001', 'Aspirin', '100mg', '2024-01-01', 'Take one tablet daily'),
+('PR002', 'P002', 'D002', 'Lisinopril', '10mg', '2024-01-02', 'Take one tablet daily'),
+('PR003', 'P003', 'D003', 'Metformin', '500mg', '2024-01-03', 'Take one tablet twice daily'),
+('PR004', 'P004', 'D004', 'Ibuprofen', '200mg', '2024-01-04', 'Take as needed for pain'),
+('PR005', 'P005', 'D005', 'Cetirizine', '10mg', '2024-01-05', 'Take one tablet daily'),
+('PR006', 'P006', 'D006', 'Doxorubicin', '50mg', '2024-01-06', 'Take one tablet daily'),
+('PR007', 'P007', 'D007', 'Omeprazole', '20mg', '2024-01-07', 'Take one tablet before meals'),
+('PR008', 'P008', 'D008', 'Albuterol', '90mcg', '2024-01-08', 'Use as needed for asthma'),
+('PR009', 'P009', 'D009', 'Hydroxychloroquine', '200mg', '2024-01-09', 'Take one tablet daily'),
+('PR010', 'P010', 'D010', 'Prednisone', '10mg', '2024-01-10', 'Take one tablet daily for 7 days'),
+('PR011', 'P011', 'D011', 'Erythropoietin', '4000 IU', '2024-01-11', 'Inject weekly'),
+('PR012', 'P012', 'D012', 'Finasteride', '5mg', '2024-01-12', 'Take one tablet daily'),
+('PR013', 'P013', 'D013', 'Tobramycin', '300mg', '2024-01-13', 'Use as directed'),
+('PR014', 'P014', 'D014', 'Sertraline', '50mg', '2024-01-14', 'Take one tablet daily'),
+('PR015', 'P015', 'D015', 'Montelukast', '10mg', '2024-01-15', 'Take one tablet daily'),
+('PR016', 'P016', 'D016', 'Vitamin K', '10mg', '2024-01-16', 'Take one tablet daily'),
+('PR017', 'P017', 'D017', 'Rifampin', '300mg', '2024-01-17', 'Take one tablet daily'),
+('PR018', 'P018', 'D018', 'Geriatric Vitamin', '100mg', '2024-01-18', 'Take one tablet daily'),
+('PR019', 'P019', 'D019', 'Nasal Spray', '10ml', '2024-01-19', 'Use as needed'),
+('PR020', 'P020', 'D020', 'Anesthetic', '50mg', '2024-01-20', 'Administer before surgery');
 
 -- 插入 MedicalRecords 表的三条数据
-INSERT INTO MedicalRecords (medicalRecordID, PatientID, DoctorID, DateOfVisit, notes, treatmentPlans)
-VALUES 
-('MR001', 'P001', 'D001', '2024-01-10', 'Notes for patient P001', 'Treatment plan A'),
-('MR002', 'P002', 'D002', '2024-02-15', 'Notes for patient P002', 'Treatment plan B'),
-('MR003', 'P003', 'D003', '2024-03-20', 'Notes for patient P003', 'Treatment plan C');
+INSERT INTO MedicalRecords (medicalRecordID, PatientID, DoctorID, DateOfVisit, notes, treatmentPlans) VALUES
+('MR001', 'P001', 'D001', '2024-01-01', 'Patient shows improvement', 'Continue current treatment'),
+('MR002', 'P002', 'D002', '2024-01-02', 'Routine check-up', 'Monitor blood pressure'),
+('MR003', 'P003', 'D003', '2024-01-03', 'Initial visit', 'Start diabetes management'),
+('MR004', 'P004', 'D004', '2024-01-04', 'Follow-up after surgery', 'Rehabilitation exercises'),
+('MR005', 'P005', 'D005', '2024-01-05', 'Dermatological consultation', 'Topical treatment'),
+('MR006', 'P006', 'D006', '2024-01-06', 'Cancer treatment review', 'Adjust chemotherapy'),
+('MR007', 'P007', 'D007', '2024-01-07', 'Gastrointestinal evaluation', 'Endoscopy scheduled'),
+('MR008', 'P008', 'D008', '2024-01-08', 'Pulmonary assessment', 'Review inhaler use'),
+('MR009', 'P009', 'D009', '2024-01-09', 'Rheumatology follow-up', 'Joint therapy continuation'),
+('MR010', 'P010', 'D010', '2024-01-10', 'Pre-surgery consultation', 'Anesthesia review'),
+('MR011', 'P011', 'D011', '2024-01-11', 'Kidney function check', 'Dialysis plan reviewed'),
+('MR012', 'P012', 'D012', '2024-01-12', 'Urological assessment', 'Follow-up on medication'),
+('MR013', 'P013', 'D013', '2024-01-13', 'Eye examination', 'Post-operative check-up'),
+('MR014', 'P014', 'D014', '2024-01-14', 'Psychiatric evaluation', 'Update therapy plan'),
+('MR015', 'P015', 'D015', '2024-01-15', 'Allergy review', 'Allergen avoidance plan'),
+('MR016', 'P016', 'D016', '2024-01-16', 'Hematological assessment', 'Review blood tests'),
+('MR017', 'P017', 'D017', '2024-01-17', 'Infectious disease follow-up', 'Antibiotic adjustment'),
+('MR018', 'P018', 'D018', '2024-01-18', 'Geriatric evaluation', 'Adjust medication'),
+('MR019', 'P019', 'D019', '2024-01-19', 'ENT check-up', 'Review hearing test results'),
+('MR020', 'P020', 'D020', '2024-01-20', 'Anesthesia follow-up', 'Assess recovery from surgery');
 
 -- 插入 Surgery 表的三条数据
-INSERT INTO Surgery (surgeryID, PatientID, DoctorID, surgeryType, DateOfSurgery, Outcomes)
-VALUES 
-('S001', 'P001', 'D001', 'Appendectomy', '2024-01-12', 'Successful'),
-('S002', 'P002', 'D002', 'Craniotomy', '2024-02-17', 'Successful'),
-('S003', 'P003', 'D003', 'Knee Replacement', '2024-03-22', 'Successful');
+INSERT INTO Surgery (surgeryID, PatientID, DoctorID, surgeryType, DateOfSurgery, Outcomes) VALUES
+('S001', 'P001', 'D001', 'Heart Bypass', '2024-01-02', 'Successful, stable condition'),
+('S002', 'P002', 'D002', 'Appendectomy', '2024-01-03', 'Successful, patient recovering'),
+('S003', 'P003', 'D003', 'Appendectomy', '2024-01-04', 'Successful, no complications'),
+('S004', 'P004', 'D004', 'Hip Replacement', '2024-01-05', 'Successful, recovery underway'),
+('S005', 'P005', 'D005', 'Skin Grafting', '2024-01-06', 'Successful, healing process observed'),
+('S006', 'P006', 'D006', 'Lung Resection', '2024-01-07', 'Successful, patient stable'),
+('S007', 'P007', 'D007', 'Endoscopy', '2024-01-08', 'Successful, no abnormalities found'),
+('S008', 'P008', 'D008', 'Bronchoscopy', '2024-01-09', 'Successful, normal findings'),
+('S009', 'P009', 'D009', 'Endoscopy', '2024-01-10', 'Successful, follow-up needed'),
+('S010', 'P010', 'D010', 'Gallbladder Removal', '2024-01-11', 'Successful, patient recovering'),
+('S011', 'P011', 'D011', 'Endoscopy', '2024-01-12', 'Successful, monitoring ongoing'),
+('S012', 'P012', 'D012', 'Prostate Biopsy', '2024-01-13', 'Successful, awaiting results'),
+('S013', 'P013', 'D013', 'Cataract Surgery', '2024-01-14', 'Successful, vision improving'),
+('S014', 'P014', 'D014', 'Psychiatric Surgery', '2024-01-15', 'Successful, patient stable'),
+('S015', 'P015', 'D015', 'Allergy Test Surgery', '2024-01-16', 'Successful, no severe reactions'),
+('S016', 'P016', 'D016', 'Bone Marrow Biopsy', '2024-01-17', 'Successful, awaiting results'),
+('S017', 'P017', 'D017', 'Infectious Disease Surgery', '2024-01-18', 'Successful, patient improving'),
+('S018', 'P018', 'D018', 'Geriatric Surgery', '2024-01-19', 'Successful, patient recovering'),
+('S019', 'P019', 'D019', 'ENT Surgery', '2024-01-20', 'Successful, no complications'),
+('S020', 'P020', 'D020', 'Anesthetic Procedure', '2024-01-21', 'Successful, monitoring recovery');
+
+
 
 -- 插入 Consultations 表的三条数据
-INSERT INTO Consultations (ConsultationID, PatientID, DoctorID, DateOfConsultation, notes)
-VALUES 
-('C001', 'P001', 'D001', '2024-01-10', 'Consultation notes for P001'),
-('C002', 'P002', 'D002', '2024-02-15', 'Consultation notes for P002'),
-('C003', 'P003', 'D003', '2024-03-20', 'Consultation notes for P003');
+INSERT INTO Consultations (ConsultationID, PatientID, DoctorID, DateOfConsultation, notes) VALUES
+('C001', 'P001', 'D001', '2024-01-01', 'Discussed treatment options'),
+('C002', 'P002', 'D002', '2024-01-02', 'Reviewed recent test results'),
+('C003', 'P003', 'D003', '2024-01-03', 'Initial consultation for diabetes management'),
+('C004', 'P004', 'D004', '2024-01-04', 'Post-operative care discussion'),
+('C005', 'P005', 'D005', '2024-01-05', 'Follow-up on skin condition'),
+('C006', 'P006', 'D006', '2024-01-06', 'Oncology treatment review'),
+('C007', 'P007', 'D007', '2024-01-07', 'Discussed gastrointestinal issues'),
+('C008', 'P008', 'D008', '2024-01-08', 'Pulmonary function assessment'),
+('C009', 'P009', 'D009', '2024-01-09', 'Reviewed joint therapy progress'),
+('C010', 'P010', 'D010', '2024-01-10', 'Surgical preparation meeting'),
+('C011', 'P011', 'D011', '2024-01-11', 'Dialysis review and planning'),
+('C012', 'P012', 'D012', '2024-01-12', 'Urological assessment discussion'),
+('C013', 'P013', 'D013', '2024-01-13', 'Post-surgery follow-up for eye condition'),
+('C014', 'P014', 'D014', '2024-01-14', 'Psychiatric evaluation follow-up'),
+('C015', 'P015', 'D015', '2024-01-15', 'Allergy test review'),
+('C016', 'P016', 'D016', '2024-01-16', 'Hematology consultation'),
+('C017', 'P017', 'D017', '2024-01-17', 'Infectious disease treatment update'),
+('C018', 'P018', 'D018', '2024-01-18', 'Geriatric care review'),
+('C019', 'P019', 'D019', '2024-01-19', 'ENT follow-up consultation'),
+('C020', 'P020', 'D020', '2024-01-20', 'Anesthesia review');
+
 
 -- 插入 Diagnosis 表的三条数据
-INSERT INTO Diagnosis (DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans)
-VALUES 
-('DI001', 'P001', 'D001', 'Appendicitis', '2024-01-10', 'Surgery required'),
-('DI002', 'P002', 'D002', 'Migraine', '2024-02-15', 'Medication prescribed'),
-('DI003', 'P003', 'D003', 'Arthritis', '2024-03-20', 'Physical therapy recommended');
+INSERT INTO Diagnosis (DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans) VALUES
+('D001', 'P001', 'D001', 'Coronary artery disease', '2024-01-01', 'Medications and lifestyle changes'),
+('D002', 'P002', 'D002', 'Hypertension', '2024-01-02', 'Medication and dietary adjustments'),
+('D003', 'P003', 'D003', 'Type 2 diabetes', '2024-01-03', 'Insulin therapy and diet control'),
+('D004', 'P004', 'D004', 'Hip osteoarthritis', '2024-01-04', 'Surgical intervention and physical therapy'),
+('D005', 'P005', 'D005', 'Basal cell carcinoma', '2024-01-05', 'Topical treatments and surgery'),
+('D006', 'P006', 'D006', 'Lung cancer', '2024-01-06', 'Chemotherapy and radiation'),
+('D007', 'P007', 'D007', 'Peptic ulcer disease', '2024-01-07', 'Medication and dietary changes'),
+('D008', 'P008', 'D008', 'Asthma', '2024-01-08', 'Inhalers and avoiding triggers'),
+('D009', 'P009', 'D009', 'Rheumatoid arthritis', '2024-01-09', 'Medication and physical therapy'),
+('D010', 'P010', 'D010', 'Gallstones', '2024-01-10', 'Surgical removal'),
+('D011', 'P011', 'D011', 'Chronic kidney disease', '2024-01-11', 'Dialysis and medications'),
+('D012', 'P012', 'D012', 'Benign prostatic hyperplasia', '2024-01-12', 'Medications and surgical options'),
+('D013', 'P013', 'D013', 'Post-surgical cataract', '2024-01-13', 'Post-operative care and monitoring'),
+('D014', 'P014', 'D014', 'Major depressive disorder', '2024-01-14', 'Medication and therapy'),
+('D015', 'P015', 'D015', 'Seasonal allergies', '2024-01-15', 'Allergen avoidance and medication'),
+('D016', 'P016', 'D016', 'Anemia', '2024-01-16', 'Iron supplements and dietary changes'),
+('D017', 'P017', 'D017', 'Tuberculosis', '2024-01-17', 'Antibiotic treatment'),
+('D018', 'P018', 'D018', 'Age-related macular degeneration', '2024-01-18', 'Medication and vision aids'),
+('D019', 'P019', 'D019', 'Chronic sinusitis', '2024-01-19', 'Medication and possibly surgery'),
+('D020', 'P020', 'D020', 'Local anesthesia reaction', '2024-01-20', 'Monitor and manage side effects');
+
 
 -- 插入 PatientHistory 表的三条数据
-INSERT INTO PatientHistory (HistoryID, PatientID, EventType, EventDate, Details)
-VALUES 
-('H001', 'P001', 'Surgery', '2024-01-12', 'Appendectomy performed'),
-('H002', 'P002', 'Treatment', '2024-02-17', 'Migraine treatment initiated'),
-('H003', 'P003', 'Consultation', '2024-03-22', 'Consultation for knee pain');
+INSERT INTO PatientHistory (HistoryID, PatientID, EventType, EventDate, Details) VALUES
+('H001', 'P001', 'Admission', '2024-01-01', 'Admitted for coronary artery disease treatment'),
+('H002', 'P002', 'Follow-up', '2024-01-02', 'Follow-up for hypertension management'),
+('H003', 'P003', 'Diagnosis', '2024-01-03', 'Diagnosed with type 2 diabetes'),
+('H004', 'P004', 'Surgery', '2024-01-04', 'Underwent hip replacement surgery'),
+('H005', 'P005', 'Consultation', '2024-01-05', 'Consultation for skin cancer'),
+('H006', 'P006', 'Treatment', '2024-01-06', 'Started chemotherapy for lung cancer'),
+('H007', 'P007', 'Medication', '2024-01-07', 'Started treatment for peptic ulcer disease'),
+('H008', 'P008', 'Evaluation', '2024-01-08', 'Pulmonary function evaluation for asthma'),
+('H009', 'P009', 'Therapy', '2024-01-09', 'Ongoing therapy for rheumatoid arthritis'),
+('H010', 'P010', 'Surgery', '2024-01-10', 'Gallbladder removal surgery'),
+('H011', 'P011', 'Dialysis', '2024-01-11', 'Started dialysis for chronic kidney disease'),
+('H012', 'P012', 'Medication', '2024-01-12', 'Started medication for benign prostatic hyperplasia'),
+('H013', 'P013', 'Follow-up', '2024-01-13', 'Follow-up after cataract surgery'),
+('H014', 'P014', 'Treatment', '2024-01-14', 'Started treatment for major depressive disorder'),
+('H015', 'P015', 'Consultation', '2024-01-15', 'Consultation for seasonal allergies'),
+('H016', 'P016', 'Medication', '2024-01-16', 'Started iron supplements for anemia'),
+('H017', 'P017', 'Treatment', '2024-01-17', 'Started antibiotic treatment for tuberculosis'),
+('H018', 'P018', 'Follow-up', '2024-01-18', 'Follow-up for age-related macular degeneration'),
+('H019', 'P019', 'Consultation', '2024-01-19', 'Consultation for chronic sinusitis'),
+('H020', 'P020', 'Recovery', '2024-01-20', 'Recovered from local anesthesia reaction');
+
 
 -- 插入 Invoice 表的三条数据
-INSERT INTO Invoice (InvoiceID, InvoiceDate, InvoiceDue, PatientID, TotalPayment, AmountPaid, BalanceDue)
-VALUES 
-('INV001', '2024-01-15', DATE_ADD('2024-01-15', INTERVAL 3 MONTH), 'P001', 1500.00, 500.00, 1000.00),
-('INV002', '2024-02-20', DATE_ADD('2024-02-20', INTERVAL 3 MONTH), 'P002', 2000.00, 1000.00, 1000.00),
-('INV003', '2024-03-25', DATE_ADD('2024-03-25', INTERVAL 3 MONTH), 'P003', 2500.00, 1500.00, 1000.00);
+INSERT INTO Invoice (InvoiceID, InvoiceDate, InvoiceDue, PatientID, TotalPayment, AmountPaid, BalanceDue) VALUES
+('INV001', '2023-01-05', DATE_ADD('2023-01-05', INTERVAL 3 MONTH), 'P001', 500.00, 250.00, 250.00),
+('INV002', '2023-01-20', DATE_ADD('2023-01-20', INTERVAL 3 MONTH), 'P002', 750.00, 300.00, 450.00),
+('INV003', '2023-02-10', DATE_ADD('2023-02-10', INTERVAL 3 MONTH), 'P003', 600.00, 400.00, 200.00),
+('INV004', '2023-02-25', DATE_ADD('2023-02-25', INTERVAL 3 MONTH), 'P004', 850.00, 850.00, 0.00),
+('INV005', '2023-03-15', DATE_ADD('2023-03-15', INTERVAL 3 MONTH), 'P005', 300.00, 100.00, 200.00),
+('INV006', '2023-04-02', DATE_ADD('2023-04-02', INTERVAL 3 MONTH), 'P006', 700.00, 500.00, 200.00),
+('INV007', '2023-04-18', DATE_ADD('2023-04-18', INTERVAL 3 MONTH), 'P007', 400.00, 400.00, 0.00),
+('INV008', '2023-05-09', DATE_ADD('2023-05-09', INTERVAL 3 MONTH), 'P008', 900.00, 450.00, 450.00),
+('INV009', '2023-05-25', DATE_ADD('2023-05-25', INTERVAL 3 MONTH), 'P009', 550.00, 550.00, 0.00),
+('INV010', '2023-06-15', DATE_ADD('2023-06-15', INTERVAL 3 MONTH), 'P010', 250.00, 100.00, 150.00),
+('INV011', '2023-07-01', DATE_ADD('2023-07-01', INTERVAL 3 MONTH), 'P011', 800.00, 600.00, 200.00),
+('INV012', '2023-07-20', DATE_ADD('2023-07-20', INTERVAL 3 MONTH), 'P012', 650.00, 300.00, 350.00),
+('INV013', '2023-08-10', DATE_ADD('2023-08-10', INTERVAL 3 MONTH), 'P013', 500.00, 500.00, 0.00),
+('INV014', '2023-09-05', DATE_ADD('2023-09-05', INTERVAL 3 MONTH), 'P014', 350.00, 150.00, 200.00),
+('INV015', '2023-09-20', DATE_ADD('2023-09-20', INTERVAL 3 MONTH), 'P015', 750.00, 450.00, 300.00),
+('INV016', '2023-10-10', DATE_ADD('2023-10-10', INTERVAL 3 MONTH), 'P016', 600.00, 600.00, 0.00),
+('INV017', '2023-11-05', DATE_ADD('2023-11-05', INTERVAL 3 MONTH), 'P017', 700.00, 350.00, 350.00),
+('INV018', '2023-12-01', DATE_ADD('2023-12-01', INTERVAL 3 MONTH), 'P018', 850.00, 600.00, 250.00),
+('INV019', '2024-01-10', DATE_ADD('2024-01-10', INTERVAL 3 MONTH), 'P019', 450.00, 200.00, 250.00),
+('INV020', '2024-02-05', DATE_ADD('2024-02-05', INTERVAL 3 MONTH), 'P020', 500.00, 500.00, 0.00);
+
+
 
 -- 插入 Billing 表的三条数据
-INSERT INTO Billing (InvoiceID, ServicesDescription, CostPerService, Quantity, TotalPayment)
-VALUES 
-('INV001', 'Appendectomy', 500.00, 3, 1500.00),
-('INV002', 'Migraine treatment', 1000.00, 2, 2000.00),
-('INV003', 'Knee Replacement', 1250.00, 2, 2500.00);
-USE hospital_management;
+INSERT INTO Billing (InvoiceID, ServicesDescription, CostPerService, Quantity, TotalPayment) VALUES
+('INV001', 'Consultation', 200.00, 2, 400.00),
+('INV001', 'Surgery', 600.00, 1, 600.00),
+('INV001', 'Follow-up', 100.00, 2, 200.00),
+('INV002', 'Consultation', 150.00, 2, 300.00),
+('INV002', 'Test', 250.00, 1, 250.00),
+('INV002', 'Medication', 150.00, 2, 300.00),
+('INV003', 'Initial Consultation', 200.00, 1, 200.00),
+('INV003', 'Diabetes Management', 400.00, 1, 400.00),
+('INV003', 'Follow-up', 200.00, 2, 400.00),
+('INV004', 'Surgery', 800.00, 1, 800.00),
+('INV004', 'Physical Therapy', 300.00, 3, 900.00),
+('INV004', 'Medication', 100.00, 5, 500.00),
+('INV005', 'Consultation', 180.00, 1, 180.00),
+('INV005', 'Dermatological Surgery', 600.00, 1, 600.00),
+('INV005', 'Follow-up', 120.00, 1, 120.00),
+('INV006', 'Oncology Review', 300.00, 1, 300.00),
+('INV006', 'Chemotherapy', 700.00, 1, 700.00),
+('INV006', 'Medication', 100.00, 3, 300.00),
+('INV007', 'Gastrointestinal Consultation', 200.00, 1, 200.00),
+('INV007', 'Endoscopy', 500.00, 1, 500.00),
+('INV007', 'Follow-up', 150.00, 2, 300.00),
+('INV008', 'Pulmonary Assessment', 220.00, 1, 220.00),
+('INV008', 'Medication', 150.00, 3, 450.00),
+('INV008', 'Follow-up', 180.00, 2, 360.00),
+('INV009', 'Joint Therapy', 300.00, 2, 600.00),
+('INV009', 'Consultation', 180.00, 1, 180.00),
+('INV009', 'Medication', 100.00, 2, 200.00),
+('INV010', 'Gallbladder Removal', 800.00, 1, 800.00),
+('INV010', 'Consultation', 200.00, 1, 200.00),
+('INV010', 'Follow-up', 150.00, 2, 300.00),
+('INV011', 'Dialysis', 500.00, 2, 1000.00),
+('INV011', 'Consultation', 200.00, 1, 200.00),
+('INV011', 'Medication', 100.00, 3, 300.00),
+('INV012', 'Prostate Biopsy', 400.00, 1, 400.00),
+('INV012', 'Medication', 150.00, 2, 300.00),
+('INV012', 'Consultation', 180.00, 1, 180.00),
+('INV013', 'Eye Examination', 250.00, 1, 250.00),
+('INV013', 'Post-surgical Care', 300.00, 1, 300.00),
+('INV013', 'Medication', 150.00, 2, 300.00),
+('INV014', 'Psychiatric Consultation', 250.00, 1, 250.00),
+('INV014', 'Therapy', 350.00, 2, 700.00),
+('INV014', 'Medication', 100.00, 4, 400.00),
+('INV015', 'Allergy Test', 180.00, 1, 180.00),
+('INV015', 'Medication', 120.00, 2, 240.00),
+('INV015', 'Consultation', 150.00, 1, 150.00),
+('INV016', 'Hematology Review', 300.00, 1, 300.00),
+('INV016', 'Blood Tests', 200.00, 2, 400.00),
+('INV016', 'Consultation', 180.00, 1, 180.00),
+('INV017', 'Infectious Disease Consultation', 220.00, 1, 220.00),
+('INV017', 'Medication', 150.00, 2, 300.00),
+('INV017', 'Follow-up', 180.00, 1, 180.00),
+('INV018', 'Geriatric Consultation', 200.00, 1, 200.00),
+('INV018', 'Medication', 120.00, 2, 240.00),
+('INV018', 'Follow-up', 180.00, 1, 180.00),
+('INV019', 'ENT Consultation', 180.00, 1, 180.00),
+('INV019', 'Medication', 120.00, 2, 240.00),
+('INV019', 'Follow-up', 150.00, 1, 150.00),
+('INV020', 'Anesthesia Procedure', 300.00, 1, 300.00),
+('INV020', 'Consultation', 150.00, 1, 150.00),
+('INV020', 'Recovery Monitoring', 200.00, 1, 200.00);
+
 
 -- 插入 DoctorStaffScheduling 表的三条数据
-INSERT INTO DoctorStaffScheduling (DoctorID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks)
-VALUES 
-('D001', '2024-01-05', '08:00:00', '16:00:00', 'Cardiology Dept', 'Routine check-ups'),
-('D002', '2024-01-06', '09:00:00', '17:00:00', 'Neurology Dept', 'Patient consultations'),
-('D003', '2024-01-07', '10:00:00', '18:00:00', 'Orthopedics Dept', 'Surgery preparations');
+INSERT INTO DoctorStaffScheduling (DoctorID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks) VALUES
+('D001', '2024-01-01', '08:00:00', '16:00:00', 'Cardiology', 'Patient consultations and rounds'),
+('D002', '2024-01-02', '08:00:00', '16:00:00', 'Orthopedics', 'Surgery and follow-up consultations'),
+('D003', '2024-01-03', '08:00:00', '16:00:00', 'Endocrinology', 'Diabetes management and patient reviews'),
+('D004', '2024-01-04', '08:00:00', '16:00:00', 'Orthopedics', 'Hip replacements and patient care'),
+('D005', '2024-01-05', '08:00:00', '16:00:00', 'Dermatology', 'Skin consultations and treatment plans'),
+('D006', '2024-01-06', '08:00:00', '16:00:00', 'Oncology', 'Chemotherapy sessions and patient consultations'),
+('D007', '2024-01-07', '08:00:00', '16:00:00', 'Gastroenterology', 'Endoscopies and patient reviews'),
+('D008', '2024-01-08', '08:00:00', '16:00:00', 'Pulmonology', 'Pulmonary function tests and follow-up consultations'),
+('D009', '2024-01-09', '08:00:00', '16:00:00', 'Rheumatology', 'Arthritis treatment and patient consultations'),
+('D010', '2024-01-10', '08:00:00', '16:00:00', 'Surgery', 'Gallbladder removal surgeries and patient care'),
+('D011', '2024-01-11', '08:00:00', '16:00:00', 'Nephrology', 'Dialysis and patient management'),
+('D012', '2024-01-12', '08:00:00', '16:00:00', 'Urology', 'Prostate consultations and patient reviews'),
+('D013', '2024-01-13', '08:00:00', '16:00:00', 'Ophthalmology', 'Eye examinations and post-surgery follow-ups'),
+('D014', '2024-01-14', '08:00:00', '16:00:00', 'Psychiatry', 'Mental health consultations and therapy'),
+('D015', '2024-01-15', '08:00:00', '16:00:00', 'Allergy', 'Allergy testing and patient management'),
+('D016', '2024-01-16', '08:00:00', '16:00:00', 'Hematology', 'Blood tests and anemia management'),
+('D017', '2024-01-17', '08:00:00', '16:00:00', 'Infectious Diseases', 'Disease consultations and treatment plans'),
+('D018', '2024-01-18', '08:00:00', '16:00:00', 'Geriatrics', 'Elderly patient reviews and consultations'),
+('D019', '2024-01-19', '08:00:00', '16:00:00', 'ENT', 'Ear, nose, and throat consultations'),
+('D020', '2024-01-20', '08:00:00', '16:00:00', 'Anesthesia', 'Anesthesia administration and recovery monitoring');
+
 
 -- 插入 NurseStaffScheduling 表的三条数据
-INSERT INTO NurseStaffScheduling (NurseID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks)
-VALUES 
-('N001', '2024-01-06', '09:00:00', '17:00:00', 'Cardiology Dept', 'Ward rounds'),
-('N002', '2024-01-07', '08:00:00', '16:00:00', 'Neurology Dept', 'Patient monitoring'),
-('N003', '2024-01-08', '07:00:00', '15:00:00', 'Orthopedics Dept', 'Surgery assistance');
+INSERT INTO NurseStaffScheduling (NurseID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks) VALUES
+('N001', '2024-01-01', '08:00:00', '16:00:00', 'Cardiology', 'Patient monitoring and assistance'),
+('N002', '2024-01-02', '08:00:00', '16:00:00', 'Orthopedics', 'Post-surgery care and patient monitoring'),
+('N003', '2024-01-03', '08:00:00', '16:00:00', 'Endocrinology', 'Diabetes care and patient support'),
+('N004', '2024-01-04', '08:00:00', '16:00:00', 'Orthopedics', 'Post-operative care and patient monitoring'),
+('N005', '2024-01-05', '08:00:00', '16:00:00', 'Dermatology', 'Wound care and patient support'),
+('N006', '2024-01-06', '08:00:00', '16:00:00', 'Oncology', 'Patient support during chemotherapy'),
+('N007', '2024-01-07', '08:00:00', '16:00:00', 'Gastroenterology', 'Patient monitoring and assistance'),
+('N008', '2024-01-08', '08:00:00', '16:00:00', 'Pulmonology', 'Respiratory care and patient support'),
+('N009', '2024-01-09', '08:00:00', '16:00:00', 'Rheumatology', 'Patient care and support'),
+('N010', '2024-01-10', '08:00:00', '16:00:00', 'Surgery', 'Pre-operative and post-operative care'),
+('N011', '2024-01-11', '08:00:00', '16:00:00', 'Nephrology', 'Dialysis care and patient support'),
+('N012', '2024-01-12', '08:00:00', '16:00:00', 'Urology', 'Patient care and support'),
+('N013', '2024-01-13', '08:00:00', '16:00:00', 'Ophthalmology', 'Post-surgical care and patient support'),
+('N014', '2024-01-14', '08:00:00', '16:00:00', 'Psychiatry', 'Mental health support and patient care'),
+('N015', '2024-01-15', '08:00:00', '16:00:00', 'Allergy', 'Allergy management and patient support'),
+('N016', '2024-01-16', '08:00:00', '16:00:00', 'Hematology', 'Blood test support and patient care'),
+('N017', '2024-01-17', '08:00:00', '16:00:00', 'Infectious Diseases', 'Patient care and infection control'),
+('N018', '2024-01-18', '08:00:00', '16:00:00', 'Geriatrics', 'Elderly patient care and support'),
+('N019', '2024-01-19', '08:00:00', '16:00:00', 'ENT', 'Patient care and support'),
+('N020', '2024-01-20', '08:00:00', '16:00:00', 'Anesthesia', 'Post-anesthesia care and patient monitoring');
+
 
 -- 插入 InventoryManagement 表的三条数据
-INSERT INTO InventoryManagement (InventoryID, ItemCode, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimunStock, SupplierInformation, InventoryExpirydate)
-VALUES 
-('I001', 'ITM001', 'Bandages', 100, 500, 50, 'Supplier A', '2025-01-01'),
-('I002', 'ITM002', 'Syringes', 200, 1000, 100, 'Supplier B', '2025-02-01'),
-('I003', 'ITM003', 'Gloves', 300, 1500, 150, 'Supplier C', '2025-03-01');
+INSERT INTO InventoryManagement (InventoryID, ItemCode, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimunStock, SupplierInformation, InventoryExpirydate) VALUES
+('INV001', 'IC001', 'Syringe', 500, 1000, 100, 'MedSupply Co.', '2024-12-31'),
+('INV002', 'IC002', 'Bandages', 300, 700, 50, 'HealthPro Ltd.', '2025-01-15'),
+('INV003', 'IC003', 'Antiseptic Solution', 200, 500, 100, 'MediCare Supplies', '2024-11-30'),
+('INV004', 'IC004', 'Surgical Masks', 1000, 2000, 200, 'SafeCare Inc.', '2024-10-20'),
+('INV005', 'IC005', 'Gloves', 800, 1500, 150, 'ProtectPlus', '2025-02-28'),
+('INV006', 'IC006', 'Sterilization Kits', 150, 300, 30, 'SterilTech', '2024-09-10'),
+('INV007', 'IC007', 'IV Fluids', 250, 600, 50, 'FluidMed', '2024-12-15'),
+('INV008', 'IC008', 'Gauze', 400, 800, 100, 'GauzePlus', '2025-03-31'),
+('INV009', 'IC009', 'Needles', 600, 1200, 100, 'NeedleWorks', '2024-11-01'),
+('INV010', 'IC010', 'Surgical Instruments', 80, 150, 20, 'SurgiEquip', '2025-01-01'),
+('INV011', 'IC011', 'Thermometers', 100, 200, 20, 'HealthMetrics', '2024-10-05'),
+('INV012', 'IC012', 'Oxygen Cylinders', 30, 60, 10, 'OxygenCo', '2024-08-30'),
+('INV013', 'IC013', 'Nebulizers', 40, 100, 15, 'BreatheWell', '2024-12-25'),
+('INV014', 'IC014', 'Pulse Oximeters', 50, 120, 20, 'PulseCare', '2024-11-15'),
+('INV015', 'IC015', 'Wheelchairs', 20, 40, 5, 'MobilityCorp', '2025-04-10'),
+('INV016', 'IC016', 'Blood Pressure Monitors', 75, 150, 25, 'PressurePro', '2024-09-20'),
+('INV017', 'IC017', 'Stethoscopes', 60, 120, 20, 'StethoTech', '2024-12-05'),
+('INV018', 'IC018', 'Defibrillators', 10, 25, 5, 'HeartSafe', '2024-10-10'),
+('INV019', 'IC019', 'Electrocardiogram Machines', 15, 30, 5, 'CardioPlus', '2025-06-01'),
+('INV020', 'IC020', 'CPAP Machines', 25, 50, 10, 'SleepMed', '2024-11-30');
 
 -- 插入 MedicalSupplyManagement 表的三条数据
-INSERT INTO MedicalSupplyManagement (SupplyID, SupplyName, SupplyCode, SupplyStockQuantity, SupplyMinimunStock, SupplyMaximumStock, SupplierInformation, SupplyExpiryDate)
-VALUES 
-('S001', 'IV Drips', 'SPLY001', 50, 300, 30, 'Supplier X', '2024-12-01'),
-('S002', 'Masks', 'SPLY002', 100, 600, 60, 'Supplier Y', '2024-11-01'),
-('S003', 'Sanitizers', 'SPLY003', 200, 900, 90, 'Supplier Z', '2024-10-01');
+INSERT INTO MedicalSupplyManagement (SupplyID, SupplyName, SupplyCode, SupplyStockQuantity, SupplyMinimunStock, SupplyMaximumStock, SupplierInformation, SupplyExpiryDate) VALUES
+('SUP001', 'Pain Reliever', 'SR001', 150, 50, 300, 'PharmaCo', '2024-12-31'),
+('SUP002', 'Antibiotics', 'SR002', 120, 40, 250, 'MediHealth', '2024-11-15'),
+('SUP003', 'Antihistamines', 'SR003', 100, 30, 200, 'AllergyCare', '2025-01-10'),
+('SUP004', 'Vitamins', 'SR004', 200, 60, 350, 'NutriPharma', '2024-10-25'),
+('SUP005', 'Insulin', 'SR005', 80, 20, 150, 'DiabetesPlus', '2024-12-20'),
+('SUP006', 'Antiseptic Cream', 'SR006', 60, 15, 120, 'SkinCare', '2025-03-15'),
+('SUP007', 'Cough Syrup', 'SR007', 180, 50, 300, 'CoughRelief', '2024-11-30'),
+('SUP008', 'Laxatives', 'SR008', 150, 40, 250, 'DigestMed', '2025-02-01'),
+('SUP009', 'Cold Medicine', 'SR009', 140, 35, 280, 'WinterHealth', '2024-12-10'),
+('SUP010', 'Eye Drops', 'SR010', 90, 25, 200, 'VisionCare', '2024-10-15'),
+('SUP011', 'Ear Drops', 'SR011', 110, 30, 220, 'EarHealth', '2025-01-20'),
+('SUP012', 'Muscle Relaxants', 'SR012', 70, 20, 150, 'MuscleEase', '2024-12-01'),
+('SUP013', 'Cholesterol Medication', 'SR013', 85, 25, 180, 'HeartMed', '2025-03-10'),
+('SUP014', 'Blood Thinners', 'SR014', 130, 40, 260, 'ClotCare', '2024-11-20'),
+('SUP015', 'Antacids', 'SR015', 160, 50, 300, 'DigestPlus', '2024-12-25'),
+('SUP016', 'Antifungal Cream', 'SR016', 55, 15, 120, 'FungusFree', '2025-04-05'),
+('SUP017', 'Inhalers', 'SR017', 75, 20, 150, 'RespirEase', '2024-10-30'),
+('SUP018', 'Antidepressants', 'SR018', 95, 25, 200, 'MentalCare', '2025-02-15'),
+('SUP019', 'Anti-anxiety Medications', 'SR019', 80, 20, 160, 'CalmHealth', '2024-12-15'),
+('SUP020', 'Anti-viral Medications', 'SR020', 65, 15, 140, 'ViralMed', '2025-01-30');
+
 
 -- 插入 TransferManagement 表的三条数据
-INSERT INTO TransferManagement (TransferID, PatientID, TransferFrom, TransferTo, PatientTransferDate, TransferTime, ReasonForTransfer, StatusOfTransfer)
-VALUES 
-('T001', 'P001', 'Room 101', 'Room 201', '2024-01-20', '14:00:00', 'Need for specialized care', 'Completed'),
-('T002', 'P002', 'Room 202', 'Room 302', '2024-02-25', '15:00:00', 'Closer monitoring required', 'Completed'),
-('T003', 'P003', 'Room 303', 'Room 403', '2024-03-30', '16:00:00', 'Post-surgery recovery', 'Completed');
+INSERT INTO TransferManagement (TransferID, PatientID, TransferFrom, TransferTo, PatientTransferDate, TransferTime, ReasonForTransfer, StatusOfTransfer) VALUES
+('TR001', 'P001', 'Emergency Room', 'Cardiology Department', '2024-01-05', '14:00:00', 'Heart attack', 'Completed'),
+('TR002', 'P002', 'Orthopedics Ward', 'Rehabilitation Center', '2024-01-10', '10:30:00', 'Post-surgery rehab', 'Completed'),
+('TR003', 'P003', 'Oncology Unit', 'General Ward', '2024-01-15', '11:00:00', 'Chemotherapy side effects', 'In Progress'),
+('TR004', 'P004', 'Gastroenterology Department', 'Surgical Unit', '2024-01-20', '13:00:00', 'Required surgery', 'Completed'),
+('TR005', 'P005', 'Dermatology Clinic', 'Hospital Ward', '2024-01-25', '09:00:00', 'Skin infection', 'Completed'),
+('TR006', 'P006', 'Pulmonology Ward', 'Intensive Care Unit', '2024-02-01', '12:00:00', 'Severe respiratory distress', 'In Progress'),
+('TR007', 'P007', 'Nephrology Department', 'Dialysis Center', '2024-02-05', '15:00:00', 'Chronic kidney disease', 'Completed'),
+('TR008', 'P008', 'Rheumatology Unit', 'Rehabilitation Facility', '2024-02-10', '16:00:00', 'Joint replacement recovery', 'Completed'),
+('TR009', 'P009', 'Psychiatric Unit', 'Mental Health Facility', '2024-02-15', '11:30:00', 'Severe depression', 'In Progress'),
+('TR010', 'P010', 'Urology Clinic', 'Surgical Department', '2024-02-20', '14:00:00', 'Urgent surgery', 'Completed'),
+('TR011', 'P011', 'Ophthalmology Ward', 'General Ward', '2024-02-25', '09:30:00', 'Post-surgery care', 'Completed'),
+('TR012', 'P012', 'Allergy Department', 'Outpatient Clinic', '2024-03-01', '10:00:00', 'Routine follow-up', 'Completed'),
+('TR013', 'P013', 'Hematology Unit', 'Inpatient Ward', '2024-03-05', '13:30:00', 'Blood disorder treatment', 'In Progress'),
+('TR014', 'P014', 'Infectious Diseases Unit', 'Isolation Room', '2024-03-10', '14:00:00', 'Contagious disease', 'Completed'),
+('TR015', 'P015', 'ENT Clinic', 'Surgical Unit', '2024-03-15', '09:00:00', 'Ear surgery', 'Completed'),
+('TR016', 'P016', 'Geriatrics Ward', 'Palliative Care Unit', '2024-03-20', '10:00:00', 'End-of-life care', 'In Progress'),
+('TR017', 'P017', 'Anesthesia Department', 'Recovery Room', '2024-03-25', '11:00:00', 'Post-anesthesia monitoring', 'Completed'),
+('TR018', 'P018', 'Cardiology Department', 'General Ward', '2024-04-01', '12:30:00', 'Heart condition monitoring', 'In Progress'),
+('TR019', 'P019', 'Endocrinology Clinic', 'Patient Room', '2024-04-05', '14:00:00', 'Diabetes management', 'Completed'),
+('TR020', 'P020', 'Orthopedics Ward', 'Rehabilitation Facility', '2024-04-10', '15:00:00', 'Post-surgery rehabilitation', 'Completed');
+
 
 -- 插入 Payment 表的三条数据
-INSERT INTO Payment (PaymentID, PaymentDate, PaymentMethod, PaymentAmount, PaymentStatus, InvoiceID)
-VALUES 
-('PAY001', '2024-01-15', 'Credit Card', 500.00, 'Completed', 'INV001'),
-('PAY002', '2024-02-20', 'Cash', 1000.00, 'Completed', 'INV002'),
-('PAY003', '2024-03-25', 'Insurance', 1500.00, 'Completed', 'INV003');
+INSERT INTO Payment (PaymentID, PaymentDate, PaymentMethod, PaymentAmount, PaymentStatus, InvoiceID) VALUES
+('PAY001', '2024-01-10', 'Credit Card', 200.00, 'Completed', 'INV001'),
+('PAY002', '2024-01-15', 'Cash', 150.00, 'Completed', 'INV002'),
+('PAY003', '2024-01-20', 'Debit Card', 250.00, 'Completed', 'INV003'),
+('PAY004', '2024-02-01', 'Bank Transfer', 300.00, 'Completed', 'INV004'),
+('PAY005', '2024-02-05', 'Credit Card', 180.00, 'Completed', 'INV005'),
+('PAY006', '2024-02-10', 'Cash', 220.00, 'Completed', 'INV006'),
+('PAY007', '2024-02-15', 'Debit Card', 275.00, 'Completed', 'INV007'),
+('PAY008', '2024-03-01', 'Bank Transfer', 320.00, 'Completed', 'INV008'),
+('PAY009', '2024-03-05', 'Credit Card', 150.00, 'Completed', 'INV009'),
+('PAY010', '2024-03-10', 'Cash', 200.00, 'Completed', 'INV010'),
+('PAY011', '2024-03-15', 'Debit Card', 250.00, 'Completed', 'INV011'),
+('PAY012', '2024-04-01', 'Bank Transfer', 300.00, 'Completed', 'INV012'),
+('PAY013', '2024-04-05', 'Credit Card', 180.00, 'Completed', 'INV013'),
+('PAY014', '2024-04-10', 'Cash', 220.00, 'Completed', 'INV014'),
+('PAY015', '2024-04-15', 'Debit Card', 275.00, 'Completed', 'INV015'),
+('PAY016', '2024-05-01', 'Bank Transfer', 320.00, 'Completed', 'INV016'),
+('PAY017', '2024-05-05', 'Credit Card', 150.00, 'Completed', 'INV017'),
+('PAY018', '2024-05-10', 'Cash', 200.00, 'Completed', 'INV018'),
+('PAY019', '2024-05-15', 'Debit Card', 250.00, 'Completed', 'INV019'),
+('PAY020', '2024-06-01', 'Bank Transfer', 300.00, 'Completed', 'INV020');
+

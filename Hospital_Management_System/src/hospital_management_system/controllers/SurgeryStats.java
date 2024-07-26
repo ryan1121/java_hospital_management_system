@@ -5,9 +5,11 @@ import hospital_management_system.MysqlConnect;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.CategoryLabelPositions;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -41,8 +43,14 @@ public class SurgeryStats {
                 false                         // urls
         );
 
+        // Customize the plot
+        CategoryPlot plot = chart.getCategoryPlot();
+        CategoryAxis xAxis = plot.getDomainAxis();
+        xAxis.setLabel("Surgery Type");
+        xAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_45); // Rotate labels 45 degrees
+
         ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(560, 370));
+        chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));
 
         JFrame frame = new JFrame("Surgery Type Stats");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -51,4 +59,3 @@ public class SurgeryStats {
         frame.setVisible(true);
     }
 }
-

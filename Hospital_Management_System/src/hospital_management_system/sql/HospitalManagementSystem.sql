@@ -77,11 +77,11 @@ CREATE TABLE PatientCare(
 -- 创建 Admission 表
 CREATE TABLE Admission(
     Admission_ID VARCHAR(25) PRIMARY KEY,
-    Admission_Date1 DATE,
+    Admission_Date DATE,
     Admitting_Staff_ID VARCHAR(25),
     Admission_Status VARCHAR(50),
     Admission_Notes TEXT,
-    Reason1 TEXT,
+    Reason TEXT,
     admission_Patient_ID VARCHAR(25),
     Insurance_Details TEXT,
     medical_equipment_need TEXT,
@@ -138,7 +138,7 @@ CREATE TABLE Prescription (
     PrescriptionID VARCHAR(25) NOT NULL UNIQUE PRIMARY KEY,
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
-    Medication_comboxBox VARCHAR(255) NOT NULL,
+    Medication VARCHAR(255) NOT NULL,
     dosage_Spinner VARCHAR(255) NOT NULL,
     PrescriptionDate DATE NOT NULL,
     instructions TEXT,

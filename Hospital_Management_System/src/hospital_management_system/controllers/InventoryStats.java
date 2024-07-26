@@ -1,4 +1,3 @@
-
 /*
 数据分析 - 库存中各类物品的数量
 */
@@ -6,9 +5,11 @@ import hospital_management_system.MysqlConnect;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
 import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.axis.CategoryAxis;
+import org.jfree.chart.axis.CategoryLabelPositions;
 
 import javax.swing.*;
 import java.sql.ResultSet;
@@ -42,8 +43,14 @@ public class InventoryStats {
                 false                        // urls
         );
 
+        // Customize the plot
+        CategoryPlot plot = chart.getCategoryPlot();
+        CategoryAxis xAxis = plot.getDomainAxis();
+        xAxis.setLabel("Item Name");
+        xAxis.setCategoryLabelPositions(CategoryLabelPositions.UP_45); // Rotate labels 45 degrees
+
         ChartPanel chartPanel = new ChartPanel(chart);
-        chartPanel.setPreferredSize(new java.awt.Dimension(560, 370));
+        chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));
 
         JFrame frame = new JFrame("Inventory Stats");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
