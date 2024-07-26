@@ -1,11 +1,17 @@
 package hospital_management_system.controllers;
 
-import java.sql.*;
+import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
 
 import hospital_management_system.MysqlConnect;
 
-import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.sql.*;
+
 
 public class WorkScheduleViewer {
 
@@ -40,8 +46,13 @@ public class WorkScheduleViewer {
 
         if (resultSet != null) {
             try {
-                DefaultTableModel model = new DefaultTableModel(
-                    new String[] {"Doctor ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}, 0);
+                DefaultTableModel doctorModel = new DefaultTableModel(
+                    new String[] {"Doctor ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}, 0) {
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                            return false; // Make all cells non-editable
+                        }
+                    };
 
                 while (resultSet.next()) {
                     Object[] row = new Object[7];
@@ -53,13 +64,34 @@ public class WorkScheduleViewer {
                     row[5] = resultSet.getString("Department"); // Department
                     row[6] = resultSet.getString("AssignedTasks"); // Tasks
 
-                    model.addRow(row);
+                    doctorModel.addRow(row);
                     }
 
-                DoctorScheduleTable.setModel(model);
+                DoctorScheduleTable.setModel(doctorModel);
                 DoctorScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
                 DoctorScheduleTable.setShowHorizontalLines(true);
                 DoctorScheduleTable.setShowVerticalLines(true);
+                DoctorScheduleTable.setCellSelectionEnabled(false);
+
+                // Use custom renderer
+                DoctorScheduleTable.setDefaultRenderer(Object.class, new CustomTableCellRenderer());
+
+                // Add mouse listener to show popup
+                DoctorScheduleTable.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseMoved(MouseEvent e) {
+                        int row = DoctorScheduleTable.rowAtPoint(e.getPoint());
+                        int column = DoctorScheduleTable.columnAtPoint(e.getPoint());
+                        if (row >= 0 && column >= 0) {
+                            Object value = DoctorScheduleTable.getValueAt(row, column);
+                            if (value != null) {
+                                JPopupMenu popup = new JPopupMenu();
+                                popup.add(new JLabel(value.toString()));
+                                popup.show(DoctorScheduleTable, e.getX(), e.getY());
+                            }
+                        }
+                    }
+                });
 
                 jScrollPane7.setViewportView(DoctorScheduleTable);
 
@@ -83,9 +115,14 @@ public class WorkScheduleViewer {
     
         if (resultSet != null) {
             try {
-                DefaultTableModel model = new DefaultTableModel(
-                    new String[] {"Nurse ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}, 0);
-    
+                DefaultTableModel nurseModel = new DefaultTableModel(
+                    new String[] {"Nurse ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}, 0) {
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                            return false; // Make all cells non-editable
+                        }
+                    };
+
                 while (resultSet.next()) {
                     Object[] row = new Object[7];
                     row[0] = resultSet.getString("NurseID"); // Nurse ID
@@ -96,14 +133,35 @@ public class WorkScheduleViewer {
                     row[5] = resultSet.getString("Department"); // Department
                     row[6] = resultSet.getString("AssignedTasks"); // Tasks
     
-                    model.addRow(row);
+                    nurseModel.addRow(row);
                 }
     
-                NurseScheduleTable.setModel(model);
+                NurseScheduleTable.setModel(nurseModel);
                 NurseScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
                 NurseScheduleTable.setShowHorizontalLines(true);
                 NurseScheduleTable.setShowVerticalLines(true);
+                NurseScheduleTable.setCellSelectionEnabled(false);
     
+                // Use custom renderer
+                NurseScheduleTable.setDefaultRenderer(Object.class, new CustomTableCellRenderer());
+
+                // Add mouse listener to show popup
+                NurseScheduleTable.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mouseMoved(MouseEvent e) {
+                        int row = NurseScheduleTable.rowAtPoint(e.getPoint());
+                        int column = NurseScheduleTable.columnAtPoint(e.getPoint());
+                        if (row >= 0 && column >= 0) {
+                            Object value = NurseScheduleTable.getValueAt(row, column);
+                            if (value != null) {
+                                JPopupMenu popup = new JPopupMenu();
+                                popup.add(new JLabel(value.toString()));
+                                popup.show(NurseScheduleTable, e.getX(), e.getY());
+                            }
+                        }
+                    }
+                });
+
                 jScrollPane11.setViewportView(NurseScheduleTable);
     
             } catch (SQLException e) {
@@ -124,6 +182,17 @@ public class WorkScheduleViewer {
             System.err.println("Cannot execute SQL query!");
             e.printStackTrace();
             return null;
+        }
+    }
+
+    private static class CustomTableCellRenderer extends DefaultTableCellRenderer {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            Component c = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+            if (value != null) {
+                setToolTipText(value.toString());
+            }
+            return c;
         }
     }
 

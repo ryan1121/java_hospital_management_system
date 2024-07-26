@@ -359,28 +359,6 @@ public class GUI_admin extends javax.swing.JFrame {
             }
         });
 
-        // Setup DoctorScheduleTable
-        DefaultTableModel doctorModel = new DefaultTableModel(
-            new Object[][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String[] {"Doctor ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}
-        ) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false; // Make all cells non-editable
-            }
-        };
-
-        DoctorScheduleTable.setModel(doctorModel);
-        DoctorScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
-        DoctorScheduleTable.setShowHorizontalLines(true);
-        DoctorScheduleTable.setShowVerticalLines(true);
-        DoctorScheduleTable.setCellSelectionEnabled(false);
-
-        jScrollPane7.setViewportView(DoctorScheduleTable);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -621,28 +599,6 @@ public class GUI_admin extends javax.swing.JFrame {
                 openStaffScheduling("Nurse");
             }
         });
-
-        // Setup NurseScheduleTable
-        DefaultTableModel nurseModel = new DefaultTableModel(
-            new Object[][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String[] {"Nurse ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}
-        ) {
-            @Override
-            public boolean isCellEditable(int row, int column) {
-                return false; // Make all cells non-editable
-            }
-        };
-
-        NurseScheduleTable.setModel(nurseModel);
-        NurseScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
-        NurseScheduleTable.setShowHorizontalLines(true);
-        NurseScheduleTable.setShowVerticalLines(true);
-        NurseScheduleTable.setCellSelectionEnabled(false);
-
-        jScrollPane11.setViewportView(NurseScheduleTable);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
