@@ -46,6 +46,7 @@
                           <Component id="MonthlyInvoiceStatButton" min="-2" max="-2" attributes="0"/>
                           <Component id="MonthlyPaymentStatButton" min="-2" max="-2" attributes="0"/>
                           <Component id="InventoryStatsButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="ExpiringMedicalSuppliesButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -78,7 +79,10 @@
                   <Component id="SurgeryStatsButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="DepartmentDoctorStatsButton" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="DepartmentDoctorStatsButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="ExpiringMedicalSuppliesButton" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
               <EmptySpace pref="68" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -141,6 +145,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MonthlyPaymentStatButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="ExpiringMedicalSuppliesButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Expiring Medical Supplies"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ExpiringMedicalSuppliesButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

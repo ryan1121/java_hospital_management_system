@@ -23,24 +23,23 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <EmptySpace pref="78" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="SelectRoleLabel1" max="32767" attributes="0"/>
+                  <Component id="TitleLabel" alignment="0" max="32767" attributes="0"/>
+                  <Component id="SelectRoleLabel" alignment="0" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace pref="81" max="32767" attributes="0"/>
+          </Group>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="130" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="dataAnalysisButton" min="-2" pref="139" max="-2" attributes="0"/>
                   <Component id="CheckDataButton" min="-2" pref="139" max="-2" attributes="0"/>
                   <Component id="ManageInformationButton" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" attributes="0">
-              <EmptySpace pref="69" max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="SelectRoleLabel1" max="32767" attributes="0"/>
-                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="TitleLabel" max="32767" attributes="0"/>
-                      <Component id="SelectRoleLabel" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-              <EmptySpace pref="73" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,9 +54,11 @@
               <Component id="SelectRoleLabel1" min="-2" pref="20" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
               <Component id="ManageInformationButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Component id="CheckDataButton" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="47" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="dataAnalysisButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -95,6 +96,14 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="text" type="java.lang.String" value="What would you like to do?"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="dataAnalysisButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Data Analysis"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="dataAnalysisButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

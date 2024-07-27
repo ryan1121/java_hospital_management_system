@@ -36,6 +36,7 @@ public class GUI_Report_Select extends javax.swing.JFrame {
         SurgeryStatsButton = new javax.swing.JButton();
         MonthlyInvoiceStatButton = new javax.swing.JButton();
         MonthlyPaymentStatButton = new javax.swing.JButton();
+        ExpiringMedicalSuppliesButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +68,13 @@ public class GUI_Report_Select extends javax.swing.JFrame {
             }
         });
 
+        ExpiringMedicalSuppliesButton.setText("Expiring Medical Supplies");
+        ExpiringMedicalSuppliesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ExpiringMedicalSuppliesButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -91,7 +99,8 @@ public class GUI_Report_Select extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(MonthlyInvoiceStatButton)
                             .addComponent(MonthlyPaymentStatButton)
-                            .addComponent(InventoryStatsButton))
+                            .addComponent(InventoryStatsButton)
+                            .addComponent(ExpiringMedicalSuppliesButton))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -116,7 +125,9 @@ public class GUI_Report_Select extends javax.swing.JFrame {
                     .addComponent(InventoryStatsButton)
                     .addComponent(SurgeryStatsButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DepartmentDoctorStatsButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DepartmentDoctorStatsButton)
+                    .addComponent(ExpiringMedicalSuppliesButton))
                 .addContainerGap(68, Short.MAX_VALUE))
         );
 
@@ -126,6 +137,10 @@ public class GUI_Report_Select extends javax.swing.JFrame {
     private void MonthlyPaymentStatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthlyPaymentStatButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_MonthlyPaymentStatButtonActionPerformed
+
+    private void ExpiringMedicalSuppliesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpiringMedicalSuppliesButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ExpiringMedicalSuppliesButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +180,7 @@ public class GUI_Report_Select extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AgeGroupStatsButton;
     private javax.swing.JButton DepartmentDoctorStatsButton;
+    private javax.swing.JButton ExpiringMedicalSuppliesButton;
     private javax.swing.JButton InsuranceStatsButton;
     private javax.swing.JButton InventoryStatsButton;
     private javax.swing.JButton MonthlyInvoiceStatButton;

@@ -21,6 +21,10 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         initComponents();
 
         this.role = role_type;  // assign the login role type to the variable
+
+        if (this.role == "Admin"){  // 只有admin可以看见以及使用data analysis的按钮
+            dataAnalysisButton.setVisible(true);
+        }
     }
 
     /**
@@ -37,6 +41,7 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         ManageInformationButton = new javax.swing.JButton();
         CheckDataButton = new javax.swing.JButton();
         SelectRoleLabel1 = new javax.swing.JLabel();
+        dataAnalysisButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -58,24 +63,31 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         SelectRoleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SelectRoleLabel1.setText("What would you like to do?");
 
+        dataAnalysisButton.setText("Data Analysis");
+        dataAnalysisButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                dataAnalysisButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(78, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(SelectRoleLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(TitleLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(SelectRoleLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(81, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
                 .addGap(130, 130, 130)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(dataAnalysisButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CheckDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ManageInformationButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(SelectRoleLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(TitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(SelectRoleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(73, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,9 +100,11 @@ public class Home_Page_GUI extends javax.swing.JFrame {
                 .addComponent(SelectRoleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(ManageInformationButton)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CheckDataButton)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(dataAnalysisButton)
+                .addContainerGap(48, Short.MAX_VALUE))
         );
 
         pack();
@@ -123,6 +137,10 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ManageInformationButtonActionPerformed
 
+    private void dataAnalysisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataAnalysisButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dataAnalysisButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -134,5 +152,6 @@ public class Home_Page_GUI extends javax.swing.JFrame {
     private javax.swing.JLabel SelectRoleLabel;
     private javax.swing.JLabel SelectRoleLabel1;
     private javax.swing.JLabel TitleLabel;
+    private javax.swing.JButton dataAnalysisButton;
     // End of variables declaration//GEN-END:variables
 }
