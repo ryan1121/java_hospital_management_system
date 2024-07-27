@@ -42,6 +42,7 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         CheckDataButton = new javax.swing.JButton();
         SelectRoleLabel1 = new javax.swing.JLabel();
         dataAnalysisButton = new javax.swing.JButton();
+        dataAnalysisButton.setVisible(false);   // 隐藏按钮
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
