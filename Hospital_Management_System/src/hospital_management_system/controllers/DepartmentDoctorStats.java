@@ -1,6 +1,7 @@
 /*
 数据分析 - 按科室统计医生数量
 */
+package hospital_management_system.controllers;
 import hospital_management_system.MysqlConnect;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -13,7 +14,7 @@ import java.sql.SQLException;
 
 public class DepartmentDoctorStats {
 
-    public static void main(String[] args) {
+    public static void showDepartmentDoctorStats() {
         MysqlConnect db = new MysqlConnect();
         DefaultPieDataset dataset = new DefaultPieDataset();
 
@@ -42,7 +43,7 @@ public class DepartmentDoctorStats {
         chartPanel.setPreferredSize(new java.awt.Dimension(560, 370));
 
         JFrame frame = new JFrame("Department Doctor Stats");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.add(chartPanel);
         frame.pack();
         frame.setVisible(true);

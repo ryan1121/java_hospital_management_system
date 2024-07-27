@@ -1,6 +1,8 @@
 /*
 数据分析 - 每种手术类型的数量统计
 */
+package hospital_management_system.controllers;
+
 import hospital_management_system.MysqlConnect;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -17,7 +19,7 @@ import java.sql.SQLException;
 
 public class SurgeryStats {
 
-    public static void main(String[] args) {
+    public static void showSurgeryStats() {
         MysqlConnect db = new MysqlConnect();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
@@ -53,7 +55,7 @@ public class SurgeryStats {
         chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));
 
         JFrame frame = new JFrame("Surgery Type Stats");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.add(chartPanel);
         frame.pack();
         frame.setVisible(true);

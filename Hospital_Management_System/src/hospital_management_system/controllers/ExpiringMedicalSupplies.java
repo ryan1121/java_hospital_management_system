@@ -1,3 +1,8 @@
+/*
+数据分析 - 即将过期的医疗物品
+*/
+package hospital_management_system.controllers;
+
 import hospital_management_system.MysqlConnect;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -16,7 +21,7 @@ import java.time.format.DateTimeFormatter;
 
 public class ExpiringMedicalSupplies {
 
-    public static void main(String[] args) {
+    public static void showExpiringMedicalSupplies() {
         MysqlConnect db = new MysqlConnect();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
@@ -62,7 +67,7 @@ public class ExpiringMedicalSupplies {
         chartPanel.setPreferredSize(new java.awt.Dimension(800, 600));
 
         JFrame frame = new JFrame("Expiring Medical Supplies");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.add(chartPanel);
         frame.pack();
         frame.setVisible(true);

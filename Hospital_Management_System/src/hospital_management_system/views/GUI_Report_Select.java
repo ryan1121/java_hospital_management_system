@@ -4,6 +4,8 @@
  */
 package hospital_management_system.views;
 
+import hospital_management_system.controllers.*;
+
 /**
  *
  * @author DELL
@@ -50,16 +52,46 @@ public class GUI_Report_Select extends javax.swing.JFrame {
         SelectRoleLabel.setText("Welcome back, ");
 
         AgeGroupStatsButton.setText("Age Group Stats");
+        AgeGroupStatsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AgeGroupStatsButtonActionPerformed(evt);
+            }
+        });
 
         DepartmentDoctorStatsButton.setText("Department Doctor Stats");
+        DepartmentDoctorStatsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DepartmentDoctorStatsButtonActionPerformed(evt);
+            }
+        });
 
         InsuranceStatsButton.setText("Insurance Stats");
+        InsuranceStatsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InsuranceStatsButtonActionPerformed(evt);
+            }
+        });
 
         InventoryStatsButton.setText("Inventory Stats");
+        InventoryStatsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                InventoryStatsButtonActionPerformed(evt);
+            }
+        });
 
         SurgeryStatsButton.setText("Surgery Stats");
+        SurgeryStatsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SurgeryStatsButtonActionPerformed(evt);
+            }
+        });
 
         MonthlyInvoiceStatButton.setText("Monthyly Invoice Stats");
+        MonthlyInvoiceStatButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MonthlyInvoiceStatButtonActionPerformed(evt);
+            }
+        });
 
         MonthlyPaymentStatButton.setText("Monthyly Payment Stats");
         MonthlyPaymentStatButton.addActionListener(new java.awt.event.ActionListener() {
@@ -79,29 +111,33 @@ public class GUI_Report_Select extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
-            .addComponent(SelectRoleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(59, 59, 59))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(DepartmentDoctorStatsButton)
+                    .addComponent(AgeGroupStatsButton)
+                    .addComponent(SurgeryStatsButton)
+                    .addComponent(InsuranceStatsButton))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SelectReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MonthlyInvoiceStatButton)
+                    .addComponent(MonthlyPaymentStatButton)
+                    .addComponent(InventoryStatsButton)
+                    .addComponent(ExpiringMedicalSuppliesButton))
+                .addGap(52, 52, 52))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(SelectReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(DepartmentDoctorStatsButton)
-                            .addComponent(AgeGroupStatsButton)
-                            .addComponent(SurgeryStatsButton)
-                            .addComponent(InsuranceStatsButton))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(MonthlyInvoiceStatButton)
-                            .addComponent(MonthlyPaymentStatButton)
-                            .addComponent(InventoryStatsButton)
-                            .addComponent(ExpiringMedicalSuppliesButton))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(SelectRoleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(26, 26, 26))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,11 +172,52 @@ public class GUI_Report_Select extends javax.swing.JFrame {
 
     private void MonthlyPaymentStatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthlyPaymentStatButtonActionPerformed
         // TODO add your handling code here:
+        MonthlyPaymentStats monthlyPaymentStatsObj = new MonthlyPaymentStats();
+        monthlyPaymentStatsObj.showMonthlyPaymentStats();
+        
     }//GEN-LAST:event_MonthlyPaymentStatButtonActionPerformed
 
     private void ExpiringMedicalSuppliesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpiringMedicalSuppliesButtonActionPerformed
         // TODO add your handling code here:
+        ExpiringMedicalSupplies expiringMedicalSuppliesObj = new ExpiringMedicalSupplies();
+        expiringMedicalSuppliesObj.showExpiringMedicalSupplies();
     }//GEN-LAST:event_ExpiringMedicalSuppliesButtonActionPerformed
+
+    private void AgeGroupStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgeGroupStatsButtonActionPerformed
+        // TODO add your handling code here:
+        AgeGroupStats AgeGroupStatsObj = new AgeGroupStats();
+        AgeGroupStatsObj.showAgeGroupStats();
+    }//GEN-LAST:event_AgeGroupStatsButtonActionPerformed
+
+    private void InsuranceStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InsuranceStatsButtonActionPerformed
+        // TODO add your handling code here:
+        InsuranceStats InsuranceStatsObj = new InsuranceStats();
+        InsuranceStatsObj.showInsuranceStats();
+    }//GEN-LAST:event_InsuranceStatsButtonActionPerformed
+
+    private void SurgeryStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SurgeryStatsButtonActionPerformed
+        // TODO add your handling code here:
+        SurgeryStats SurgeryStatsObj = new SurgeryStats();
+        SurgeryStatsObj.showSurgeryStats();
+    }//GEN-LAST:event_SurgeryStatsButtonActionPerformed
+
+    private void DepartmentDoctorStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentDoctorStatsButtonActionPerformed
+        // TODO add your handling code here:
+        DepartmentDoctorStats DepartmentDoctorStatsObj = new DepartmentDoctorStats();
+        DepartmentDoctorStatsObj.showDepartmentDoctorStats();
+    }//GEN-LAST:event_DepartmentDoctorStatsButtonActionPerformed
+
+    private void MonthlyInvoiceStatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthlyInvoiceStatButtonActionPerformed
+        // TODO add your handling code here:
+        MonthlyInvoiceStats MonthlyInvoiceStatObj = new MonthlyInvoiceStats();
+        MonthlyInvoiceStatObj.showMonthlyInvoiceStats();
+    }//GEN-LAST:event_MonthlyInvoiceStatButtonActionPerformed
+
+    private void InventoryStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InventoryStatsButtonActionPerformed
+        // TODO add your handling code here:
+        InventoryStats InventoryStatsObj = new InventoryStats();
+        InventoryStatsObj.showInventoryStats();
+    }//GEN-LAST:event_InventoryStatsButtonActionPerformed
 
     /**
      * @param args the command line arguments

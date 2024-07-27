@@ -1,6 +1,7 @@
 /*
 数据分析 - 统计保险公司患者数量
 */
+package hospital_management_system.controllers;
 
 import hospital_management_system.MysqlConnect;
 import org.jfree.chart.ChartFactory;
@@ -14,7 +15,7 @@ import java.sql.SQLException;
 
 public class InsuranceStats {
 
-    public static void main(String[] args) {
+    public static void showInsuranceStats() {
         MysqlConnect db = new MysqlConnect();
         DefaultPieDataset dataset = new DefaultPieDataset();
 
@@ -43,7 +44,7 @@ public class InsuranceStats {
         chartPanel.setPreferredSize(new java.awt.Dimension(560, 370));
 
         JFrame frame = new JFrame("Insurance Stats");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.add(chartPanel);
         frame.pack();
         frame.setVisible(true);

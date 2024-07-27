@@ -1,3 +1,8 @@
+/*
+数据分析 - 每月发票总金额统计
+*/
+package hospital_management_system.controllers;
+
 import hospital_management_system.MysqlConnect;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -14,7 +19,7 @@ import java.sql.SQLException;
 
 public class MonthlyInvoiceStats {
 
-    public static void main(String[] args) {
+    public static void showMonthlyInvoiceStats() {
         MysqlConnect db = new MysqlConnect();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
@@ -51,7 +56,7 @@ public class MonthlyInvoiceStats {
         frame.setContentPane(chartPanel);
         frame.pack();
         frame.setTitle("Monthly Invoice Total Amount");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.setVisible(true);
     }
 }

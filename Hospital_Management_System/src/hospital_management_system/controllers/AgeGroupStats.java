@@ -1,6 +1,8 @@
 /*
 数据分析 - 按年龄段统计患者数量
 */
+package hospital_management_system.controllers;
+
 import hospital_management_system.MysqlConnect;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -16,7 +18,7 @@ import java.time.Period;
 
 public class AgeGroupStats {
 
-    public static void main(String[] args) {
+    public static void showAgeGroupStats() {
         MysqlConnect db = new MysqlConnect();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
 
@@ -59,7 +61,7 @@ public class AgeGroupStats {
         chartPanel.setPreferredSize(new java.awt.Dimension(560, 370));
 
         JFrame frame = new JFrame("Age Group Stats");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.add(chartPanel);
         frame.pack();
         frame.setVisible(true);
