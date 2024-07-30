@@ -36,8 +36,6 @@ public class MedicalRecordsModel {
     }
 
     public boolean save() {
-        System.out.println("PatientID: " + patientID);
-        System.out.println("DoctorID: " + doctorID);
         if ((patientID == null || patientID.isEmpty()) && (doctorID == null || doctorID.isEmpty())) {
             JOptionPane.showMessageDialog(panel, "You MUST enter patient ID and doctor ID !!");
             return false;
@@ -49,10 +47,18 @@ public class MedicalRecordsModel {
             return false;
         } else {
             MysqlConnect db = new MysqlConnect();
-            String[] values = {medicalRecordID, patientID, doctorID, dateOfVisit, notes, treatmentPlans};
+            String[] medicalRecordValues = {medicalRecordID, patientID, doctorID, dateOfVisit, notes, treatmentPlans};
+            String newPatientHistoryID = db.generateNewId("PatientHistory", "H");
+            String[] historyValues = {newPatientHistoryID, patientID, "Medical Visit", dateOfVisit, "Visited Doctor ID " + doctorID + ". Notes: " + notes + ". Treatment plans: " + treatmentPlans};
+    
             try {
-                boolean saveResult = db.saveData("MedicalRecords", "medicalRecordID, PatientID, DoctorID, DateOfVisit, notes, treatmentPlans", values);
-                if (saveResult) {
+                // Save Medical Records Data
+                boolean saveMedicalRecordResult = db.saveData("MedicalRecords", "medicalRecordID, PatientID, DoctorID, DateOfVisit, notes, treatmentPlans", medicalRecordValues);
+    
+                // Save Patient History Data
+                boolean saveHistoryResult = db.saveData("PatientHistory", "HistoryID, PatientID, EventType, EventDate, Details", historyValues);
+    
+                if (saveMedicalRecordResult && saveHistoryResult) {
                     JOptionPane.showMessageDialog(panel, "Data saved successfully !");
                     return true;
                 } else {
@@ -65,6 +71,7 @@ public class MedicalRecordsModel {
             }
         }
     }
+    
 
     public void clear(JTextField dateOfVisitTextField, TextField notesTextField, JTextArea treatmentPlansTextArea) {
         dateOfVisitTextField.setText("");

@@ -140,6 +140,7 @@ public class Home_Page_GUI extends javax.swing.JFrame {
 
     private void dataAnalysisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataAnalysisButtonActionPerformed
         // TODO add your handling code here:
+        this.dispose();
         GUI_Report_Select reportSelectGUI = new GUI_Report_Select();
         reportSelectGUI.setVisible(true);
     }//GEN-LAST:event_dataAnalysisButtonActionPerformed

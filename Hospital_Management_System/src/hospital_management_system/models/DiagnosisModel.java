@@ -33,8 +33,7 @@ public class DiagnosisModel {
     }
 
     public boolean save() {
-        System.out.println("PatientID: " + patientID);
-        System.out.println("DoctorID: " + doctorID);
+
         if ((patientID == null || patientID.isEmpty()) && (doctorID == null || doctorID.isEmpty())) {
             JOptionPane.showMessageDialog(panel, "You MUST enter patient ID and doctor ID !!");
             return false;
@@ -46,10 +45,18 @@ public class DiagnosisModel {
             return false;
         } else {
             MysqlConnect db = new MysqlConnect();
-            String[] values = {diagnosisID, patientID, doctorID, diagnosisDescription, dateOfDiagnosis, treatmentPlans};
+            String[] diagnosisValues = {diagnosisID, patientID, doctorID, diagnosisDescription, dateOfDiagnosis, treatmentPlans};
+            String newPatientHistoryID = db.generateNewId("PatientHistory", "H");
+            String[] historyValues = {newPatientHistoryID, patientID, "Diagnosis", dateOfDiagnosis, "Diagnosis performed: " + diagnosisDescription + " by Doctor ID " + doctorID + ". Treatment plans: " + treatmentPlans};
+    
             try {
-                boolean saveResult = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", values);
-                if (saveResult) {
+                // Save Diagnosis Data
+                boolean saveDiagnosisResult = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", diagnosisValues);
+    
+                // Save Patient History Data
+                boolean saveHistoryResult = db.saveData("PatientHistory", "HistoryID, PatientID, EventType, EventDate, Details", historyValues);
+    
+                if (saveDiagnosisResult && saveHistoryResult) {
                     JOptionPane.showMessageDialog(panel, "Data saved successfully !");
                     return true;
                 } else {
@@ -62,7 +69,7 @@ public class DiagnosisModel {
             }
         }
     }
-
+    
     public void clear(javax.swing.JTextField dateOfDiagnosisTextField, javax.swing.JTextArea diagnosisDescriptionTextArea, javax.swing.JTextArea treatmentPlansTextArea) {
         dateOfDiagnosisTextField.setText("");
         diagnosisDescriptionTextArea.setText("");

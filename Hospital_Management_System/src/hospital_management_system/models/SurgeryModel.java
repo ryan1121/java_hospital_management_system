@@ -34,21 +34,25 @@ public class SurgeryModel {
     }
 
     public boolean save() {
-        if (patientID == null || patientID.isEmpty() && (doctorID == null || doctorID.isEmpty())) {
+        if (patientID == null || patientID.isEmpty() || doctorID == null || doctorID.isEmpty()) {
             JOptionPane.showMessageDialog(panel, "You MUST enter patient ID and doctor ID !!");
-            return false;
-        } else if (patientID == null || patientID.isEmpty()) {
-            JOptionPane.showMessageDialog(panel, "You MUST enter patient ID !!");
-            return false;
-        } else if (doctorID == null || doctorID.isEmpty()) {
-            JOptionPane.showMessageDialog(panel, "You MUST enter doctor ID !!");
             return false;
         } else {
             MysqlConnect db = new MysqlConnect();
-            String[] values = {surgeryID, patientID, doctorID, surgeryType, dateOfSurgery, outcomes};
+            String[] surgeryValues = {surgeryID, patientID, doctorID, surgeryType, dateOfSurgery, outcomes};
+            String newPatientHistoryID = db.generateNewId("PatientHistory", "H");
+            System.out.println("Check: "+newPatientHistoryID);
+            
+            String[] historyValues = {newPatientHistoryID, patientID, "Surgery", dateOfSurgery, "Surgery performed: " + surgeryType + " by Doctor ID " + doctorID + ". Outcomes: " + outcomes};
+            
             try {
-                boolean saveResult = db.saveData("Surgery", "surgeryID, PatientID, DoctorID, surgeryType, DateOfSurgery, Outcomes", values);
-                if (saveResult) {
+                // Save Surgery Data
+                boolean saveSurgeryResult = db.saveData("Surgery", "surgeryID, PatientID, DoctorID, surgeryType, DateOfSurgery, Outcomes", surgeryValues);
+                
+                // Save Patient History Data
+                boolean saveHistoryResult = db.saveData("PatientHistory", "HistoryID, PatientID, EventType, EventDate, Details", historyValues);
+        
+                if (saveSurgeryResult && saveHistoryResult) {
                     JOptionPane.showMessageDialog(panel, "Data saved successfully !");
                     return true;
                 } else {
@@ -61,6 +65,8 @@ public class SurgeryModel {
             }
         }
     }
+    
+    
 
     public void clear(JComboBox<String> surgeryTypeComboBox, JTextField dateOfSurgeryTextField, java.awt.TextField outcomesTextField) {
         surgeryTypeComboBox.setSelectedIndex(-1);

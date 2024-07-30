@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Collections;
 
 
 /*
@@ -102,14 +103,28 @@ public class MysqlConnect {
         }
     }
 
-    public boolean saveData(String tableName, String fieldNames, String[] values) throws SQLException {
-        String query = "INSERT INTO " + tableName + " (" + fieldNames + ") VALUES (?, ?, ?, ?, ?, ?)";
-        try (PreparedStatement statement = connection.prepareStatement(query)) {
+    /**
+     * 保存数据到指定的表中
+     * @param tableName 表名
+     * @param columns 列名，以逗号分隔
+     * @param values 插入的值
+     * @return 如果插入成功返回 true，否则返回 false
+     * @throws SQLException SQL 执行异常
+     */
+    public boolean saveData(String tableName, String columns, String[] values) throws SQLException {
+        // 构建 SQL 插入语句
+        String placeholders = String.join(", ", Collections.nCopies(values.length, "?"));
+        String sql = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + placeholders + ")";
+        
+        try (PreparedStatement stmt = connection.prepareStatement(sql)) {
+            // 设置参数
             for (int i = 0; i < values.length; i++) {
-                statement.setString(i + 1, values[i]);
+                stmt.setString(i + 1, values[i]);
             }
-            int rowsInserted = statement.executeUpdate();
-            return rowsInserted > 0;
+            
+            // 执行插入操作
+            int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
         } catch (SQLException e) {
             System.err.println("Cannot execute SQL query!");
             e.printStackTrace();
