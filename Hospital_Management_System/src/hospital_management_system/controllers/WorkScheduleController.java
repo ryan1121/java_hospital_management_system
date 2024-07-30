@@ -3,7 +3,6 @@ package hospital_management_system.controllers;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableCellRenderer;
 
 import hospital_management_system.MysqlConnect;
 import hospital_management_system.views.Staff_Scheduling;
@@ -209,17 +208,4 @@ public class WorkScheduleController {
         }
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(() -> {
-            // Initialize your GUI components here
-            JTable doctorTable = new JTable();
-            JTable nurseTable = new JTable();
-            JScrollPane doctorPane = new JScrollPane(doctorTable);
-            JScrollPane nursePane = new JScrollPane(nurseTable);
-
-            WorkScheduleViewer viewer = new WorkScheduleViewer(doctorTable, nurseTable, doctorPane, nursePane);
-            viewer.loadDoctorSchedule();
-            viewer.loadNurseSchedule();
-        });
-    }
 }
