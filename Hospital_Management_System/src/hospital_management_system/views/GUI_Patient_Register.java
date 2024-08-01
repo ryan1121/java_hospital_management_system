@@ -6,6 +6,7 @@ package hospital_management_system.views;
 
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
@@ -339,7 +340,8 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         registerEmergency_name.setText("");
         registerEmergency_relationship.setText("");
         registerEmergency_phone.setText("");
-        
+        gender_female.setSelected(false);
+        gender_male.setSelected(false);
     }
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt){
@@ -378,6 +380,18 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
             // Show an error message
             javax.swing.JOptionPane.showMessageDialog(null, "Invalid email address", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
+
+        if (isValidPhone(phone) ){
+            System.out.println("Valid Phone Number");
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(null, "Invalid Phone Number", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+
+        if (isValidPhone(emergencyPhone)){
+            System.out.println("Valid Phone Number in Emergency Section");
+        }else{
+            javax.swing.JOptionPane.showMessageDialog(null, "Invalid Phone Number in Emergency Section", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
     }
     /**
      * @param args the command line arguments
@@ -391,6 +405,17 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         }
         Matcher matcher;
         matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    public boolean isValidPhone(String phone){
+        String phoneRegex = "01\\d-\\d{7}";
+        Pattern pattern = Pattern.compile(phoneRegex);
+        if(phone == null){
+            return false;
+        }
+        Matcher matcher;
+        matcher = pattern.matcher(phone);
         return matcher.matches();
     }
     
