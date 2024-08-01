@@ -305,8 +305,26 @@ public class GUI_patient extends javax.swing.JFrame {
         );
 
         patient_clear.setText("Clear");
-
+        patient_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patient_clearActionPerformed(evt);
+                patient_id.setText("");
+                patient_name.setText("");
+                patient_phone.setText("");
+                patient_email.setText("");
+                patient_address.setText("");
+                patient_address_line2.setText("");
+                patient_address_line3.setText("");
+                patient_emergency_name.setText("");
+                patient_emergency_relationship.setText("");
+                patient_emergency_phone.setText("");
+                insuranceID.setText("");
+                providerName.setText("");
+                policyNumber.setText("");
+            }
+        });
         patient_save.setText("Save");
+        
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -508,13 +526,22 @@ public class GUI_patient extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_consult_dateActionPerformed
 
+    private void patient_clearActionPerformed(java.awt.event.ActionEvent evt){
+        
+    }
+
     private void consult_timeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consult_timeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_consult_timeActionPerformed
+//GEN-LAST:event_consult_timeActionPerformed
+//GEN-LAST:event_consult_timeActionPerformed
+//GEN-LAST:event_consult_timeActionPerformed
 
     private void providerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_providerNameActionPerformed
+
+    }
+
 
     /**
      * @param args the command line arguments
