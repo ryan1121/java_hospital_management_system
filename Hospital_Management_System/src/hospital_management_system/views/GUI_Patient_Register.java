@@ -4,6 +4,12 @@
  */
 package hospital_management_system.views;
 
+import java.util.regex.Pattern;
+import java.util.regex.Matcher;
+
+import javax.swing.JOptionPane;
+
+
 /**
  *
  * @author User
@@ -108,6 +114,7 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         jLabel4.setText("Date of Birth : ");
 
         jLabel5.setText("Phone Number : ");
+        
 
         registerPhone.setText("Phone");
         registerPhone.addActionListener(new java.awt.event.ActionListener() {
@@ -228,8 +235,18 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         );
 
         Submit.setText("Submit");
+        Submit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SubmitActionPerformed(evt);
+            }
+        });
 
         reset.setText("Reset");
+        reset.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -311,10 +328,72 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
     private void registerAddress_line3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerAddress_line3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_registerAddress_line3ActionPerformed
+    private void resetActionPerformed(java.awt.event.ActionEvent evt) {
+        registerName.setText("");
+        registerDOB.setText("");
+        registerPhone.setText("");
+        registerEmail.setText("");
+        registerAddress.setText("");
+        registerAddress_line2.setText("");
+        registerAddress_line3.setText("");
+        registerEmergency_name.setText("");
+        registerEmergency_relationship.setText("");
+        registerEmergency_phone.setText("");
+        
+    }
 
+    private void SubmitActionPerformed(java.awt.event.ActionEvent evt){
+         // Get user input from the text fields and store them into variables
+         String name = registerName.getText();
+         String dob = registerDOB.getText();
+         String phone = registerPhone.getText();
+         String email = registerEmail.getText();
+         String address1 = registerAddress.getText();
+         String address2 = registerAddress_line2.getText();
+         String address3 = registerAddress_line3.getText();
+         String emergencyName = registerEmergency_name.getText();
+         String emergencyRelation = registerEmergency_relationship.getText();
+         String emergencyPhone = registerEmergency_phone.getText();
+         // Get the selected gender
+         String gender = null;
+         if (gender_male.isSelected()) {
+             gender = "Male";
+         } else if (gender_female.isSelected()) {
+             gender = "Female";
+         }
+ 
+         // Check if all required fields are filled in
+         if (name.isEmpty() || dob.isEmpty() || phone.isEmpty() || email.isEmpty() || address1.isEmpty() || gender == null || emergencyName.isEmpty()|| emergencyRelation.isEmpty() || emergencyPhone.isEmpty()) {
+             JOptionPane.showMessageDialog(this, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+         } else {
+             // Perform further processing, such as saving the data to a database or displaying it in a message dialog
+             String message = "Name: " + name + "\nDate of Birth: " + dob + "\nPhone: " + phone + "\nEmail: " + email + "\nAddress: " + address1 + ", " + address2 + ", " + address3 + "\nGender: " + gender;
+             JOptionPane.showMessageDialog(this, message, "Registration Information", JOptionPane.INFORMATION_MESSAGE);
+         }
+
+        if (isValidEmail(email)) {
+            // Proceed with form submission
+            System.out.println("Valid email");
+        } else {
+            // Show an error message
+            javax.swing.JOptionPane.showMessageDialog(null, "Invalid email address", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+    }
     /**
      * @param args the command line arguments
      */
+
+     public boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher;
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+    
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -375,4 +454,5 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
     private javax.swing.JTextField registerPhone;
     private javax.swing.JButton reset;
     // End of variables declaration//GEN-END:variables
+    
 }
