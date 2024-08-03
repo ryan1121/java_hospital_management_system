@@ -37,9 +37,6 @@ public class PrescriptionModel {
     }
 
     public boolean save() {
-        // 调试信息
-        System.out.println("patientID: " + patientID);
-        System.out.println("doctorID: " + doctorID);
         if ((patientID == null || patientID.isEmpty()) && (doctorID == null || doctorID.isEmpty())) {
             JOptionPane.showMessageDialog(panel, "You MUST enter patient ID and doctor ID !!");
             return false;

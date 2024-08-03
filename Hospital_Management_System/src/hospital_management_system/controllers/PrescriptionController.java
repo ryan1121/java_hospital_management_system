@@ -72,10 +72,6 @@ public class PrescriptionController {
             prescriptionDateTextField,
             instructionsTextArea
         );
-        String patientID = patientIDTextField.getText().trim();
-        String doctorID = doctorIDTextField.getText().trim();
-        System.out.println("Patient ID from Controller: " + patientID);
-        System.out.println("Doctor ID from Controller: " + doctorID);
         if (model.save()) {
             PrescriptionModel.setNewPrescriptionId(prescriptionIDTextField);  // reset the new prescription ID
         }
