@@ -1,13 +1,13 @@
 package hospital_management_system.controllers;
 
-import hospital_management_system.models.PrescriptionModel;
+import hospital_management_system.models.Prescription;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class PrescriptionController {
-    private PrescriptionModel model;
+    private Prescription model;
     private JPanel panel;
     private JTextField prescriptionIDTextField;
     private JTextField patientIDTextField;
@@ -57,12 +57,12 @@ public class PrescriptionController {
         });
 
         // Set new Prescription ID
-        PrescriptionModel.setNewPrescriptionId(prescriptionIDTextField);
+        Prescription.setNewPrescriptionId(prescriptionIDTextField);
     }
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
-        // 在创建 PrescriptionModel 前读取最新的输入值
-        this.model = new PrescriptionModel(
+        // 在创建 Prescription 前读取最新的输入值
+        this.model = new Prescription(
             panel,
             prescriptionIDTextField,
             patientIDTextField,
@@ -73,7 +73,7 @@ public class PrescriptionController {
             instructionsTextArea
         );
         if (model.save()) {
-            PrescriptionModel.setNewPrescriptionId(prescriptionIDTextField);  // reset the new prescription ID
+            Prescription.setNewPrescriptionId(prescriptionIDTextField);  // reset the new prescription ID
         }
     }
 

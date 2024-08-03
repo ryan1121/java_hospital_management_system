@@ -1,6 +1,6 @@
 package hospital_management_system.controllers;
 
-import hospital_management_system.models.ConsultationModel;
+import hospital_management_system.models.Consultation;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.awt.TextField;
 
 public class ConsultationController {
-    private ConsultationModel model;
+    private Consultation model;
     private JPanel panel;
     private JTextField consultationIDTextField;
     private JTextField patientIDTextField;
@@ -52,11 +52,11 @@ public class ConsultationController {
         });
 
         // Set new Consultation ID
-        ConsultationModel.setNewConsultationId(consultationIDTextField);
+        Consultation.setNewConsultationId(consultationIDTextField);
     }
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
-        this.model = new ConsultationModel(
+        this.model = new Consultation(
             panel,
             consultationIDTextField,
             patientIDTextField,
@@ -67,7 +67,7 @@ public class ConsultationController {
         String patientID = patientIDTextField.getText().trim();
         String doctorID = doctorIDTextField.getText().trim();
         if (model.save()) {
-            ConsultationModel.setNewConsultationId(consultationIDTextField);  // reset the new consultation ID
+            Consultation.setNewConsultationId(consultationIDTextField);  // reset the new consultation ID
         }
     }
 

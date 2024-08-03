@@ -6,7 +6,7 @@ import hospital_management_system.utils.DateTimeUtils;
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class SurgeryModel {
+public class Surgery {
     private String surgeryID;
     private String patientID;
     private String doctorID;
@@ -15,7 +15,7 @@ public class SurgeryModel {
     private String outcomes;
     private JPanel panel;
 
-    public SurgeryModel(
+    public Surgery(
         JPanel panel,
         JTextField surgeryIDTextField,
         JTextField patientIDTextField,

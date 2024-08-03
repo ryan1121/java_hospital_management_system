@@ -1,12 +1,12 @@
 package hospital_management_system.controllers;
 
-import hospital_management_system.models.SurgeryModel;
+import hospital_management_system.models.Surgery;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 
 public class SurgeryController {
-    private SurgeryModel model;
+    private Surgery model;
     private JPanel panel;
     private JTextField surgeryIDTextField;
     private JComboBox<String> surgeryTypeComboBox;
@@ -27,7 +27,7 @@ public class SurgeryController {
         this.surgeryTypeComboBox = surgeryTypeComboBox;
         this.dateOfSurgeryTextField = dateOfSurgeryTextField;
         this.outcomesTextField = outcomesTextField;
-        this.model = new SurgeryModel(
+        this.model = new Surgery(
             panel,
             surgeryIDTextField,
             patientIDTextField,
@@ -40,7 +40,7 @@ public class SurgeryController {
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
         if (model.save()) {
-            SurgeryModel.setNewSurgeryId(surgeryIDTextField);  // reset the new Surgery ID
+            Surgery.setNewSurgeryId(surgeryIDTextField);  // reset the new Surgery ID
         }
     }
 

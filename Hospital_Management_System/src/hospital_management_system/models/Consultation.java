@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.sql.SQLException;
 import java.awt.TextField;
 
-public class ConsultationModel {
+public class Consultation {
     private String consultationID;
     private String patientID;
     private String doctorID;
@@ -15,7 +15,7 @@ public class ConsultationModel {
     private String notes;
     private JPanel panel;
 
-    public ConsultationModel(
+    public Consultation(
         JPanel panel,
         JTextField consultationIDTextField,
         JTextField patientIDTextField,
@@ -91,12 +91,6 @@ public class ConsultationModel {
     // Getters and Setters
     public String getConsultationID() { return consultationID; }
     public void setConsultationID(String consultationID) { this.consultationID = consultationID; }
-
-    public String getPatientID() { return patientID; }
-    public void setPatientID(String patientID) { this.patientID = patientID; }
-
-    public String getDoctorID() { return doctorID; }
-    public void setDoctorID(String doctorID) { this.doctorID = doctorID; }
 
     public String getDateOfConsultation() { return dateOfConsultation; }
     public void setDateOfConsultation(String dateOfConsultation) { this.dateOfConsultation = dateOfConsultation; }

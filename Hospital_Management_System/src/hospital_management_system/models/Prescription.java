@@ -6,7 +6,7 @@ import hospital_management_system.utils.DateTimeUtils;
 import javax.swing.*;
 import java.sql.SQLException;
 
-public class PrescriptionModel {
+public class Prescription {
     private String prescriptionID;
     private String patientID;
     private String doctorID;
@@ -16,7 +16,7 @@ public class PrescriptionModel {
     private String instructions;
     private JPanel panel;
 
-    public PrescriptionModel(
+    public Prescription(
         JPanel panel,
         JTextField prescriptionIDTextField,
         JTextField patientIDTextField,

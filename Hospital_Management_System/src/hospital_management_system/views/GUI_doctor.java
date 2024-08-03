@@ -136,18 +136,18 @@ public class GUI_doctor extends javax.swing.JFrame {
         MedRecord_ClearButton = new javax.swing.JButton();
 
         // 创建一个Diagnosis Model object
-        DiagnosisModel diagnosisModelObj = new DiagnosisModel(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
-        diagnosisModelObj.setNewDiagnosisId(DiagnosisID_textField);
+        Diagnosis DiagnosisObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
+        DiagnosisObj.setNewDiagnosisId(DiagnosisID_textField);
         DiagnosisID_textField.setEnabled(false);
 
 
         // 创建一个Surgery Model object
-        SurgeryModel getNewSurgeryIdObj = new SurgeryModel(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
+        Surgery getNewSurgeryIdObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
         getNewSurgeryIdObj.setNewSurgeryId(surgeryID_textField);
         surgeryID_textField.setEnabled(false);
 
         // 创建一个MedicalRecords Model object
-        MedicalRecordsModel getNewMedicalRecordIdObj = new MedicalRecordsModel(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
+        MedicalRecords getNewMedicalRecordIdObj = new MedicalRecords(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
         getNewMedicalRecordIdObj.setNewMedicalRecordId(medicalRecordID_textField);
         medicalRecordID_textField.setEnabled(false);
         

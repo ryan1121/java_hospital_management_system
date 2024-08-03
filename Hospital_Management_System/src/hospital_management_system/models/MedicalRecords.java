@@ -1,34 +1,37 @@
 package hospital_management_system.models;
+
 import hospital_management_system.MysqlConnect;
 import hospital_management_system.utils.DateTimeUtils;
 
-import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import javax.swing.*;
 
-public class DiagnosisModel {
+import java.awt.TextField;
+import java.sql.SQLException;
+
+public class MedicalRecords {
     private String patientID;
     private String doctorID;
-    private String diagnosisID;
-    private String dateOfDiagnosis;
-    private String diagnosisDescription;
+    private String medicalRecordID;
+    private String dateOfVisit;
+    private String notes;
     private String treatmentPlans;
-    private javax.swing.JPanel panel;
+    private JPanel panel;
 
-    public DiagnosisModel(
-        javax.swing.JPanel panel,
-        javax.swing.JTextField patientIDTextField,
-        javax.swing.JTextField doctorIDTextField,
-        javax.swing.JTextField diagnosisIDTextField,
-        javax.swing.JTextField dateOfDiagnosisTextField,
-        javax.swing.JTextArea diagnosisDescriptionTextArea,
-        javax.swing.JTextArea treatmentPlansTextArea
+    public MedicalRecords(
+        JPanel panel,
+        JTextField patientIDTextField,
+        JTextField doctorIDTextField,
+        JTextField medicalRecordIDTextField,
+        JTextField dateOfVisitTextField,
+        TextField notesTextField,
+        JTextArea treatmentPlansTextArea
     ) {
         this.panel = panel;
         this.patientID = patientIDTextField.getText();
         this.doctorID = doctorIDTextField.getText();
-        this.diagnosisID = diagnosisIDTextField.getText();
-        this.dateOfDiagnosis = DateTimeUtils.formatDate(dateOfDiagnosisTextField.getText());
-        this.diagnosisDescription = diagnosisDescriptionTextArea.getText();
+        this.medicalRecordID = medicalRecordIDTextField.getText();
+        this.dateOfVisit = DateTimeUtils.formatDate(dateOfVisitTextField.getText());
+        this.notes = notesTextField.getText();
         this.treatmentPlans = treatmentPlansTextArea.getText();
     }
 
@@ -44,18 +47,18 @@ public class DiagnosisModel {
             return false;
         } else {
             MysqlConnect db = new MysqlConnect();
-            String[] diagnosisValues = {diagnosisID, patientID, doctorID, diagnosisDescription, dateOfDiagnosis, treatmentPlans};
+            String[] medicalRecordValues = {medicalRecordID, patientID, doctorID, dateOfVisit, notes, treatmentPlans};
             String newPatientHistoryID = db.generateNewId("PatientHistory", "H");
-            String[] historyValues = {newPatientHistoryID, patientID, "Diagnosis", dateOfDiagnosis, "Diagnosis performed: " + diagnosisDescription + " by Doctor ID " + doctorID + ". Treatment plans: " + treatmentPlans};
+            String[] historyValues = {newPatientHistoryID, patientID, "Medical Visit", dateOfVisit, "Visited Doctor ID " + doctorID + ". Notes: " + notes + ". Treatment plans: " + treatmentPlans};
     
             try {
-                // Save Diagnosis Data
-                boolean saveDiagnosisResult = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", diagnosisValues);
+                // Save Medical Records Data
+                boolean saveMedicalRecordResult = db.saveData("MedicalRecords", "medicalRecordID, PatientID, DoctorID, DateOfVisit, notes, treatmentPlans", medicalRecordValues);
     
                 // Save Patient History Data
                 boolean saveHistoryResult = db.saveData("PatientHistory", "HistoryID, PatientID, EventType, EventDate, Details", historyValues);
     
-                if (saveDiagnosisResult && saveHistoryResult) {
+                if (saveMedicalRecordResult && saveHistoryResult) {
                     JOptionPane.showMessageDialog(panel, "Data saved successfully !");
                     return true;
                 } else {
@@ -69,17 +72,18 @@ public class DiagnosisModel {
         }
     }
     
-    public void clear(javax.swing.JTextField dateOfDiagnosisTextField, javax.swing.JTextArea diagnosisDescriptionTextArea, javax.swing.JTextArea treatmentPlansTextArea) {
-        dateOfDiagnosisTextField.setText("");
-        diagnosisDescriptionTextArea.setText("");
+
+    public void clear(JTextField dateOfVisitTextField, TextField notesTextField, JTextArea treatmentPlansTextArea) {
+        dateOfVisitTextField.setText("");
+        notesTextField.setText("");
         treatmentPlansTextArea.setText("");
     }
 
-    public static String setNewDiagnosisId(javax.swing.JTextField diagnosisIDTextField) {
+    public static String setNewMedicalRecordId(JTextField medicalRecordIDTextField) {
         MysqlConnect db = new MysqlConnect();
-        String newDiagnosisId = db.generateNewId("diagnosis", "DI");
-        diagnosisIDTextField.setText(newDiagnosisId);
-        return newDiagnosisId;
+        String newMedicalRecordId = db.generateNewId("MedicalRecords", "MR");
+        medicalRecordIDTextField.setText(newMedicalRecordId);
+        return newMedicalRecordId;
     }
 
     // Getters and Setters
@@ -89,14 +93,14 @@ public class DiagnosisModel {
     public String getDoctorID() { return doctorID; }
     public void setDoctorID(String doctorID) { this.doctorID = doctorID; }
 
-    public String getDiagnosisID() { return diagnosisID; }
-    public void setDiagnosisID(String diagnosisID) { this.diagnosisID = diagnosisID; }
+    public String getMedicalRecordID() { return medicalRecordID; }
+    public void setMedicalRecordID(String medicalRecordID) { this.medicalRecordID = medicalRecordID; }
 
-    public String getDateOfDiagnosis() { return dateOfDiagnosis; }
-    public void setDateOfDiagnosis(String dateOfDiagnosis) { this.dateOfDiagnosis = dateOfDiagnosis; }
+    public String getDateOfVisit() { return dateOfVisit; }
+    public void setDateOfVisit(String dateOfVisit) { this.dateOfVisit = dateOfVisit; }
 
-    public String getDiagnosisDescription() { return diagnosisDescription; }
-    public void setDiagnosisDescription(String diagnosisDescription) { this.diagnosisDescription = diagnosisDescription; }
+    public String getNotes() { return notes; }
+    public void setNotes(String notes) { this.notes = notes; }
 
     public String getTreatmentPlans() { return treatmentPlans; }
     public void setTreatmentPlans(String treatmentPlans) { this.treatmentPlans = treatmentPlans; }

@@ -1,13 +1,13 @@
 package hospital_management_system.controllers;
 
-import hospital_management_system.models.DiagnosisModel;
+import hospital_management_system.models.Diagnosis;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import javax.swing.JPanel;
 
 public class DiagnosisController {
-    private DiagnosisModel model;
+    private Diagnosis model;
     private JPanel panel;
     private JTextField diagnosisIDTextField;
     private JTextField dateOfDiagnosisTextField;
@@ -28,7 +28,7 @@ public class DiagnosisController {
         this.dateOfDiagnosisTextField = dateOfDiagnosisTextField;
         this.diagnosisDescriptionTextArea = diagnosisDescriptionTextArea;
         this.treatmentPlansTextArea = treatmentPlansTextArea;
-        this.model = new DiagnosisModel(
+        this.model = new Diagnosis(
             panel,
             patientIDTextField,
             doctorIDTextField,
@@ -42,7 +42,7 @@ public class DiagnosisController {
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
         if (model.save()) {
-            DiagnosisModel.setNewDiagnosisId(diagnosisIDTextField);  // reset the new diagnosis ID
+            Diagnosis.setNewDiagnosisId(diagnosisIDTextField);  // reset the new diagnosis ID
         }
     }
 
