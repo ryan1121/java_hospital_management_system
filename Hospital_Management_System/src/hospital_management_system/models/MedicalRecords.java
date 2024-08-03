@@ -87,12 +87,6 @@ public class MedicalRecords {
     }
 
     // Getters and Setters
-    public String getPatientID() { return patientID; }
-    public void setPatientID(String patientID) { this.patientID = patientID; }
-
-    public String getDoctorID() { return doctorID; }
-    public void setDoctorID(String doctorID) { this.doctorID = doctorID; }
-
     public String getMedicalRecordID() { return medicalRecordID; }
     public void setMedicalRecordID(String medicalRecordID) { this.medicalRecordID = medicalRecordID; }
 

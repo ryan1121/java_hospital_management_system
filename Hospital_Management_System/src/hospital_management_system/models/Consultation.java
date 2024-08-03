@@ -27,8 +27,8 @@ public class Consultation {
         this.consultationID = consultationIDTextField.getText();
         this.patientID = patientIDTextField.getText();
         this.doctorID = doctorIDTextField.getText();
-        this.dateOfConsultation = DateTimeUtils.formatDate(dateOfConsultationTextField.getText());
-        this.notes = notes_textField.getText();
+        setDateOfConsultation(DateTimeUtils.formatDate(dateOfConsultationTextField.getText()));
+        setNotes(notes_textField.getText());
     }
 
     public boolean save() {
@@ -96,4 +96,5 @@ public class Consultation {
     public void setDateOfConsultation(String dateOfConsultation) { this.dateOfConsultation = dateOfConsultation; }
 
     public String getNotes() { return notes; }
+    public void setNotes(String notes) { this.notes = notes;}
 }

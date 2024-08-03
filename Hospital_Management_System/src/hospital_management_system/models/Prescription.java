@@ -30,10 +30,10 @@ public class Prescription {
         this.prescriptionID = prescriptionIDTextField.getText();
         this.patientID = patientIDTextField.getText();
         this.doctorID = doctorIDTextField.getText();
-        this.medication = (String) Medication_comboxBox.getSelectedItem();
-        this.dosage = dosage_Spinner.getValue().toString();
-        this.prescriptionDate = DateTimeUtils.formatDate(prescriptionDateTextField.getText());
-        this.instructions = instructionsTextArea.getText();
+        setMedication((String) Medication_comboxBox.getSelectedItem());
+        setDosage(dosage_Spinner.getValue().toString());
+        setPrescriptionDate(DateTimeUtils.formatDate(prescriptionDateTextField.getText()));
+        setInstructions(instructionsTextArea.getText());
     }
 
     public boolean save() {
@@ -90,12 +90,6 @@ public class Prescription {
     // Getters and Setters
     public String getPrescriptionID() { return prescriptionID; }
     public void setPrescriptionID(String prescriptionID) { this.prescriptionID = prescriptionID; }
-
-    public String getPatientID() { return patientID; }
-    public void setPatientID(String patientID) { this.patientID = patientID; }
-
-    public String getDoctorID() { return doctorID; }
-    public void setDoctorID(String doctorID) { this.doctorID = doctorID; }
 
     public String getMedication() { return medication; }
     public void setMedication(String medication) { this.medication = medication; }

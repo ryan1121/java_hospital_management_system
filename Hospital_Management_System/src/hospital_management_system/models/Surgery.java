@@ -28,9 +28,9 @@ public class Surgery {
         this.surgeryID = surgeryIDTextField.getText();
         this.patientID = patientIDTextField.getText();
         this.doctorID = doctorIDTextField.getText();
-        this.surgeryType = (String) surgeryTypeComboBox.getSelectedItem();
-        this.dateOfSurgery = DateTimeUtils.formatDate(dateOfSurgeryTextField.getText());
-        this.outcomes = outcomesTextField.getText();
+        setSurgeryType((String) surgeryTypeComboBox.getSelectedItem());
+        setDateOfSurgery(DateTimeUtils.formatDate(dateOfSurgeryTextField.getText()));
+        setOutcomes(outcomesTextField.getText());
     }
 
     public boolean save() {
@@ -84,12 +84,6 @@ public class Surgery {
     // Getters and Setters
     public String getSurgeryID() { return surgeryID; }
     public void setSurgeryID(String surgeryID) { this.surgeryID = surgeryID; }
-
-    public String getPatientID() { return patientID; }
-    public void setPatientID(String patientID) { this.patientID = patientID; }
-
-    public String getDoctorID() { return doctorID; }
-    public void setDoctorID(String doctorID) { this.doctorID = doctorID; }
 
     public String getSurgeryType() { return surgeryType; }
     public void setSurgeryType(String surgeryType) { this.surgeryType = surgeryType; }

@@ -3,7 +3,8 @@ import hospital_management_system.MysqlConnect;
 import hospital_management_system.utils.DateTimeUtils;
 
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
+import JOptionPane;
+import javax.swing.*;
 
 public class Diagnosis {
     private String patientID;
@@ -12,24 +13,24 @@ public class Diagnosis {
     private String dateOfDiagnosis;
     private String diagnosisDescription;
     private String treatmentPlans;
-    private javax.swing.JPanel panel;
+    private JPanel panel;
 
     public Diagnosis(
-        javax.swing.JPanel panel,
-        javax.swing.JTextField patientIDTextField,
-        javax.swing.JTextField doctorIDTextField,
-        javax.swing.JTextField diagnosisIDTextField,
-        javax.swing.JTextField dateOfDiagnosisTextField,
-        javax.swing.JTextArea diagnosisDescriptionTextArea,
-        javax.swing.JTextArea treatmentPlansTextArea
+        JPanel panel,
+        JTextField patientIDTextField,
+        JTextField doctorIDTextField,
+        JTextField diagnosisIDTextField,
+        JTextField dateOfDiagnosisTextField,
+        JTextArea diagnosisDescriptionTextArea,
+        JTextArea treatmentPlansTextArea
     ) {
         this.panel = panel;
         this.patientID = patientIDTextField.getText();
         this.doctorID = doctorIDTextField.getText();
-        this.diagnosisID = diagnosisIDTextField.getText();
-        this.dateOfDiagnosis = DateTimeUtils.formatDate(dateOfDiagnosisTextField.getText());
-        this.diagnosisDescription = diagnosisDescriptionTextArea.getText();
-        this.treatmentPlans = treatmentPlansTextArea.getText();
+        setDiagnosisID(diagnosisIDTextField.getText());
+        setDateOfDiagnosis(DateTimeUtils.formatDate(dateOfDiagnosisTextField.getText()));
+        setDiagnosisDescription(diagnosisDescriptionTextArea.getText());
+        setTreatmentPlans(treatmentPlansTextArea.getText());
     }
 
     public boolean save() {
@@ -69,25 +70,18 @@ public class Diagnosis {
         }
     }
     
-    public void clear(javax.swing.JTextField dateOfDiagnosisTextField, javax.swing.JTextArea diagnosisDescriptionTextArea, javax.swing.JTextArea treatmentPlansTextArea) {
+    public void clear(JTextField dateOfDiagnosisTextField, JTextArea diagnosisDescriptionTextArea, JTextArea treatmentPlansTextArea) {
         dateOfDiagnosisTextField.setText("");
         diagnosisDescriptionTextArea.setText("");
         treatmentPlansTextArea.setText("");
     }
 
-    public static String setNewDiagnosisId(javax.swing.JTextField diagnosisIDTextField) {
+    public static String setNewDiagnosisId(JTextField diagnosisIDTextField) {
         MysqlConnect db = new MysqlConnect();
         String newDiagnosisId = db.generateNewId("diagnosis", "DI");
         diagnosisIDTextField.setText(newDiagnosisId);
         return newDiagnosisId;
     }
-
-    // Getters and Setters
-    public String getPatientID() { return patientID; }
-    public void setPatientID(String patientID) { this.patientID = patientID; }
-
-    public String getDoctorID() { return doctorID; }
-    public void setDoctorID(String doctorID) { this.doctorID = doctorID; }
 
     public String getDiagnosisID() { return diagnosisID; }
     public void setDiagnosisID(String diagnosisID) { this.diagnosisID = diagnosisID; }
