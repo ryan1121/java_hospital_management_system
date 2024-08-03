@@ -1,11 +1,13 @@
 package hospital_management_system;
 
 import java.sql.Connection;
+import java.sql.DatabaseMetaData;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Collections;
 
 
@@ -90,6 +92,23 @@ public class MysqlConnect {
         }
     }
     
+    public String[] getTableColumns(String tableName) {
+        String query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ?";
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, tableName);
+            ResultSet rs = statement.executeQuery();
+            ArrayList<String> columns = new ArrayList<>();
+            while (rs.next()) {
+                columns.add(rs.getString("COLUMN_NAME"));
+            }
+            return columns.toArray(new String[0]);
+        } catch (SQLException e) {
+            System.err.println("Cannot execute SQL query!");
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public ResultSet getData(String tableName, String condition) {
         String query = "SELECT * FROM " + tableName + " WHERE " + condition;
@@ -132,7 +151,35 @@ public class MysqlConnect {
         }
     }
     
+    public int executeUpdate(String query) {
+        try {
+            Statement statement = connection.createStatement();
+            return statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return 0;
+        }
+    }
+    
+    public String getPrimaryKeyColumn(String tableName) {
+        String primaryKeyColumn = null;
 
+        try {
+            DatabaseMetaData metaData = connection.getMetaData();
+            ResultSet primaryKeys = metaData.getPrimaryKeys(null, null, tableName);
+
+            if (primaryKeys.next()) {
+                primaryKeyColumn = primaryKeys.getString("COLUMN_NAME");
+            }
+
+            primaryKeys.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return primaryKeyColumn;
+
+    }
     public boolean updateData(String tableName, String updates, String condition) {
         String query = "UPDATE " + tableName + " SET " + updates + " WHERE " + condition;
         try (PreparedStatement statement = connection.prepareStatement(query)) {

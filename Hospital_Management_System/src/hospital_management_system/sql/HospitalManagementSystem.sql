@@ -44,7 +44,7 @@ CREATE TABLE Doctors (
 );
 
 -- 创建 Nurse 表
-CREATE TABLE Nurse(
+CREATE TABLE Nurse (
     nurse_id VARCHAR(25) PRIMARY KEY,
     nurse_name VARCHAR(255),
     nurse_password VARCHAR(255) NOT NULL,
@@ -60,22 +60,22 @@ CREATE TABLE Nurse(
     schedule_date DATE,
     schedule_time TIME,
     schedule_details TEXT,
-    FOREIGN KEY (nurse_supervising_doctor) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (nurse_supervising_doctor) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
 -- 创建 PatientCare 表
-CREATE TABLE PatientCare(
+CREATE TABLE PatientCare (
     Primary_doctor_id VARCHAR(25),
     assigned_nurse_id VARCHAR(25),
     dietary_restrictions TEXT,
     patient_progress_note TEXT,
     discharge_date DATE,
-    FOREIGN KEY (Primary_doctor_id) REFERENCES Doctors(doctor_id),
-    FOREIGN KEY (assigned_nurse_id) REFERENCES Nurse(nurse_id)
+    FOREIGN KEY (Primary_doctor_id) REFERENCES Doctors(doctor_id) ON DELETE CASCADE,
+    FOREIGN KEY (assigned_nurse_id) REFERENCES Nurse(nurse_id) ON DELETE CASCADE
 );
 
 -- 创建 Admission 表
-CREATE TABLE Admission(
+CREATE TABLE Admission (
     Admission_ID VARCHAR(25) PRIMARY KEY,
     Admission_Date DATE,
     Admitting_Staff_ID VARCHAR(25),
@@ -85,11 +85,11 @@ CREATE TABLE Admission(
     admission_Patient_ID VARCHAR(25),
     Insurance_Details TEXT,
     medical_equipment_need TEXT,
-    FOREIGN KEY (admission_Patient_ID) REFERENCES Patients(patient_id)
+    FOREIGN KEY (admission_Patient_ID) REFERENCES Patients(patient_id) ON DELETE CASCADE
 );
 
 -- 创建 Appointment 表
-CREATE TABLE Appointment(
+CREATE TABLE Appointment (
     Appointment_ID VARCHAR(25) PRIMARY KEY,
     app_patient_id VARCHAR(25),
     app_doctor_id VARCHAR(25),
@@ -103,13 +103,13 @@ CREATE TABLE Appointment(
     Admitting_Staff_ID VARCHAR(25),
     booking_date DATE,
     app_cancel BOOLEAN,
-    FOREIGN KEY (app_patient_id) REFERENCES Patients(patient_id),
-    FOREIGN KEY (app_doctor_id) REFERENCES Doctors(doctor_id),
-    FOREIGN KEY (Admitting_Staff_ID) REFERENCES Nurse(nurse_id)
+    FOREIGN KEY (app_patient_id) REFERENCES Patients(patient_id) ON DELETE CASCADE,
+    FOREIGN KEY (app_doctor_id) REFERENCES Doctors(doctor_id) ON DELETE CASCADE,
+    FOREIGN KEY (Admitting_Staff_ID) REFERENCES Nurse(nurse_id) ON DELETE CASCADE
 );
 
 -- 创建 BedAllocation 表
-CREATE TABLE BedAllocation(
+CREATE TABLE BedAllocation (
     bed_allocate_number VARCHAR(25) PRIMARY KEY,
     room_allocate_number VARCHAR(25),
     ward_allocate_number VARCHAR(25),
@@ -121,11 +121,11 @@ CREATE TABLE BedAllocation(
     discharge_date DATE,
     pre_occ TEXT,
     emergency_equipment TEXT,
-    FOREIGN KEY (bed_patient_id) REFERENCES Patients(patient_id)
+    FOREIGN KEY (bed_patient_id) REFERENCES Patients(patient_id) ON DELETE CASCADE
 );
 
 -- 创建 Admin 表
-CREATE TABLE Admin(
+CREATE TABLE Admin (
     admin_id VARCHAR(25) PRIMARY KEY,
     admin_name VARCHAR(255),
     admin_password VARCHAR(255) NOT NULL,
@@ -142,8 +142,8 @@ CREATE TABLE Prescription (
     dosage VARCHAR(255) NOT NULL,
     PrescriptionDate DATE NOT NULL,
     instructions TEXT,
-    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
-    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE,
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
 -- 创建 MedicalRecords 表
@@ -154,8 +154,8 @@ CREATE TABLE MedicalRecords (
     DateOfVisit DATE NOT NULL,
     notes TEXT,
     treatmentPlans TEXT,
-    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
-    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE,
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
 -- 创建 Surgery 表
@@ -166,8 +166,8 @@ CREATE TABLE Surgery (
     surgeryType VARCHAR(255) NOT NULL,
     DateOfSurgery DATE NOT NULL,
     Outcomes TEXT,
-    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
-    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE,
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
 -- 创建 Consultations 表
@@ -177,8 +177,8 @@ CREATE TABLE Consultations (
     DoctorID VARCHAR(25) NOT NULL,
     DateOfConsultation DATE NOT NULL,
     notes TEXT,
-    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
-    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE,
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
 -- 创建 Diagnosis 表
@@ -189,8 +189,8 @@ CREATE TABLE Diagnosis (
     DiagnosisDescription TEXT NOT NULL,
     DateOfDiagnosis DATE NOT NULL,
     treatmentPlans TEXT,
-    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
-    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE,
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
 -- 创建 PatientHistory 表
@@ -200,24 +200,20 @@ CREATE TABLE PatientHistory (
     EventType VARCHAR(255) NOT NULL,
     EventDate DATE NOT NULL,
     Details TEXT,
-    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE
 );
-
-
 
 -- 创建 Invoice 表
 CREATE TABLE Invoice (
     InvoiceID VARCHAR(25) PRIMARY KEY,
     InvoiceDate DATE,
-    InvoiceDue DATE,    -- 自动算出三个月后位due
+    InvoiceDue DATE,
     PatientID VARCHAR(25),
     TotalPayment DECIMAL(10, 2),
     AmountPaid DECIMAL(10, 2),
     BalanceDue DECIMAL(10, 2),
-    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE
 );
-
-
 
 -- 创建 Billing 表
 CREATE TABLE Billing (
@@ -226,9 +222,8 @@ CREATE TABLE Billing (
     CostPerService DECIMAL(10, 2),
     Quantity INT,
     TotalPayment DECIMAL(10, 2),
-    FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID)
+    FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID) ON DELETE CASCADE
 );
-
 
 -- 创建 DoctorStaffScheduling 表
 CREATE TABLE DoctorStaffScheduling (
@@ -238,7 +233,7 @@ CREATE TABLE DoctorStaffScheduling (
     ShiftEndTime TIME,
     Department VARCHAR(100),
     AssignedTasks TEXT,
-    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id)
+    FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
 -- 创建 NurseStaffScheduling 表
@@ -249,9 +244,8 @@ CREATE TABLE NurseStaffScheduling (
     ShiftEndTime TIME,
     Department VARCHAR(100),
     AssignedTasks TEXT,
-    FOREIGN KEY (NurseID) REFERENCES Nurse(nurse_id)
+    FOREIGN KEY (NurseID) REFERENCES Nurse(nurse_id) ON DELETE CASCADE
 );
-
 
 -- 创建 InventoryManagement 表
 CREATE TABLE InventoryManagement (
@@ -287,10 +281,8 @@ CREATE TABLE TransferManagement (
     TransferTime TIME,
     ReasonForTransfer TEXT,
     StatusOfTransfer VARCHAR(50),
-    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id)
+    FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE
 );
-
-
 
 -- 创建 Payment 表
 CREATE TABLE Payment (
@@ -300,5 +292,5 @@ CREATE TABLE Payment (
     PaymentAmount DECIMAL(10, 2),
     PaymentStatus VARCHAR(50),
     InvoiceID VARCHAR(25),
-    FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID)
+    FOREIGN KEY (InvoiceID) REFERENCES Invoice(InvoiceID) ON DELETE CASCADE
 );
