@@ -33,7 +33,6 @@ public class DiagnosisModel {
     }
 
     public boolean save() {
-
         if ((patientID == null || patientID.isEmpty()) && (doctorID == null || doctorID.isEmpty())) {
             JOptionPane.showMessageDialog(panel, "You MUST enter patient ID and doctor ID !!");
             return false;

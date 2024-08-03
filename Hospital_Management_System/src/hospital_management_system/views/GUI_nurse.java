@@ -4,6 +4,10 @@
  */
 package hospital_management_system.views;
 
+import java.awt.Dimension;
+
+import hospital_management_system.controllers.*;
+
 /**
  *
  * @author User
@@ -170,7 +174,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         PrescriptionID_label = new javax.swing.JLabel();
         Medication_label = new javax.swing.JLabel();
         Medication_comboxBox = new javax.swing.JComboBox<>();
-        Medication_label1 = new javax.swing.JLabel();
+        dosage_label = new javax.swing.JLabel();
         dosage_Spinner = new javax.swing.JSpinner();
         mgUnit_label = new javax.swing.JLabel();
         PrescriptionDate_textField = new javax.swing.JFormattedTextField();
@@ -179,6 +183,12 @@ public class GUI_nurse extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         instructions = new javax.swing.JTextArea();
         PrescriptionID_textField = new javax.swing.JTextField();
+        // 设置 JTextField 的大小
+        Dimension size = new Dimension(120, 20); // 宽度200，高度20
+        PrescriptionID_textField.setPreferredSize(size);
+        PrescriptionDate_textField.setPreferredSize(size);
+        PrescriptionID_textField.setEnabled(false); // 禁用id输入框
+
         prescripition_clearButton = new javax.swing.JButton();
         prescription_saveButton = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
@@ -187,6 +197,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         DateOfConsultation_label = new javax.swing.JLabel();
         Notes_label = new javax.swing.JLabel();
         ConsultationID_textField = new javax.swing.JTextField();
+        ConsultationID_textField.setEnabled(false);
         notes_textField = new java.awt.TextField();
         consultationManage_saveButton = new javax.swing.JButton();
         consultationManage_clearButton = new javax.swing.JButton();
@@ -1356,13 +1367,13 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         Medication_label.setText("Medication : ");
 
-        Medication_comboxBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        Medication_comboxBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Aspirin", "Lisinopril", "Metformin", "Ibuprofen", "Cetirizine", "Doxorubicin", "Omeprazole", "Albuterol", "Hydroxychloroquine", "Prednisone", "Erythropoietin", "Finasteride", "Tobramycin", "Sertraline", "Montelukast", "Vitamin K", "Rifampin", "Geriatric Vitamin", "Nasal Spray", "Anesthetic" }));
 
-        Medication_label1.setText("Dosage : ");
+        dosage_label.setText("Dosage : ");
 
         mgUnit_label.setText("mg");
 
-        PrescriptionDate_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        PrescriptionDate_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
 
         PrescriptionDate_label.setText("Prescription Date : ");
 
@@ -1375,6 +1386,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         prescripition_clearButton.setText("Clear");
 
         prescription_saveButton.setText("Save");
+        PrescriptionController PrescriptionControllerObj = new PrescriptionController(jPanel13, PrescriptionID_textField, PatientID_textField, DoctorID_textField, Medication_comboxBox, dosage_Spinner, PrescriptionDate_textField, instructions, prescription_saveButton, prescripition_clearButton);
+        ConsultationController ConsultationControllerObj = new ConsultationController(jPanel13, ConsultationID_textField, PatientID_textField, DoctorID_textField, DateOfConsultation_textField, notes_textField, consultationManage_saveButton, consultationManage_clearButton);
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -1407,18 +1420,57 @@ public class GUI_nurse extends javax.swing.JFrame {
                                 .addGap(29, 29, 29)
                                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel14Layout.createSequentialGroup()
-                                        .addComponent(Medication_label1)
+                                        .addComponent(dosage_label)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGap(80)
                                         .addComponent(dosage_Spinner, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(80)
                                     .addGroup(jPanel14Layout.createSequentialGroup()
                                         .addComponent(Medication_label)
                                         .addGap(18, 18, 18)
                                         .addComponent(Medication_comboxBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(mgUnit_label)))
+                                .addGap(120)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+        jPanel14Layout.setHorizontalGroup(
+            jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel14Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(PrescriptionID_label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PrescriptionID_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(Medication_label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Medication_comboxBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(dosage_label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dosage_Spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(mgUnit_label))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(PrescriptionDate_label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(PrescriptionDate_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(Instructions_label)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(prescription_saveButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(prescripition_clearButton)
+                .addContainerGap())
+        );
+        
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
@@ -1432,13 +1484,13 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addComponent(Medication_comboxBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(dosage_label)
                     .addComponent(dosage_Spinner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Medication_label1)
                     .addComponent(mgUnit_label))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(PrescriptionDate_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PrescriptionDate_label))
+                    .addComponent(PrescriptionDate_label)
+                    .addComponent(PrescriptionDate_textField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1451,12 +1503,13 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addComponent(prescripition_clearButton))
                 .addContainerGap())
         );
+        
 
         jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consultation Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         ConsultationID_label.setText("Consultation ID : ");
 
-        DateOfConsultation_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        DateOfConsultation_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
         DateOfConsultation_textField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DateOfConsultation_textFieldActionPerformed(evt);
@@ -2614,7 +2667,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JLabel MaximumStock1;
     private javax.swing.JComboBox<String> Medication_comboxBox;
     private javax.swing.JLabel Medication_label;
-    private javax.swing.JLabel Medication_label1;
+    private javax.swing.JLabel dosage_label;
     private javax.swing.JLabel MinimunStock;
     private javax.swing.JLabel MinimunStock1;
     private javax.swing.JLabel Notes_label;
