@@ -187,7 +187,7 @@ INSERT INTO Admin (admin_id, admin_name, admin_password, admin_phone, admin_emai
 ('ADM020', 'Rachel Thompson', 'password123', '555-0120', 'rachel.thompson@example.com');
 
 -- 插入 Prescription 表的三条数据
-INSERT INTO Prescription (PrescriptionID, PatientID, DoctorID, Medication, dosage_Spinner, PrescriptionDate, instructions) VALUES
+INSERT INTO Prescription (PrescriptionID, PatientID, DoctorID, Medication, dosage, PrescriptionDate, instructions) VALUES
 ('PR001', 'P001', 'D001', 'Aspirin', '100mg', '2024-01-01', 'Take one tablet daily'),
 ('PR002', 'P002', 'D002', 'Lisinopril', '10mg', '2024-01-02', 'Take one tablet daily'),
 ('PR003', 'P003', 'D003', 'Metformin', '500mg', '2024-01-03', 'Take one tablet twice daily'),

@@ -139,7 +139,7 @@ CREATE TABLE Prescription (
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
     Medication VARCHAR(255) NOT NULL,
-    dosage_Spinner VARCHAR(255) NOT NULL,
+    dosage VARCHAR(255) NOT NULL,
     PrescriptionDate DATE NOT NULL,
     instructions TEXT,
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id),
