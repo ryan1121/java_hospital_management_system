@@ -5,10 +5,13 @@
 package hospital_management_system.views;
 
 import hospital_management_system.controllers.*;
+import hospital_management_system.models.*;
 
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -18,11 +21,24 @@ import java.awt.event.ActionListener;
  */
 public class GUI_admin extends javax.swing.JFrame {
 
+    private WorkScheduleController scheduleController;
+    private String role; // This will store the selected role
+    private static GUI_admin instance;
+
     /**
      * Creates new form GUI_admin
      */
     public GUI_admin() {
         initComponents();
+
+        scheduleController = new WorkScheduleController(DoctorScheduleTable, NurseScheduleTable, doctorScrollPane, nurseScrollPane);
+        loadSchedules();
+
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                updateRole();
+            }
+        });
     }
 
     /**
@@ -358,8 +374,7 @@ public class GUI_admin extends javax.swing.JFrame {
         doctorAdd_new_schedule_Button.setText("Add new schedule");
         doctorAdd_new_schedule_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WorkScheduleController viewer = new WorkScheduleController(DoctorScheduleTable, NurseScheduleTable, doctorScrollPane , nurseScrollPane);
-                viewer.openStaffScheduling("Doctor", doctorScrollPane);
+                scheduleController.openStaffScheduling("Doctor", doctorScrollPane);
             }
         });
 
@@ -600,8 +615,7 @@ public class GUI_admin extends javax.swing.JFrame {
         nurseAdd_new_schedule_Button.setText("Add new schedule");
         nurseAdd_new_schedule_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                WorkScheduleController viewer = new WorkScheduleController(DoctorScheduleTable, NurseScheduleTable, doctorScrollPane, nurseScrollPane);
-                viewer.openStaffScheduling("Nurse", nurseScrollPane);
+                scheduleController.openStaffScheduling("Nurse", nurseScrollPane);
             }
         });
 
@@ -629,8 +643,6 @@ public class GUI_admin extends javax.swing.JFrame {
         );
 
         jTabbedPane4.addTab("Work Schedule", jPanel4);
-
-        loadSchedules();
 
         jTabbedPane1.addTab("Nurse", jTabbedPane4);
 
@@ -1233,7 +1245,7 @@ public class GUI_admin extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
+        
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -1295,13 +1307,34 @@ public class GUI_admin extends javax.swing.JFrame {
     }//GEN-LAST:event_doctor_idActionPerformed
 
     private void loadSchedules() {
-        // Create a WorkScheduleController instance and load data
-        WorkScheduleController scheduleViewer = new WorkScheduleController(DoctorScheduleTable, NurseScheduleTable, doctorScrollPane , nurseScrollPane);
-        scheduleViewer.loadDoctorSchedule();
-        scheduleViewer.loadNurseSchedule();
+        scheduleController.loadDoctorSchedule();
+        scheduleController.loadNurseSchedule();
     }
 
-    
+    private void updateRole() {
+        int selectedIndex = jTabbedPane1.getSelectedIndex();
+        if (selectedIndex == 0) {
+            role = "Doctor";
+        } else if (selectedIndex == 1) {
+            role = "Nurse";
+        }
+        System.out.println("Updated Role: " + role); // Debug statement
+    }
+
+    public static GUI_admin getInstance() {
+        if (instance == null) {
+            instance = new GUI_admin();
+        }
+        return instance;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     private void assigned_nurse_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assigned_nurse_idActionPerformed
         // TODO add your handling code here:

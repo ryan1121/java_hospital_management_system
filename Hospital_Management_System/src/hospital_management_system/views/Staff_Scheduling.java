@@ -8,9 +8,12 @@ import java.sql.*;
 
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.SwingUtilities;
+import java.awt.Window;
 
 import hospital_management_system.MysqlConnect;
 import hospital_management_system.controllers.*;
+import hospital_management_system.models.StaffSchedulingModel;
 import hospital_management_system.utils.DateTimeUtils;
 
 /**
@@ -203,57 +206,42 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         this.role = role;
     }
 
-    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveButtonActionPerformed
-        // Retrieve values from the form fields
-        String staffID = StaffID_input.getText();
-        String shiftDate = StaffScheduleDate.getText();
-        String shiftStartTime = ShiftStartTime_input.getText();
-        String shiftEndTime = ShiftEndTime_input.getText();
-        String department = (String)Department_dropdown.getSelectedItem();
-        String tasks = AssignedTasks_input.getText();
+    private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        Window window = SwingUtilities.getWindowAncestor(this);
+        if (window instanceof GUI_admin) {
+            GUI_admin guiAdmin = (GUI_admin) window;
+            String role = guiAdmin.getRole();
+            // Handle save logic
+        } else {
+            JOptionPane.showMessageDialog(this, "GUI_admin instance not found.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
 
-        // Validate inputs
-        if (staffID.isEmpty() || shiftStartTime.isEmpty() || shiftEndTime.isEmpty() || shiftDate.isEmpty() || department.isEmpty() || tasks.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Please fill in all fields", "Error", JOptionPane.ERROR_MESSAGE);
+        // Ensure that the role variable is properly set before calling this method
+        if (role == null || role.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Role is not selected", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
 
-        // Format the date and time using DateUtils
-        String formattedDate = DateTimeUtils.formatDate(shiftDate);
-        String formattedStartTime = DateTimeUtils.formatTime(shiftStartTime);
-        String formattedEndTime = DateTimeUtils.formatTime(shiftEndTime);
+        // Create a StaffSchedulingModel instance with the input values
+        StaffSchedulingModel model = new StaffSchedulingModel(
+            StaffID_input.getText(),
+            StaffScheduleDate.getText(),
+            ShiftStartTime_input.getText(),
+            ShiftEndTime_input.getText(),
+            (String) Department_dropdown.getSelectedItem(),
+            AssignedTasks_input.getText()
+        );
 
-        if (formattedDate == null || formattedStartTime == null || formattedEndTime == null) {
-            JOptionPane.showMessageDialog(this, "Invalid date or time format", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
+        // Create a controller with the model
+        StaffSchedulingController controller = new StaffSchedulingController(model);
+
+        // Delegate the save operation to the controller
+        if (!controller.saveSchedule(role)) {
+            JOptionPane.showMessageDialog(this, "Error while saving schedule", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Schedule saved successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
         }
-
-        try {
-            MysqlConnect db = new MysqlConnect();
-            String[] values = {staffID, formattedDate, formattedStartTime, formattedEndTime, department, tasks};
-            
-            String columns;
-            if (role.equalsIgnoreCase("Doctor")) {
-                columns = "DoctorID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks";
-            } else {
-                columns = "NurseID, StaffScheduleDate, ShiftStartTime, ShiftEndTime, Department, AssignedTasks";
-            }     
-                   
-            String tableName = role.equalsIgnoreCase("Doctor") ? "DoctorStaffScheduling" : "NurseStaffScheduling";
-            
-            boolean saveResult = db.saveData(tableName, columns, values);
-
-            if (saveResult) {
-                JOptionPane.showMessageDialog(this, "Data saved successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-            } else {
-                JOptionPane.showMessageDialog(this, "Cannot execute SQL query!", "Database Error", JOptionPane.ERROR_MESSAGE);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-        }
-    
-    }//GEN-LAST:event_SaveButtonActionPerformed
+    }
         
     private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
         StaffID_input.setText("");
