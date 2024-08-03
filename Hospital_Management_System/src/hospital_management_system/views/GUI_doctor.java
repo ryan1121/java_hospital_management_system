@@ -136,7 +136,7 @@ public class GUI_doctor extends javax.swing.JFrame {
         MedRecord_ClearButton = new javax.swing.JButton();
 
         // 创建一个Diagnosis Model object
-        Diagnosis DiagnosisObj = new Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
+        hospital_management_system.models.Diagnosis DiagnosisObj = new hospital_management_system.models.Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
         DiagnosisObj.setNewDiagnosisId(DiagnosisID_textField);
         DiagnosisID_textField.setEnabled(false);
 
