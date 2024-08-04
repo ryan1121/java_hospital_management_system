@@ -207,14 +207,7 @@ public class Staff_Scheduling extends javax.swing.JFrame {
     }
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {
-        Window window = SwingUtilities.getWindowAncestor(this);
-        if (window instanceof GUI_admin) {
-            GUI_admin guiAdmin = (GUI_admin) window;
-            String role = guiAdmin.getRole();
-            // Handle save logic
-        } else {
-            JOptionPane.showMessageDialog(this, "GUI_admin instance not found.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        String role = GUI_admin.getInstance().getRole();
 
         // Ensure that the role variable is properly set before calling this method
         if (role == null || role.trim().isEmpty()) {
@@ -238,9 +231,7 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         // Delegate the save operation to the controller
         if (!controller.saveSchedule(role)) {
             JOptionPane.showMessageDialog(this, "Error while saving schedule", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            JOptionPane.showMessageDialog(this, "Schedule saved successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
-        }
+        } 
     }
         
     private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed

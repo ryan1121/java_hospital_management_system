@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="Hospital_Management_System" default="default" basedir=".">
+<project name="Hospital_Management_System" default="run" basedir=".">
     <description>Builds, tests, and runs the project Hospital_Management_System.</description>
 
     <!-- Import default build tasks -->
@@ -8,21 +8,27 @@
     <!-- Define classpath to include JFreeChart and its dependencies -->
     <path id="classpath">
         <fileset dir="lib">
-            <include name="jfreechart-1.0.1.jar"/>
-            <include name="jcommon-1.0.23.jar"/>
+            <include name="*.jar"/>
         </fileset>
     </path>
 
     <!-- Override the default compile task to include JFreeChart in classpath -->
-    <target name="compile">
+    <target name="compile" depends="init">
         <mkdir dir="build/classes"/>
-        <javac srcdir="src" destdir="build/classes" classpathref="classpath"/>
+        <javac srcdir="src" destdir="build/classes" includeantruntime="false">
+            <classpath>
+                <path refid="classpath"/>
+            </classpath>
+        </javac>
     </target>
 
     <!-- Override the default run task to use the classpath with JFreeChart -->
     <target name="run" depends="compile">
-        <java classname="hospital_management_system.controllers.reportAndAnalysis" fork="true" classpathref="classpath">
-            <classpath path="build/classes"/>
+        <java classname="hospital_management_system.views.GUI_admin" fork="true">
+            <classpath>
+                <path path="build/classes"/>
+                <path refid="classpath"/>
+            </classpath>
         </java>
     </target>
 

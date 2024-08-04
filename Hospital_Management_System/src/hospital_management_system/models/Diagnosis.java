@@ -3,7 +3,7 @@ import hospital_management_system.MysqlConnect;
 import hospital_management_system.utils.DateTimeUtils;
 
 import java.sql.SQLException;
-import JOptionPane;
+import javax.swing.JOptionPane;
 import javax.swing.*;
 
 public class Diagnosis {

@@ -101,7 +101,7 @@ public class check_data_gui extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new check_data_gui().setVisible(true);
+                new check_data_gui("Admin").setVisible(true);
             }
         });
     }

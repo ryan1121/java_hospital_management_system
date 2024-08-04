@@ -1,29 +1,31 @@
 package hospital_management_system.controllers;
 
-import hospital_management_system.models.DatabaseManager;
 import hospital_management_system.models.DoctorSchedule;
 import hospital_management_system.models.NurseSchedule;
+import hospital_management_system.views.GUI_admin;
 import hospital_management_system.views.Staff_Scheduling;
-
+import hospital_management_system.MysqlConnect;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class WorkScheduleController {
 
-    private DatabaseManager dbManager;
+
     private JTable doctorScheduleTable;
     private JTable nurseScheduleTable;
     private JScrollPane doctorScrollPane;
     private JScrollPane nurseScrollPane;
-    private static String roleType;
+    private MysqlConnect mysqlConnect = new MysqlConnect();
 
     public WorkScheduleController(JTable doctorTable, JTable nurseTable, JScrollPane doctorPane, JScrollPane nursePane) {
-        this.dbManager = new DatabaseManager();
         this.doctorScheduleTable = doctorTable;
         this.nurseScheduleTable = nurseTable;
         this.doctorScrollPane = doctorPane;
@@ -31,7 +33,30 @@ public class WorkScheduleController {
     }
 
     public void loadDoctorSchedule() {
-        List<DoctorSchedule> schedules = dbManager.fetchDoctorSchedules();
+        List<DoctorSchedule> schedules = new ArrayList<>();
+        String query = "SELECT d.doctor_id AS DoctorID, d.doctor_name AS Name, s.StaffScheduleDate AS Date, s.ShiftStartTime AS StartTime, " +
+                       "s.ShiftEndTime AS EndTime, s.Department, s.AssignedTasks " +
+                       "FROM DoctorStaffScheduling s " +
+                       "JOIN Doctors d ON s.DoctorID = d.doctor_id";
+
+        try (ResultSet resultSet = mysqlConnect.executeQuery(query)) {
+            while (resultSet.next()) {
+                DoctorSchedule schedule = new DoctorSchedule(
+                    resultSet.getString("DoctorID"),
+                    resultSet.getString("Name"),
+                    resultSet.getDate("Date"),
+                    resultSet.getTime("StartTime").toString(),
+                    resultSet.getTime("EndTime").toString(),
+                    resultSet.getString("Department"),
+                    resultSet.getString("AssignedTasks")
+                );
+                schedules.add(schedule);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error fetching doctor schedules!");
+        }
+
         DefaultTableModel doctorModel = new DefaultTableModel(
             new String[]{"Doctor ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}, 0) {
             @Override
@@ -56,7 +81,30 @@ public class WorkScheduleController {
     }
 
     public void loadNurseSchedule() {
-        List<NurseSchedule> schedules = dbManager.fetchNurseSchedules();
+        List<NurseSchedule> schedules = new ArrayList<>();
+        String query = "SELECT n.nurse_id AS NurseID, n.nurse_name AS Name, s.StaffScheduleDate AS Date, s.ShiftStartTime AS StartTime, " +
+                       "s.ShiftEndTime AS EndTime, s.Department, s.AssignedTasks " +
+                       "FROM NurseStaffScheduling s " +
+                       "JOIN Nurse n ON s.NurseID = n.nurse_id";
+
+        try (ResultSet resultSet = mysqlConnect.executeQuery(query)) {
+            while (resultSet.next()) {
+                NurseSchedule schedule = new NurseSchedule(
+                    resultSet.getString("NurseID"),
+                    resultSet.getString("Name"),
+                    resultSet.getDate("Date"),
+                    resultSet.getTime("StartTime").toString(),
+                    resultSet.getTime("EndTime").toString(),
+                    resultSet.getString("Department"),
+                    resultSet.getString("AssignedTasks")
+                );
+                schedules.add(schedule);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.err.println("Error fetching nurse schedules!");
+        }
+
         DefaultTableModel nurseModel = new DefaultTableModel(
             new String[]{"Nurse ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}, 0) {
             @Override
@@ -120,10 +168,10 @@ public class WorkScheduleController {
         try {
             Staff_Scheduling staffScheduling = new Staff_Scheduling();
             staffScheduling.setVisible(true);
-            roleType = role;
+            GUI_admin.getInstance().setRole(role); // Correctly set the role in GUI_admin instance
         } catch (Exception e) {
             e.printStackTrace();
-            JOptionPane.showMessageDialog(doctorScrollPane, "Error opening scheduling form: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(scrollPane, "Error opening scheduling form: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

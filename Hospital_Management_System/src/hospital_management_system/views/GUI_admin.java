@@ -1321,7 +1321,7 @@ public class GUI_admin extends javax.swing.JFrame {
         System.out.println("Updated Role: " + role); // Debug statement
     }
 
-    public static GUI_admin getInstance() {
+    public static synchronized GUI_admin getInstance() {
         if (instance == null) {
             instance = new GUI_admin();
         }
