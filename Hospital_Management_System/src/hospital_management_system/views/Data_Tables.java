@@ -163,7 +163,7 @@ public class Data_Tables extends JFrame {
     }
 
     private void buttonActionPerformed(java.awt.event.ActionEvent evt, String tableName) {
-        check_data_gui checkDataGUI = new check_data_gui(tableName);
+        GUI_Check_Data checkDataGUI = new GUI_Check_Data(tableName);
         checkDataGUI.setVisible(true);
     }
 

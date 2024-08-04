@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class check_data_gui extends javax.swing.JFrame {
+public class GUI_Check_Data extends javax.swing.JFrame {
 
     private JButton saveButton;
     private JButton deleteButton;
@@ -22,7 +22,7 @@ public class check_data_gui extends javax.swing.JFrame {
     private Map<Integer, Object[]> originalData = new HashMap<>();
     private DefaultTableModel tableModel;
 
-    public check_data_gui(String tableName) {
+    public GUI_Check_Data(String tableName) {
         
         this.tableName = tableName;
         initComponents();
@@ -101,7 +101,7 @@ public class check_data_gui extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new check_data_gui().setVisible(true);
+                new GUI_Check_Data().setVisible(true);
             }
         });
     }
