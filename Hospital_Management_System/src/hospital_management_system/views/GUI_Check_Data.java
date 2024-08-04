@@ -14,7 +14,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class check_data_gui extends javax.swing.JFrame {
+public class GUI_Check_Data extends javax.swing.JFrame {
 
     private JButton saveButton;
     private JButton deleteButton;
@@ -22,7 +22,7 @@ public class check_data_gui extends javax.swing.JFrame {
     private Map<Integer, Object[]> originalData = new HashMap<>();
     private DefaultTableModel tableModel;
 
-    public check_data_gui(String tableName) {
+    public GUI_Check_Data(String tableName) {
         
         this.tableName = tableName;
         initComponents();
@@ -37,7 +37,7 @@ public class check_data_gui extends javax.swing.JFrame {
         saveButton = new JButton("Save Changes");
         deleteButton = new JButton("Delete");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(this.tableName + " Table"));
         jPanel1.setLayout(new BorderLayout());
@@ -101,7 +101,11 @@ public class check_data_gui extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+<<<<<<< HEAD:Hospital_Management_System/src/hospital_management_system/views/check_data_gui.java
                 new check_data_gui("Admin").setVisible(true);
+=======
+                new GUI_Check_Data().setVisible(true);
+>>>>>>> d73ed3a292c66c489c3584e3531822e88d8b82f8:Hospital_Management_System/src/hospital_management_system/views/GUI_Check_Data.java
             }
         });
     }
