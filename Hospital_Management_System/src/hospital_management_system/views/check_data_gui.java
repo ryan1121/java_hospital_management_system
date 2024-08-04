@@ -22,8 +22,8 @@ public class check_data_gui extends javax.swing.JFrame {
     private Map<Integer, Object[]> originalData = new HashMap<>();
     private DefaultTableModel tableModel;
 
-    public check_data_gui() {
-        String tableName = "Doctors";
+    public check_data_gui(String tableName) {
+        
         this.tableName = tableName;
         initComponents();
         loadTableData(tableName);  // 加载数据到表格

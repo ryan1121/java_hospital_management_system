@@ -60,6 +60,11 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         });
 
         CheckDataButton.setText("Check Data");
+        CheckDataButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckDataButtonActionPerformed(evt);
+            }
+        });
 
         SelectRoleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SelectRoleLabel1.setText("What would you like to do?");
@@ -137,6 +142,14 @@ public class Home_Page_GUI extends javax.swing.JFrame {
             Patient_GUI.setVisible(true);
         }
     }//GEN-LAST:event_ManageInformationButtonActionPerformed
+
+    private void CheckDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataAnalysisButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+        Data_Tables DataTableObj = new Data_Tables(this.role);
+
+        DataTableObj.setVisible(true);
+    }//GEN-LAST:event_dataAnalysisButtonActionPerformed
 
     private void dataAnalysisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataAnalysisButtonActionPerformed
         // TODO add your handling code here:

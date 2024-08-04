@@ -4,12 +4,74 @@
  */
 package hospital_management_system.views;
 
+import java.util.Arrays;
+import java.util.List;
+
+import javax.management.relation.Role;
+import javax.swing.JButton;
 /**
  *
  * @author yc
  */
 public class Data_Tables extends javax.swing.JFrame {
+    private javax.swing.JButton PatientButton;
+    private javax.swing.JButton AdminRoleButton;
+    private javax.swing.JButton PrescriptionButton;
+    private javax.swing.JButton DiagnosisButton;
+    private javax.swing.JButton NurseStaffScheduleButton;
+    private javax.swing.JButton InventotryButton;
+    private javax.swing.JButton PatientHistoryButton;
+    private javax.swing.JButton MedicalRecordsButton;
+    private javax.swing.JButton AdmissionButton;
+    private javax.swing.JButton DoctorButton;
+    private javax.swing.JButton NurseButton;
+    private javax.swing.JButton MedicalSupplyButton;
+    private javax.swing.JButton AppointmentButton;
+    private javax.swing.JButton BillingButton;
+    private javax.swing.JButton SurgeryButton;
+    private javax.swing.JButton PaymentButton;
+    private javax.swing.JButton PatientTransferButton;
+    private javax.swing.JButton AdminButton;
+    private javax.swing.JButton BedAllocationButton;
+    private javax.swing.JButton ConsultationsButton;
+    private javax.swing.JButton InvoiceButton;
+    private javax.swing.JLabel SelectRoleLabel;
+    private javax.swing.JLabel SelectRoleLabel1;
+    private javax.swing.JLabel TitleLabel;
+    
+    public List<String> getAllowedButtons(String role) {
+        System.out.println("Current role is " + role);
+        
+        if (role.equals("Admin")) {
+            return Arrays.asList("AdminButton", "PatientButton", "DoctorButton", "NurseButton", "PrescriptionButton", "DiagnosisButton", "NurseStaffScheduleButton", "InvoiceButton", "InventotryButton", "MedicalRecordsButton", "AdmissionButton", "BillingButton", "SurgeryButton", "PaymentButton", "PatientTransferButton", "BedAllocationButton", "ConsultationsButton", "MedicalSupplyButton", "AppointmentButton", "PatientHistoryButton");
+        } else if (role.equals("Doctor")) {
+            return Arrays.asList("PatientButton", "DoctorButton", "PrescriptionButton", "DiagnosisButton", "InvoiceButton", "MedicalRecordsButton", "AdmissionButton", "BillingButton", "SurgeryButton", "PaymentButton", "PatientTransferButton", "ConsultationsButton", "MedicalSupplyButton", "AppointmentButton", "PatientHistoryButton");
+        } else if (role.equals("Nurse")) {
+            return Arrays.asList("PatientButton", "NurseButton", "DiagnosisButton", "NurseStaffScheduleButton", "InvoiceButton", "InventotryButton", "MedicalRecordsButton", "AdmissionButton", "BillingButton", "SurgeryButton", "PaymentButton", "PatientTransferButton", "BedAllocationButton", "ConsultationsButton", "MedicalSupplyButton", "AppointmentButton", "PatientHistoryButton");
+        } else {
+            return Arrays.asList();
+    }
+    }
 
+    public Data_Tables(String role) {
+        initComponents();
+        configureButtons(role);
+    }
+    
+    private void configureButtons(String role) {
+        List<String> allowedButtons = getAllowedButtons(role);
+    
+        for (java.awt.Component comp : getContentPane().getComponents()) {
+            if (comp instanceof javax.swing.JButton) {
+                javax.swing.JButton button = (javax.swing.JButton) comp;
+                if (!allowedButtons.contains(button.getName())) {
+                    button.setVisible(false);
+                }
+            }
+        }
+    }
+    
+    
     /**
      * Creates new form Data_Tables
      */
@@ -25,214 +87,81 @@ public class Data_Tables extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
-        TitleLabel = new javax.swing.JLabel();
-        SelectRoleLabel = new javax.swing.JLabel();
-        DoctorRoleButton = new javax.swing.JButton();
-        AdminRoleButton = new javax.swing.JButton();
-        NurseRoleButton = new javax.swing.JButton();
-        PatientRoleButton = new javax.swing.JButton();
-        PatientRoleButton1 = new javax.swing.JButton();
-        SelectRoleLabel1 = new javax.swing.JLabel();
-        PatientRoleButton2 = new javax.swing.JButton();
-        PatientRoleButton3 = new javax.swing.JButton();
-        NurseRoleButton1 = new javax.swing.JButton();
-        AdminRoleButton1 = new javax.swing.JButton();
-        DoctorRoleButton1 = new javax.swing.JButton();
-        DoctorRoleButton2 = new javax.swing.JButton();
-        PatientRoleButton4 = new javax.swing.JButton();
-        AdminRoleButton2 = new javax.swing.JButton();
-        PatientRoleButton5 = new javax.swing.JButton();
-        NurseRoleButton2 = new javax.swing.JButton();
-        PatientRoleButton6 = new javax.swing.JButton();
-        PatientRoleButton7 = new javax.swing.JButton();
-        DoctorRoleButton3 = new javax.swing.JButton();
-        AdminRoleButton3 = new javax.swing.JButton();
-        NurseRoleButton3 = new javax.swing.JButton();
-        PatientRoleButton8 = new javax.swing.JButton();
-
+        setTitle("Hospital Management System");
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        TitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        java.awt.GridBagLayout layout = new java.awt.GridBagLayout();
+        java.awt.GridBagConstraints gbc = new java.awt.GridBagConstraints();
+        getContentPane().setLayout(layout);
+    
+        TitleLabel = new javax.swing.JLabel();
+        TitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         TitleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         TitleLabel.setText("Hospital Management System");
-
-        SelectRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        SelectRoleLabel.setText("-- Please select the data tables for checking --");
-
-        DoctorRoleButton.setText("Patient");
-        DoctorRoleButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DoctorRoleButtonActionPerformed(evt);
-            }
-        });
-
-        AdminRoleButton.setText("Patient Care");
-
-        NurseRoleButton.setText("Prescription");
-
-        PatientRoleButton.setText("Diagnoses");
-
-        PatientRoleButton1.setText("Staff Schedule");
-
+    
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 3;
+        gbc.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        getContentPane().add(TitleLabel, gbc);
+    
+        SelectRoleLabel1 = new javax.swing.JLabel();
         SelectRoleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SelectRoleLabel1.setText("Welcome back, ");
-
-        PatientRoleButton2.setText("Inventory");
-
-        PatientRoleButton3.setText("Patient History");
-
-        NurseRoleButton1.setText("Medical Records");
-
-        AdminRoleButton1.setText("Admission");
-
-        DoctorRoleButton1.setText("Doctor");
-        DoctorRoleButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DoctorRoleButton1ActionPerformed(evt);
-            }
-        });
-
-        DoctorRoleButton2.setText("Nurse");
-        DoctorRoleButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DoctorRoleButton2ActionPerformed(evt);
-            }
-        });
-
-        PatientRoleButton4.setText("Medical Supply");
-
-        AdminRoleButton2.setText("Appointment");
-
-        PatientRoleButton5.setText("Billing");
-
-        NurseRoleButton2.setText("Surgery");
-
-        PatientRoleButton6.setText("Payment");
-
-        PatientRoleButton7.setText("Patient Transfer");
-
-        DoctorRoleButton3.setText("Admin");
-        DoctorRoleButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DoctorRoleButton3ActionPerformed(evt);
-            }
-        });
-
-        AdminRoleButton3.setText("Bed Allocation");
-
-        NurseRoleButton3.setText("Consultations");
-
-        PatientRoleButton8.setText("Invoice");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(SelectRoleLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(DoctorRoleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AdminRoleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NurseRoleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PatientRoleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PatientRoleButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PatientRoleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PatientRoleButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(NurseRoleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AdminRoleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DoctorRoleButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PatientRoleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NurseRoleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AdminRoleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PatientRoleButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(DoctorRoleButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(DoctorRoleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AdminRoleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(NurseRoleButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PatientRoleButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PatientRoleButton7, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
-                    .addComponent(PatientRoleButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(61, Short.MAX_VALUE))
-            .addComponent(SelectRoleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(TitleLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(TitleLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SelectRoleLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SelectRoleLabel)
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(70, 70, 70)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(NurseRoleButton1)
-                            .addComponent(AdminRoleButton3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PatientRoleButton3)
-                            .addComponent(NurseRoleButton3)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(DoctorRoleButton)
-                            .addComponent(DoctorRoleButton1)
-                            .addComponent(DoctorRoleButton2))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(AdminRoleButton)
-                            .addComponent(AdminRoleButton1)
-                            .addComponent(DoctorRoleButton3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(NurseRoleButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(PatientRoleButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PatientRoleButton1)
-                            .addComponent(PatientRoleButton5)
-                            .addComponent(PatientRoleButton6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PatientRoleButton8)
-                            .addComponent(AdminRoleButton2)
-                            .addComponent(PatientRoleButton7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(PatientRoleButton2)
-                            .addComponent(NurseRoleButton2)
-                            .addComponent(PatientRoleButton4))))
-                .addContainerGap(42, Short.MAX_VALUE))
-        );
+        gbc.gridy = 1;
+        getContentPane().add(SelectRoleLabel1, gbc);
+    
+        SelectRoleLabel = new javax.swing.JLabel();
+        SelectRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SelectRoleLabel.setText("-- Please select the data tables for checking --");
+        gbc.gridy = 2;
+        getContentPane().add(SelectRoleLabel, gbc);
+    
+        // Initialize buttons
+        initButton(PatientButton = new javax.swing.JButton(), "Patients", gbc, 0, 3);
+        initButton(AdminRoleButton = new javax.swing.JButton(), "DoctorStaffScheduling", gbc, 1, 3);
+        initButton(PrescriptionButton = new javax.swing.JButton(), "Prescription", gbc, 0, 4);
+        initButton(DiagnosisButton = new javax.swing.JButton(), "Diagnosis", gbc, 1, 4);
+        initButton(NurseStaffScheduleButton = new javax.swing.JButton(), "NurseStaffScheduling", gbc, 0, 5);
+        initButton(InventotryButton = new javax.swing.JButton(), "InventoryManagement", gbc, 0, 6);
+        initButton(PatientHistoryButton = new javax.swing.JButton(), "PatientHistory", gbc, 1, 6);
+        initButton(MedicalRecordsButton = new javax.swing.JButton(), "MedicalRecords", gbc, 0, 7);
+        initButton(AdmissionButton = new javax.swing.JButton(), "Admission", gbc, 1, 7);
+        initButton(DoctorButton = new javax.swing.JButton(), "Doctors", gbc, 0, 8);
+        initButton(NurseButton = new javax.swing.JButton(), "Nurse", gbc, 1, 8);
+        initButton(MedicalSupplyButton = new javax.swing.JButton(), "MedicalSupplyManagement", gbc, 2, 8);
+        initButton(AppointmentButton = new javax.swing.JButton(), "Appointment", gbc, 0, 9);
+        initButton(BillingButton = new javax.swing.JButton(), "Billing", gbc, 1, 9);
+        initButton(SurgeryButton = new javax.swing.JButton(), "Surgery", gbc, 0, 10);
+        initButton(PaymentButton = new javax.swing.JButton(), "Payment", gbc, 1, 10);
+        initButton(PatientTransferButton = new javax.swing.JButton(), "TransferManagement", gbc, 2, 10);
+        initButton(AdminButton = new javax.swing.JButton(), "Admin", gbc, 2, 3);
+        initButton(BedAllocationButton = new javax.swing.JButton(), "BedAllocation", gbc, 2, 4);
+        initButton(ConsultationsButton = new javax.swing.JButton(), "Consultations", gbc, 2, 5);
+        initButton(InvoiceButton = new javax.swing.JButton(), "Invoice", gbc, 2, 6);
 
         pack();
-    }// </editor-fold>//GEN-END:initComponents
+    }
+    
+    private void initButton(JButton button, String tableName, java.awt.GridBagConstraints gbc, int gridx, int gridy) {
+        button.setText(tableName);
+        gbc.gridx = gridx;
+        gbc.gridy = gridy;
+        add(button, gbc);
+        button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonActionPerformed(evt, tableName);
+            }
+        });
+    }
 
-    private void DoctorRoleButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorRoleButtonActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DoctorRoleButtonActionPerformed
+    
+    private void buttonActionPerformed(java.awt.event.ActionEvent evt, String tableName) {
+        check_data_gui checkDataGUI = new check_data_gui(tableName);
+        checkDataGUI.setVisible(true);
 
-    private void DoctorRoleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorRoleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DoctorRoleButton1ActionPerformed
-
-    private void DoctorRoleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorRoleButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DoctorRoleButton2ActionPerformed
-
-    private void DoctorRoleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorRoleButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DoctorRoleButton3ActionPerformed
-
+    }
+    
+   
     /**
      * @param args the command line arguments
      */
@@ -268,30 +197,4 @@ public class Data_Tables extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AdminRoleButton;
-    private javax.swing.JButton AdminRoleButton1;
-    private javax.swing.JButton AdminRoleButton2;
-    private javax.swing.JButton AdminRoleButton3;
-    private javax.swing.JButton DoctorRoleButton;
-    private javax.swing.JButton DoctorRoleButton1;
-    private javax.swing.JButton DoctorRoleButton2;
-    private javax.swing.JButton DoctorRoleButton3;
-    private javax.swing.JButton NurseRoleButton;
-    private javax.swing.JButton NurseRoleButton1;
-    private javax.swing.JButton NurseRoleButton2;
-    private javax.swing.JButton NurseRoleButton3;
-    private javax.swing.JButton PatientRoleButton;
-    private javax.swing.JButton PatientRoleButton1;
-    private javax.swing.JButton PatientRoleButton2;
-    private javax.swing.JButton PatientRoleButton3;
-    private javax.swing.JButton PatientRoleButton4;
-    private javax.swing.JButton PatientRoleButton5;
-    private javax.swing.JButton PatientRoleButton6;
-    private javax.swing.JButton PatientRoleButton7;
-    private javax.swing.JButton PatientRoleButton8;
-    private javax.swing.JLabel SelectRoleLabel;
-    private javax.swing.JLabel SelectRoleLabel1;
-    private javax.swing.JLabel TitleLabel;
-    // End of variables declaration//GEN-END:variables
 }
