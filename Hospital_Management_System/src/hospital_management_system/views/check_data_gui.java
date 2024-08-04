@@ -37,7 +37,7 @@ public class check_data_gui extends javax.swing.JFrame {
         saveButton = new JButton("Save Changes");
         deleteButton = new JButton("Delete");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(this.tableName + " Table"));
         jPanel1.setLayout(new BorderLayout());
