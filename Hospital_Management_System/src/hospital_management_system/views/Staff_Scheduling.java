@@ -229,11 +229,27 @@ public class Staff_Scheduling extends javax.swing.JFrame {
         StaffSchedulingController controller = new StaffSchedulingController(model);
 
         // Delegate the save operation to the controller
-        if (!controller.saveSchedule(role)) {
+        if (controller.saveSchedule(role)) {
+            // Refresh the table if save is successful
+            refreshCurrentScheduleTable();
+            JOptionPane.showMessageDialog(this, "Schedule added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+        } else {
             JOptionPane.showMessageDialog(this, "Error while saving schedule", "Error", JOptionPane.ERROR_MESSAGE);
-        } 
+        }
     }
-        
+
+    public void refreshCurrentScheduleTable() {
+        if ("Doctor".equals(role)) {
+            scheduleController.loadDoctorSchedule();
+            DoctorScheduleTable.revalidate();
+            DoctorScheduleTable.repaint();
+        } else if ("Nurse".equals(role)) {
+            scheduleController.loadNurseSchedule();
+            NurseScheduleTable.revalidate();
+            NurseScheduleTable.repaint();
+        }
+    }
+
     private void ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearButtonActionPerformed
         StaffID_input.setText("");
         StaffScheduleDate.setText("");
