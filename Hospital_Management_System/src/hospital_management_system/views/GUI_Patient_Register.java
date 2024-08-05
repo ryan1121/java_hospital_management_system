@@ -362,7 +362,15 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
              gender = "Male";
          } else if (gender_female.isSelected()) {
              gender = "Female";
-         }
+         }        
+         
+        if (isValidEmail(email) && isValidPhone(phone) && isValidPhone(emergencyPhone)) {
+            // Proceed with form submission
+            System.out.println("Valid email + phone");
+        } else {
+            // Show an error message
+            javax.swing.JOptionPane.showMessageDialog(null, "Invalid Email or Phone Number", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
  
          // Check if all required fields are filled in
          if (name.isEmpty() || dob.isEmpty() || phone.isEmpty() || email.isEmpty() || address1.isEmpty() || gender == null || emergencyName.isEmpty()|| emergencyRelation.isEmpty() || emergencyPhone.isEmpty()) {
@@ -372,26 +380,6 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
              String message = "Name: " + name + "\nDate of Birth: " + dob + "\nPhone: " + phone + "\nEmail: " + email + "\nAddress: " + address1 + ", " + address2 + ", " + address3 + "\nGender: " + gender;
              JOptionPane.showMessageDialog(this, message, "Registration Information", JOptionPane.INFORMATION_MESSAGE);
          }
-
-        if (isValidEmail(email)) {
-            // Proceed with form submission
-            System.out.println("Valid email");
-        } else {
-            // Show an error message
-            javax.swing.JOptionPane.showMessageDialog(null, "Invalid email address", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
-
-        if (isValidPhone(phone) ){
-            System.out.println("Valid Phone Number");
-        }else{
-            javax.swing.JOptionPane.showMessageDialog(null, "Invalid Phone Number", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
-
-        if (isValidPhone(emergencyPhone)){
-            System.out.println("Valid Phone Number in Emergency Section");
-        }else{
-            javax.swing.JOptionPane.showMessageDialog(null, "Invalid Phone Number in Emergency Section", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
     }
     /**
      * @param args the command line arguments
