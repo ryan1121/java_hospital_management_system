@@ -1,9 +1,7 @@
 package hospital_management_system.controllers;
 
-import hospital_management_system.models.DoctorSchedule;
-import hospital_management_system.models.NurseSchedule;
-import hospital_management_system.views.GUI_admin;
-import hospital_management_system.views.GUI_Staff_Scheduling;
+import hospital_management_system.models.*;
+import hospital_management_system.views.*;
 import hospital_management_system.MysqlConnect;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -26,13 +24,25 @@ public class WorkScheduleController {
     private MysqlConnect mysqlConnect = new MysqlConnect();
 
     public WorkScheduleController(JTable doctorTable, JTable nurseTable, JScrollPane doctorPane, JScrollPane nursePane) {
-        this.doctorScheduleTable = doctorTable;
-        this.nurseScheduleTable = nurseTable;
-        this.doctorScrollPane = doctorPane;
-        this.nurseScrollPane = nursePane;
+        if (doctorTable != null) {
+            this.doctorScheduleTable = doctorTable;
+        }
+        if (nurseTable != null) {
+            this.nurseScheduleTable = nurseTable;
+        }
+        if (doctorPane != null) {
+            this.doctorScrollPane = doctorPane;
+        }
+        if (nursePane != null) {
+            this.nurseScrollPane = nursePane;
+        }
     }
 
     public void loadDoctorSchedule() {
+        if (doctorScheduleTable == null || doctorScrollPane == null) {
+            return;
+        }
+
         List<DoctorSchedule> schedules = new ArrayList<>();
         String query = "SELECT d.doctor_id AS DoctorID, d.doctor_name AS Name, s.StaffScheduleDate AS Date, s.ShiftStartTime AS StartTime, " +
                        "s.ShiftEndTime AS EndTime, s.Department, s.AssignedTasks " +
@@ -81,6 +91,10 @@ public class WorkScheduleController {
     }
 
     public void loadNurseSchedule() {
+        if (nurseScheduleTable == null || nurseScrollPane == null) {
+            return;
+        }
+
         List<NurseSchedule> schedules = new ArrayList<>();
         String query = "SELECT n.nurse_id AS NurseID, n.nurse_name AS Name, s.StaffScheduleDate AS Date, s.ShiftStartTime AS StartTime, " +
                        "s.ShiftEndTime AS EndTime, s.Department, s.AssignedTasks " +
@@ -129,28 +143,30 @@ public class WorkScheduleController {
     }
 
     private void setupTable(JTable table, DefaultTableModel model, JScrollPane scrollPane) {
-        table.setModel(model);
-        table.setIntercellSpacing(new Dimension(1, 1));
-        table.setShowHorizontalLines(true);
-        table.setShowVerticalLines(true);
-        table.setCellSelectionEnabled(false);
-        table.setDefaultRenderer(Object.class, new CustomTableCellRenderer());
-        table.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseMoved(MouseEvent e) {
-                int row = table.rowAtPoint(e.getPoint());
-                int column = table.columnAtPoint(e.getPoint());
-                if (row >= 0 && column >= 0) {
-                    Object value = table.getValueAt(row, column);
-                    if (value != null) {
-                        JPopupMenu popup = new JPopupMenu();
-                        popup.add(new JLabel(value.toString()));
-                        popup.show(table, e.getX(), e.getY());
+        if (table != null && model != null && scrollPane != null) {
+            table.setModel(model);
+            table.setIntercellSpacing(new Dimension(1, 1));
+            table.setShowHorizontalLines(true);
+            table.setShowVerticalLines(true);
+            table.setCellSelectionEnabled(false);
+            table.setDefaultRenderer(Object.class, new CustomTableCellRenderer());
+            table.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseMoved(MouseEvent e) {
+                    int row = table.rowAtPoint(e.getPoint());
+                    int column = table.columnAtPoint(e.getPoint());
+                    if (row >= 0 && column >= 0) {
+                        Object value = table.getValueAt(row, column);
+                        if (value != null) {
+                            JPopupMenu popup = new JPopupMenu();
+                            popup.add(new JLabel(value.toString()));
+                            popup.show(table, e.getX(), e.getY());
+                        }
                     }
                 }
-            }
-        });
-        scrollPane.setViewportView(table);
+            });
+            scrollPane.setViewportView(table);
+        }
     }
 
     private static class CustomTableCellRenderer extends DefaultTableCellRenderer {
