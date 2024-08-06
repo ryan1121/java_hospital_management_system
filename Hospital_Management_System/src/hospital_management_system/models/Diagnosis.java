@@ -3,7 +3,7 @@ import hospital_management_system.MysqlConnect;
 import hospital_management_system.utils.DateTimeUtils;
 
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
+
 import javax.swing.*;
 
 public class Diagnosis {
@@ -53,9 +53,12 @@ public class Diagnosis {
                 // Save Diagnosis Data
                 boolean saveDiagnosisResult = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", diagnosisValues);
     
+                /// Create a patientHistory model object
+                PatientHistory patientHistoryObj = new PatientHistory();
+
                 // Save Patient History Data
-                boolean saveHistoryResult = db.saveData("PatientHistory", "HistoryID, PatientID, EventType, EventDate, Details", historyValues);
-    
+                boolean saveHistoryResult = patientHistoryObj.save(historyValues);
+
                 if (saveDiagnosisResult && saveHistoryResult) {
                     JOptionPane.showMessageDialog(panel, "Data saved successfully !");
                     return true;

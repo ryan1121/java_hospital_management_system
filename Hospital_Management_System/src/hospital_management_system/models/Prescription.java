@@ -56,8 +56,11 @@ public class Prescription {
                 // Save Prescription Data
                 boolean savePrescriptionResult = db.saveData("Prescription", "PrescriptionID, PatientID, DoctorID, Medication, Dosage, PrescriptionDate, Instructions", prescriptionValues);
 
+                // Create a patientHistory model object
+                PatientHistory patientHistoryObj = new PatientHistory();
+
                 // Save Patient History Data
-                boolean saveHistoryResult = db.saveData("PatientHistory", "HistoryID, PatientID, EventType, EventDate, Details", historyValues);
+                boolean saveHistoryResult = patientHistoryObj.save(historyValues);
 
                 if (savePrescriptionResult && saveHistoryResult) {
                     JOptionPane.showMessageDialog(panel, "Data saved successfully !");

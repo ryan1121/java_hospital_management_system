@@ -55,9 +55,12 @@ public class MedicalRecords {
                 // Save Medical Records Data
                 boolean saveMedicalRecordResult = db.saveData("MedicalRecords", "medicalRecordID, PatientID, DoctorID, DateOfVisit, notes, treatmentPlans", medicalRecordValues);
     
+                // Create a patientHistory model object
+                PatientHistory patientHistoryObj = new PatientHistory();
+
                 // Save Patient History Data
-                boolean saveHistoryResult = db.saveData("PatientHistory", "HistoryID, PatientID, EventType, EventDate, Details", historyValues);
-    
+                boolean saveHistoryResult = patientHistoryObj.save(historyValues);
+
                 if (saveMedicalRecordResult && saveHistoryResult) {
                     JOptionPane.showMessageDialog(panel, "Data saved successfully !");
                     return true;

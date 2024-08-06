@@ -59,8 +59,11 @@ public class Consultation {
                 // Save Consultation Data
                 boolean saveConsultationResult = db.saveData("Consultations", "ConsultationID, PatientID, DoctorID, DateOfConsultation, notes", consultationValues);
 
+                // Create a patientHistory model object
+                PatientHistory patientHistoryObj = new PatientHistory();
+
                 // Save Patient History Data
-                boolean saveHistoryResult = db.saveData("PatientHistory", "HistoryID, PatientID, EventType, EventDate, Details", historyValues);
+                boolean saveHistoryResult = patientHistoryObj.save(historyValues);
 
                 if (saveConsultationResult && saveHistoryResult) {
                     JOptionPane.showMessageDialog(panel, "Data saved successfully !");
