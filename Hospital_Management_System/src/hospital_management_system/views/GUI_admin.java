@@ -75,8 +75,8 @@ public class GUI_admin extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         doctor_experience = new javax.swing.JTextPane();
         jLabel7 = new javax.swing.JLabel();
+        clear_doctor = new javax.swing.JButton();
         save_doctor = new javax.swing.JButton();
-        reset_doctor = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         doctorAdd_new_schedule_Button = new javax.swing.JButton();
         doctorScrollPane  = new javax.swing.JScrollPane();
@@ -106,8 +106,8 @@ public class GUI_admin extends javax.swing.JFrame {
         nurse_assigned_wards = new javax.swing.JTextField();
         jLabel22 = new javax.swing.JLabel();
         nurse_supervising_doctor = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        clear_nurse = new javax.swing.JButton();
+        save_nurse = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         nurseAdd_new_schedule_Button = new javax.swing.JButton();
         nurseScrollPane  = new javax.swing.JScrollPane();
@@ -154,8 +154,8 @@ public class GUI_admin extends javax.swing.JFrame {
         patient_bed_number = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         patient_ward_number = new javax.swing.JTextField();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        patient_clear = new javax.swing.JButton();
+        patient_save = new javax.swing.JButton();
         jPanel19 = new javax.swing.JPanel();
         jLabel32 = new javax.swing.JLabel();
         insurance_id = new javax.swing.JTextField();
@@ -256,9 +256,9 @@ public class GUI_admin extends javax.swing.JFrame {
 
         jLabel7.setText("Experience :");
 
-        save_doctor.setText("Save");
+        clear_doctor.setText("Clear");
 
-        reset_doctor.setText("Reset");
+        save_doctor.setText("Save");
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -294,9 +294,9 @@ public class GUI_admin extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel18Layout.createSequentialGroup()
-                            .addComponent(reset_doctor)
+                            .addComponent(save_doctor)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(save_doctor))
+                            .addComponent(clear_doctor))
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
                             .addComponent(jScrollPane1)
@@ -348,8 +348,8 @@ public class GUI_admin extends javax.swing.JFrame {
                 .addComponent(doctor_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(save_doctor)
-                    .addComponent(reset_doctor))
+                    .addComponent(clear_doctor)
+                    .addComponent(save_doctor))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -487,9 +487,9 @@ public class GUI_admin extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Save");
+        clear_nurse.setText("Clear");
 
-        jButton4.setText("Reset");
+        save_nurse.setText("Save");
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -532,9 +532,9 @@ public class GUI_admin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(save_nurse)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(clear_nurse)
                 .addContainerGap())
         );
         jPanel8Layout.setVerticalGroup(
@@ -588,8 +588,8 @@ public class GUI_admin extends javax.swing.JFrame {
                     .addComponent(nurse_assigned_wards, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(clear_nurse)
+                    .addComponent(save_nurse))
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
@@ -956,9 +956,9 @@ public class GUI_admin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton5.setText("Save");
+        patient_clear.setText("Clear");
 
-        jButton6.setText("Reset");
+        patient_save.setText("Save");
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("Insurance Information"));
 
@@ -1024,9 +1024,9 @@ public class GUI_admin extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                         .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton6)
+                        .addComponent(patient_save)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton5)))
+                        .addComponent(patient_clear)))
                 .addContainerGap())
         );
         jPanel9Layout.setVerticalGroup(
@@ -1046,8 +1046,8 @@ public class GUI_admin extends javax.swing.JFrame {
                             .addGroup(jPanel9Layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton5)
-                                    .addComponent(jButton6)))
+                                    .addComponent(patient_clear)
+                                    .addComponent(patient_save)))
                             .addComponent(jPanel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(15, 15, 15))))
         );
@@ -1448,10 +1448,10 @@ public class GUI_admin extends javax.swing.JFrame {
     private javax.swing.JTextField doctor_specialization;
     private javax.swing.JComboBox<String> doctor_status;
     private javax.swing.JTextField insurance_id;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton clear_nurse;
+    private javax.swing.JButton save_nurse;
+    private javax.swing.JButton patient_clear;
+    private javax.swing.JButton patient_save;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1557,7 +1557,7 @@ public class GUI_admin extends javax.swing.JFrame {
     private javax.swing.JTextField patient_ward_number;
     private javax.swing.JTextField policy_number;
     private javax.swing.JTextField provider_name;
-    private javax.swing.JButton reset_doctor;
     private javax.swing.JButton save_doctor;
+    private javax.swing.JButton clear_doctor;
     // End of variables declaration//GEN-END:variables
 }

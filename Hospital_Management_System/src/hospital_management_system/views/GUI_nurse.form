@@ -157,9 +157,9 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                                          <Component id="information_save" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="information_clear" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
@@ -255,8 +255,8 @@
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="information_clear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="information_save" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -418,14 +418,14 @@
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nurse_supervising_doctorActionPerformed"/>
                   </Events>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton2">
+                <Component class="javax.swing.JButton" name="information_save">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Save"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton1">
+                <Component class="javax.swing.JButton" name="information_clear">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Edit"/>
+                    <Property name="text" type="java.lang.String" value="Clear"/>
                   </Properties>
                 </Component>
               </SubComponents>
@@ -514,9 +514,9 @@
                               <Component id="jPanel2" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                  <Component id="jButton4" min="-2" max="-2" attributes="0"/>
+                                  <Component id="patient_save" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jButton3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="patient_clear" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                               </Group>
                           </Group>
@@ -532,8 +532,8 @@
                           <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="patient_clear" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="patient_save" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -855,12 +855,12 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="jButton3">
+                <Component class="javax.swing.JButton" name="patient_clear">
                   <Properties>
-                    <Property name="text" type="java.lang.String" value="Edit"/>
+                    <Property name="text" type="java.lang.String" value="Clear"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="jButton4">
+                <Component class="javax.swing.JButton" name="patient_save">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Save"/>
                   </Properties>
@@ -964,9 +964,9 @@
                                   </Group>
                               </Group>
                               <EmptySpace pref="52" max="32767" attributes="0"/>
-                              <Component id="addmission_reset" min="-2" max="-2" attributes="0"/>
+                              <Component id="admission_save" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="admission_submit" min="-2" max="-2" attributes="0"/>
+                              <Component id="admission_clear" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -977,8 +977,8 @@
                               <EmptySpace max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="admission_submit" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="addmission_reset" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="admission_clear" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="admission_save" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="3" attributes="0">
@@ -1121,14 +1121,14 @@
                         </Component>
                       </SubComponents>
                     </Container>
-                    <Component class="javax.swing.JButton" name="admission_submit">
+                    <Component class="javax.swing.JButton" name="admission_clear">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Submit"/>
+                        <Property name="text" type="java.lang.String" value="Clear"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="addmission_reset">
+                    <Component class="javax.swing.JButton" name="admission_save">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Reset"/>
+                        <Property name="text" type="java.lang.String" value="Save"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1247,9 +1247,9 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="appointment_reset" min="-2" max="-2" attributes="0"/>
+                              <Component id="appointment_save" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="appointment_submit" min="-2" max="-2" attributes="0"/>
+                              <Component id="appointment_clear" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1325,8 +1325,8 @@
                               </Group>
                               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="appointment_submit" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="appointment_reset" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="appointment_clear" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="appointment_save" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1455,14 +1455,14 @@
                         </Property>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="appointment_submit">
+                    <Component class="javax.swing.JButton" name="appointment_clear">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Submit"/>
+                        <Property name="text" type="java.lang.String" value="Clear"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="appointment_reset">
+                    <Component class="javax.swing.JButton" name="appointment_save">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Reset"/>
+                        <Property name="text" type="java.lang.String" value="Save"/>
                       </Properties>
                     </Component>
                   </SubComponents>
@@ -1585,9 +1585,9 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="bed_allocate_reset" min="-2" max="-2" attributes="0"/>
+                              <Component id="bed_allocate_save" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="bed_allocate_submit" min="-2" max="-2" attributes="0"/>
+                              <Component id="bed_allocate_clear" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -1659,8 +1659,8 @@
                               </Group>
                               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="bed_allocate_submit" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="bed_allocate_reset" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bed_allocate_clear" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bed_allocate_save" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
@@ -1816,14 +1816,14 @@
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pre_occ1ActionPerformed"/>
                       </Events>
                     </Component>
-                    <Component class="javax.swing.JButton" name="bed_allocate_submit">
+                    <Component class="javax.swing.JButton" name="bed_allocate_clear">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Submit"/>
+                        <Property name="text" type="java.lang.String" value="Clear"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JButton" name="bed_allocate_reset">
+                    <Component class="javax.swing.JButton" name="bed_allocate_save">
                       <Properties>
-                        <Property name="text" type="java.lang.String" value="Reset"/>
+                        <Property name="text" type="java.lang.String" value="Save"/>
                       </Properties>
                     </Component>
                   </SubComponents>

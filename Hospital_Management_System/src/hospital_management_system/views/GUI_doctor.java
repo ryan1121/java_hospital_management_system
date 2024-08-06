@@ -54,8 +54,8 @@ public class GUI_doctor extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         doctor_experience = new javax.swing.JTextPane();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        information_save = new javax.swing.JButton();
+        information_clear = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
         StaffScheduleTable1 = new javax.swing.JTable();
@@ -222,9 +222,9 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jLabel7.setText("Experience :");
 
-        jButton1.setText("Reset");
+        information_save.setText("Save");
 
-        jButton2.setText("Save");
+        information_clear.setText("Clear");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -261,9 +261,9 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(information_save)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton2)
+                .addComponent(information_clear)
                 .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -317,8 +317,8 @@ public class GUI_doctor extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton1))
+                            .addComponent(information_clear)
+                            .addComponent(information_save))
                         .addContainerGap())))
         );
 
@@ -1165,8 +1165,8 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JTextPane doctor_qualifications;
     private javax.swing.JTextField doctor_speacialization;
     private javax.swing.JComboBox<String> doctor_status;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton information_save;
+    private javax.swing.JButton information_clear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel17;

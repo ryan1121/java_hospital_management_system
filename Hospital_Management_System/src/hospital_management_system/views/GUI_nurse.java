@@ -59,8 +59,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         nurse_assign_wards = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         nurse_supervising_doctor = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        information_save = new javax.swing.JButton();
+        information_clear = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         StaffScheduleTable1 = new javax.swing.JTable();
@@ -91,8 +91,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         patient_room_number = new javax.swing.JTextField();
         patient_bed_number = new javax.swing.JTextField();
         notes = new javax.swing.JTextField();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        patient_clear = new javax.swing.JButton();
+        patient_save = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
@@ -114,8 +114,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         Insurance_Details1 = new javax.swing.JTextField();
         jScrollPane12 = new javax.swing.JScrollPane();
         medical_equipment_need = new javax.swing.JList<>();
-        admission_submit = new javax.swing.JButton();
-        addmission_reset = new javax.swing.JButton();
+        admission_clear = new javax.swing.JButton();
+        admission_save = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jLabel37 = new javax.swing.JLabel();
@@ -142,8 +142,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         appointment_notes = new javax.swing.JTextField();
         app_cancel = new javax.swing.JTextField();
         booking_date = new javax.swing.JFormattedTextField();
-        appointment_submit = new javax.swing.JButton();
-        appointment_reset = new javax.swing.JButton();
+        appointment_clear = new javax.swing.JButton();
+        appointment_save = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel19 = new javax.swing.JPanel();
         jLabel69 = new javax.swing.JLabel();
@@ -169,8 +169,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         discharge_date1 = new javax.swing.JFormattedTextField();
         allocate_date1 = new javax.swing.JFormattedTextField();
         pre_occ1 = new javax.swing.JTextField();
-        bed_allocate_submit = new javax.swing.JButton();
-        bed_allocate_reset = new javax.swing.JButton();
+        bed_allocate_clear = new javax.swing.JButton();
+        bed_allocate_save = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         PrescriptionID_label = new javax.swing.JLabel();
@@ -445,9 +445,9 @@ public class GUI_nurse extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Save");
+        information_save.setText("Save");
 
-        jButton1.setText("Edit");
+        information_clear.setText("Clear");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -498,9 +498,9 @@ public class GUI_nurse extends javax.swing.JFrame {
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)
+                                .addComponent(information_save)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jButton1))
+                                .addComponent(information_clear))
                             .addGroup(jPanel7Layout.createSequentialGroup()
                                 .addGap(159, 159, 159)
                                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -570,8 +570,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                             .addComponent(nurse_assign_wards, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(information_clear)
+                    .addComponent(information_save))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -816,9 +816,9 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jButton3.setText("Edit");
+        patient_clear.setText("Clear");
 
-        jButton4.setText("Save");
+        patient_save.setText("Save");
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -832,9 +832,9 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton4)
+                        .addComponent(patient_save)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(patient_clear)
                         .addGap(9, 9, 9)))
                 .addContainerGap())
         );
@@ -846,8 +846,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(patient_clear)
+                    .addComponent(patient_save))
                 .addContainerGap())
         );
 
@@ -886,9 +886,9 @@ public class GUI_nurse extends javax.swing.JFrame {
         });
         jScrollPane12.setViewportView(medical_equipment_need);
 
-        admission_submit.setText("Submit");
+        admission_clear.setText("Clear");
 
-        addmission_reset.setText("Reset");
+        admission_save.setText("Save");
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -936,9 +936,9 @@ public class GUI_nurse extends javax.swing.JFrame {
                                 .addGap(32, 32, 32)
                                 .addComponent(Admission_ID1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
-                .addComponent(addmission_reset)
+                .addComponent(admission_save)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(admission_submit)
+                .addComponent(admission_clear)
                 .addContainerGap())
         );
         jPanel18Layout.setVerticalGroup(
@@ -947,8 +947,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(admission_submit)
-                        .addComponent(addmission_reset))
+                        .addComponent(admission_clear)
+                        .addComponent(admission_save))
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel60)
@@ -1058,9 +1058,9 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         booking_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
-        appointment_submit.setText("Submit");
+        appointment_clear.setText("Clear");
 
-        appointment_reset.setText("Reset");
+        appointment_save.setText("Save");
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -1119,9 +1119,9 @@ public class GUI_nurse extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel11Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(appointment_reset)
+                .addComponent(appointment_save)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(appointment_submit)
+                .addComponent(appointment_clear)
                 .addContainerGap())
         );
         jPanel11Layout.setVerticalGroup(
@@ -1181,8 +1181,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                         .addComponent(app_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
                 .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(appointment_submit)
-                    .addComponent(appointment_reset))
+                    .addComponent(appointment_clear)
+                    .addComponent(appointment_save))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1267,9 +1267,9 @@ public class GUI_nurse extends javax.swing.JFrame {
             }
         });
 
-        bed_allocate_submit.setText("Submit");
+        bed_allocate_clear.setText("Clear");
 
-        bed_allocate_reset.setText("Reset");
+        bed_allocate_save.setText("Save");
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -1329,9 +1329,9 @@ public class GUI_nurse extends javax.swing.JFrame {
                         .addGap(21, 21, 21))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bed_allocate_reset)
+                .addComponent(bed_allocate_save)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bed_allocate_submit)
+                .addComponent(bed_allocate_clear)
                 .addContainerGap())
         );
         jPanel19Layout.setVerticalGroup(
@@ -1387,8 +1387,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bed_allocate_submit)
-                    .addComponent(bed_allocate_reset))
+                    .addComponent(bed_allocate_clear)
+                    .addComponent(bed_allocate_save))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -2770,9 +2770,9 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTextField TransferTo_input;
     private javax.swing.JButton Transfer_clearButton;
     private javax.swing.JButton Transfer_saveButton;
-    private javax.swing.JButton addmission_reset;
+    private javax.swing.JButton admission_save;
     private javax.swing.JTextField admission_Patient_ID;
-    private javax.swing.JButton admission_submit;
+    private javax.swing.JButton admission_clear;
     private javax.swing.JFormattedTextField allocate_date1;
     private javax.swing.JTextField app_cancel;
     private javax.swing.JFormattedTextField app_date;
@@ -2783,12 +2783,12 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> app_status;
     private javax.swing.JFormattedTextField app_time;
     private javax.swing.JTextField appointment_notes;
-    private javax.swing.JButton appointment_reset;
-    private javax.swing.JButton appointment_submit;
+    private javax.swing.JButton appointment_save;
+    private javax.swing.JButton appointment_clear;
     private javax.swing.JTextField appointment_type;
     private javax.swing.JTextField bed_allocate_number;
-    private javax.swing.JButton bed_allocate_reset;
-    private javax.swing.JButton bed_allocate_submit;
+    private javax.swing.JButton bed_allocate_save;
+    private javax.swing.JButton bed_allocate_clear;
     private javax.swing.JTextField bed_allocation_department;
     private javax.swing.JComboBox<String> bed_allocation_status;
     private javax.swing.JTextField bed_patient_id1;
@@ -2803,10 +2803,10 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTextArea instructions;
     private javax.swing.JButton inventory_clear;
     private javax.swing.JButton inventory_save;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton information_clear;
+    private javax.swing.JButton information_save;
+    private javax.swing.JButton patient_clear;
+    private javax.swing.JButton patient_save;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
