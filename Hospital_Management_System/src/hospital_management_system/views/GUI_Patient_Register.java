@@ -4,11 +4,15 @@
  */
 package hospital_management_system.views;
 
+import java.awt.event.ActionListener;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
+
+import hospital_management_system.controllers.PatientRegisterController;
+import hospital_management_system.models.PatientRegisterModel;
 
 
 /**
@@ -16,12 +20,14 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class GUI_Patient_Register extends javax.swing.JFrame {
-
+    private PatientRegisterController controller;
     /**
      * Creates new form GUI_Patient_Register
      */
     public GUI_Patient_Register() {
         initComponents();
+        PatientRegisterModel model = new PatientRegisterModel();
+        controller = new PatientRegisterController(model, this);
     }
 
     /**
@@ -330,82 +336,15 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_registerAddress_line3ActionPerformed
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {
-        registerName.setText("");
-        registerDOB.setText("");
-        registerPhone.setText("");
-        registerEmail.setText("");
-        registerAddress.setText("");
-        registerAddress_line2.setText("");
-        registerAddress_line3.setText("");
-        registerEmergency_name.setText("");
-        registerEmergency_relationship.setText("");
-        registerEmergency_phone.setText("");
-        gender_female.setSelected(false);
-        gender_male.setSelected(false);
+
     }
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt){
          // Get user input from the text fields and store them into variables
-         String name = registerName.getText();
-         String dob = registerDOB.getText();
-         String phone = registerPhone.getText();
-         String email = registerEmail.getText();
-         String address1 = registerAddress.getText();
-         String address2 = registerAddress_line2.getText();
-         String address3 = registerAddress_line3.getText();
-         String emergencyName = registerEmergency_name.getText();
-         String emergencyRelation = registerEmergency_relationship.getText();
-         String emergencyPhone = registerEmergency_phone.getText();
-         // Get the selected gender
-         String gender = null;
-         if (gender_male.isSelected()) {
-             gender = "Male";
-         } else if (gender_female.isSelected()) {
-             gender = "Female";
-         }        
-         
-        if (isValidEmail(email) && isValidPhone(phone) && isValidPhone(emergencyPhone)) {
-            // Proceed with form submission
-            System.out.println("Valid email + phone");
-        } else {
-            // Show an error message
-            javax.swing.JOptionPane.showMessageDialog(null, "Invalid Email or Phone Number", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
- 
-         // Check if all required fields are filled in
-         if (name.isEmpty() || dob.isEmpty() || phone.isEmpty() || email.isEmpty() || address1.isEmpty() || gender == null || emergencyName.isEmpty()|| emergencyRelation.isEmpty() || emergencyPhone.isEmpty()) {
-             JOptionPane.showMessageDialog(this, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
-         } else {
-             // Perform further processing, such as saving the data to a database or displaying it in a message dialog
-             String message = "Name: " + name + "\nDate of Birth: " + dob + "\nPhone: " + phone + "\nEmail: " + email + "\nAddress: " + address1 + ", " + address2 + ", " + address3 + "\nGender: " + gender;
-             JOptionPane.showMessageDialog(this, message, "Registration Information", JOptionPane.INFORMATION_MESSAGE);
-         }
     }
     /**
      * @param args the command line arguments
      */
-
-     public boolean isValidEmail(String email) {
-        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
-        Pattern pattern = Pattern.compile(emailRegex);
-        if (email == null) {
-            return false;
-        }
-        Matcher matcher;
-        matcher = pattern.matcher(email);
-        return matcher.matches();
-    }
-
-    public boolean isValidPhone(String phone){
-        String phoneRegex = "01\\d-\\d{7}";
-        Pattern pattern = Pattern.compile(phoneRegex);
-        if(phone == null){
-            return false;
-        }
-        Matcher matcher;
-        matcher = pattern.matcher(phone);
-        return matcher.matches();
-    }
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -467,5 +406,108 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
     private javax.swing.JTextField registerPhone;
     private javax.swing.JButton reset;
     // End of variables declaration//GEN-END:variables
-    
+    public String getRegisterName() {
+        return registerName.getText();
+    }
+
+    public String getRegisterDOB() {
+        return registerDOB.getText();
+    }
+
+    public String getRegisterPhone() {
+        return registerPhone.getText();
+    }
+
+    public String getRegisterEmail() {
+        return registerEmail.getText();
+    }
+
+    public String getRegisterAddress() {
+        return registerAddress.getText();
+    }
+
+    public String getRegisterAddressLine2() {
+        return registerAddress_line2.getText();
+    }
+
+    public String getRegisterAddressLine3() {
+        return registerAddress_line3.getText();
+    }
+
+    public String getRegisterEmergencyName() {
+        return registerEmergency_name.getText();
+    }
+
+    public String getRegisterEmergencyRelation() {
+        return registerEmergency_relationship.getText();
+    }
+
+    public String getRegisterEmergencyPhone() {
+        return registerEmergency_phone.getText();
+    }
+
+    public String getGender() {
+        if (gender_male.isSelected()) {
+            return "Male";
+        } else if (gender_female.isSelected()) {
+            return "Female";
+        }
+        return null;
+    }
+
+    public void setRegisterName(String name) {
+        registerName.setText(name);
+    }
+
+    public void setRegisterDOB(String dob) {
+        registerDOB.setText(dob);
+    }
+
+    public void setRegisterPhone(String phone) {
+        registerPhone.setText(phone);
+    }
+
+    public void setRegisterEmail(String email) {
+        registerEmail.setText(email);
+    }
+
+    public void setRegisterAddress(String address) {
+        registerAddress.setText(address);
+    }
+
+    public void setRegisterAddressLine2(String addressLine2) {
+        registerAddress_line2.setText(addressLine2);
+    }
+
+    public void setRegisterAddressLine3(String addressLine3) {
+        registerAddress_line3.setText(addressLine3);
+    }
+
+    public void setRegisterEmergencyName(String emergencyName) {
+        registerEmergency_name.setText(emergencyName);
+    }
+
+    public void setRegisterEmergencyRelation(String emergencyRelation) {
+        registerEmergency_relationship.setText(emergencyRelation);
+    }
+
+    public void setRegisterEmergencyPhone(String emergencyPhone) {
+        registerEmergency_phone.setText(emergencyPhone);
+    }
+
+    public void setGenderMale(boolean selected) {
+        gender_male.setSelected(selected);
+    }
+
+    public void setGenderFemale(boolean selected) {
+        gender_female.setSelected(selected);
+    }
+
+    public void addSubmitListener(ActionListener listenForSubmitButton) {
+        Submit.addActionListener(listenForSubmitButton);
+    }
+
+    public void addResetListener(ActionListener listenForResetButton) {
+        reset.addActionListener(listenForResetButton);
+    }
 }
