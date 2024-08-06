@@ -28,6 +28,7 @@ public class PaymentController {
         this.PaymentMethod_dropdown = PaymentMethod_dropdown;
         this.PaymentStatus_dropdown = PaymentStatus_dropdown;
         this.PaymentProcessingDate_input = PaymentProcessingDate_input;
+
         this.model = new PaymentModel(
             Payment,
             PaymentID_input,
@@ -41,8 +42,9 @@ public class PaymentController {
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
         if (model.save()) {
             PaymentModel.setNewPaymentId(PaymentID_input); // Reset the new transfer ID
+            JOptionPane.showMessageDialog(Payment, "Payment data saved successfully!");
         } else {
-            JOptionPane.showMessageDialog(Payment, "Data saved unsuccessfully!");
+            JOptionPane.showMessageDialog(Payment, "Failed to save payment data.");
         }
     }
 

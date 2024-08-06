@@ -4,16 +4,25 @@
  */
 package hospital_management_system.views;
 
+
+import hospital_management_system.models.InvoiceModel;
+import hospital_management_system.models.BillingModel;
+import hospital_management_system.MysqlConnect;
+
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.sql.*;
+
 /**
  *
  * @author yc
  */
-public class Invoice extends javax.swing.JFrame {
+public class GUI_Invoice extends javax.swing.JFrame {
 
     /**
      * Creates new form Invoice
      */
-    public Invoice() {
+    public GUI_Invoice() {
         initComponents();
     }
 
@@ -92,6 +101,12 @@ public class Invoice extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(InvoiceTable);
+
+        javax.swing.table.DefaultTableModel model = (javax.swing.table.DefaultTableModel) InvoiceTable.getModel();
+        model.setRowCount(0); // Clear existing data
+        for (Object[] row : invoiceTableData) {
+            model.addRow(row);
+        }
 
         Total_label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         Total_label.setText("Total:");
@@ -260,20 +275,20 @@ public class Invoice extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Invoice.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Invoice().setVisible(true);
+                new GUI_Invoice().setVisible(true);
             }
         });
     }

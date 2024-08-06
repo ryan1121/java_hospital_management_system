@@ -6,12 +6,12 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 public class PaymentModel {
-    private String PaymentID_input;
-    private String PaymentAmount_input;
-    private String PaymentMethod_dropdown;
-    private String PaymentStatus_dropdown;
-    private String PaymentProcessingDate_input;
     private JPanel Payment;
+    private JTextField PaymentID_input;
+    private JTextField PaymentAmount_input;
+    private JComboBox<String> PaymentMethod_dropdown;
+    private JComboBox<String> PaymentStatus_dropdown;
+    private JFormattedTextField PaymentProcessingDate_input;
 
     public PaymentModel(
         JPanel Payment,
@@ -22,20 +22,26 @@ public class PaymentModel {
         JFormattedTextField PaymentProcessingDate_input
     ) {
         this.Payment = Payment;
-        this.PaymentID_input = PaymentID_input.getText();
-        this.PaymentAmount_input = PaymentAmount_input.getText();
-        this.PaymentMethod_dropdown = PaymentMethod_dropdown.getSelectedItem().toString();
-        this.PaymentStatus_dropdown = PaymentStatus_dropdown.getSelectedItem().toString();
-        this.PaymentProcessingDate_input = DateTimeUtils.formatDate(PaymentProcessingDate_input.getText());
+        this.PaymentID_input = PaymentID_input;
+        this.PaymentAmount_input = PaymentAmount_input;
+        this.PaymentMethod_dropdown = PaymentMethod_dropdown;
+        this.PaymentStatus_dropdown = PaymentStatus_dropdown;
+        this.PaymentProcessingDate_input = PaymentProcessingDate_input;
     }
 
     public boolean save() {
+        String paymentIDValue = PaymentID_input.getText();
+        String paymentAmountValue = PaymentAmount_input.getText();
+        String paymentMethodValue = (String) PaymentMethod_dropdown.getSelectedItem();
+        String paymentStatusValue = (String) PaymentStatus_dropdown.getSelectedItem();
+        String paymentProcessingDate = DateTimeUtils.formatDate(PaymentProcessingDate_input.getText());
+
 
         MysqlConnect db = new MysqlConnect();
-        String[] paymentValues = {PaymentID_input, PaymentProcessingDate_input, PaymentMethod_dropdown, PaymentAmount_input, PaymentStatus_dropdown};
+        String[] paymentValues = {paymentIDValue, paymentProcessingDate, paymentAmountValue, paymentMethodValue, paymentStatusValue};
 
         try {
-            boolean savePaymentResult = db.saveData("Payment", "PaymentID, PaymentDate, PaymentMethod, PaymentAmount, PaymentStatus, InvoiceID", paymentValues);
+            boolean savePaymentResult = db.saveData("Payment", "PaymentID, PaymentDate, PaymentMethod, PaymentAmount, PaymentStatus", paymentValues);
 
             if (savePaymentResult) {
                 JOptionPane.showMessageDialog(Payment, "Payment data saved successfully!");
@@ -69,43 +75,19 @@ public class PaymentModel {
         return newPaymentID;
     }
 
-    public String getPaymentID_input() {
-        return PaymentID_input;
-    }
-
-    public void setPaymentID_input(String PaymentID_input) {
-        this.PaymentID_input = PaymentID_input;
-    }
-
-    public String getPaymentAmount_input() {
-        return PaymentAmount_input;
-    }
-
-    public void setPaymentAmount_input(String PaymentAmount_input) {
-        this.PaymentAmount_input = PaymentAmount_input;
-    }
-
-    public String getPaymentMethod_dropdown() {
-        return PaymentMethod_dropdown;
-    }
-
-    public void setPaymentMethod_dropdown(String PaymentMethod_dropdown) {
-        this.PaymentMethod_dropdown = PaymentMethod_dropdown;
-    }
-
-    public String getPaymentStatus_dropdown() {
-        return PaymentStatus_dropdown;
-    }
-
-    public void setPaymentStatus_dropdown(String PaymentStatus_dropdown) {
-        this.PaymentStatus_dropdown = PaymentStatus_dropdown;
-    }
-
-    public String getPaymentProcessingDate_input() {
-        return PaymentProcessingDate_input;
-    }
-
-    public void setPaymentProcessingDate_input(String PaymentProcessingDate_input) {
-        this.PaymentProcessingDate_input = PaymentProcessingDate_input;
-    }
+    // Getter and Setter methods
+    public String getPaymentID() { return PaymentID_input; }
+    public void setPaymentID(String PaymentID_input) { this.PaymentID_input = PaymentID_input; }
+    
+    public String getPaymentAmount() { return PaymentAmount_input; }
+    public void setPaymentAmount(String PaymentAmount_input) { this.PaymentAmount_input = PaymentAmount_input; }
+    
+    public String getPaymentMethod() { return (String) PaymentMethod_dropdown; }
+    public void setPaymentMethod(String PaymentMethod_dropdown) { this.PaymentMethod_dropdown = PaymentMethod_dropdown; }
+    
+    public String getPaymentStatus() { return (String) PaymentStatus_dropdown; }
+    public void setPaymentStatus(String PaymentStatus_dropdown) { this.PaymentStatus_dropdown = PaymentStatus_dropdown; }
+    
+    public String getPaymentProcessingDate() { return PaymentProcessingDate_input; }
+    public void setPaymentProcessingDate(String PaymentProcessingDate_input) { this.PaymentProcessingDate_input = PaymentProcessingDate_input; }
 }

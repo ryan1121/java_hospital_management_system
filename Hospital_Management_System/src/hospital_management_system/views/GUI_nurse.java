@@ -302,7 +302,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         costPerItem_label = new javax.swing.JLabel();
         Description_input = new javax.swing.JTextField();
         CostPerService_input = new javax.swing.JFormattedTextField();
-        ServiceDate = new javax.swing.JFormattedTextField();
+        ServiceDate_input = new javax.swing.JFormattedTextField();
         Quantity_label = new javax.swing.JLabel();
         ServiceQuantity_input = new javax.swing.JTextField();
         jScrollPane5 = new javax.swing.JScrollPane();
@@ -311,11 +311,30 @@ public class GUI_nurse extends javax.swing.JFrame {
         InvoiceSaveButton = new javax.swing.JButton();
         InvoiceClearButton = new javax.swing.JButton();
 
-        PaymentModel PaymentModelObj = new PaymentModel(PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
-        PaymentModelObj.setNewTransferId(PaymentID_input);
+        PaymentModel PaymentModelObj = new PaymentModel(Payment, PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
+        PaymentModelObj.setNewPaymentId(PaymentID_input);
         PaymentID_input.setEnabled(false);
 
+        PaymentController paymentController = new PaymentController(Payment, PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
         
+        BillingModel BillingModelObj = new BillingModel(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
+        BillingModelObj.setNewInvoiceId(InvoiceID_input);
+
+        BillingController BillingControllerObj = new BillingController(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
+        
+        // Add action listeners
+        // CheckButton.addActionListener(evt -> billingController.handleCheckButtonActionPerformed(evt));
+        AddServiceButton.addActionListener(evt -> BillingControllerObj.handleAddServiceButtonActionPerformed(evt));
+        InvoiceSaveButton.addActionListener(evt -> {
+            BillingControllerObj.handleSaveInvoiceButtonActionPerformed(evt);
+            BillingControllerObj.handleSaveButtonActionPerformed(evt);
+        });
+        InvoiceClearButton.addActionListener(evt -> {
+            BillingControllerObj.handleClearButtonActionPerformed(evt);
+            BillingControllerObj.handleClearButtonActionPerformed(evt);
+        });
+       
+
         TransferController transferController = new TransferController(PatientTransfer, TransferID_input, TransferPatientID_input, TransferFrom_input, TransferTo_input, TransferDate_input, TransferTime_input, ReasonForTransfer_input, StatusOfTransfer_dropdown);
 
         Transfer_saveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -331,20 +350,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         });
 
         
-        PaymentController paymentController = new PaymentController(PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
-
-        InvoiceSaveButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paymentController.handleSaveButtonActionPerformed(evt);
-            }
-        });
-
-        InvoiceClearButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                paymentController.handleClearButtonActionPerformed(evt);
-            }
-        });
-
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -2256,7 +2261,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         CostPerService_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
 
-        ServiceDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        ServiceDate_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         Quantity_label.setText("Quantity: ");
 
@@ -2290,7 +2295,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addGroup(ServiceDetailsLayout.createSequentialGroup()
                         .addComponent(DateOfService1, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(12, 12, 12)
-                        .addComponent(ServiceDate, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ServiceDate_input, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ServiceDetailsLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -2320,7 +2325,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(ServiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DateOfService1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ServiceDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ServiceDate_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(ServiceDetailsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Description_label)
@@ -2601,7 +2606,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         // Pop out the Invoice details GUI to show the information
-        Invoice invoiceGUI = new Invoice();
+        GUI_Invoice invoiceGUI = new GUI_Invoice();
         invoiceGUI.setVisible(true);
 
     }//GEN-LAST:event_CheckButtonActionPerformed
@@ -2657,17 +2662,33 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTextField Admission_Status1;
     private javax.swing.JTextField Admitting_Staff_ID1;
     private javax.swing.JTextField Appointment_ID;
-    private javax.swing.JButton CheckButton;
     private javax.swing.JLabel ConsultationID_label;
+
+    private javax.swing.JButton CheckButton;
     private javax.swing.JTextField ConsultationID_textField;
+    private javax.swing.JTextField InvoicePatientID_input;
     private javax.swing.JTextField Description_input;
     private javax.swing.JTextField ServiceQuantity_input;
+    private javax.swing.JFormattedTextField ServiceDate_input;
+    private javax.swing.JPanel Payment;
+    private javax.swing.JTextField PaymentAmount_input;
+    private javax.swing.JLabel PaymentID1;
+    private javax.swing.JTextField PaymentID_input;
+    private javax.swing.JComboBox<String> PaymentMethod_dropdown;
+    private javax.swing.JFormattedTextField PaymentProcessingDate_input;
+    private javax.swing.JComboBox<String> PaymentStatus_dropdown;
+    
     private javax.swing.JLabel DateOfConsultation_label;
+    private javax.swing.JLabel PaymentAmount;
     private javax.swing.JFormattedTextField DateOfConsultation_textField;
+    private javax.swing.JLabel PaymentDate;
     private javax.swing.JLabel DateOfService1;
     private javax.swing.JLabel Description_label;
+    private javax.swing.JLabel PaymentMethod;
     private javax.swing.JLabel DoctorID_label;
+    private javax.swing.JPanel PaymentProcessing;
     private javax.swing.JTextField DoctorID_textField;
+    private javax.swing.JLabel PaymentStatus;
     private javax.swing.JLabel ExpiryDate;
     private javax.swing.JLabel ExpiryDate1;
     private javax.swing.JTextField InvoiceID_input;
@@ -2702,23 +2723,10 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTabbedPane NurseTab;
     private javax.swing.JLabel PatientID;
     private javax.swing.JLabel PatientID2;
-    private javax.swing.JTextField InvoicePatientID_input;
     private javax.swing.JLabel PatientID_label;
     private javax.swing.JTextField PatientID_textField;
     private javax.swing.JPanel PatientTransfer;
     private javax.swing.JFormattedTextField TransferDate_input;
-    private javax.swing.JPanel Payment;
-    private javax.swing.JLabel PaymentAmount;
-    private javax.swing.JTextField PaymentAmount_input;
-    private javax.swing.JLabel PaymentDate;
-    private javax.swing.JLabel PaymentID1;
-    private javax.swing.JTextField PaymentID_input;
-    private javax.swing.JLabel PaymentMethod;
-    private javax.swing.JComboBox<String> PaymentMethod_dropdown;
-    private javax.swing.JPanel PaymentProcessing;
-    private javax.swing.JFormattedTextField PaymentProcessingDate_input;
-    private javax.swing.JLabel PaymentStatus;
-    private javax.swing.JComboBox<String> PaymentStatus_dropdown;
     private javax.swing.JLabel PrescriptionDate_label;
     private javax.swing.JFormattedTextField PrescriptionDate_textField;
     private javax.swing.JLabel PrescriptionID_label;
@@ -2728,7 +2736,6 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JLabel ReasonForTransfer;
     private javax.swing.JTextArea ReasonForTransfer_input;
     private javax.swing.JPanel ResourcesManagement;
-    private javax.swing.JFormattedTextField ServiceDate;
     private javax.swing.JPanel ServiceDetails;
     private javax.swing.JTable StaffScheduleTable1;
     private javax.swing.JLabel StatusOfTransfer;

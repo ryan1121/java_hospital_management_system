@@ -3,7 +3,7 @@ package hospital_management_system.controllers;
 import hospital_management_system.models.DoctorSchedule;
 import hospital_management_system.models.NurseSchedule;
 import hospital_management_system.views.GUI_admin;
-import hospital_management_system.views.Staff_Scheduling;
+import hospital_management_system.views.GUI_Staff_Scheduling;
 import hospital_management_system.MysqlConnect;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
@@ -166,7 +166,7 @@ public class WorkScheduleController {
 
     public static void openStaffScheduling(String role, JScrollPane doctorScrollPane) {
         try {
-            Staff_Scheduling staffScheduling = new Staff_Scheduling();
+            GUI_Staff_Scheduling staffScheduling = new GUI_Staff_Scheduling();
             staffScheduling.setVisible(true);
             GUI_admin.getInstance().setRole(role); // Correctly set the role in GUI_admin instance
         } catch (Exception e) {

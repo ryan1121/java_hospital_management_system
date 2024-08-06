@@ -20,14 +20,14 @@ import hospital_management_system.utils.DateTimeUtils;
  *
  * @author yc
  */
-public class Staff_Scheduling extends javax.swing.JFrame {
+public class GUI_Staff_Scheduling extends javax.swing.JFrame {
 
     private String role;
 
     /**
      * Creates new form Staff_Scheduling
      */
-    public Staff_Scheduling() {
+    public GUI_Staff_Scheduling() {
         initComponents();
     }
 
@@ -280,20 +280,20 @@ public class Staff_Scheduling extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Staff_Scheduling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Staff_Scheduling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Staff_Scheduling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Staff_Scheduling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Staff_Scheduling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Staff_Scheduling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Staff_Scheduling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GUI_Staff_Scheduling.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Staff_Scheduling().setVisible(true);
+                new GUI_Staff_Scheduling().setVisible(true);
             }
         });
     }
