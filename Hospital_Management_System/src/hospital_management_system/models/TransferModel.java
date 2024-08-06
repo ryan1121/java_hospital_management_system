@@ -72,7 +72,15 @@ public class TransferModel {
         }
     }
 
-    public void clear(JTextField TransferID_input, JTextField TransferPatientID_input, JTextField TransferFrom_input, JTextField TransferTo_input, JFormattedTextField TransferDate_input, JFormattedTextField TransferTime_input, JTextArea ReasonForTransfer_input, JComboBox<String> StatusOfTransfer_dropdown) {
+    public void clear(
+        JTextField TransferPatientID_input, 
+        JTextField TransferFrom_input, 
+        JTextField TransferTo_input, 
+        JFormattedTextField TransferDate_input, 
+        JFormattedTextField TransferTime_input, 
+        JTextArea ReasonForTransfer_input, 
+        JComboBox<String> StatusOfTransfer_dropdown
+    ) {
         TransferPatientID_input.setText("");
         TransferFrom_input.setText("");
         TransferTo_input.setText("");
