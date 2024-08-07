@@ -43,7 +43,7 @@ public class GUI_doctor extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         doctor_email = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        doctor_speacialization = new javax.swing.JTextField();
+        doctor_specialization = new javax.swing.JTextField();
         doctor_department = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         doctor_status = new javax.swing.JComboBox<>();
@@ -192,12 +192,12 @@ public class GUI_doctor extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setText("Speacialization :");
+        jLabel5.setText("Specialization :");
 
-        doctor_speacialization.setText("Speacialization");
-        doctor_speacialization.addActionListener(new java.awt.event.ActionListener() {
+        doctor_specialization.setText("Specialization");
+        doctor_specialization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_speacializationActionPerformed(evt);
+                doctor_specializationActionPerformed(evt);
             }
         });
 
@@ -225,6 +225,11 @@ public class GUI_doctor extends javax.swing.JFrame {
         information_save.setText("Save");
 
         information_clear.setText("Clear");
+        information_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                information_clearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -242,7 +247,7 @@ public class GUI_doctor extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(doctor_speacialization, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(doctor_specialization, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5))
                         .addGap(26, 26, 26)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -305,7 +310,7 @@ public class GUI_doctor extends javax.swing.JFrame {
                             .addComponent(jLabel6))
                         .addGap(9, 9, 9)
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(doctor_speacialization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(doctor_specialization, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(doctor_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
@@ -971,6 +976,16 @@ public class GUI_doctor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void information_clearActionPerformed(java.awt.event.ActionEvent evt){
+        doctor_id.setText("");
+        doctor_name.setText("");
+        doctor_phone.setText("");
+        doctor_email.setText("");
+        doctor_specialization.setText("");
+        doctor_department.setText("");
+        doctor_experience.setText("");
+        doctor_qualifications.setText("");
+    };
     private void DateOfSurgery_textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateOfSurgery_textFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_DateOfSurgery_textFieldActionPerformed
@@ -1023,9 +1038,9 @@ public class GUI_doctor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_doctor_departmentActionPerformed
 
-    private void doctor_speacializationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_speacializationActionPerformed
+    private void doctor_specializationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_specializationActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_speacializationActionPerformed
+    }//GEN-LAST:event_doctor_specializationActionPerformed
 
     private void doctor_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_emailActionPerformed
         // TODO add your handling code here:
@@ -1163,7 +1178,7 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JTextField doctor_name;
     private javax.swing.JTextField doctor_phone;
     private javax.swing.JTextPane doctor_qualifications;
-    private javax.swing.JTextField doctor_speacialization;
+    private javax.swing.JTextField doctor_specialization;
     private javax.swing.JComboBox<String> doctor_status;
     private javax.swing.JButton information_save;
     private javax.swing.JButton information_clear;
