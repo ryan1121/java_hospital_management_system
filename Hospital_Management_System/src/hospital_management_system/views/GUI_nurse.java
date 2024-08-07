@@ -450,6 +450,11 @@ public class GUI_nurse extends javax.swing.JFrame {
         information_save.setText("Save");
 
         information_clear.setText("Clear");
+        information_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                information_clearActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -816,6 +821,12 @@ public class GUI_nurse extends javax.swing.JFrame {
         );
 
         patient_clear.setText("Clear");
+        patient_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patient_clearActionPerformed(evt);
+            }
+        });
+
 
         patient_save.setText("Save");
 
@@ -886,6 +897,11 @@ public class GUI_nurse extends javax.swing.JFrame {
         jScrollPane12.setViewportView(medical_equipment_need);
 
         admission_clear.setText("Clear");
+        admission_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admission_clearActionPerformed(evt);
+            }
+        });
 
         admission_save.setText("Save");
 
@@ -1058,6 +1074,11 @@ public class GUI_nurse extends javax.swing.JFrame {
         booking_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         appointment_clear.setText("Clear");
+        appointment_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appointment_clearActionPerformed(evt);
+            }
+        });
 
         appointment_save.setText("Save");
 
@@ -1267,6 +1288,11 @@ public class GUI_nurse extends javax.swing.JFrame {
         });
 
         bed_allocate_clear.setText("Clear");
+        bed_allocate_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bed_allocate_clearActionPerformed(evt);
+            }
+        });
 
         bed_allocate_save.setText("Save");
 
@@ -2444,6 +2470,70 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void information_clearActionPerformed(java.awt.event.ActionEvent evt){
+        nurse_id.setText("");
+        nurse_name.setText("");
+        nurse_phone.setText("");
+        nurse_email.setText("");
+        nurse_department.setText("");
+        nurse_position.setText("");
+        nurse_supervising_doctor.setText("");
+        nurse_assign_wards.setText("");
+        nurse_experience.setText("");
+        nurse_qualifications.setText("");
+    };
+
+    private void patient_clearActionPerformed(java.awt.event.ActionEvent evt){
+        patient_id.setText("");
+        patient_name.setText("");
+        patient_DOB.setText("");
+        patient_phone.setText("");
+        patient_email.setText("");
+        patient_address.setText("");
+        patient_address_line2.setText("");
+        patient_address_line3.setText("");
+        patient_ward.setText("");
+        patient_bed_number.setText("");
+        patient_room_number.setText("");
+        notes.setText("");
+    };
+
+    private void admission_clearActionPerformed(java.awt.event.ActionEvent evt){
+        Admission_ID1.setText("");
+        Admission_Date1.setText("");
+        Admitting_Staff_ID1.setText("");
+        Admission_Status1.setText("");
+        Admission_Notes1.setText("");
+        Reason1.setText("");
+        admission_Patient_ID.setText("");
+        Insurance_Details1.setText("");
+    };
+
+    private void appointment_clearActionPerformed(java.awt.event.ActionEvent evt){
+        Appointment_ID.setText("");
+        app_patient_id.setText("");
+        app_doctor_id.setText("");
+        app_date.setText("");
+        app_time.setText("");
+        app_reason.setText("");
+        appointment_type.setText("");
+        app_location.setText("");
+        appointment_notes.setText("");
+        app_cancel.setText("");
+        booking_date.setText("");
+    };
+
+    private void bed_allocate_clearActionPerformed(java.awt.event.ActionEvent evt){
+        bed_allocate_number.setText("");
+        room_allocate_number.setText("");
+        ward_allocate_number.setText("");
+        bed_allocation_department.setText("");
+        bed_patient_id1.setText("");
+        discharge_date1.setText("");
+        allocate_date1.setText("");
+        pre_occ1.setText("");
+    };
 
     private void nurse_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_idActionPerformed
         // TODO add your handling code here:
