@@ -257,6 +257,11 @@ public class GUI_admin extends javax.swing.JFrame {
         jLabel7.setText("Experience :");
 
         clear_doctor.setText("Clear");
+        clear_doctor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clear_doctorActionPerformed(evt);
+            }
+        });
 
         save_doctor.setText("Save");
 
@@ -488,6 +493,11 @@ public class GUI_admin extends javax.swing.JFrame {
         });
 
         clear_nurse.setText("Clear");
+        clear_nurse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clear_nurseActionPerformed(evt);
+            }
+        });
 
         save_nurse.setText("Save");
 
@@ -957,6 +967,11 @@ public class GUI_admin extends javax.swing.JFrame {
         );
 
         patient_clear.setText("Clear");
+        patient_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patient_clearActionPerformed(evt);
+            }
+        });
 
         patient_save.setText("Save");
 
@@ -1249,6 +1264,52 @@ public class GUI_admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void clear_doctorActionPerformed(java.awt.event.ActionEvent evt){
+        doctor_id.setText("");
+        doctor_name.setText("");
+        doctor_phone.setText("");
+        doctor_email.setText("");
+        doctor_specialization.setText("");
+        doctor_department.setText("");
+        doctor_experience.setText("");
+        doctor_qualifications.setText("");
+    };
+
+    private void patient_clearActionPerformed(java.awt.event.ActionEvent evt){
+        patient_DOB.setText("");
+        patient_address.setText("");
+        patient_address_line2.setText("");
+        patient_address_line3.setText("");
+        patient_allergies.setText("");
+        patient_bed_number.setText("");
+        patient_email.setText("");
+        patient_emergency_name.setText("");
+        patient_emergency_phone.setText("");
+        patient_emergency_relationship.setText("");
+        patient_id.setText("");
+        patient_name.setText("");
+        patient_phone.setText("");
+        patient_progress_note.setText("");
+        patient_room_number.setText("");
+        patient_ward_number.setText("");
+        policy_number.setText("");
+        provider_name.setText("");
+        insurance_id.setText("");
+    };
+
+    private void clear_nurseActionPerformed(java.awt.event.ActionEvent evt){
+        nurse_id.setText("");
+        nurse_name.setText("");
+        nurse_phone.setText("");
+        nurse_email.setText("");
+        nurse_department.setText("");
+        nurse_position.setText("");
+        nurse_supervising_doctor.setText("");
+        nurse_assigned_wards.setText("");
+        nurse_experience.setText("");
+        nurse_qualifications.setText("");
+
+    };
 
     private void nurse_supervising_doctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_supervising_doctorActionPerformed
         // TODO add your handling code here:
