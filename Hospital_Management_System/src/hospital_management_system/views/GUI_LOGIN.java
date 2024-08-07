@@ -8,6 +8,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.JOptionPane;
+
 import hospital_management_system.MysqlConnect;
 
 
@@ -141,13 +143,13 @@ public class GUI_LOGIN extends javax.swing.JFrame {
     
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
-        this.dispose();
         String ID = Username.getText();
         String password = new String(Password.getPassword());
 
         if (validateLogin(ID, password)) {
-            this.dispose();
+            JOptionPane.showMessageDialog(jFrame1, "Login successfully!");
             if (!(this.role == "Patient")){ // if the role type is not patient
+                this.dispose();
                 // Create an object for the home page gui
                 Home_Page_GUI homepage_GUI = new Home_Page_GUI(this.role);
                 homepage_GUI.setVisible(true);
@@ -155,39 +157,38 @@ public class GUI_LOGIN extends javax.swing.JFrame {
                 GUI_patient PatientGUI = new GUI_patient();
                 PatientGUI.setVisible(true);
             }
+        } else {
+            JOptionPane.showMessageDialog(jFrame1, "Login Failed, please try again!");
         }
     }//GEN-LAST:event_loginActionPerformed
 
-    private boolean validateLogin(String userID, String pw){ 
+    private boolean validateLogin(String userID, String pw) {
         String query = "";
         switch (role) {
             case "Admin":
-                query = "SELECT * FROM Admin WHERE admin_id = ? AND admin_password = ?";
+                query = "SELECT * FROM Admin WHERE admin_id = '" + userID + "' AND admin_password = '" + pw + "'";
                 break;
             case "Nurse":
-                query = "SELECT * FROM Nurse WHERE nurse_id = ? AND nurse_password = ?";
+                query = "SELECT * FROM Nurse WHERE nurse_id = '" + userID + "' AND nurse_password = '" + pw + "'";
                 break;
             case "Doctor":
-                query = "SELECT * FROM Doctors WHERE doctor_id = ? AND doctor_password = ?";
+                query = "SELECT * FROM Doctors WHERE doctor_id = '" + userID + "' AND doctor_password = '" + pw + "'";
                 break;
             case "Patient":
-                query = "SELECT * FROM Patients WHERE patient_id = ? AND patient_password = ?";
+                query = "SELECT * FROM Patients WHERE patient_id = '" + userID + "' AND patient_password = '" + pw + "'";
                 break;
             default:
                 return false;
         }
 
-        try (PreparedStatement stmt = db.getConnection().prepareStatement(query)) {
-            stmt.setString(1, userID);
-            stmt.setString(2, pw);
-            ResultSet rs = stmt.executeQuery();
-
-            return rs.next();
+        try (ResultSet rs = db.executeQuery(query)) {
+            if (rs != null && rs.next()) {
+                return true;
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return false;
-        // return db.login(this.role, userID, pw);
     }
 
     private void registerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMousePressed
