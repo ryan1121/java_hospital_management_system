@@ -16,11 +16,14 @@ public class Home_Page_GUI extends javax.swing.JFrame {
     
     // Define a variable to store the role type of login user
     String role;
+    String username;
 
-    public Home_Page_GUI(String role_type) {
+    public Home_Page_GUI(String role_type, String username) {
         initComponents();
-
+        
+        this.username = username; 
         this.role = role_type;  // assign the login role type to the variable
+        SelectRoleLabel.setText("Welcome back, " + this.username);
 
         if (this.role == "Admin"){  // 只有admin可以看见以及使用data analysis的按钮
             dataAnalysisButton.setVisible(true);

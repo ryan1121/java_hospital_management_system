@@ -4,6 +4,7 @@
  */
 package hospital_management_system.views;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -148,10 +149,11 @@ public class GUI_LOGIN extends javax.swing.JFrame {
 
         if (validateLogin(ID, password)) {
             JOptionPane.showMessageDialog(jFrame1, "Login successfully!");
+            String name = getUserName(ID);
             if (!(this.role == "Patient")){ // if the role type is not patient
                 this.dispose();
                 // Create an object for the home page gui
-                Home_Page_GUI homepage_GUI = new Home_Page_GUI(this.role);
+                Home_Page_GUI homepage_GUI = new Home_Page_GUI(this.role, name);
                 homepage_GUI.setVisible(true);
             } else {    // if the role type is patient
                 GUI_patient PatientGUI = new GUI_patient();
@@ -161,6 +163,54 @@ public class GUI_LOGIN extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(jFrame1, "Login Failed, please try again!");
         }
     }//GEN-LAST:event_loginActionPerformed
+
+    private String getUserName(String userID) {
+        String userName = null;
+    
+        String query = "";
+        switch (role) {
+            case "Admin":
+                query = "SELECT admin_name FROM Admin WHERE admin_id = ?";
+                break;
+            case "Nurse":
+                query = "SELECT nurse_name FROM Nurse WHERE nurse_id = ?";
+                break;
+            case "Doctor":
+                query = "SELECT doctor_name FROM Doctors WHERE doctor_id = ?";
+                break;
+            case "Patient":
+                query = "SELECT patient_name FROM Patients WHERE patient_id = ?";
+                break;
+            default:
+                System.out.println("Invalid role");
+                return null;
+        }
+
+        Connection conn = db.getConnection(); // Assuming you have this method to get the connection
+        try (PreparedStatement stmt = conn.prepareStatement(query)) {
+            
+            stmt.setString(1, userID);
+            ResultSet rs = stmt.executeQuery();
+            
+            if (rs != null && rs.next()) {
+                userName = rs.getString(1); // Get the first column in the result set
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        
+        return userName;
+
+        // try (ResultSet rs = db.executeQuery(query)) {
+        //     if (rs != null && rs.next()) {
+        //         userName = rs.getString(1); // Get the first column in the result set
+        //     }
+        // } catch (SQLException e) {
+        //     e.printStackTrace();
+        // }
+        
+        // return userName;
+    }
 
     private boolean validateLogin(String userID, String pw) {
         String query = "";
