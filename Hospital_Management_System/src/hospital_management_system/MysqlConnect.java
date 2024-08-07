@@ -62,7 +62,7 @@ Example Usage:
 public class MysqlConnect {
     private final String url = "jdbc:mysql://localhost:3306/hospital_management";
     private final String username = "root";
-    private final String password = "123456";
+    private final String password = "sneymoon1234";
     private Connection connection;
 
     public MysqlConnect() {
@@ -79,6 +79,10 @@ public class MysqlConnect {
         } catch (ClassNotFoundException | SQLException e) {
             throw new IllegalStateException("Cannot connect to the database!", e);
         }
+    }
+
+    public Connection getConnection() {
+        return connection;
     }
 
     public ResultSet executeQuery(String query) {

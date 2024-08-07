@@ -4,6 +4,12 @@
  */
 package hospital_management_system.views;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import hospital_management_system.MysqlConnect;
+
 
 
 /**
@@ -18,6 +24,7 @@ public class GUI_LOGIN extends javax.swing.JFrame {
 
     // Define a variable to store the role type of login user
     String role;
+    MysqlConnect db;
 
     public GUI_LOGIN(String role_type) {
         initComponents();
@@ -26,6 +33,7 @@ public class GUI_LOGIN extends javax.swing.JFrame {
         }
 
         this.role = role_type;  // assign the login role type to the variable
+        db = new MysqlConnect();
     }
 
     /**
@@ -134,18 +142,53 @@ public class GUI_LOGIN extends javax.swing.JFrame {
     private void loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        String ID = Username.getText();
+        String password = new String(Password.getPassword());
 
-        if (!(this.role == "Patient")){ // if the role type is not patient
-            // Create an object for the home page gui
-            Home_Page_GUI homepage_GUI = new Home_Page_GUI(this.role);
-            homepage_GUI.setVisible(true);
-        } else {    // if the role type is patient
-            GUI_patient PatientGUI = new GUI_patient();
-            PatientGUI.setVisible(true);
+        if (validateLogin(ID, password)) {
+            this.dispose();
+            if (!(this.role == "Patient")){ // if the role type is not patient
+                // Create an object for the home page gui
+                Home_Page_GUI homepage_GUI = new Home_Page_GUI(this.role);
+                homepage_GUI.setVisible(true);
+            } else {    // if the role type is patient
+                GUI_patient PatientGUI = new GUI_patient();
+                PatientGUI.setVisible(true);
+            }
+        }
+    }//GEN-LAST:event_loginActionPerformed
+
+    private boolean validateLogin(String userID, String pw){ 
+        String query = "";
+        switch (role) {
+            case "Admin":
+                query = "SELECT * FROM Admin WHERE admin_id = ? AND admin_password = ?";
+                break;
+            case "Nurse":
+                query = "SELECT * FROM Nurse WHERE nurse_id = ? AND nurse_password = ?";
+                break;
+            case "Doctor":
+                query = "SELECT * FROM Doctors WHERE doctor_id = ? AND doctor_password = ?";
+                break;
+            case "Patient":
+                query = "SELECT * FROM Patients WHERE patient_id = ? AND patient_password = ?";
+                break;
+            default:
+                return false;
         }
 
+        try (PreparedStatement stmt = db.getConnection().prepareStatement(query)) {
+            stmt.setString(1, userID);
+            stmt.setString(2, pw);
+            ResultSet rs = stmt.executeQuery();
 
-    }//GEN-LAST:event_loginActionPerformed
+            return rs.next();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+        // return db.login(this.role, userID, pw);
+    }
 
     private void registerMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMousePressed
         // TODO add your handling code here:
