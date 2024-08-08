@@ -3,10 +3,10 @@ package hospital_management_system.controllers;
 import java.awt.event.ActionEvent;
 import java.sql.SQLException;
 import javax.swing.*;
-import hospital_management_system.models.TransferModel;
+import hospital_management_system.models.Transfer;
 
 public class TransferController {
-    private TransferModel model;
+    private Transfer model;
     private JPanel PatientTransfer;
     private JTextField TransferID_input;
     private JTextField TransferPatientID_input;
@@ -37,7 +37,7 @@ public class TransferController {
         this.TransferTime_input = TransferTime_input;
         this.ReasonForTransfer_input = ReasonForTransfer_input;
         this.StatusOfTransfer_dropdown = StatusOfTransfer_dropdown;
-        this.model = new TransferModel(
+        this.model = new Transfer(
             TransferID_input,
             TransferPatientID_input,
             TransferFrom_input,
@@ -51,7 +51,7 @@ public class TransferController {
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
         if (model.save()) {
-            TransferModel.setNewTransferId(TransferID_input);  // Reset the new transfer ID
+            Transfer.setNewTransferId(TransferID_input);  // Reset the new transfer ID
         } else {
             JOptionPane.showMessageDialog(PatientTransfer, "Data saved unsuccessfully!");
         }
@@ -59,6 +59,6 @@ public class TransferController {
 
     public void handleClearButtonActionPerformed(ActionEvent evt) {
         model.clear(TransferPatientID_input, TransferFrom_input, TransferTo_input, TransferDate_input, TransferTime_input, ReasonForTransfer_input, StatusOfTransfer_dropdown);
-        TransferModel.setNewTransferId(TransferID_input); // Ensure the transferID is updated
+        Transfer.setNewTransferId(TransferID_input); // Ensure the transferID is updated
     }
 }

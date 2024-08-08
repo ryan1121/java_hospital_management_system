@@ -1,6 +1,6 @@
 package hospital_management_system.controllers;
 
-import hospital_management_system.models.BillingModel;
+import hospital_management_system.models.Billing;
 import hospital_management_system.views.GUI_Invoice;
 
 import java.sql.SQLException;
@@ -9,7 +9,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class BillingController {
-    private BillingModel model;
+    private Billing model;
     private JPanel Invoice;
 
     private JTextField InvoiceID_input;
@@ -36,7 +36,7 @@ public class BillingController {
         this.CostPerService_input = CostPerService_input;
         this.ServiceQuantity_input = ServiceQuantity_input;
 
-        this.model  = new BillingModel(
+        this.model  = new Billing(
             Invoice,
             InvoiceID_input,
             InvoicePatientID_input,
@@ -59,7 +59,7 @@ public class BillingController {
     public void handleClearButtonActionPerformed(ActionEvent evt) {
         model.clear();
 
-        BillingModel.setNewInvoiceId(InvoiceID_input);
+        Billing.setNewInvoiceId(InvoiceID_input);
     }
 
     public void handleCheckButtonActionPerformed(ActionEvent evt) {

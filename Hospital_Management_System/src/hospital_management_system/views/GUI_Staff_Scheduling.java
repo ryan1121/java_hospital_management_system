@@ -13,7 +13,7 @@ import java.awt.Window;
 
 import hospital_management_system.MysqlConnect;
 import hospital_management_system.controllers.*;
-import hospital_management_system.models.StaffSchedulingModel;
+import hospital_management_system.models.StaffScheduling;
 import hospital_management_system.utils.DateTimeUtils;
 
 /**
@@ -215,8 +215,8 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
             return;
         }
 
-        // Create a StaffSchedulingModel instance with the input values
-        StaffSchedulingModel model = new StaffSchedulingModel(
+        // Create a StaffScheduling instance with the input values
+        StaffScheduling model = new StaffScheduling(
             StaffID_input.getText(),
             StaffScheduleDate.getText(),
             ShiftStartTime_input.getText(),

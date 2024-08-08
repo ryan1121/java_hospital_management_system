@@ -7,7 +7,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.SQLException;
 
-public class BillingModel {
+public class Billing {
     private String invoiceID;
     private String patientID;
     private String serviceDate;
@@ -16,7 +16,7 @@ public class BillingModel {
     private String serviceQuantity;
     private JPanel panel;
 
-    public BillingModel(
+    public Billing(
         JPanel panel,
         JTextField invoiceIDTextField,
         JTextField patientIDTextField,

@@ -5,7 +5,7 @@ import hospital_management_system.utils.DateTimeUtils;
 import java.sql.SQLException;
 import javax.swing.*;
 
-public class TransferModel {
+public class Transfer {
     private JTextField TransferID_input;
     private JTextField TransferPatientID_input;
     private JTextField TransferFrom_input;
@@ -15,7 +15,7 @@ public class TransferModel {
     private JTextArea ReasonForTransfer_input;
     private JComboBox<String> StatusOfTransfer_dropdown;
 
-    public TransferModel(
+    public Transfer(
         JTextField TransferID_input,
         JTextField TransferPatientID_input,
         JTextField TransferFrom_input,

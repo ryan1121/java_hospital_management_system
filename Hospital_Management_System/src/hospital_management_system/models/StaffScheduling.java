@@ -2,7 +2,7 @@ package hospital_management_system.models;
 
 import hospital_management_system.utils.DateTimeUtils;
 
-public class StaffSchedulingModel {
+public class StaffScheduling {
     private String staffID;
     private String shiftDate;
     private String shiftStartTime;
@@ -10,7 +10,7 @@ public class StaffSchedulingModel {
     private String department;
     private String tasks;
 
-    public StaffSchedulingModel(String staffID, String shiftDate, String shiftStartTime, String shiftEndTime, String department, String tasks) {
+    public StaffScheduling(String staffID, String shiftDate, String shiftStartTime, String shiftEndTime, String department, String tasks) {
         this.staffID = staffID;
         this.shiftDate = shiftDate;
         this.shiftStartTime = shiftStartTime;

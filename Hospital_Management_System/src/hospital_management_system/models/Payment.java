@@ -5,7 +5,7 @@ import hospital_management_system.utils.DateTimeUtils;
 import java.sql.SQLException;
 import javax.swing.*;
 
-public class PaymentModel {
+public class Payment {
     private JPanel Payment;
     private JTextField PaymentID_input;
     private JTextField PaymentAmount_input;
@@ -13,7 +13,7 @@ public class PaymentModel {
     private JComboBox<String> PaymentStatus_dropdown;
     private JFormattedTextField PaymentProcessingDate_input;
 
-    public PaymentModel(
+    public Payment(
         JPanel Payment,
         JTextField PaymentID_input,
         JTextField PaymentAmount_input,

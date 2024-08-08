@@ -214,8 +214,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         TransferFrom = new javax.swing.JLabel();
         TransferID = new javax.swing.JLabel();
         TransferID_input = new javax.swing.JTextField();
-        TransferModel TransferModelObj = new TransferModel(TransferID_input, TransferPatientID_input, TransferFrom_input, TransferTo_input, TransferDate_input, TransferTime_input, ReasonForTransfer_input, StatusOfTransfer_dropdown);
-        TransferModelObj.setNewTransferId(TransferID_input);
+        Transfer TransferObj = new Transfer(TransferID_input, TransferPatientID_input, TransferFrom_input, TransferTo_input, TransferDate_input, TransferTime_input, ReasonForTransfer_input, StatusOfTransfer_dropdown);
+        TransferObj.setNewTransferId(TransferID_input);
         TransferID_input.setEnabled(false);
 
         TransferFrom_input = new javax.swing.JTextField();
@@ -236,91 +236,103 @@ public class GUI_nurse extends javax.swing.JFrame {
         TransferTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("hh:mm a"))));
         Transfer_clearButton = new javax.swing.JButton();
         Transfer_saveButton = new javax.swing.JButton();
+
         ResourcesManagement = new javax.swing.JPanel();
+
         SupplyManagement = new javax.swing.JPanel();
-        SupplyCode = new javax.swing.JLabel();
-        SupplyID = new javax.swing.JLabel();
         SupplyID_input = new javax.swing.JTextField();
         SupplyCode_input = new javax.swing.JTextField();
-        ExpiryDate = new javax.swing.JLabel();
-        StockQuantity = new javax.swing.JLabel();
-        ItemCode = new javax.swing.JLabel();
         SupplyName_input = new javax.swing.JTextField();
-        SupplierInformation = new javax.swing.JLabel();
-        jScrollPane8 = new javax.swing.JScrollPane();
         SupplierInformation_input = new javax.swing.JTextArea();
         SupplyStockQuantity_input = new javax.swing.JSpinner();
-        MinimunStock = new javax.swing.JLabel();
-        MaximumStock = new javax.swing.JLabel();
         SupplyMinimunStock_input = new javax.swing.JSpinner();
         SupplyMaximumStock_input = new javax.swing.JSpinner();
         SupplyExpiryDate = new javax.swing.JFormattedTextField();
+        SupplyExpiryDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         medical_supply_save = new javax.swing.JButton();
         medical_supply_clear = new javax.swing.JButton();
+
+        SupplyCode = new javax.swing.JLabel();
+        SupplyID = new javax.swing.JLabel();
+        ExpiryDate = new javax.swing.JLabel();
+        StockQuantity = new javax.swing.JLabel();
+        ItemCode = new javax.swing.JLabel();
+        SupplierInformation = new javax.swing.JLabel();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        MinimunStock = new javax.swing.JLabel();
+        MaximumStock = new javax.swing.JLabel();
+
         InventoryManagement = new javax.swing.JPanel();
-        ItemName = new javax.swing.JLabel();
-        InventoryID = new javax.swing.JLabel();
         InventoryID_input = new javax.swing.JTextField();
         ItemName_input = new javax.swing.JTextField();
-        ExpiryDate1 = new javax.swing.JLabel();
-        StockQuantity1 = new javax.swing.JLabel();
-        ItemCode1 = new javax.swing.JLabel();
         ItemCode_input = new javax.swing.JTextField();
-        SupplierInformation1 = new javax.swing.JLabel();
-        jScrollPane9 = new javax.swing.JScrollPane();
         SupplierInformation_input1 = new javax.swing.JTextArea();
         InventoryStockQuantity_input1 = new javax.swing.JSpinner();
-        MinimunStock1 = new javax.swing.JLabel();
-        MaximumStock1 = new javax.swing.JLabel();
         InventoryMinimunStock_input1 = new javax.swing.JSpinner();
         InventoryMaximumStock_input1 = new javax.swing.JSpinner();
         InventoryExpirydate = new javax.swing.JFormattedTextField();
+        InventoryExpirydate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         inventory_save = new javax.swing.JButton();
         inventory_clear = new javax.swing.JButton();
+
+        ItemName = new javax.swing.JLabel();
+        InventoryID = new javax.swing.JLabel();
+        ExpiryDate1 = new javax.swing.JLabel();
+        StockQuantity1 = new javax.swing.JLabel();
+        ItemCode1 = new javax.swing.JLabel();
+        SupplierInformation1 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        MinimunStock1 = new javax.swing.JLabel();
+        MaximumStock1 = new javax.swing.JLabel();
+
         Payment = new javax.swing.JPanel();
+
         PaymentProcessing = new javax.swing.JPanel();
-        PaymentID1 = new javax.swing.JLabel();
         PaymentID_input = new javax.swing.JTextField();
-        PaymentDate = new javax.swing.JLabel();
-        PaymentMethod = new javax.swing.JLabel();
-        PaymentAmount = new javax.swing.JLabel();
         PaymentAmount_input = new javax.swing.JTextField();
         PaymentMethod_dropdown = new javax.swing.JComboBox<>();
-        PaymentStatus = new javax.swing.JLabel();
         PaymentStatus_dropdown = new javax.swing.JComboBox<>();
         PaymentProcessingDate_input = new javax.swing.JFormattedTextField();
         PaymentProcessingDate_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
+        PaymentID1 = new javax.swing.JLabel();
+        PaymentDate = new javax.swing.JLabel();
+        PaymentMethod = new javax.swing.JLabel();
+        PaymentAmount = new javax.swing.JLabel();
+        PaymentStatus = new javax.swing.JLabel();
+
         Invoice = new javax.swing.JPanel();
         InvoiceDetails = new javax.swing.JPanel();
-        InvoiceID2 = new javax.swing.JLabel();
-        PatientID2 = new javax.swing.JLabel();
         InvoiceID_input = new javax.swing.JTextField();
         InvoicePatientID_input = new javax.swing.JTextField();
         CheckButton = new javax.swing.JButton();
+
         ServiceDetails = new javax.swing.JPanel();
-        DateOfService1 = new javax.swing.JLabel();
-        Description_label = new javax.swing.JLabel();
-        costPerItem_label = new javax.swing.JLabel();
         Description_input = new javax.swing.JTextField();
         CostPerService_input = new javax.swing.JFormattedTextField();
         ServiceDate_input = new javax.swing.JFormattedTextField();
-        Quantity_label = new javax.swing.JLabel();
         ServiceQuantity_input = new javax.swing.JTextField();
-        jScrollPane5 = new javax.swing.JScrollPane();
         InvoiceTable = new javax.swing.JTable();
         AddServiceButton = new javax.swing.JButton();
         InvoiceSaveButton = new javax.swing.JButton();
         InvoiceClearButton = new javax.swing.JButton();
 
-        PaymentModel PaymentModelObj = new PaymentModel(Payment, PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
-        PaymentModelObj.setNewPaymentId(PaymentID_input);
+        InvoiceID2 = new javax.swing.JLabel();
+        PatientID2 = new javax.swing.JLabel();
+        DateOfService1 = new javax.swing.JLabel();
+        Description_label = new javax.swing.JLabel();
+        costPerItem_label = new javax.swing.JLabel();
+        Quantity_label = new javax.swing.JLabel();
+        jScrollPane5 = new javax.swing.JScrollPane();
+
+        Payment PaymentObj = new Payment(Payment, PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
+        PaymentObj.setNewPaymentId(PaymentID_input);
         PaymentID_input.setEnabled(false);
 
         PaymentController paymentController = new PaymentController(Payment, PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
         
-        BillingModel BillingModelObj = new BillingModel(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
-        BillingModelObj.setNewInvoiceId(InvoiceID_input);
+        Billing BillingObj = new Billing(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
+        BillingObj.setNewInvoiceId(InvoiceID_input);
 
         BillingController BillingControllerObj = new BillingController(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
         
@@ -350,6 +362,13 @@ public class GUI_nurse extends javax.swing.JFrame {
                 transferController.handleClearButtonActionPerformed(evt);
             }
         });
+
+        
+        SupplyManagement SupplyManagementObj = new SupplyManagement(SupplyManagement, SupplyID_input, SupplyName_input, SupplyCode_input, SupplyStockQuantity_input, SupplyMinimunStock_input, SupplyMaximumStock_input, SupplierInformation_input, SupplyExpiryDate);
+        SupplyManagementObj.setNewSupplyID(SupplyID_input);
+        SupplyID_input.setEnabled(false);
+
+        SupplyManagementController supplyManagementController = new SupplyManagementController(SupplyManagement, SupplyID_input, SupplyName_input, SupplyCode_input, SupplyStockQuantity_input, SupplyMinimunStock_input, SupplyMaximumStock_input, SupplierInformation_input, SupplyExpiryDate);
 
         
 
@@ -1881,11 +1900,16 @@ public class GUI_nurse extends javax.swing.JFrame {
         medical_supply_save.setText("Save");
         medical_supply_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medical_supply_saveActionPerformed(evt);
+                supplyManagementController.handleSaveButtonActionPerformed(evt);            
             }
         });
 
         medical_supply_clear.setText("Clear");
+        medical_supply_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supplyManagementController.handleClearButtonActionPerformed(evt);            
+            }
+        });
 
         javax.swing.GroupLayout SupplyManagementLayout = new javax.swing.GroupLayout(SupplyManagement);
         SupplyManagement.setLayout(SupplyManagementLayout);

@@ -6,7 +6,7 @@ package hospital_management_system.views;
 
 
 import hospital_management_system.models.InvoiceModel;
-import hospital_management_system.models.BillingModel;
+import hospital_management_system.models.Billing;
 import hospital_management_system.MysqlConnect;
 
 import javax.swing.*;

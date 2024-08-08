@@ -1,13 +1,13 @@
 package hospital_management_system.controllers;
 
 import hospital_management_system.MysqlConnect;
-import hospital_management_system.models.StaffSchedulingModel;
+import hospital_management_system.models.StaffScheduling;
 import javax.swing.JOptionPane;
 
 public class StaffSchedulingController {
-    private StaffSchedulingModel model;
+    private StaffScheduling model;
 
-    public StaffSchedulingController(StaffSchedulingModel model) {
+    public StaffSchedulingController(StaffScheduling model) {
         this.model = model;
     }
 
