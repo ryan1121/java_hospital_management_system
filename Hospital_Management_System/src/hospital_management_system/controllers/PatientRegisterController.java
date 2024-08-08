@@ -4,11 +4,13 @@
  */
 package hospital_management_system.controllers;
 
+import java.sql.SQLException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 
+import hospital_management_system.MysqlConnect;
 import hospital_management_system.models.PatientRegisterModel;
 import hospital_management_system.views.GUI_Patient_Register;
 import hospital_management_system.views.GUI_patient;
@@ -20,10 +22,12 @@ import hospital_management_system.views.GUI_patient;
 public class PatientRegisterController {
     private PatientRegisterModel model;
     private GUI_Patient_Register view;
+    MysqlConnect db;
 
     public PatientRegisterController(PatientRegisterModel model, GUI_Patient_Register view) {
         this.model = model;
         this.view = view;
+        db = new MysqlConnect();
 
         // Add action listeners to view buttons
         this.view.addSubmitListener(e -> submitForm());
@@ -59,9 +63,26 @@ public class PatientRegisterController {
                         // Perform further processing, such as saving the data to a database or displaying it in a message dialog
                         String message = "Name: " + model.getName() + "\nDate of Birth: " + model.getDob() + "\nPhone: " + model.getPhone() + "\nEmail: " + model.getEmail() + "\nAddress: " + model.getAddress1() + ", " + model.getAddress2() + ", " + model.getAddress3() + "\nGender: " + model.getGender() + "\nEmergency Section" + "\nName: " + model.getEmergencyName() + "\nPhone: " + model.getEmergencyPhone() + "\nRelationship: " + model.getEmergencyRelation();
                         JOptionPane.showMessageDialog(view, message, "Registration Information", JOptionPane.INFORMATION_MESSAGE);
+                        String newID = db.generateNewId("Patients", "P");
+
+                        String tableName = "Patients";
+                        String columns = "patient_id, patient_DOB, patient_gender, patient_phone, patient_name, patient_password, patient_email, patient_address, patient_address_line2, patient_address_line3, patient_emergency_name, patient_emergency_phone, patient_emergency_relationship";
+                        String[] values = {newID, model.getDob(), model.getGender(), model.getPhone(), model.getName(), "password"+newID , model.getEmail(), model.getAddress1(), model.getAddress2(), model.getAddress3(), model.getEmergencyName(), model.getEmergencyPhone(), model.getEmergencyRelation()};
+
+                        try {
+                            boolean success = db.saveData(tableName, columns, values);
+                            if (success) {
+                                System.out.println("Data inserted successfully!");
+                            } else {
+                                System.out.println("Data insertion failed.");
+                            }
+                        } catch (SQLException e) {
+                            System.err.println("Error occurred while inserting data.");
+                            e.printStackTrace();
+                        }
 
                         view.dispose();
-                        GUI_patient Patient_GUI = new GUI_patient();
+                        GUI_patient Patient_GUI = new GUI_patient(newID);
                         Patient_GUI.setVisible(true);
                     }else{
                         JOptionPane.showMessageDialog(null, "Invalid Emergency Phone", "Error", JOptionPane.ERROR_MESSAGE);

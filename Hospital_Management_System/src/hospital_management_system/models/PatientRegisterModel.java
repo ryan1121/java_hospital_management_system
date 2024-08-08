@@ -8,7 +8,7 @@ package hospital_management_system.models;
  *
  * @author User
  */
-public class PatientRegisterModel {
+public final class PatientRegisterModel {
     private String name;
     private String dob;
     private String phone;
@@ -26,7 +26,7 @@ public class PatientRegisterModel {
     public void setName(String name) { this.name = name; }
 
     public String getDob() { return dob; }
-    public void setDob(String dob) { this.dob = dob; }
+    public void setDob(String dob) { this.dob = dob;}
 
     public String getPhone() { return phone; }
     public void setPhone(String phone) { this.phone = phone; }

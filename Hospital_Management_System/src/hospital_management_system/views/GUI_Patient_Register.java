@@ -162,7 +162,7 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
             }
         });
 
-        registerDOB.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        registerDOB.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy/MM/dd"))));
 
         jLabel9.setText("Gender :");
 
