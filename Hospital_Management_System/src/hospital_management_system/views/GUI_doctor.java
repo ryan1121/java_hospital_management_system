@@ -8,6 +8,7 @@ import hospital_management_system.models.*;
 
 import java.awt.*;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -32,7 +33,7 @@ public class GUI_doctor extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        doctorTab = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
         doctor_id = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
@@ -57,8 +58,8 @@ public class GUI_doctor extends javax.swing.JFrame {
         information_save = new javax.swing.JButton();
         information_clear = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        StaffScheduleTable1 = new javax.swing.JTable();
+        doctorScrollPane = new javax.swing.JScrollPane();
+        doctorScheduleTable = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         patient_id = new javax.swing.JTextField();
@@ -327,26 +328,23 @@ public class GUI_doctor extends javax.swing.JFrame {
                         .addContainerGap())))
         );
 
-        jTabbedPane1.addTab("Information", jPanel7);
+        doctorTab.addTab("Information", jPanel7);
 
-        StaffScheduleTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Staff ID", "Name", "Start Time ", "End Time", "Date", "Department", "Tasks"
-            }
-        ));
-        StaffScheduleTable1.setIntercellSpacing(new java.awt.Dimension(1, 1));
-        StaffScheduleTable1.setShowHorizontalLines(true);
-        StaffScheduleTable1.setShowVerticalLines(true);
-        jScrollPane11.setViewportView(StaffScheduleTable1);
+        DefaultTableModel doctorModel = new DefaultTableModel(
+            new String[]{"Doctor ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}, 0
+        );
+
+        // Set this model to the doctorScheduleTable
+        doctorScheduleTable.setModel(doctorModel);
+
+        // Set intercell spacing and line visibility for visual consistency
+        doctorScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
+        doctorScheduleTable.setShowHorizontalLines(true);
+        doctorScheduleTable.setShowVerticalLines(true);
+        doctorScrollPane.setViewportView(doctorScheduleTable);
+
+        WorkScheduleController scheduleController = new WorkScheduleController(doctorScheduleTable, null, doctorScrollPane, null);
+        scheduleController.loadDoctorSchedule();
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -354,18 +352,18 @@ public class GUI_doctor extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE)
+                .addComponent(doctorScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(doctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(109, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Work Schedule", jPanel8);
+        doctorTab.addTab("Work Schedule", jPanel8);
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Personal Information", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -590,7 +588,7 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Patient", jPanel9);
+        doctorTab.addTab("Patient", jPanel9);
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diagnosis Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -943,7 +941,7 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addGap(0, 20, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("Clinical Operational", jPanel3);
+        doctorTab.addTab("Clinical Operational", jPanel3);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -951,14 +949,14 @@ public class GUI_doctor extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 852, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(doctorTab, javax.swing.GroupLayout.PREFERRED_SIZE, 852, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1)
+                .addComponent(doctorTab)
                 .addContainerGap())
         );
 
@@ -1164,7 +1162,7 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JLabel Outcomes_label;
     private java.awt.TextField Outcomes_textField;
     private javax.swing.JLabel PatientID_label;
-    private javax.swing.JTable StaffScheduleTable1;
+    private javax.swing.JTable doctorScheduleTable;
     private javax.swing.JButton SurgManage_ClearButton;
     private javax.swing.JButton SurgManage_SaveButton;
     private javax.swing.JTextField consult_date;
@@ -1211,14 +1209,14 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane doctorScrollPane;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane doctorTab;
     private javax.swing.JLabel medicalRecordID_label8;
     private javax.swing.JTextField medicalRecordID_textField;
     private javax.swing.JTextArea medical_record_treatmentPlansTextField;
