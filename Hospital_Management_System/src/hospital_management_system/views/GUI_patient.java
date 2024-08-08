@@ -4,17 +4,26 @@
  */
 package hospital_management_system.views;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import hospital_management_system.MysqlConnect;
+
 /**
  *
  * @author User
  */
 public class GUI_patient extends javax.swing.JFrame {
-
+    String id;
     /**
      * Creates new form GUI_patient
      */
-    public GUI_patient() {
+    public GUI_patient(String id) {
         initComponents();
+        this.id = id;
+        fetchDataAndDisplay();
     }
 
     /**
@@ -540,6 +549,71 @@ public class GUI_patient extends javax.swing.JFrame {
     private void providerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerNameActionPerformed
         // TODO add your handling code here:
 
+    }
+
+     private void fetchDataAndDisplay() {
+        MysqlConnect db = new MysqlConnect();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            // Establish connection
+            connection = db.getConnection();
+            // Create a prepared statement
+            String sql = "SELECT * FROM Patients WHERE patient_id = ?"; // Adjust the WHERE clause as needed
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, id); // Assuming you want to retrieve the row with ID=1
+            // Execute the query
+            resultSet = preparedStatement.executeQuery();
+
+            // Process the result set
+            if (resultSet.next()) {
+                // Retrieve data by column name
+                String id = resultSet.getString("patient_id");
+                String name = resultSet.getString("patient_name");
+                String gender = resultSet.getString("patient_gender");
+                String dob = resultSet.getString("patient_DOB");
+                String phone = resultSet.getString("patient_phone");
+                String email = resultSet.getString("patient_email");
+                String address = resultSet.getString("patient_address");
+                String address2 = resultSet.getString("patient_address_line2");
+                String address3 = resultSet.getString("patient_address_line3");
+                String EmergencyName = resultSet.getString("patient_emergency_name");
+                String EmergencyRelation = resultSet.getString("patient_emergency_relationship");
+                String EmergencyPhone = resultSet.getString("patient_emergency_phone");
+                String ins_ID = resultSet.getString("insuranceID");
+                String pro_Name = resultSet.getString("providerName");
+                String Pol_Number = resultSet.getString("policyNumber");
+                // Set text fields with retrieved data
+                patient_id.setText(id);
+                patient_name.setText(name);
+                patient_gender.setText(gender);
+                patient_DOB.setText(dob);
+                patient_phone.setText(phone);
+                patient_email.setText(email);
+                patient_address.setText(address);
+                patient_address_line2.setText(address2);
+                patient_address_line3.setText(address3);
+                patient_emergency_name.setText(EmergencyName);
+                patient_emergency_relationship.setText(EmergencyRelation);
+                patient_emergency_phone.setText(EmergencyPhone);
+                insuranceID.setText(ins_ID);
+                providerName.setText(pro_Name);
+                policyNumber.setText(Pol_Number);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 

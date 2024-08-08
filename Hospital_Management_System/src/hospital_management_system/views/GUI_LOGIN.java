@@ -156,7 +156,7 @@ public class GUI_LOGIN extends javax.swing.JFrame {
                 Home_Page_GUI homepage_GUI = new Home_Page_GUI(this.role, name);
                 homepage_GUI.setVisible(true);
             } else {    // if the role type is patient
-                GUI_patient PatientGUI = new GUI_patient();
+                GUI_patient PatientGUI = new GUI_patient(ID);
                 PatientGUI.setVisible(true);
             }
         } else {
