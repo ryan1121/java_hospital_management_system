@@ -2305,12 +2305,9 @@
                                                   <Component id="TransferDate" max="32767" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="TransferTime_input" pref="93" max="32767" attributes="0"/>
                                                   <Component id="PatientTransferDate" max="32767" attributes="0"/>
-                                                  <Group type="102" attributes="0">
-                                                      <Component id="TransferTime_input" min="-2" pref="93" max="-2" attributes="0"/>
-                                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                                  </Group>
                                               </Group>
                                           </Group>
                                           <Component id="jScrollPane15" alignment="0" min="-2" pref="325" max="-2" attributes="0"/>
@@ -2513,7 +2510,7 @@
                           <Component id="SupplyManagement" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="InventoryManagement" min="-2" pref="378" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="67" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -2545,51 +2542,54 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="medical_supply_save" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="medical_supply_clear" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
+                                      <Component id="SupplierInformation" pref="118" max="32767" attributes="0"/>
+                                      <EmptySpace min="-2" pref="298" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" attributes="0">
                                       <Component id="jScrollPane8" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="SupplierInformation" max="32767" attributes="0"/>
-                                      <EmptySpace min="-2" pref="304" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="StockQuantity" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="SupplyStockQuantity_input" pref="69" max="32767" attributes="0"/>
-                                              </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="ItemCode" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
-                                                      <Group type="102" alignment="0" attributes="0">
-                                                          <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
-                                                          <Component id="SupplyID" min="-2" max="-2" attributes="0"/>
-                                                      </Group>
-                                                      <Component id="SupplyCode" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  </Group>
-                                                  <EmptySpace max="-2" attributes="0"/>
-                                                  <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="SupplyCode_input" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="SupplyName_input" alignment="0" max="32767" attributes="0"/>
-                                                      <Component id="SupplyID_input" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="ItemCode" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="1" max="-2" attributes="0"/>
+                                                      <Component id="SupplyID" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                               </Group>
+                                              <EmptySpace max="-2" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                  <Component id="SupplyName_input" alignment="0" pref="89" max="32767" attributes="0"/>
+                                                  <Component id="SupplyID_input" alignment="0" max="32767" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <Component id="StockQuantity" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="SupplyStockQuantity_input" min="-2" pref="80" max="-2" attributes="0"/>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                   <Component id="MinimunStock" alignment="0" max="32767" attributes="0"/>
-                                                  <Component id="MaximumStock" alignment="0" pref="122" max="32767" attributes="0"/>
+                                                  <Component id="MaximumStock" alignment="0" min="-2" pref="122" max="-2" attributes="0"/>
                                               </Group>
                                               <EmptySpace max="-2" attributes="0"/>
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                  <Component id="SupplyMinimunStock_input" alignment="0" pref="81" max="32767" attributes="0"/>
-                                                  <Component id="SupplyMaximumStock_input" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="SupplyMinimunStock_input" alignment="0" max="32767" attributes="0"/>
+                                                  <Component id="SupplyMaximumStock_input" alignment="0" min="-2" pref="81" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
@@ -2601,13 +2601,6 @@
                                       <EmptySpace max="32767" attributes="0"/>
                                   </Group>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="medical_supply_save" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="medical_supply_clear" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2623,11 +2616,6 @@
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="ItemCode" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="SupplyName_input" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="SupplyCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="SupplyCode_input" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -2653,7 +2641,7 @@
                                   <Component id="ExpiryDate" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                                   <Component id="SupplyExpiryDate" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="medical_supply_save" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="medical_supply_clear" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -2664,22 +2652,12 @@
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JLabel" name="SupplyCode">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Supply Code:"/>
-                      </Properties>
-                    </Component>
                     <Component class="javax.swing.JLabel" name="SupplyID">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Supply ID:"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="SupplyID_input">
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="SupplyCode_input">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SupplyCode_inputActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="ExpiryDate">
                       <Properties>
@@ -2794,11 +2772,6 @@
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="InventoryStockQuantity_input1" min="-2" pref="74" max="-2" attributes="0"/>
                                               </Group>
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="ItemCode1" min="-2" pref="62" max="-2" attributes="0"/>
-                                                  <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-                                                  <Component id="ItemCode_input" min="-2" pref="71" max="-2" attributes="0"/>
-                                              </Group>
                                           </Group>
                                           <Group type="102" alignment="0" attributes="0">
                                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -2841,11 +2814,6 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="ItemCode1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="ItemCode_input" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="ItemName" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="ItemName_input" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -2873,12 +2841,12 @@
                                   <Component id="ExpiryDate1" alignment="3" min="-2" pref="22" max="-2" attributes="0"/>
                                   <Component id="InventoryExpirydate" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="inventory_save" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="inventory_clear" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="14" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -2913,16 +2881,6 @@
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Quantity in Stock:"/>
                       </Properties>
-                    </Component>
-                    <Component class="javax.swing.JLabel" name="ItemCode1">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" value="Item Code:"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JTextField" name="ItemCode_input">
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ItemCode_inputActionPerformed"/>
-                      </Events>
                     </Component>
                     <Component class="javax.swing.JLabel" name="SupplierInformation1">
                       <Properties>
@@ -2994,17 +2952,20 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="Invoice" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="PaymentProcessing" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="PaymentProcessing" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace pref="67" max="32767" attributes="0"/>
+                              </Group>
                               <Group type="102" alignment="1" attributes="0">
+                                  <EmptySpace max="32767" attributes="0"/>
                                   <Component id="InvoiceSaveButton" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="InvoiceClearButton" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -3015,16 +2976,16 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="Invoice" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="12" max="32767" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <Component id="PaymentProcessing" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="InvoiceSaveButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="InvoiceClearButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="61" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
