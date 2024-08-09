@@ -69,15 +69,6 @@ public class GUI_patient extends javax.swing.JFrame {
         policyNumber = new javax.swing.JTextField();
         patient_clear = new javax.swing.JButton();
         patient_save = new javax.swing.JButton();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        patient_allergies = new javax.swing.JTextPane();
-        consult_date = new javax.swing.JTextField();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        consult_record = new javax.swing.JTextPane();
-        consult_time = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         patientHistory_jTable = new javax.swing.JTable();
@@ -314,26 +305,8 @@ public class GUI_patient extends javax.swing.JFrame {
         );
 
         patient_clear.setText("Clear");
-        patient_clear.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_clearActionPerformed(evt);
-                patient_id.setText("");
-                patient_name.setText("");
-                patient_phone.setText("");
-                patient_email.setText("");
-                patient_address.setText("");
-                patient_address_line2.setText("");
-                patient_address_line3.setText("");
-                patient_emergency_name.setText("");
-                patient_emergency_relationship.setText("");
-                patient_emergency_phone.setText("");
-                insuranceID.setText("");
-                providerName.setText("");
-                policyNumber.setText("");
-            }
-        });
+
         patient_save.setText("Save");
-        
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -376,65 +349,6 @@ public class GUI_patient extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Information", jPanel7);
-
-        jLabel5.setText("Allergies :");
-
-        jLabel6.setText("Consultation Record :");
-
-        jScrollPane1.setViewportView(patient_allergies);
-
-        consult_date.setText("Date");
-        consult_date.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consult_dateActionPerformed(evt);
-            }
-        });
-
-        jScrollPane2.setViewportView(consult_record);
-
-        consult_time.setText("Time");
-        consult_time.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                consult_timeActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
-        jPanel9.setLayout(jPanel9Layout);
-        jPanel9Layout.setHorizontalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addGroup(jPanel9Layout.createSequentialGroup()
-                        .addComponent(consult_date, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(consult_time, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 780, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(22, Short.MAX_VALUE))
-        );
-        jPanel9Layout.setVerticalGroup(
-            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(consult_date, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(consult_time, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("Medical History", jPanel9);
 
         patientHistory_jTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -531,22 +445,23 @@ public class GUI_patient extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_patient_address_line3ActionPerformed
 
-    private void consult_dateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consult_dateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_consult_dateActionPerformed
-
     private void patient_clearActionPerformed(java.awt.event.ActionEvent evt){
-        
+        patient_id.setText("");
+        patient_name.setText("");
+        patient_phone.setText("");
+        patient_email.setText("");
+        patient_address.setText("");
+        patient_address_line2.setText("");
+        patient_address_line3.setText("");
+        patient_emergency_name.setText("");
+        patient_emergency_relationship.setText("");
+        patient_emergency_phone.setText("");
+        insuranceID.setText("");
+        providerName.setText("");
+        policyNumber.setText("");
     }
 
-    private void consult_timeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consult_timeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_consult_timeActionPerformed
-//GEN-LAST:event_consult_timeActionPerformed
-//GEN-LAST:event_consult_timeActionPerformed
-//GEN-LAST:event_consult_timeActionPerformed
-
-    private void providerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_providerNameActionPerformed
+    private void providerNameActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
 
     }
@@ -653,12 +568,7 @@ public class GUI_patient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField consult_date;
-    private javax.swing.JTextPane consult_record;
-    private javax.swing.JTextField consult_time;
     private javax.swing.JTextField insuranceID;
-    private javax.swing.JButton patient_clear;
-    private javax.swing.JButton patient_save;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel15;
@@ -667,8 +577,6 @@ public class GUI_patient extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -678,9 +586,6 @@ public class GUI_patient extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable patientHistory_jTable;
@@ -688,7 +593,7 @@ public class GUI_patient extends javax.swing.JFrame {
     private javax.swing.JTextField patient_address;
     private javax.swing.JTextField patient_address_line2;
     private javax.swing.JTextField patient_address_line3;
-    private javax.swing.JTextPane patient_allergies;
+    private javax.swing.JButton patient_clear;
     private javax.swing.JTextField patient_email;
     private javax.swing.JTextField patient_emergency_name;
     private javax.swing.JTextField patient_emergency_phone;
@@ -697,6 +602,7 @@ public class GUI_patient extends javax.swing.JFrame {
     private javax.swing.JTextField patient_id;
     private javax.swing.JTextField patient_name;
     private javax.swing.JTextField patient_phone;
+    private javax.swing.JButton patient_save;
     private javax.swing.JTextField policyNumber;
     private javax.swing.JTextField providerName;
     // End of variables declaration//GEN-END:variables
