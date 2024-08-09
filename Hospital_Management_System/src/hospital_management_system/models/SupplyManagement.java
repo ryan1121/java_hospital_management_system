@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 public class SupplyManagement {
+    private JPanel panel;
     private String supplyID;
     private String supplyCode;
     private String supplyName;
@@ -15,7 +16,6 @@ public class SupplyManagement {
     private int supplyMaximumStock;
     private String supplierInformation;
     private String supplyExpiryDate;
-    private JPanel panel;
 
     public SupplyManagement(
         JPanel panel,
@@ -31,6 +31,9 @@ public class SupplyManagement {
         this.panel = panel;
         this.supplyID = supplyIDInput.getText();
         this.supplyName = supplyNameInput.getText();
+        System.out.println("    Check ID 1:" + supplyID);
+
+        System.out.println("    Check NAME 1:" + supplyName);
         this.supplyCode = supplyCodeInput.getText();
         this.supplyStockQuantity = (Integer) supplyStockQuantityInput.getValue();
         this.supplyMinimumStock = (Integer) supplyMinimumStockInput.getValue();
@@ -40,6 +43,10 @@ public class SupplyManagement {
     }
 
     public boolean save() {
+        System.out.println("    Check ID 2:" + supplyID);
+
+        System.out.println("    Check NAME 2:" + supplyName);
+
         if (supplyID == null || supplyID.isEmpty()) {
             JOptionPane.showMessageDialog(panel, "You MUST enter supply ID !!");
             return false;

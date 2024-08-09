@@ -239,7 +239,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         ResourcesManagement = new javax.swing.JPanel();
 
-        SupplyManagement = new javax.swing.JPanel();
+        MedicalSupplyManagement = new javax.swing.JPanel();
         SupplyID_input = new javax.swing.JTextField();
         SupplyCode_input = new javax.swing.JTextField();
         SupplyName_input = new javax.swing.JTextField();
@@ -364,12 +364,12 @@ public class GUI_nurse extends javax.swing.JFrame {
         });
 
         
-        SupplyManagement SupplyManagementObj = new SupplyManagement(SupplyManagement, SupplyID_input, SupplyName_input, SupplyCode_input, SupplyStockQuantity_input, SupplyMinimunStock_input, SupplyMaximumStock_input, SupplierInformation_input, SupplyExpiryDate);
+        SupplyManagement SupplyManagementObj = new SupplyManagement(MedicalSupplyManagement, SupplyID_input, SupplyName_input, SupplyCode_input, SupplyStockQuantity_input, SupplyMinimunStock_input, SupplyMaximumStock_input, SupplierInformation_input, SupplyExpiryDate);
         SupplyManagementObj.setNewSupplyID(SupplyID_input);
         SupplyID_input.setEnabled(false);
 
-        SupplyManagementController supplyManagementController = new SupplyManagementController(SupplyManagement, SupplyID_input, SupplyName_input, SupplyCode_input, SupplyStockQuantity_input, SupplyMinimunStock_input, SupplyMaximumStock_input, SupplierInformation_input, SupplyExpiryDate);
-
+        SupplyManagementController supplyManagementController = new SupplyManagementController(MedicalSupplyManagement, SupplyID_input, SupplyName_input, SupplyCode_input, SupplyStockQuantity_input, SupplyMinimunStock_input, SupplyMaximumStock_input, SupplierInformation_input, SupplyExpiryDate);
+        System.out.println("    Check: " + SupplyName_input.getText());
         
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -1863,7 +1863,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         NurseTab.addTab("Patient Transfer", PatientTransfer);
 
-        SupplyManagement.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medical Supply Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        MedicalSupplyManagement.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medical Supply Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         SupplyCode.setText("Supply Code:");
 
@@ -1911,83 +1911,83 @@ public class GUI_nurse extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout SupplyManagementLayout = new javax.swing.GroupLayout(SupplyManagement);
-        SupplyManagement.setLayout(SupplyManagementLayout);
-        SupplyManagementLayout.setHorizontalGroup(
-            SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SupplyManagementLayout.createSequentialGroup()
+        javax.swing.GroupLayout MedicalSupplyManagementLayout = new javax.swing.GroupLayout(MedicalSupplyManagement);
+        MedicalSupplyManagement.setLayout(MedicalSupplyManagementLayout);
+        MedicalSupplyManagementLayout.setHorizontalGroup(
+            MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MedicalSupplyManagementLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SupplyManagementLayout.createSequentialGroup()
+                .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(MedicalSupplyManagementLayout.createSequentialGroup()
                         .addComponent(jScrollPane8)
                         .addContainerGap())
-                    .addGroup(SupplyManagementLayout.createSequentialGroup()
+                    .addGroup(MedicalSupplyManagementLayout.createSequentialGroup()
                         .addComponent(SupplierInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGap(304, 304, 304))
-                    .addGroup(SupplyManagementLayout.createSequentialGroup()
-                        .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(SupplyManagementLayout.createSequentialGroup()
+                    .addGroup(MedicalSupplyManagementLayout.createSequentialGroup()
+                        .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(MedicalSupplyManagementLayout.createSequentialGroup()
                                     .addComponent(StockQuantity)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(SupplyStockQuantity_input, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE))
-                                .addGroup(SupplyManagementLayout.createSequentialGroup()
-                                    .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(MedicalSupplyManagementLayout.createSequentialGroup()
+                                    .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(ItemCode, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(SupplyManagementLayout.createSequentialGroup()
+                                        .addGroup(MedicalSupplyManagementLayout.createSequentialGroup()
                                             .addGap(1, 1, 1)
                                             .addComponent(SupplyID))
                                         .addComponent(SupplyCode))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(SupplyCode_input)
                                         .addComponent(SupplyName_input)
                                         .addComponent(SupplyID_input))))
-                            .addGroup(SupplyManagementLayout.createSequentialGroup()
-                                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(MedicalSupplyManagementLayout.createSequentialGroup()
+                                .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(MinimunStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(MaximumStock, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(SupplyMinimunStock_input, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                                     .addComponent(SupplyMaximumStock_input)))
-                            .addGroup(SupplyManagementLayout.createSequentialGroup()
+                            .addGroup(MedicalSupplyManagementLayout.createSequentialGroup()
                                 .addComponent(ExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(SupplyExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SupplyManagementLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, MedicalSupplyManagementLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(medical_supply_save)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(medical_supply_clear)
                 .addGap(14, 14, 14))
         );
-        SupplyManagementLayout.setVerticalGroup(
-            SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SupplyManagementLayout.createSequentialGroup()
+        MedicalSupplyManagementLayout.setVerticalGroup(
+            MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(MedicalSupplyManagementLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SupplyID_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SupplyID))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ItemCode)
                     .addComponent(SupplyName_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SupplyCode)
                     .addComponent(SupplyCode_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(StockQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SupplyStockQuantity_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MinimunStock)
                     .addComponent(SupplyMinimunStock_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MaximumStock)
                     .addComponent(SupplyMaximumStock_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1995,11 +1995,11 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SupplyExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medical_supply_save)
                     .addComponent(medical_supply_clear))
                 .addContainerGap(8, Short.MAX_VALUE))
@@ -2152,7 +2152,7 @@ public class GUI_nurse extends javax.swing.JFrame {
             ResourcesManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ResourcesManagementLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(SupplyManagement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MedicalSupplyManagement, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(InventoryManagement, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -2162,7 +2162,7 @@ public class GUI_nurse extends javax.swing.JFrame {
             .addGroup(ResourcesManagementLayout.createSequentialGroup()
                 .addGap(15, 15, 15)
                 .addGroup(ResourcesManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(SupplyManagement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(MedicalSupplyManagement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(InventoryManagement, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -2864,7 +2864,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField SupplyExpiryDate;
     private javax.swing.JLabel SupplyID;
     private javax.swing.JTextField SupplyID_input;
-    private javax.swing.JPanel SupplyManagement;
+    private javax.swing.JPanel MedicalSupplyManagement;
     private javax.swing.JSpinner SupplyMaximumStock_input;
     private javax.swing.JSpinner SupplyMinimunStock_input;
     private javax.swing.JTextField SupplyName_input;
