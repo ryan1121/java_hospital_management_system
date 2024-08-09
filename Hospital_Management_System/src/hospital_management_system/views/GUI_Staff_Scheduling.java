@@ -56,9 +56,8 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
         StaffScheduleDate = new javax.swing.JFormattedTextField();
         SaveButton = new javax.swing.JButton();
         ClearButton = new javax.swing.JButton();
-        CancelButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         StaffScheduling.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Staff Scheduling", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
@@ -71,7 +70,12 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
         AssignedTasks.setText("Assigned Tasks:");
 
         Department_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Emergency", "Cardiology", "Neurology", "Pediatrics", "Radiology", "Oncology", "Orthopedics", "Gynecology", "General Surgery", "Intensive Care Unit (ICU)", "Neonatal Intensive Care Unit (NICU)", "Anesthesiology", "Gastroenterology" }));
-   
+        Department_dropdown.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Department_dropdownActionPerformed(evt);
+            }
+        });
+
         ShiftEndTime.setText("Shift End Time:");
 
         shiftDate.setText("Date:");
@@ -81,9 +85,19 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
         jScrollPane1.setViewportView(AssignedTasks_input);
 
         ShiftStartTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("h:mm a"))));
+        ShiftStartTime_input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShiftStartTime_inputActionPerformed(evt);
+            }
+        });
 
         ShiftEndTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("h:mm a"))));
-     
+        ShiftEndTime_input.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShiftEndTime_inputActionPerformed(evt);
+            }
+        });
+
         StaffScheduleDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         javax.swing.GroupLayout StaffSchedulingLayout = new javax.swing.GroupLayout(StaffScheduling);
@@ -164,13 +178,6 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
             }
         });
 
-        CancelButton.setText("Cancel");
-        CancelButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CancelButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -183,8 +190,6 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
                 .addComponent(SaveButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(ClearButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CancelButton)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -194,8 +199,7 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SaveButton)
-                    .addComponent(ClearButton)
-                    .addComponent(CancelButton))
+                    .addComponent(ClearButton))
                 .addContainerGap(13, Short.MAX_VALUE))
         );
 
@@ -259,10 +263,6 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
         AssignedTasks_input.setText("");
     }//GEN-LAST:event_ClearButtonActionPerformed
 
-    private void CancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelButtonActionPerformed
-        this.dispose(); // Close the current window
-    }//GEN-LAST:event_CancelButtonActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -301,7 +301,6 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AssignedTasks;
     private javax.swing.JTextArea AssignedTasks_input;
-    private javax.swing.JButton CancelButton;
     private javax.swing.JButton ClearButton;
     private javax.swing.JLabel Department;
     private javax.swing.JComboBox<String> Department_dropdown;

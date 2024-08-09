@@ -69,7 +69,8 @@ public class GUI_patient extends javax.swing.JFrame {
         policyNumber = new javax.swing.JTextField();
         patient_clear = new javax.swing.JButton();
         patient_save = new javax.swing.JButton();
-        patient_logout = new javax.swing.JButton();
+        backButton = new javax.swing.JLabel();
+        backButton1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         patientHistory_jTable = new javax.swing.JTable();
@@ -309,7 +310,13 @@ public class GUI_patient extends javax.swing.JFrame {
 
         patient_save.setText("Save");
 
-        patient_logout.setText("Log Out");
+        backButton.setForeground(new java.awt.Color(0, 51, 255));
+        backButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        backButton.setText("Back");
+
+        backButton1.setForeground(new java.awt.Color(0, 51, 255));
+        backButton1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        backButton1.setText("Back");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -325,13 +332,19 @@ public class GUI_patient extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addComponent(patient_logout)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(backButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(patient_save)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(patient_clear))
                             .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(22, 22, 22))))
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(backButton)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -348,9 +361,14 @@ public class GUI_patient extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(patient_clear)
                                 .addComponent(patient_save)
-                                .addComponent(patient_logout))))
+                                .addComponent(backButton1))))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
+            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel7Layout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(backButton)
+                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("Information", jPanel7);
@@ -573,6 +591,8 @@ public class GUI_patient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel backButton;
+    private javax.swing.JLabel backButton1;
     private javax.swing.JTextField insuranceID;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -605,7 +625,6 @@ public class GUI_patient extends javax.swing.JFrame {
     private javax.swing.JTextField patient_emergency_relationship;
     private javax.swing.JLabel patient_gender;
     private javax.swing.JTextField patient_id;
-    private javax.swing.JButton patient_logout;
     private javax.swing.JTextField patient_name;
     private javax.swing.JTextField patient_phone;
     private javax.swing.JButton patient_save;
