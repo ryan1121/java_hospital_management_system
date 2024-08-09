@@ -266,10 +266,10 @@ public class GUI_nurse extends javax.swing.JFrame {
         InventoryID_input = new javax.swing.JTextField();
         ItemName_input = new javax.swing.JTextField();
         ItemCode_input = new javax.swing.JTextField();
-        SupplierInformation_input1 = new javax.swing.JTextArea();
-        InventoryStockQuantity_input1 = new javax.swing.JSpinner();
-        InventoryMinimunStock_input1 = new javax.swing.JSpinner();
-        InventoryMaximumStock_input1 = new javax.swing.JSpinner();
+        InventorySupplierInformation_input = new javax.swing.JTextArea();
+        InventoryStockQuantity_input = new javax.swing.JSpinner();
+        InventoryMinimunStock_input = new javax.swing.JSpinner();
+        InventoryMaximumStock_input = new javax.swing.JSpinner();
         InventoryExpirydate = new javax.swing.JFormattedTextField();
         InventoryExpirydate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
         inventory_save = new javax.swing.JButton();
@@ -2037,9 +2037,9 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         SupplierInformation1.setText("Supplier Information:");
 
-        SupplierInformation_input1.setColumns(20);
-        SupplierInformation_input1.setRows(5);
-        jScrollPane9.setViewportView(SupplierInformation_input1);
+        InventorySupplierInformation_input.setColumns(20);
+        InventorySupplierInformation_input.setRows(5);
+        jScrollPane9.setViewportView(InventorySupplierInformation_input);
 
         MinimunStock1.setText("Minimum Stock Level:");
 
@@ -2079,7 +2079,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                                 .addGroup(InventoryManagementLayout.createSequentialGroup()
                                     .addComponent(StockQuantity1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(InventoryStockQuantity_input1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(InventoryStockQuantity_input, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(InventoryManagementLayout.createSequentialGroup()
                                     .addComponent(ItemCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(22, 22, 22)
@@ -2090,8 +2090,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                                     .addComponent(MinimunStock1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(InventoryMaximumStock_input1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(InventoryMinimunStock_input1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(InventoryMaximumStock_input, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(InventoryMinimunStock_input, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(InventoryManagementLayout.createSequentialGroup()
                                 .addComponent(ExpiryDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2122,15 +2122,15 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(StockQuantity1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(InventoryStockQuantity_input1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(InventoryStockQuantity_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MinimunStock1)
-                    .addComponent(InventoryMinimunStock_input1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(InventoryMinimunStock_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MaximumStock1)
-                    .addComponent(InventoryMaximumStock_input1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(InventoryMaximumStock_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SupplierInformation1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2811,9 +2811,9 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JLabel InventoryID;
     private javax.swing.JTextField InventoryID_input;
     private javax.swing.JPanel InventoryManagement;
-    private javax.swing.JSpinner InventoryMaximumStock_input1;
-    private javax.swing.JSpinner InventoryMinimunStock_input1;
-    private javax.swing.JSpinner InventoryStockQuantity_input1;
+    private javax.swing.JSpinner InventoryMaximumStock_input;
+    private javax.swing.JSpinner InventoryMinimunStock_input;
+    private javax.swing.JSpinner InventoryStockQuantity_input;
     private javax.swing.JPanel Invoice;
     private javax.swing.JButton InvoiceClearButton;
     private javax.swing.JPanel InvoiceDetails;
@@ -2858,7 +2858,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JLabel SupplierInformation;
     private javax.swing.JLabel SupplierInformation1;
     private javax.swing.JTextArea SupplierInformation_input;
-    private javax.swing.JTextArea SupplierInformation_input1;
+    private javax.swing.JTextArea InventorySupplierInformation_input;
     private javax.swing.JLabel SupplyCode;
     private javax.swing.JTextField SupplyCode_input;
     private javax.swing.JFormattedTextField SupplyExpiryDate;
