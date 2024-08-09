@@ -1,11 +1,7 @@
 package hospital_management_system.views;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JFrame;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import javax.swing.*;
+import java.awt.*;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,6 +29,7 @@ public class Data_Tables extends JFrame {
     private JLabel SelectRoleLabel;
     private JLabel SelectRoleLabel1;
     private JLabel TitleLabel;
+    private JLabel BackLabel;
 
     public List<String> getAllowedButtons(String role) {
         System.out.println("Current role is " + role);
@@ -134,7 +131,20 @@ public class Data_Tables extends JFrame {
         initButton(BedAllocationButton = new JButton(), "BedAllocation", "BedAllocationButton", 0, 9);
         initButton(ConsultationsButton = new JButton(), "Consultations", "ConsultationsButton", 1, 9);
         initButton(InvoiceButton = new JButton(), "Invoice", "InvoiceButton", 2, 9);
-    
+        
+        // Add the Back label
+        BackLabel = new JLabel("Back", JLabel.CENTER);
+        BackLabel.setForeground(Color.BLUE);
+        BackLabel.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        BackLabel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                // Implement the back functionality here
+                backLabelMouseClicked(evt);
+            }
+        });
+        // Position the label with some space between it and the buttons
+        addComponent(BackLabel, 0, 10, 3, 1); // Placed on a new row
+        
         pack();
         
         // Increase width and height if the role is "Admin"
@@ -150,7 +160,7 @@ public class Data_Tables extends JFrame {
         addComponent(button, gridx, gridy, 1, 1);
         button.addActionListener(evt -> buttonActionPerformed(evt, tableName));
     }
-
+    
     private void addComponent(java.awt.Component comp, int gridx, int gridy, int gridwidth, int gridheight) {
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.gridx = gridx;
@@ -161,7 +171,13 @@ public class Data_Tables extends JFrame {
         gbc.fill = GridBagConstraints.BOTH;
         add(comp, gbc);
     }
-
+    
+    private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {
+        // Implement the action you want to happen when "Back" is clicked.
+        // Example: You can close the current window or navigate to a previous one.
+        dispose(); // This will close the current window.
+    }
+    
     private void buttonActionPerformed(java.awt.event.ActionEvent evt, String tableName) {
         GUI_Check_Data checkDataGUI = new GUI_Check_Data(tableName);
         checkDataGUI.setVisible(true);
