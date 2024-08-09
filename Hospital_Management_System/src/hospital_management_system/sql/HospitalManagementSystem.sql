@@ -250,7 +250,6 @@ CREATE TABLE NurseStaffScheduling (
 -- 创建 InventoryManagement 表
 CREATE TABLE InventoryManagement (
     InventoryID VARCHAR(25) PRIMARY KEY,
-    ItemCode VARCHAR(50),
     ItemName VARCHAR(100),
     InventoryStockQuantity INT,
     InventoryMaximumStock INT,
@@ -263,7 +262,6 @@ CREATE TABLE InventoryManagement (
 CREATE TABLE MedicalSupplyManagement (
     SupplyID VARCHAR(25) PRIMARY KEY,
     SupplyName VARCHAR(100),
-    SupplyCode VARCHAR(50),
     SupplyStockQuantity INT,
     SupplyMinimunStock INT,
     SupplyMaximumStock INT,
