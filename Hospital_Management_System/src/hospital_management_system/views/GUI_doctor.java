@@ -58,6 +58,7 @@ public class GUI_doctor extends javax.swing.JFrame {
         doctor_experience = new javax.swing.JTextPane();
         jLabel7 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        doctor_logout = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane11 = new javax.swing.JScrollPane();
         StaffScheduleTable1 = new javax.swing.JTable();
@@ -255,21 +256,24 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addGap(0, 25, Short.MAX_VALUE))
         );
 
+        doctor_logout.setText("Log Out");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap(227, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(199, 199, 199))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(information_save)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(information_clear)
-                        .addGap(148, 148, 148))))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(199, 199, 199))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(191, 191, 191)
+                .addComponent(doctor_logout)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(information_save)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(information_clear)
+                .addGap(148, 148, 148))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -279,7 +283,8 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(information_clear)
-                    .addComponent(information_save))
+                    .addComponent(information_save)
+                    .addComponent(doctor_logout))
                 .addContainerGap(9, Short.MAX_VALUE))
         );
 
@@ -857,6 +862,7 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JTextField doctor_email;
     private javax.swing.JTextPane doctor_experience;
     private javax.swing.JTextField doctor_id;
+    private javax.swing.JButton doctor_logout;
     private javax.swing.JTextField doctor_name;
     private javax.swing.JTextField doctor_phone;
     private javax.swing.JTextPane doctor_qualifications;

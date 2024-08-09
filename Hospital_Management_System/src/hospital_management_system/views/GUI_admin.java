@@ -65,6 +65,7 @@ public class GUI_admin extends javax.swing.JFrame {
         admin_email = new javax.swing.JTextField();
         admin_save = new javax.swing.JButton();
         admin_clear = new javax.swing.JButton();
+        admin_logout = new javax.swing.JButton();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
@@ -235,6 +236,8 @@ public class GUI_admin extends javax.swing.JFrame {
 
         admin_clear.setText("Clear");
 
+        admin_logout.setText("Log Out");
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
@@ -245,6 +248,8 @@ public class GUI_admin extends javax.swing.JFrame {
                 .addContainerGap(321, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(admin_logout)
+                .addGap(78, 78, 78)
                 .addComponent(admin_save)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(admin_clear)
@@ -258,7 +263,8 @@ public class GUI_admin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(admin_save)
-                    .addComponent(admin_clear))
+                    .addComponent(admin_clear)
+                    .addComponent(admin_logout))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
 
@@ -1356,6 +1362,7 @@ public class GUI_admin extends javax.swing.JFrame {
     private javax.swing.JButton admin_clear;
     private javax.swing.JTextField admin_email;
     private javax.swing.JTextField admin_id;
+    private javax.swing.JButton admin_logout;
     private javax.swing.JTextField admin_name;
     private javax.swing.JTextField admin_phone;
     private javax.swing.JButton admin_save;

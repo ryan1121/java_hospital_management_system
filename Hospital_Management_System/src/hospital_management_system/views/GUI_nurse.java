@@ -64,6 +64,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         nurse_supervising_doctor = new javax.swing.JTextField();
         information_clear = new javax.swing.JButton();
         information_save = new javax.swing.JButton();
+        nurse_logout = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         jScrollPane14 = new javax.swing.JScrollPane();
         StaffScheduleTable1 = new javax.swing.JTable();
@@ -224,15 +225,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         Transfer_saveButton = new javax.swing.JButton();
         ResourcesManagement = new javax.swing.JPanel();
         SupplyManagement = new javax.swing.JPanel();
-<<<<<<< HEAD
         SupplyID = new javax.swing.JLabel();
         SupplyID_input = new javax.swing.JTextField();
-=======
-        SupplyCode = new javax.swing.JLabel();
-        SupplyID = new javax.swing.JLabel();
-        SupplyID_input = new javax.swing.JTextField();
-        SupplyCode_input = new javax.swing.JTextField();
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
         ExpiryDate = new javax.swing.JLabel();
         StockQuantity = new javax.swing.JLabel();
         ItemCode = new javax.swing.JLabel();
@@ -255,11 +249,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         ItemName_input = new javax.swing.JTextField();
         ExpiryDate1 = new javax.swing.JLabel();
         StockQuantity1 = new javax.swing.JLabel();
-<<<<<<< HEAD
-=======
-        ItemCode1 = new javax.swing.JLabel();
-        ItemCode_input = new javax.swing.JTextField();
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
         SupplierInformation1 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
         SupplierInformation_input1 = new javax.swing.JTextArea();
@@ -306,7 +295,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         InvoiceClearButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(898, 481));
 
         jPanel1.setPreferredSize(new java.awt.Dimension(830, 566));
 
@@ -451,9 +439,9 @@ public class GUI_nurse extends javax.swing.JFrame {
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel10))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nurse_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -505,11 +493,10 @@ public class GUI_nurse extends javax.swing.JFrame {
         );
 
         information_clear.setText("Clear");
-<<<<<<< HEAD
-=======
 
         information_save.setText("Save");
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
+
+        nurse_logout.setText("Log Out");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -517,15 +504,16 @@ public class GUI_nurse extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap(214, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(219, 219, 219))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                        .addComponent(information_save)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(information_clear)
-                        .addGap(161, 161, 161))))
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(219, 219, 219))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(174, 174, 174)
+                .addComponent(nurse_logout)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(information_save)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(information_clear)
+                .addGap(161, 161, 161))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -534,7 +522,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(information_clear)
-                    .addComponent(information_save))
+                    .addComponent(information_save)
+                    .addComponent(nurse_logout))
                 .addGap(0, 14, Short.MAX_VALUE))
         );
 
@@ -564,26 +553,16 @@ public class GUI_nurse extends javax.swing.JFrame {
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
-<<<<<<< HEAD
-                .addContainerGap()
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-=======
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
-                .addContainerGap(70, Short.MAX_VALUE))
-=======
                 .addContainerGap(85, Short.MAX_VALUE))
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
         );
 
         NurseTab.addTab("Work Schedule", jPanel8);
@@ -850,13 +829,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         });
         jScrollPane12.setViewportView(medical_equipment_need);
 
-<<<<<<< HEAD
-        admission_clear.setText("Clear");
-
-        admission_save.setText("Save");
-
-=======
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
@@ -864,48 +836,46 @@ public class GUI_nurse extends javax.swing.JFrame {
             .addGroup(jPanel18Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel18Layout.createSequentialGroup()
-                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel65)
-                                .addComponent(jLabel64)
-                                .addComponent(jLabel66))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel18Layout.createSequentialGroup()
-                                    .addComponent(admission_Patient_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(0, 0, Short.MAX_VALUE))
-                                .addComponent(Admission_Notes1)
-                                .addComponent(Reason1)))
-                        .addGroup(jPanel18Layout.createSequentialGroup()
-                            .addComponent(jLabel61)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(jPanel18Layout.createSequentialGroup()
-                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel18Layout.createSequentialGroup()
-                                    .addComponent(jLabel68)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel18Layout.createSequentialGroup()
-                                    .addComponent(jLabel67)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(Insurance_Details1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(jPanel18Layout.createSequentialGroup()
-                                    .addComponent(jLabel60)
-                                    .addGap(31, 31, 31)
-                                    .addComponent(Admission_ID1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)))
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(Admission_Date1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel18Layout.createSequentialGroup()
-                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel62)
-                                    .addComponent(jLabel63))
+                            .addComponent(jLabel65)
+                            .addComponent(jLabel64)
+                            .addComponent(jLabel66))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(admission_Patient_ID, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(Admission_Notes1)
+                            .addComponent(Reason1)))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(jLabel68)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(Admission_Status1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
-                                    .addComponent(Admitting_Staff_ID1))))
+                                .addComponent(jScrollPane12, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(jLabel67)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(Insurance_Details1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel18Layout.createSequentialGroup()
+                                .addComponent(jLabel60)
+                                .addGap(31, 31, 31)
+                                .addComponent(Admission_ID1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE))
+                    .addGroup(jPanel18Layout.createSequentialGroup()
+                        .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel61)
+                            .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(Admission_Date1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel18Layout.createSequentialGroup()
+                                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel62)
+                                        .addComponent(jLabel63))
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(Admission_Status1, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
+                                        .addComponent(Admitting_Staff_ID1)))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1708,17 +1678,9 @@ public class GUI_nurse extends javax.swing.JFrame {
                                     .addComponent(TransferTime, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
                                     .addComponent(TransferDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-<<<<<<< HEAD
                                 .addGroup(TranferManagement_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(TransferTime_input, javax.swing.GroupLayout.DEFAULT_SIZE, 93, Short.MAX_VALUE)
                                     .addComponent(PatientTransferDate)))
-=======
-                                .addGroup(TranferManagement_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(PatientTransferDate)
-                                    .addGroup(TranferManagement_PanelLayout.createSequentialGroup()
-                                        .addComponent(TransferTime_input, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(0, 0, Short.MAX_VALUE))))
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
                             .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TranferManagement_PanelLayout.createSequentialGroup()
@@ -1783,21 +1745,12 @@ public class GUI_nurse extends javax.swing.JFrame {
             .addGroup(PatientTransferLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(TranferManagement_Panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-<<<<<<< HEAD
-                .addContainerGap(61, Short.MAX_VALUE))
-=======
                 .addContainerGap(76, Short.MAX_VALUE))
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
         );
 
         NurseTab.addTab("Patient Transfer", PatientTransfer);
 
         SupplyManagement.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medical Supply Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
-<<<<<<< HEAD
-=======
-
-        SupplyCode.setText("Supply Code:");
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
 
         SupplyID.setText("Supply ID:");
 
@@ -1836,57 +1789,12 @@ public class GUI_nurse extends javax.swing.JFrame {
         SupplyManagement.setLayout(SupplyManagementLayout);
         SupplyManagementLayout.setHorizontalGroup(
             SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-<<<<<<< HEAD
-=======
-            .addGroup(SupplyManagementLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(SupplyManagementLayout.createSequentialGroup()
-                        .addComponent(jScrollPane8)
-                        .addContainerGap())
-                    .addGroup(SupplyManagementLayout.createSequentialGroup()
-                        .addComponent(SupplierInformation, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(304, 304, 304))
-                    .addGroup(SupplyManagementLayout.createSequentialGroup()
-                        .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(SupplyManagementLayout.createSequentialGroup()
-                                    .addComponent(StockQuantity)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(SupplyStockQuantity_input, javax.swing.GroupLayout.DEFAULT_SIZE, 69, Short.MAX_VALUE))
-                                .addGroup(SupplyManagementLayout.createSequentialGroup()
-                                    .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(ItemCode, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(SupplyManagementLayout.createSequentialGroup()
-                                            .addGap(1, 1, 1)
-                                            .addComponent(SupplyID))
-                                        .addComponent(SupplyCode))
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(SupplyCode_input)
-                                        .addComponent(SupplyName_input)
-                                        .addComponent(SupplyID_input))))
-                            .addGroup(SupplyManagementLayout.createSequentialGroup()
-                                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(MinimunStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(MaximumStock, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(SupplyMinimunStock_input, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                                    .addComponent(SupplyMaximumStock_input)))
-                            .addGroup(SupplyManagementLayout.createSequentialGroup()
-                                .addComponent(ExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(SupplyExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SupplyManagementLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(medical_supply_save)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(medical_supply_clear)
                 .addGap(14, 14, 14))
-<<<<<<< HEAD
             .addGroup(SupplyManagementLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1930,13 +1838,6 @@ public class GUI_nurse extends javax.swing.JFrame {
             SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SupplyManagementLayout.createSequentialGroup()
                 .addContainerGap()
-=======
-        );
-        SupplyManagementLayout.setVerticalGroup(
-            SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(SupplyManagementLayout.createSequentialGroup()
-                .addContainerGap()
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
                 .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SupplyID_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SupplyID))
@@ -1946,13 +1847,6 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addComponent(SupplyName_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-<<<<<<< HEAD
-=======
-                    .addComponent(SupplyCode)
-                    .addComponent(SupplyCode_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
                     .addComponent(StockQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SupplyStockQuantity_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1971,11 +1865,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SupplyExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-<<<<<<< HEAD
                 .addGap(46, 46, 46)
-=======
-                .addGap(18, 18, 18)
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
                 .addGroup(SupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(medical_supply_save)
                     .addComponent(medical_supply_clear))
@@ -2048,15 +1938,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                                 .addGroup(InventoryManagementLayout.createSequentialGroup()
                                     .addComponent(StockQuantity1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-<<<<<<< HEAD
                                     .addComponent(InventoryStockQuantity_input1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)))
-=======
-                                    .addComponent(InventoryStockQuantity_input1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(InventoryManagementLayout.createSequentialGroup()
-                                    .addComponent(ItemCode1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGap(22, 22, 22)
-                                    .addComponent(ItemCode_input, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
                             .addGroup(InventoryManagementLayout.createSequentialGroup()
                                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(MaximumStock1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, Short.MAX_VALUE)
@@ -2821,11 +2703,6 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JLabel SupplierInformation1;
     private javax.swing.JTextArea SupplierInformation_input;
     private javax.swing.JTextArea SupplierInformation_input1;
-<<<<<<< HEAD
-=======
-    private javax.swing.JLabel SupplyCode;
-    private javax.swing.JTextField SupplyCode_input;
->>>>>>> d46c27060c67cdd971dd4bbce630695655ee1129
     private javax.swing.JFormattedTextField SupplyExpiryDate;
     private javax.swing.JLabel SupplyID;
     private javax.swing.JTextField SupplyID_input;
@@ -2973,6 +2850,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTextField nurse_email;
     private javax.swing.JTextPane nurse_experience;
     private javax.swing.JTextField nurse_id;
+    private javax.swing.JButton nurse_logout;
     private javax.swing.JTextField nurse_name;
     private javax.swing.JTextField nurse_phone;
     private javax.swing.JTextField nurse_position;

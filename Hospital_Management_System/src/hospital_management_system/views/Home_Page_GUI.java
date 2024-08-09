@@ -45,7 +45,7 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         CheckDataButton = new javax.swing.JButton();
         SelectRoleLabel1 = new javax.swing.JLabel();
         dataAnalysisButton = new javax.swing.JButton();
-        dataAnalysisButton.setVisible(false);   // 隐藏按钮
+        LogoutButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,11 +63,6 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         });
 
         CheckDataButton.setText("Check Data");
-        CheckDataButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CheckDataButtonActionPerformed(evt);
-            }
-        });
 
         SelectRoleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SelectRoleLabel1.setText("What would you like to do?");
@@ -78,6 +73,9 @@ public class Home_Page_GUI extends javax.swing.JFrame {
                 dataAnalysisButtonActionPerformed(evt);
             }
         });
+
+        LogoutButton.setForeground(new java.awt.Color(255, 0, 0));
+        LogoutButton.setText("Log Out");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -97,6 +95,10 @@ public class Home_Page_GUI extends javax.swing.JFrame {
                     .addComponent(CheckDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(ManageInformationButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(177, 177, 177)
+                .addComponent(LogoutButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -113,7 +115,9 @@ public class Home_Page_GUI extends javax.swing.JFrame {
                 .addComponent(CheckDataButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(dataAnalysisButton)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LogoutButton)
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -146,13 +150,13 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ManageInformationButtonActionPerformed
 
-    private void CheckDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataAnalysisButtonActionPerformed
+    private void CheckDataButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         // TODO add your handling code here:
         this.dispose();
         Data_Tables DataTableObj = new Data_Tables(this.role);
 
         DataTableObj.setVisible(true);
-    }//GEN-LAST:event_dataAnalysisButtonActionPerformed
+    }                                                  
 
     private void dataAnalysisButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataAnalysisButtonActionPerformed
         // TODO add your handling code here:
@@ -168,6 +172,7 @@ public class Home_Page_GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CheckDataButton;
+    private javax.swing.JLabel LogoutButton;
     private javax.swing.JButton ManageInformationButton;
     private javax.swing.JLabel SelectRoleLabel;
     private javax.swing.JLabel SelectRoleLabel1;

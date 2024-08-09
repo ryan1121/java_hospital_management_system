@@ -69,6 +69,7 @@ public class GUI_patient extends javax.swing.JFrame {
         policyNumber = new javax.swing.JTextField();
         patient_clear = new javax.swing.JButton();
         patient_save = new javax.swing.JButton();
+        patient_logout = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         patientHistory_jTable = new javax.swing.JTable();
@@ -308,6 +309,8 @@ public class GUI_patient extends javax.swing.JFrame {
 
         patient_save.setText("Save");
 
+        patient_logout.setText("Log Out");
+
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
@@ -319,10 +322,11 @@ public class GUI_patient extends javax.swing.JFrame {
                     .addGroup(jPanel7Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                    .addGroup(jPanel7Layout.createSequentialGroup()
                         .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel7Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(patient_logout)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(patient_save)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(patient_clear))
@@ -343,7 +347,8 @@ public class GUI_patient extends javax.swing.JFrame {
                                 .addGap(86, 86, 86))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(patient_clear)
-                                .addComponent(patient_save))))
+                                .addComponent(patient_save)
+                                .addComponent(patient_logout))))
                     .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -600,6 +605,7 @@ public class GUI_patient extends javax.swing.JFrame {
     private javax.swing.JTextField patient_emergency_relationship;
     private javax.swing.JLabel patient_gender;
     private javax.swing.JTextField patient_id;
+    private javax.swing.JButton patient_logout;
     private javax.swing.JTextField patient_name;
     private javax.swing.JTextField patient_phone;
     private javax.swing.JButton patient_save;
