@@ -9,6 +9,8 @@ import java.sql.*;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.Window;
 
 import hospital_management_system.MysqlConnect;
@@ -215,14 +217,14 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
             AssignedTasks_input.getText()
         );
 
-        // Create a controller with the model
-        StaffSchedulingController controller = new StaffSchedulingController(model);
+        // Create a scheduleController with the model
+        StaffSchedulingController scheduleController = new StaffSchedulingController(model);
 
-        // Delegate the save operation to the controller
-        if (controller.saveSchedule(role)) {
+        // Delegate the save operation to the scheduleController
+        if (scheduleController.saveSchedule(role)) {
             // Refresh the table if save is successful
-            refreshCurrentScheduleTable();
             JOptionPane.showMessageDialog(this, "Schedule added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
+            refreshCurrentScheduleTable();
         } else {
             JOptionPane.showMessageDialog(this, "Error while saving schedule", "Error", JOptionPane.ERROR_MESSAGE);
         }
