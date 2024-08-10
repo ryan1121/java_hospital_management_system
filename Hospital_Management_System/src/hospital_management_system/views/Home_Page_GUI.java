@@ -63,6 +63,12 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         });
 
         CheckDataButton.setText("Check Data");
+        CheckDataButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckDataButtonActionPerformed(evt);
+            }
+        });
+
 
         SelectRoleLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SelectRoleLabel1.setText("What would you like to do?");
