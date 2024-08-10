@@ -101,8 +101,30 @@ public class GUI_doctor extends javax.swing.JFrame {
         Notes_label8 = new javax.swing.JLabel();
         medicalRecord_notesTextField = new javax.swing.JTextField();
         medicalRecordID_textField = new javax.swing.JTextField();
+        // 设置 JTextField 的大小
+        Dimension size = new Dimension(200, 20); // 宽度200，高度20
+        medicalRecordID_textField.setPreferredSize(size);
+        // 设置Combobox的大小
+        surgeryType_comboBox.setPreferredSize(size);
+
         MedRecord_SaveButton = new javax.swing.JButton();
         MedRecord_ClearButton = new javax.swing.JButton();
+
+        // 创建一个Diagnosis Model object
+        hospital_management_system.models.Diagnosis DiagnosisObj = new hospital_management_system.models.Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
+        DiagnosisObj.setNewDiagnosisId(DiagnosisID_textField);
+        DiagnosisID_textField.setEnabled(false);
+
+
+        // 创建一个Surgery Model object
+        Surgery getNewSurgeryIdObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
+        getNewSurgeryIdObj.setNewSurgeryId(surgeryID_textField);
+        surgeryID_textField.setEnabled(false);
+
+        // 创建一个MedicalRecords Model object
+        MedicalRecords getNewMedicalRecordIdObj = new MedicalRecords(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
+        getNewMedicalRecordIdObj.setNewMedicalRecordId(medicalRecordID_textField);
+        medicalRecordID_textField.setEnabled(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -342,11 +364,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         DateOfDiagnosis_label.setText("Date of Diagnosis : ");
 
         DateOfDiagnosis_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
-        DateOfDiagnosis_textField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DateOfDiagnosis_textFieldActionPerformed(evt);
-            }
-        });
 
         DiagnosisDescription_label.setText("Diagnosis Description : ");
 
@@ -357,14 +374,18 @@ public class GUI_doctor extends javax.swing.JFrame {
         Diagnosis_SaveButton.setText("Save");
         Diagnosis_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Diagnosis_SaveButtonActionPerformed(evt);
+                // 创建一个Diagnosis Controller Object
+                DiagnosisController DiagnosisControllerObj = new DiagnosisController(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
+                DiagnosisControllerObj.handleSaveButtonActionPerformed(evt);
             }
         });
 
         Diagnosis_ClearButton.setText("Clear");
         Diagnosis_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Diagnosis_ClearButtonActionPerformed(evt);
+                // 创建一个Diagnosis Controller Object
+                DiagnosisController DiagnosisControllerObj = new DiagnosisController(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
+                DiagnosisControllerObj.handleClearButtonActionPerformed(evt);
             }
         });
 
@@ -437,36 +458,29 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         Outcomes_label.setText("Outcomes : ");
 
-        Outcomes_textField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Outcomes_textFieldActionPerformed(evt);
-            }
-        });
-
         surgeryType_label.setText("Surgery Type : ");
 
         surgeryType_comboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Appendectomy", "Cholecystectomy (Gallbladder removal)", "Hernia repair", "Colon resection", "Mastectomy", "Thyroidectomy", "Coronary artery bypass grafting (CABG)", "Heart valve repair/replacement", "Lung resection", "Heart transplant", "Thoracic aortic aneurysm repair", "Joint replacement (hip, knee, shoulder)", "Arthroscopy (knee, shoulder)", "Spinal fusion", "Fracture repair", "Rotator cuff repair", "Craniotomy", "Spinal decompression and fusion", "Brain tumor removal", "Aneurysm repair", "Chiari decompression", "Rhinoplasty", "Breast augmentation/reduction", "Abdominoplasty (tummy tuck)", "Liposuction", "Facelift", "Prostatectomy", "Cystectomy (bladder removal)", "Kidney stone removal", "Vasectomy", "Nephrectomy (kidney removal)", "Cesarean section", "Hysterectomy", "Tubal ligation", "Oophorectomy (ovary removal)", "Myomectomy (fibroid removal)", "Carotid endarterectomy", "Aortic aneurysm repair", "Varicose vein surgery", "Peripheral artery bypass", "Dialysis access creation", "Tonsillectomy", "Adenoidectomy", "Septoplasty", "Cochlear implants", "Sinus surgery", "Cataract surgery", "LASIK", "Glaucoma surgery", "Retinal detachment repair", "Corneal transplant", "Congenital heart defect repair", "Pyloromyotomy (for pyloric stenosis)", "Hirschsprung's disease surgery", "Repair of congenital diaphragmatic hernia" }));
 
-        DateOfSurgery_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/y"))));
-        DateOfSurgery_textField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DateOfSurgery_textFieldActionPerformed(evt);
-            }
-        });
+        DateOfSurgery_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
 
         DateOfSurgery_label.setText("Date of surgery : ");
 
         SurgManage_SaveButton.setText("Save");
         SurgManage_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SurgManage_SaveButtonActionPerformed(evt);
+                // 创建一个SurgeryController Object
+                SurgeryController SurgeryObj = new SurgeryController(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
+                SurgeryObj.handleSaveButtonActionPerformed(evt);
             }
         });
 
         SurgManage_ClearButton.setText("Clear");
         SurgManage_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SurgManage_ClearButtonActionPerformed(evt);
+                // 创建一个SurgeryController Object
+                SurgeryController SurgeryObj = new SurgeryController(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
+                SurgeryObj.handleClearButtonActionPerformed(evt);
             }
         });
 
@@ -544,27 +558,25 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         DateOfVisit_label8.setText("Date of visit : ");
 
-        medicalRecord_dateOfVisitTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        medicalRecord_dateOfVisitTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
 
         Notes_label8.setText("Notes : ");
-
-        medicalRecord_notesTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medicalRecord_notesTextFieldActionPerformed(evt);
-            }
-        });
 
         MedRecord_SaveButton.setText("Save");
         MedRecord_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MedRecord_SaveButtonActionPerformed(evt);
+                // 创建一个MedicalRecordsController Object
+                MedicalRecordsController MedicalRecordsObj = new MedicalRecordsController(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
+                MedicalRecordsObj.handleSaveButtonActionPerformed(evt);
             }
         });
 
         MedRecord_ClearButton.setText("Clear");
         MedRecord_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MedRecord_ClearButtonActionPerformed(evt);
+                // 创建一个MedicalRecordsController Object
+                MedicalRecordsController MedicalRecordsObj = new MedicalRecordsController(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
+                MedicalRecordsObj.handleClearButtonActionPerformed(evt);
             }
         });
 
@@ -715,17 +727,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         doctor_experience.setText("");
         doctor_qualifications.setText("");
     };
-    private void DateOfSurgery_textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateOfSurgery_textFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DateOfSurgery_textFieldActionPerformed
-
-    private void Outcomes_textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Outcomes_textFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Outcomes_textFieldActionPerformed
-
-    private void DateOfDiagnosis_textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateOfDiagnosis_textFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DateOfDiagnosis_textFieldActionPerformed
 
     private void doctor_departmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_departmentActionPerformed
         // TODO add your handling code here:
@@ -751,9 +752,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_doctor_idActionPerformed
 
-    private void medicalRecord_notesTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_medicalRecord_notesTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_medicalRecord_notesTextFieldActionPerformed
 
     private void Diagnosis_SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagnosis_SaveButtonActionPerformed
 

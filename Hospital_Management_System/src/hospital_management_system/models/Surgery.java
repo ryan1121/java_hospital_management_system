@@ -22,7 +22,7 @@ public class Surgery {
         JTextField doctorIDTextField,
         JComboBox<String> surgeryTypeComboBox,
         JTextField dateOfSurgeryTextField,
-        java.awt.TextField outcomesTextField
+        JTextField outcomesTextField
     ) {
         this.panel = panel;
         this.surgeryID = surgeryIDTextField.getText();
@@ -34,8 +34,14 @@ public class Surgery {
     }
 
     public boolean save() {
-        if (patientID == null || patientID.isEmpty() || doctorID == null || doctorID.isEmpty()) {
+        if ((patientID == null || patientID.isEmpty()) && (doctorID == null || doctorID.isEmpty())) {
             JOptionPane.showMessageDialog(panel, "You MUST enter patient ID and doctor ID !!");
+            return false;
+        } else if (patientID == null || patientID.isEmpty()) {
+            JOptionPane.showMessageDialog(panel, "You MUST enter patient ID !!");
+            return false;
+        } else if (doctorID == null || doctorID.isEmpty()) {
+            JOptionPane.showMessageDialog(panel, "You MUST enter doctor ID !!");
             return false;
         } else {
             MysqlConnect db = new MysqlConnect();
@@ -71,7 +77,7 @@ public class Surgery {
     
     
 
-    public void clear(JComboBox<String> surgeryTypeComboBox, JTextField dateOfSurgeryTextField, java.awt.TextField outcomesTextField) {
+    public void clear(JComboBox<String> surgeryTypeComboBox, JTextField dateOfSurgeryTextField, JTextField outcomesTextField) {
         surgeryTypeComboBox.setSelectedIndex(-1);
         dateOfSurgeryTextField.setText("");
         outcomesTextField.setText("");

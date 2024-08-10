@@ -11,7 +11,7 @@ public class SurgeryController {
     private JTextField surgeryIDTextField;
     private JComboBox<String> surgeryTypeComboBox;
     private JTextField dateOfSurgeryTextField;
-    private java.awt.TextField outcomesTextField;
+    private JTextField outcomesTextField;
 
     public SurgeryController(
         JPanel panel,
@@ -20,7 +20,7 @@ public class SurgeryController {
         JTextField surgeryIDTextField,
         JComboBox<String> surgeryTypeComboBox,
         JTextField dateOfSurgeryTextField,
-        java.awt.TextField outcomesTextField
+        JTextField outcomesTextField
     ) {
         this.panel = panel;
         this.surgeryIDTextField = surgeryIDTextField;

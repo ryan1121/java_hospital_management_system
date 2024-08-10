@@ -5,7 +5,6 @@ import hospital_management_system.utils.DateTimeUtils;
 
 import javax.swing.*;
 
-import java.awt.TextField;
 import java.sql.SQLException;
 
 public class MedicalRecords {
@@ -23,7 +22,7 @@ public class MedicalRecords {
         JTextField doctorIDTextField,
         JTextField medicalRecordIDTextField,
         JTextField dateOfVisitTextField,
-        TextField notesTextField,
+        JTextField notesTextField,
         JTextArea treatmentPlansTextArea
     ) {
         this.panel = panel;
@@ -76,7 +75,7 @@ public class MedicalRecords {
     }
     
 
-    public void clear(JTextField dateOfVisitTextField, TextField notesTextField, JTextArea treatmentPlansTextArea) {
+    public void clear(JTextField dateOfVisitTextField, JTextField notesTextField, JTextArea treatmentPlansTextArea) {
         dateOfVisitTextField.setText("");
         notesTextField.setText("");
         treatmentPlansTextArea.setText("");

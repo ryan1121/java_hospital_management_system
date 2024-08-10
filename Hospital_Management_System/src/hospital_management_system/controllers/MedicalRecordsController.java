@@ -13,7 +13,7 @@ public class MedicalRecordsController {
     private JPanel panel;
     private JTextField medicalRecordIDTextField;
     private JTextField dateOfVisitTextField;
-    private TextField notesTextField;
+    private JTextField notesTextField;
     private JTextArea treatmentPlansTextArea;
 
     public MedicalRecordsController(
@@ -22,7 +22,7 @@ public class MedicalRecordsController {
         JTextField doctorIDTextField,
         JTextField medicalRecordIDTextField,
         JTextField dateOfVisitTextField,
-        TextField notesTextField,
+        JTextField notesTextField,
         JTextArea treatmentPlansTextArea
     ) {
         this.panel = panel;
