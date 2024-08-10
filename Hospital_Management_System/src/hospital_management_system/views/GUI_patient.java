@@ -69,7 +69,6 @@ public class GUI_patient extends javax.swing.JFrame {
         policyNumber = new javax.swing.JTextField();
         patient_clear = new javax.swing.JButton();
         patient_save = new javax.swing.JButton();
-        backButton = new javax.swing.JLabel();
         backButton1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -85,6 +84,7 @@ public class GUI_patient extends javax.swing.JFrame {
                 patient_idActionPerformed(evt);
             }
         });
+        patient_id.setEnabled(false);
 
         jLabel1.setText("Patient ID :");
 
@@ -307,16 +307,27 @@ public class GUI_patient extends javax.swing.JFrame {
         );
 
         patient_clear.setText("Clear");
+        patient_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patient_clearActionPerformed(evt);
+            }
+        });
 
         patient_save.setText("Save");
-
-        backButton.setForeground(new java.awt.Color(0, 51, 255));
-        backButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        backButton.setText("Back");
+        patient_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patient_saveActionPerformed(evt);
+            }
+        });
 
         backButton1.setForeground(new java.awt.Color(0, 51, 255));
         backButton1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         backButton1.setText("Back");
+        backButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                backButton1MousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -343,7 +354,6 @@ public class GUI_patient extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(backButton)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel7Layout.setVerticalGroup(
@@ -367,7 +377,6 @@ public class GUI_patient extends javax.swing.JFrame {
             .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel7Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(backButton)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
@@ -468,8 +477,15 @@ public class GUI_patient extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_patient_address_line3ActionPerformed
 
+    private void backButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
+        // TODO add your handling code here:
+        this.dispose();
+
+        GUI_LOGIN Login_GUI = new GUI_LOGIN("Patient");
+        Login_GUI.setVisible(true);
+    }
+
     private void patient_clearActionPerformed(java.awt.event.ActionEvent evt){
-        patient_id.setText("");
         patient_name.setText("");
         patient_phone.setText("");
         patient_email.setText("");
@@ -483,6 +499,80 @@ public class GUI_patient extends javax.swing.JFrame {
         providerName.setText("");
         policyNumber.setText("");
     }
+
+    private void patient_saveActionPerformed(java.awt.event.ActionEvent evt){
+        MysqlConnect db = new MysqlConnect();
+        String tableName = "Patients";
+
+        String patientId = patient_id.getText(); 
+        String name = patient_name.getText(); 
+        String phone = patient_phone.getText(); 
+        String email = patient_email.getText(); 
+        String address = patient_address.getText(); 
+        String addressLine2 = patient_address_line2.getText(); 
+        String addressLine3 = patient_address_line3.getText();
+        String emergencyName = patient_emergency_name.getText();
+        String emergencyRelationship = patient_emergency_relationship.getText();
+        String emergencyPhone = patient_emergency_phone.getText(); 
+        String ins_ID = insuranceID.getText(); 
+        String provider_name = providerName.getText(); 
+        String policyNo = policyNumber.getText(); 
+    
+        // 初始化更新语句和条件
+        StringBuilder updateBuilder = new StringBuilder();
+        String condition = "patient_id = '" + patientId + "'"; 
+    
+        // 仅更新修改过的字段
+        if (!name.isEmpty()) {
+            updateBuilder.append("patient_name = '").append(name).append("', ");
+        }
+        if (!phone.isEmpty()) {
+            updateBuilder.append("patient_phone = '").append(phone).append("', ");
+        }
+        if (!email.isEmpty()) {
+            updateBuilder.append("patient_email = '").append(email).append("', ");
+        }
+        if (!address.isEmpty()) {
+            updateBuilder.append("patient_address = '").append(address).append("', ");
+        }
+        if (!addressLine2.isEmpty()) {
+            updateBuilder.append("patient_address_line2 = '").append(addressLine2).append("', ");
+        }
+        if (!addressLine3.isEmpty()) {
+            updateBuilder.append("patient_address_line3 = '").append(addressLine3).append("', ");
+        }
+        if (!emergencyName.isEmpty()) {
+            updateBuilder.append("patient_emergency_name = '").append(emergencyName).append("', ");
+        }
+        if (!emergencyRelationship.isEmpty()) {
+            updateBuilder.append("patient_emergency_relationship = '").append(emergencyRelationship).append("', ");
+        }
+        if (!emergencyPhone.isEmpty()) {
+            updateBuilder.append("patient_emergency_phone = '").append(emergencyPhone).append("', ");
+        }
+        if (!ins_ID.isEmpty()) {
+            updateBuilder.append("insuranceID = '").append(ins_ID).append("', ");
+        }
+        if (!provider_name.isEmpty()) {
+            updateBuilder.append("providerName = '").append(provider_name).append("', ");
+        }
+        if (!policyNo.isEmpty()) {
+            updateBuilder.append("policyNumber = '").append(policyNo).append("', ");
+        }
+    
+        // 移除最后一个逗号和空格
+        String update = updateBuilder.toString();
+        if (update.endsWith(", ")) {
+            update = update.substring(0, update.length() - 2);
+        }
+    
+        // 只有在 update 字符串不为空时才执行更新操作
+        if (!update.isEmpty()) {
+            db.updateData(tableName, update, condition);
+        } else {
+            System.out.println("There is no data to update.");
+        }
+    }   
 
     private void providerNameActionPerformed(java.awt.event.ActionEvent evt) {                                             
         // TODO add your handling code here:
@@ -591,7 +681,6 @@ public class GUI_patient extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel backButton;
     private javax.swing.JLabel backButton1;
     private javax.swing.JTextField insuranceID;
     private javax.swing.JLabel jLabel1;
