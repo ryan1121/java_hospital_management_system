@@ -41,63 +41,49 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
     private void initComponents() {
 
         StaffScheduling = new javax.swing.JPanel();
-        StaffID = new javax.swing.JLabel();
         StaffID_input = new javax.swing.JTextField();
-        ShiftStartTime = new javax.swing.JLabel();
-        Department = new javax.swing.JLabel();
-        AssignedTasks = new javax.swing.JLabel();
-        Department_dropdown = new javax.swing.JComboBox<>();
-        ShiftEndTime = new javax.swing.JLabel();
-        shiftDate = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        AssignedTasks_input = new javax.swing.JTextArea();
+        StaffScheduleDate = new javax.swing.JFormattedTextField();
         ShiftStartTime_input = new javax.swing.JFormattedTextField();
         ShiftEndTime_input = new javax.swing.JFormattedTextField();
-        StaffScheduleDate = new javax.swing.JFormattedTextField();
+        Department_dropdown = new javax.swing.JComboBox<>();
+        AssignedTasks_input = new javax.swing.JTextArea();
         SaveButton = new javax.swing.JButton();
         ClearButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jScrollPane1 = new javax.swing.JScrollPane();
+        StaffID = new javax.swing.JLabel();
+        ShiftStartTime = new javax.swing.JLabel();
+        Department = new javax.swing.JLabel();
+        AssignedTasks = new javax.swing.JLabel();
+        ShiftEndTime = new javax.swing.JLabel();
+        shiftDate = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         StaffScheduling.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Staff Scheduling", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         StaffID.setText("Staff ID:");
 
+        shiftDate.setText("Date:");
+        
         ShiftStartTime.setText("Shift Start Time:");
 
+        ShiftEndTime.setText("Shift End Time:");
+        
         Department.setText("Department/Unit:");
 
         AssignedTasks.setText("Assigned Tasks:");
 
         Department_dropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Emergency", "Cardiology", "Neurology", "Pediatrics", "Radiology", "Oncology", "Orthopedics", "Gynecology", "General Surgery", "Intensive Care Unit (ICU)", "Neonatal Intensive Care Unit (NICU)", "Anesthesiology", "Gastroenterology" }));
-        Department_dropdown.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Department_dropdownActionPerformed(evt);
-            }
-        });
-
-        ShiftEndTime.setText("Shift End Time:");
-
-        shiftDate.setText("Date:");
 
         AssignedTasks_input.setColumns(20);
         AssignedTasks_input.setRows(5);
         jScrollPane1.setViewportView(AssignedTasks_input);
 
         ShiftStartTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("h:mm a"))));
-        ShiftStartTime_input.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShiftStartTime_inputActionPerformed(evt);
-            }
-        });
 
         ShiftEndTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("h:mm a"))));
-        ShiftEndTime_input.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ShiftEndTime_inputActionPerformed(evt);
-            }
-        });
-
+        
         StaffScheduleDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         javax.swing.GroupLayout StaffSchedulingLayout = new javax.swing.GroupLayout(StaffScheduling);
@@ -163,7 +149,7 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(89, 89, 89))
         );
-
+      
         SaveButton.setText("Save");
         SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
