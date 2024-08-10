@@ -31,9 +31,6 @@ public class GUI_admin extends javax.swing.JFrame {
     public GUI_admin() {
         initComponents();
 
-        scheduleController = new WorkScheduleController(DoctorScheduleTable, NurseScheduleTable, doctorScrollPane, nurseScrollPane);
-        loadSchedules();
-
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 updateRole();
@@ -788,7 +785,6 @@ public class GUI_admin extends javax.swing.JFrame {
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Personal Information"));
 
-        patient_id.setText("patient id");
         patient_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_idActionPerformed(evt);
@@ -797,7 +793,6 @@ public class GUI_admin extends javax.swing.JFrame {
 
         jLabel23.setText("Patient ID :");
 
-        patient_name.setText("Name");
         patient_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_nameActionPerformed(evt);
@@ -812,7 +807,6 @@ public class GUI_admin extends javax.swing.JFrame {
 
         jLabel27.setText("Date of Birth : ");
 
-        patient_email.setText("Email");
         patient_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_emailActionPerformed(evt);
@@ -823,7 +817,6 @@ public class GUI_admin extends javax.swing.JFrame {
 
         jLabel29.setText("Phone Number :");
 
-        patient_phone.setText("phone");
         patient_phone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_phoneActionPerformed(evt);
@@ -1021,7 +1014,6 @@ public class GUI_admin extends javax.swing.JFrame {
 
         jLabel34.setText("Policy Number  :");
 
-        policy_number.setText("jTextField18");
         policy_number.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 policy_numberActionPerformed(evt);
@@ -1312,10 +1304,6 @@ public class GUI_admin extends javax.swing.JFrame {
     private void admin_phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_phoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_admin_phoneActionPerformed
-
-    private void clear_doctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clear_doctorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_clear_doctorActionPerformed
 
     /**
      * @param args the command line arguments

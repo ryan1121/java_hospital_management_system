@@ -1309,9 +1309,6 @@
                       </Layout>
                       <SubComponents>
                         <Component class="javax.swing.JTextField" name="patient_id">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="patient id"/>
-                          </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="patient_idActionPerformed"/>
                           </Events>
@@ -1322,9 +1319,6 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="patient_name">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Name"/>
-                          </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="patient_nameActionPerformed"/>
                           </Events>
@@ -1358,9 +1352,6 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="patient_email">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="Email"/>
-                          </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="patient_emailActionPerformed"/>
                           </Events>
@@ -1376,9 +1367,6 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="patient_phone">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="phone"/>
-                          </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="patient_phoneActionPerformed"/>
                           </Events>
@@ -1645,9 +1633,6 @@
                           </Properties>
                         </Component>
                         <Component class="javax.swing.JTextField" name="policy_number">
-                          <Properties>
-                            <Property name="text" type="java.lang.String" value="jTextField18"/>
-                          </Properties>
                           <Events>
                             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="policy_numberActionPerformed"/>
                           </Events>

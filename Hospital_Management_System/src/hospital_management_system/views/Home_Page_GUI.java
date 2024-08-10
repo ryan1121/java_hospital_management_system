@@ -143,7 +143,7 @@ public class Home_Page_GUI extends javax.swing.JFrame {
             GUI_admin Admin_GUI = new GUI_admin();
             Admin_GUI.setVisible(true);
         } else {    // this.role == "Patient"
-        this.dispose(); // close the current GUI
+            this.dispose(); // close the current GUI
 
             GUI_patient Patient_GUI = new GUI_patient();
             Patient_GUI.setVisible(true);
