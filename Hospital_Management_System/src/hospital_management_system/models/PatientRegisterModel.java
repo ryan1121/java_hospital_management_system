@@ -20,6 +20,8 @@ public final class PatientRegisterModel {
     private String emergencyRelation;
     private String emergencyPhone;
     private String gender;
+    private String password;
+    private String confirmPassword;
 
     // Getters and Setters for each field
     public String getName() { return name; }
@@ -54,4 +56,18 @@ public final class PatientRegisterModel {
 
     public String getGender() { return gender; }
     public void setGender(String gender) { this.gender = gender; }
+
+    public String getPassword() {
+        return password;
+    }
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
+    }
 }

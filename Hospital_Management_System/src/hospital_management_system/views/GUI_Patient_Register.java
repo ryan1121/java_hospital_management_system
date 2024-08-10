@@ -65,7 +65,7 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         gender_male = new javax.swing.JRadioButton();
         gender_female = new javax.swing.JRadioButton();
         passwordLabel = new javax.swing.JLabel();
-        passwordTextField = new javax.swing.JFormattedTextField();
+        passwordTextField = new javax.swing.JPasswordField();
         jLabel8 = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
         Submit = new javax.swing.JButton();
@@ -80,11 +80,11 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Emergency Contact"));
 
-        registerEmergency_relationship.setText("Relationship");
+        registerEmergency_relationship.setText("");
 
-        registerEmergency_name.setText("Emergency Contact Name");
+        registerEmergency_name.setText("");
 
-        registerEmergency_phone.setText("Phone Number");
+        registerEmergency_phone.setText("");
 
         jLabel2.setText("Name:");
 
@@ -131,7 +131,7 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
 
         jLabel1.setText("Name :");
 
-        registerName.setText("First Name");
+        registerName.setText("");
         registerName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerNameActionPerformed(evt);
@@ -142,7 +142,7 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
 
         jLabel5.setText("Phone Number : ");
 
-        registerPhone.setText("Phone");
+        registerPhone.setText("");
         registerPhone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerPhoneActionPerformed(evt);
@@ -151,7 +151,7 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
 
         jLabel6.setText("Email : ");
 
-        registerEmail.setText("Email");
+        registerEmail.setText("");
         registerEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerEmailActionPerformed(evt);
@@ -161,28 +161,28 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         jLabel7.setText("Address :");
         jLabel7.setPreferredSize(new java.awt.Dimension(52, 16));
 
-        registerAddress.setText("Address");
+        registerAddress.setText("");
         registerAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerAddressActionPerformed(evt);
             }
         });
 
-        registerAddress_line2.setText("line 2");
+        registerAddress_line2.setText("");
         registerAddress_line2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerAddress_line2ActionPerformed(evt);
             }
         });
 
-        registerAddress_line3.setText("line 3");
+        registerAddress_line3.setText("");
         registerAddress_line3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 registerAddress_line3ActionPerformed(evt);
             }
         });
 
-        registerDOB.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        registerDOB.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/y"))));
 
         jLabel9.setText("Gender :");
 
@@ -192,11 +192,11 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
 
         passwordLabel.setText("Password :");
 
-        passwordTextField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        passwordTextField.setText("");
 
         jLabel8.setText("Confirm Password :");
 
-        jPasswordField1.setText("jPasswordField1");
+        jPasswordField1.setText("");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -288,6 +288,11 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         backButton.setForeground(new java.awt.Color(0, 51, 255));
         backButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         backButton.setText("Back");
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                backButtonMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -347,6 +352,22 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    public javax.swing.JPasswordField getjPasswordField1() {
+        return jPasswordField1;
+    }
+
+    public void setjPasswordField1(javax.swing.JPasswordField jPasswordField1) {
+        this.jPasswordField1 = jPasswordField1;
+    }
+
+    public javax.swing.JPasswordField getPasswordTextField() {
+        return passwordTextField;
+    }
+
+    public void setPasswordTextField(javax.swing.JPasswordField passwordTextField) {
+        this.passwordTextField = passwordTextField;
+    }
+
     private void registerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_registerNameActionPerformed
@@ -376,6 +397,14 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
 
     private void SubmitActionPerformed(java.awt.event.ActionEvent evt){
          // Get user input from the text fields and store them into variables
+    }
+
+    private void backButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
+        // TODO add your handling code here:
+        this.dispose();
+
+        GUI_LOGIN Login_GUI = new GUI_LOGIN("Patient");
+        Login_GUI.setVisible(true);
     }
     /**
      * @param args the command line arguments
@@ -435,7 +464,7 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel passwordLabel;
-    private javax.swing.JFormattedTextField passwordTextField;
+    private javax.swing.JPasswordField passwordTextField;
     private javax.swing.JTextField registerAddress;
     private javax.swing.JTextField registerAddress_line2;
     private javax.swing.JTextField registerAddress_line3;
@@ -543,6 +572,14 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
 
     public void setGenderFemale(boolean selected) {
         gender_female.setSelected(selected);
+    }
+
+    public void setPassword(String password) {
+        passwordTextField.setText(password);
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        jPasswordField1.setText(confirmPassword);
     }
 
     public void addSubmitListener(ActionListener listenForSubmitButton) {

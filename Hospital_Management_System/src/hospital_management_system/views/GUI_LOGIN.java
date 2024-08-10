@@ -77,7 +77,7 @@ public class GUI_LOGIN extends javax.swing.JFrame {
 
         jLabel1.setText("Password");
 
-        jLabel2.setText("Username");
+        jLabel2.setText("User ID");
 
         register.setForeground(new java.awt.Color(0, 51, 255));
         register.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -101,6 +101,11 @@ public class GUI_LOGIN extends javax.swing.JFrame {
 
         backButton.setForeground(new java.awt.Color(0, 51, 255));
         backButton.setText("Back");
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                backButtonMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -259,6 +264,14 @@ public class GUI_LOGIN extends javax.swing.JFrame {
         GUI_Patient_Register Patient_Register_GUI = new GUI_Patient_Register();
         Patient_Register_GUI.setVisible(true);
     }//GEN-LAST:event_registerMousePressed
+
+    private void backButtonMousePressed(java.awt.event.MouseEvent evt) {
+        // TODO add your handling code here:
+        this.dispose();
+
+        Role_Page_GUI Role = new Role_Page_GUI();
+        Role.setVisible(true);
+    }
 
     /**
      * @param args the command line arguments

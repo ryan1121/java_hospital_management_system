@@ -31,6 +31,9 @@ public class GUI_admin extends javax.swing.JFrame {
     public GUI_admin() {
         initComponents();
 
+        scheduleController = new WorkScheduleController(DoctorScheduleTable, NurseScheduleTable, doctorScrollPane, nurseScrollPane);
+        loadSchedules();
+
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 updateRole();
@@ -89,9 +92,14 @@ public class GUI_admin extends javax.swing.JFrame {
         save_doctor = new javax.swing.JButton();
         clear_doctor = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+
         doctorAdd_new_schedule_Button = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        StaffScheduleTable = new javax.swing.JTable();
+        doctorScrollPane = new javax.swing.JScrollPane();
+        DoctorScheduleTable = new javax.swing.JTable();
+        nurseAdd_new_schedule_Button = new javax.swing.JButton();
+        nurseScrollPane = new javax.swing.JScrollPane();
+        NurseScheduleTable = new javax.swing.JTable();
+
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -120,9 +128,6 @@ public class GUI_admin extends javax.swing.JFrame {
         clear_nurse = new javax.swing.JButton();
         save_nurse = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
-        nurseAdd_new_schedule_Button = new javax.swing.JButton();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        StaffScheduleTable1 = new javax.swing.JTable();
         jTabbedPane6 = new javax.swing.JTabbedPane();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -472,28 +477,16 @@ public class GUI_admin extends javax.swing.JFrame {
         doctorAdd_new_schedule_Button.setText("Add new schedule");
         doctorAdd_new_schedule_Button.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctorAdd_new_schedule_ButtonActionPerformed(evt);
+                scheduleController.openStaffScheduling("Doctor", doctorScrollPane);
             }
         });
-
-        StaffScheduleTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Staff ID", "Name", "Start Time ", "End Time", "Date", "Department", "Tasks"
+        
+        nurseAdd_new_schedule_Button.setText("Add new schedule");
+        nurseAdd_new_schedule_Button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                scheduleController.openStaffScheduling("Nurse", nurseScrollPane);
             }
-        ));
-        StaffScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
-        StaffScheduleTable.setShowHorizontalLines(true);
-        StaffScheduleTable.setShowVerticalLines(true);
-        jScrollPane7.setViewportView(StaffScheduleTable);
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -505,14 +498,14 @@ public class GUI_admin extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(0, 696, Short.MAX_VALUE)
                         .addComponent(doctorAdd_new_schedule_Button))
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(doctorScrollPane, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(doctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(doctorAdd_new_schedule_Button)
                 .addContainerGap(67, Short.MAX_VALUE))
@@ -730,31 +723,6 @@ public class GUI_admin extends javax.swing.JFrame {
 
         jTabbedPane4.addTab("Information", jPanel3);
 
-        nurseAdd_new_schedule_Button.setText("Add new schedule");
-        nurseAdd_new_schedule_Button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nurseAdd_new_schedule_ButtonActionPerformed(evt);
-            }
-        });
-
-        StaffScheduleTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Staff ID", "Name", "Start Time ", "End Time", "Date", "Department", "Tasks"
-            }
-        ));
-        StaffScheduleTable1.setIntercellSpacing(new java.awt.Dimension(1, 1));
-        StaffScheduleTable1.setShowHorizontalLines(true);
-        StaffScheduleTable1.setShowVerticalLines(true);
-        jScrollPane11.setViewportView(StaffScheduleTable1);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -766,14 +734,14 @@ public class GUI_admin extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(0, 696, Short.MAX_VALUE)
                         .addComponent(nurseAdd_new_schedule_Button))
-                    .addComponent(jScrollPane11, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE))
+                    .addComponent(nurseScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(7, 7, 7)
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nurseScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nurseAdd_new_schedule_Button)
                 .addContainerGap(67, Short.MAX_VALUE))
@@ -1341,8 +1309,8 @@ public class GUI_admin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable StaffScheduleTable;
-    private javax.swing.JTable StaffScheduleTable1;
+    private javax.swing.JTable DoctorScheduleTable;
+    private javax.swing.JTable NurseScheduleTable;
     private javax.swing.JButton admin_clear;
     private javax.swing.JTextField admin_email;
     private javax.swing.JTextField admin_id;
@@ -1415,11 +1383,11 @@ public class GUI_admin extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane nurseScrollPane;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane doctorScrollPane;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane4;
