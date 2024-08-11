@@ -136,7 +136,7 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         if (this.role == "Doctor"){
             this.dispose(); // close the current GUI
 
-            GUI_doctor Doctor_GUI = new GUI_doctor();
+            GUI_doctor Doctor_GUI = new GUI_doctor(this.username);
             Doctor_GUI.setVisible(true);
         } else if (this.role == "Nurse"){
             this.dispose(); // close the current GUI

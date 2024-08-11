@@ -2,6 +2,15 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/User/Desktop/Java/HMS%20new/java_hospital_management_system/Hospital_Management_System/src/hospital_management_system/views/GUI_admin.java</file>
+            <file>file:/C:/Users/User/Desktop/Java/HMS%20new/java_hospital_management_system/Hospital_Management_System/src/hospital_management_system/views/Home_Page_GUI.java</file>
+            <file>file:/C:/Users/User/Desktop/Java/HMS%20new/java_hospital_management_system/Hospital_Management_System/src/hospital_management_system/views/GUI_Patient_Register.java</file>
+            <file>file:/C:/Users/User/Desktop/Java/HMS%20new/java_hospital_management_system/Hospital_Management_System/src/hospital_management_system/MysqlConnect.java</file>
+            <file>file:/C:/Users/User/Desktop/Java/HMS%20new/java_hospital_management_system/Hospital_Management_System/src/hospital_management_system/views/GUI_LOGIN.java</file>
+            <file>file:/C:/Users/User/Desktop/Java/HMS%20new/java_hospital_management_system/Hospital_Management_System/src/hospital_management_system/views/GUI_nurse.java</file>
+            <file>file:/C:/Users/User/Desktop/Java/HMS%20new/java_hospital_management_system/Hospital_Management_System/src/hospital_management_system/views/GUI_doctor.java</file>
+            <file>file:/C:/Users/User/Desktop/Java/HMS%20new/java_hospital_management_system/Hospital_Management_System/src/hospital_management_system/views/GUI_patient.java</file>
+        </group>
     </open-files>
 </project-private>

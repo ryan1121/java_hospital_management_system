@@ -3,10 +3,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package hospital_management_system.views;
+import hospital_management_system.MysqlConnect;
 import hospital_management_system.controllers.*;
 import hospital_management_system.models.*;
 
 import java.awt.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,12 +21,14 @@ import javax.swing.table.DefaultTableModel;
  * @author User
  */
 public class GUI_doctor extends javax.swing.JFrame {
-
+    String username;
     /**
      * Creates new form GUI_doctor
      */
-    public GUI_doctor() {
+    public GUI_doctor(String username) {
         initComponents();
+        this.username = username;
+        fetchDataDisplay();
     }
 
     /**
@@ -129,8 +137,18 @@ public class GUI_doctor extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         information_save.setText("Save");
+        information_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                information_saveActionPerformed(evt);
+            }
+        });
 
         information_clear.setText("Clear");
+        information_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                information_clearActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Details"));
 
@@ -138,14 +156,15 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jLabel1.setText("Doctor ID:");
 
-        doctor_id.setText("Doctor_ID");
+        doctor_id.setText("");
+        doctor_id.setEnabled(false);
         doctor_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doctor_idActionPerformed(evt);
             }
         });
 
-        doctor_name.setText("Name");
+        doctor_name.setText(username);
         doctor_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doctor_nameActionPerformed(evt);
@@ -156,7 +175,7 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jLabel3.setText("Phone Number :");
 
-        doctor_phone.setText("Phone");
+        doctor_phone.setText("");
         doctor_phone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doctor_phoneActionPerformed(evt);
@@ -165,7 +184,7 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jLabel4.setText("Email :");
 
-        doctor_email.setText("Email");
+        doctor_email.setText("");
         doctor_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doctor_emailActionPerformed(evt);
@@ -174,14 +193,14 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jLabel5.setText("Specialization :");
 
-        doctor_specialization.setText("Specialization");
+        doctor_specialization.setText("");
         doctor_specialization.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doctor_specializationActionPerformed(evt);
             }
         });
 
-        doctor_department.setText("Department ");
+        doctor_department.setText("");
         doctor_department.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 doctor_departmentActionPerformed(evt);
@@ -281,6 +300,11 @@ public class GUI_doctor extends javax.swing.JFrame {
         backButton.setForeground(new java.awt.Color(0, 51, 255));
         backButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         backButton.setText("Back");
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                backButtonMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -717,8 +741,16 @@ public class GUI_doctor extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
+        // TODO add your handling code here:
+        this.dispose();
+        String role = "Doctor";
+
+        Home_Page_GUI homePage = new Home_Page_GUI(role,username);
+        homePage.setVisible(true);
+    }
+
     private void information_clearActionPerformed(java.awt.event.ActionEvent evt){
-        doctor_id.setText("");
         doctor_name.setText("");
         doctor_phone.setText("");
         doctor_email.setText("");
@@ -799,6 +831,112 @@ public class GUI_doctor extends javax.swing.JFrame {
     private void SurgManage_ClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SurgManage_ClearButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_SurgManage_ClearButtonActionPerformed
+
+    private void fetchDataDisplay() {
+        MysqlConnect db = new MysqlConnect();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            // Establish connection
+            connection = db.getConnection();
+            // Create a prepared statement
+            String sql = "SELECT * FROM Doctors WHERE doctor_name = ?"; // Adjust the WHERE clause as needed
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username); // Assuming you want to retrieve the row with ID=1
+            // Execute the query
+            resultSet = preparedStatement.executeQuery();
+
+            // Process the result set
+            if (resultSet.next()) {
+                // Retrieve data by column name
+                String id = resultSet.getString("doctor_id");
+                String name = resultSet.getString("doctor_name");
+                String phone = resultSet.getString("doctor_phone");
+                String email = resultSet.getString("doctor_email");
+                String specialization = resultSet.getString("doctor_specialization");
+                String department = resultSet.getString("doctor_department");
+                String experience = resultSet.getString("doctor_experience");
+                String qualifications = resultSet.getString("doctor_qualifications");
+                // Set text fields with retrieved data
+                doctor_id.setText(id);
+                doctor_name.setText(name);
+                doctor_phone.setText(phone);
+                doctor_email.setText(email);
+                doctor_specialization.setText(specialization);
+                doctor_department.setText(department);
+                doctor_experience.setText(experience);
+                doctor_qualifications.setText(qualifications);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void information_saveActionPerformed(java.awt.event.ActionEvent evt){
+        MysqlConnect db = new MysqlConnect();
+        String tableName = "Doctors";
+
+        String doctorId = doctor_id.getText(); 
+        String name = doctor_name.getText(); 
+        String phone = doctor_phone.getText(); 
+        String email = doctor_email.getText(); 
+        String specialization = doctor_specialization.getText(); 
+        String dpt = doctor_department.getText(); 
+        String experience = doctor_experience.getText();
+        String qualifications = doctor_qualifications.getText();
+
+    
+        // 初始化更新语句和条件
+        StringBuilder updateBuilder = new StringBuilder();
+        String condition = "doctor_id = '" + doctorId + "'"; 
+    
+        // 仅更新修改过的字段
+        if (!name.isEmpty()) {
+            updateBuilder.append("doctor_name = '").append(name).append("', ");
+        }
+        if (!phone.isEmpty()) {
+            updateBuilder.append("doctor_phone = '").append(phone).append("', ");
+        }
+        if (!email.isEmpty()) {
+            updateBuilder.append("doctor_email = '").append(email).append("', ");
+        }
+        if (!specialization.isEmpty()) {
+            updateBuilder.append("doctor_specialization = '").append(specialization).append("', ");
+        }
+        if (!dpt.isEmpty()) {
+            updateBuilder.append("doctor_department = '").append(dpt).append("', ");
+        }
+        if (!experience.isEmpty()) {
+            updateBuilder.append("doctor_experience = '").append(experience).append("', ");
+        }
+        if (!qualifications.isEmpty()) {
+            updateBuilder.append("doctor_qualifications = '").append(qualifications).append("', ");
+        }
+    
+        // 移除最后一个逗号和空格
+        String update = updateBuilder.toString();
+        if (update.endsWith(", ")) {
+            update = update.substring(0, update.length() - 2);
+        }
+    
+        // 只有在 update 字符串不为空时才执行更新操作
+        if (!update.isEmpty()) {
+            db.updateData(tableName, update, condition);
+        } else {
+            System.out.println("There is no data to update.");
+        }
+    }   
 
     /**
      * @param args the command line arguments
