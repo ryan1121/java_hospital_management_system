@@ -68,8 +68,8 @@ public class GUI_doctor extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         backButton = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jScrollPane11 = new javax.swing.JScrollPane();
-        StaffScheduleTable1 = new javax.swing.JTable();
+        doctorScrollPane = new javax.swing.JScrollPane();
+        doctorScheduleTable = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         DiagnosisID_label = new javax.swing.JLabel();
@@ -337,24 +337,21 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Information", jPanel7);
 
-        StaffScheduleTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Staff ID", "Name", "Start Time ", "End Time", "Date", "Department", "Tasks"
-            }
-        ));
-        StaffScheduleTable1.setIntercellSpacing(new java.awt.Dimension(1, 1));
-        StaffScheduleTable1.setShowHorizontalLines(true);
-        StaffScheduleTable1.setShowVerticalLines(true);
-        jScrollPane11.setViewportView(StaffScheduleTable1);
+        DefaultTableModel doctorModel = new DefaultTableModel(
+            new String[]{"Doctor ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}, 0
+        );
+
+        // Set this model to the doctorScheduleTable
+        doctorScheduleTable.setModel(doctorModel);
+
+        // Set intercell spacing and line visibility for visual consistency
+        doctorScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
+        doctorScheduleTable.setShowHorizontalLines(true);
+        doctorScheduleTable.setShowVerticalLines(true);
+        doctorScrollPane.setViewportView(doctorScheduleTable);
+
+        WorkScheduleController scheduleController = new WorkScheduleController(doctorScheduleTable, null, doctorScrollPane, null);
+        scheduleController.loadDoctorSchedule();
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -362,14 +359,14 @@ public class GUI_doctor extends javax.swing.JFrame {
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE)
+                .addComponent(doctorScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 823, Short.MAX_VALUE)
                 .addGap(23, 23, 23))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(doctorScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 359, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
@@ -992,7 +989,7 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JLabel Outcomes_label;
     private javax.swing.JTextField Outcomes_textField;
     private javax.swing.JLabel PatientID_label;
-    private javax.swing.JTable StaffScheduleTable1;
+    private javax.swing.JTable doctorScheduleTable;
     private javax.swing.JButton SurgManage_ClearButton;
     private javax.swing.JButton SurgManage_SaveButton;
     private javax.swing.JLabel backButton;
@@ -1026,7 +1023,7 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane11;
+    private javax.swing.JScrollPane doctorScrollPane;
     private javax.swing.JScrollPane jScrollPane17;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane8;
