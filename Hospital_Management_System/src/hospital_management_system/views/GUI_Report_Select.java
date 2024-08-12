@@ -59,7 +59,7 @@ public class GUI_Report_Select extends JFrame {
         SelectReport.setText("What would you like to do?");
 
         SelectRoleLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        SelectRoleLabel.setText("Welcome back, ");
+        SelectRoleLabel.setText("Welcome back, " + this.username);
 
         AgeGroupStatsButton.setText("Age Group Stats");
         AgeGroupStatsButton.addActionListener(new java.awt.event.ActionListener() {

@@ -16,7 +16,7 @@ public class Home_Page_GUI extends javax.swing.JFrame {
     
     // Define a variable to store the role type of login user
     String role;
-    private String username;
+    public static String username;
 
     public Home_Page_GUI(String role_type, String username) {
         initComponents();

@@ -106,7 +106,7 @@ public class Data_Tables extends JFrame {
         TitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18));
         addComponent(TitleLabel, 0, 0, 3, 1);
     
-        SelectRoleLabel1 = new JLabel("Welcome back, ", JLabel.CENTER);
+        SelectRoleLabel1 = new JLabel("Welcome back, " + this.username, JLabel.CENTER);
         addComponent(SelectRoleLabel1, 0, 1, 3, 1);
     
         SelectRoleLabel = new JLabel("-- Please select the data tables for checking --", JLabel.CENTER);
@@ -181,7 +181,7 @@ public class Data_Tables extends JFrame {
     }
     
     private void buttonActionPerformed(java.awt.event.ActionEvent evt, String tableName) {
-        GUI_Check_Data checkDataGUI = new GUI_Check_Data(tableName);
+        GUI_Check_Data checkDataGUI = new GUI_Check_Data(tableName, this.username);
         checkDataGUI.setVisible(true);
     }
 

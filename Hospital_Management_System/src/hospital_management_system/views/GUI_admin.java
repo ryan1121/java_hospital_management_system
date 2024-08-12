@@ -5,6 +5,7 @@
 package hospital_management_system.views;
 
 import java.awt.Frame;
+import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -255,6 +256,7 @@ public class GUI_admin extends javax.swing.JFrame {
         backButton.setForeground(new java.awt.Color(0, 51, 255));
         backButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         backButton.setText("Back");
+        backButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 backButtonMousePressed(evt);
