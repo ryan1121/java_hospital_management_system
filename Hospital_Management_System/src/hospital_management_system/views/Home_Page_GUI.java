@@ -28,6 +28,8 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         if (this.role == "Admin"){  // 只有admin可以看见以及使用data analysis的按钮
             dataAnalysisButton.setVisible(true);
         }
+        // Set the initial size of the window
+        this.setSize(415, 291);
     }
 
     /**
@@ -45,6 +47,7 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         CheckDataButton = new javax.swing.JButton();
         SelectRoleLabel1 = new javax.swing.JLabel();
         dataAnalysisButton = new javax.swing.JButton();
+        dataAnalysisButton.setVisible(false);
         LogoutButton = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
