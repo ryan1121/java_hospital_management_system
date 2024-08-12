@@ -7,6 +7,7 @@ import javax.swing.*;
 
 public class Payment {
     private JPanel Payment;
+    private JTextField InvoiceID_input;
     private JTextField PaymentID_input;
     private JTextField PaymentAmount_input;
     private JComboBox<String> PaymentMethod_dropdown;
@@ -15,6 +16,7 @@ public class Payment {
 
     public Payment(
         JPanel Payment,
+        JTextField InvoiceID_input,
         JTextField PaymentID_input,
         JTextField PaymentAmount_input,
         JComboBox<String> PaymentMethod_dropdown,
@@ -22,6 +24,7 @@ public class Payment {
         JFormattedTextField PaymentProcessingDate_input
     ) {
         this.Payment = Payment;
+        this.InvoiceID_input = InvoiceID_input;
         this.PaymentID_input = PaymentID_input;
         this.PaymentAmount_input = PaymentAmount_input;
         this.PaymentMethod_dropdown = PaymentMethod_dropdown;
@@ -30,6 +33,7 @@ public class Payment {
     }
 
     public boolean save() {
+        String invoiceIDValue = InvoiceID_input.getText();
         String paymentIDValue = PaymentID_input.getText();
         String paymentAmountValue = PaymentAmount_input.getText();
         String paymentMethodValue = (String) PaymentMethod_dropdown.getSelectedItem();
@@ -38,10 +42,10 @@ public class Payment {
 
 
         MysqlConnect db = new MysqlConnect();
-        String[] paymentValues = {paymentIDValue, paymentProcessingDate, paymentAmountValue, paymentMethodValue, paymentStatusValue};
+        String[] paymentValues = {paymentIDValue, paymentProcessingDate, paymentAmountValue, paymentMethodValue, paymentStatusValue, invoiceIDValue};
 
         try {
-            boolean savePaymentResult = db.saveData("Payment", "PaymentID, PaymentDate, PaymentMethod, PaymentAmount, PaymentStatus", paymentValues);
+            boolean savePaymentResult = db.saveData("Payment", "PaymentID, PaymentDate, PaymentMethod, PaymentAmount, PaymentStatus, InvoiceID", paymentValues);
 
             if (savePaymentResult) {
                 JOptionPane.showMessageDialog(Payment, "Payment data saved successfully!");
@@ -76,6 +80,9 @@ public class Payment {
     }
 
     // Getter and Setter methods
+    public String getInvoiceID() { return InvoiceID_input; }
+    public void setInvoiceID(String InvoiceID_input) { this.InvoiceID_input = InvoiceID_input; }
+
     public String getPaymentID() { return PaymentID_input; }
     public void setPaymentID(String PaymentID_input) { this.PaymentID_input = PaymentID_input; }
     

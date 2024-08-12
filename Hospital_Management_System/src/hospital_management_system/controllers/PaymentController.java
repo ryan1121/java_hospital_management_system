@@ -8,6 +8,7 @@ import javax.swing.*;
 public class PaymentController {
     private Payment model;
     private JPanel Payment;
+    private JTextField InvoiceID_input;
     private JTextField PaymentID_input;
     private JTextField PaymentAmount_input;
     private JComboBox<String> PaymentMethod_dropdown;
@@ -17,6 +18,7 @@ public class PaymentController {
     public PaymentController(
         JPanel Payment,
         JTextField PaymentID_input,
+        JTextField InvoiceID_input,
         JTextField PaymentAmount_input,
         JComboBox<String> PaymentMethod_dropdown,
         JComboBox<String> PaymentStatus_dropdown,
@@ -24,6 +26,7 @@ public class PaymentController {
     ) {
         this.Payment = Payment;
         this.PaymentID_input = PaymentID_input;
+        this.InvoiceID_input = InvoiceID_input;
         this.PaymentAmount_input = PaymentAmount_input;
         this.PaymentMethod_dropdown = PaymentMethod_dropdown;
         this.PaymentStatus_dropdown = PaymentStatus_dropdown;
@@ -31,6 +34,7 @@ public class PaymentController {
 
         this.model = new Payment(
             Payment,
+            InvoiceID_input,
             PaymentID_input,
             PaymentAmount_input,
             PaymentMethod_dropdown,
