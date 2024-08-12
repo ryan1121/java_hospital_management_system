@@ -9,7 +9,6 @@ import javax.swing.*;
 public class SupplyManagement {
     private JPanel panel;
     private String supplyID;
-    private String supplyCode;
     private String supplyName;
     private int supplyStockQuantity;
     private int supplyMinimumStock;
@@ -21,7 +20,6 @@ public class SupplyManagement {
         JPanel panel,
         JTextField supplyIDInput,
         JTextField supplyNameInput,
-        JTextField supplyCodeInput,
         JSpinner supplyStockQuantityInput,
         JSpinner supplyMinimumStockInput,
         JSpinner supplyMaximumStockInput,
@@ -34,7 +32,6 @@ public class SupplyManagement {
         System.out.println("    Check ID 1:" + supplyID);
 
         System.out.println("    Check NAME 1:" + supplyName);
-        this.supplyCode = supplyCodeInput.getText();
         this.supplyStockQuantity = (Integer) supplyStockQuantityInput.getValue();
         this.supplyMinimumStock = (Integer) supplyMinimumStockInput.getValue();
         this.supplyMaximumStock = (Integer) supplyMaximumStockInput.getValue();
@@ -53,15 +50,12 @@ public class SupplyManagement {
         } else if (supplyName == null || supplyName.isEmpty()) {
             JOptionPane.showMessageDialog(panel, "You MUST enter supply name !!");
             return false;
-        } else if (supplyCode == null || supplyCode.isEmpty()) {
-            JOptionPane.showMessageDialog(panel, "You MUST enter supply code !!");
-            return false;
         } else {
             MysqlConnect db = new MysqlConnect();
-            String[] supplyValues = {supplyID, supplyName, supplyCode, String.valueOf(supplyStockQuantity), String.valueOf(supplyMinimumStock), String.valueOf(supplyMaximumStock), supplierInformation, supplyExpiryDate};
+            String[] supplyValues = {supplyID, supplyName, String.valueOf(supplyStockQuantity), String.valueOf(supplyMinimumStock), String.valueOf(supplyMaximumStock), supplierInformation, supplyExpiryDate};
 
             try {
-                boolean saveResult = db.saveData("MedicalSupplyManagement", "SupplyID, SupplyName, SupplyCode, SupplyStockQuantity, SupplyMinimumStock, SupplyMaximumStock, SupplierInformation, SupplyExpiryDate", supplyValues);
+                boolean saveResult = db.saveData("MedicalSupplyManagement", "SupplyID, SupplyName, SupplyStockQuantity, SupplyMinimumStock, SupplyMaximumStock, SupplierInformation, SupplyExpiryDate", supplyValues);
 
                 if (saveResult) {
                     JOptionPane.showMessageDialog(panel, "Medical supply data saved successfully!");
@@ -77,9 +71,8 @@ public class SupplyManagement {
         }
     }
 
-    public void clear(JTextField supplyNameInput, JTextField supplyCodeInput, JSpinner supplyStockQuantityInput, JSpinner supplyMinimumStockInput, JSpinner supplyMaximumStockInput, JTextArea supplierInformationInput, JFormattedTextField supplyExpiryDateInput) {
+    public void clear(JTextField supplyNameInput,  JSpinner supplyStockQuantityInput, JSpinner supplyMinimumStockInput, JSpinner supplyMaximumStockInput, JTextArea supplierInformationInput, JFormattedTextField supplyExpiryDateInput) {
         supplyNameInput.setText("");
-        supplyCodeInput.setText("");
         supplyStockQuantityInput.setValue(0);
         supplyMinimumStockInput.setValue(0);
         supplyMaximumStockInput.setValue(0);
@@ -100,9 +93,6 @@ public class SupplyManagement {
     
     public String getSupplyName() { return supplyName; }
     public void setSupplyName(String supplyName) { this.supplyName = supplyName; }
-    
-    public String getSupplyCode() { return supplyCode; }
-    public void setSupplyCode(String supplyCode) { this.supplyCode = supplyCode; }
     
     public int getSupplyStockQuantity() { return supplyStockQuantity; }
     public void setSupplyStockQuantity(int supplyStockQuantity) { this.supplyStockQuantity = supplyStockQuantity; }

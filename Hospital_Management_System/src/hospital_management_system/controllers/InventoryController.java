@@ -8,7 +8,6 @@ public class InventoryController {
     private JPanel InventoryManagement;
     private JTextField InventoryID_input;
     private JTextField ItemName_input;
-    private JTextField ItemCode_input;
     private JTextArea InventorySupplierInformation_input;
     private JSpinner InventoryStockQuantity_input;
     private JSpinner InventoryMinimunStock_input;
@@ -21,7 +20,6 @@ public class InventoryController {
         JPanel inventoryManagement, 
         JTextField inventoryID_input, 
         JTextField itemName_input,
-        JTextField itemCode_input, 
         JTextArea inventorySupplierInformation_input,
         JSpinner inventoryStockQuantity_input, 
         JSpinner inventoryMinimunStock_input,
@@ -33,7 +31,6 @@ public class InventoryController {
         this.InventoryManagement = inventoryManagement;
         this.InventoryID_input = inventoryID_input;
         this.ItemName_input = itemName_input;
-        this.ItemCode_input = itemCode_input;
         this.InventorySupplierInformation_input = inventorySupplierInformation_input;
         this.InventoryStockQuantity_input = inventoryStockQuantity_input;
         this.InventoryMinimunStock_input = inventoryMinimunStock_input;
@@ -65,7 +62,6 @@ public class InventoryController {
     private void saveInventory() {
         model.setInventoryID(InventoryID_input.getText());
         model.setItemName(ItemName_input.getText());
-        model.setItemCode(ItemCode_input.getText());
         model.setSupplierInformation(InventorySupplierInformation_input.getText());
         model.setStockQuantity((int) InventoryStockQuantity_input.getValue());
         model.setMinimumStock((int) InventoryMinimunStock_input.getValue());
@@ -87,7 +83,6 @@ public class InventoryController {
         model.clear();
         InventoryID_input.setText("");
         ItemName_input.setText("");
-        ItemCode_input.setText("");
         InventorySupplierInformation_input.setText("");
         InventoryStockQuantity_input.setValue(0);
         InventoryMinimunStock_input.setValue(0);

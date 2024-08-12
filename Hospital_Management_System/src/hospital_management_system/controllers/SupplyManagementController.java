@@ -9,7 +9,6 @@ public class SupplyManagementController {
     private JPanel panel;
     private JTextField supplyIDInput;
     private JTextField supplyNameInput;
-    private JTextField supplyCodeInput;
     private JSpinner supplyStockQuantityInput;
     private JSpinner supplyMinimumStockInput;
     private JSpinner supplyMaximumStockInput;
@@ -20,7 +19,6 @@ public class SupplyManagementController {
         JPanel panel,
         JTextField supplyIDInput,
         JTextField supplyNameInput,
-        JTextField supplyCodeInput,
         JSpinner supplyStockQuantityInput,
         JSpinner supplyMinimumStockInput,
         JSpinner supplyMaximumStockInput,
@@ -30,7 +28,6 @@ public class SupplyManagementController {
         this.panel = panel;
         this.supplyIDInput = supplyIDInput;
         this.supplyNameInput = supplyNameInput;
-        this.supplyCodeInput = supplyCodeInput;
         this.supplyStockQuantityInput = supplyStockQuantityInput;
         this.supplyMinimumStockInput = supplyMinimumStockInput;
         this.supplyMaximumStockInput = supplyMaximumStockInput;
@@ -41,7 +38,6 @@ public class SupplyManagementController {
             panel,
             supplyIDInput,
             supplyNameInput,
-            supplyCodeInput,
             supplyStockQuantityInput,
             supplyMinimumStockInput,
             supplyMaximumStockInput,
@@ -57,6 +53,6 @@ public class SupplyManagementController {
     }
 
     public void handleClearButtonActionPerformed(ActionEvent evt) {
-        model.clear(supplyNameInput, supplyCodeInput, supplyStockQuantityInput, supplyMinimumStockInput, supplyMaximumStockInput, supplierInformationInput, supplyExpiryDateInput);
+        model.clear(supplyNameInput, supplyStockQuantityInput, supplyMinimumStockInput, supplyMaximumStockInput, supplierInformationInput, supplyExpiryDateInput);
     }
 }

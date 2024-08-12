@@ -12,7 +12,6 @@ public class Inventory {
     public Inventory(
         String inventoryID, 
         String itemName, 
-        String itemCode, 
         String supplierInformation, 
         int stockQuantity, 
         int minimumStock, 
@@ -21,7 +20,6 @@ public class Inventory {
     ) {
         this.inventoryID = inventoryID;
         this.itemName = itemName;
-        this.itemCode = itemCode;
         this.supplierInformation = supplierInformation;
         this.stockQuantity = stockQuantity;
         this.minimumStock = minimumStock;
@@ -40,7 +38,6 @@ public class Inventory {
     public void clear() {
         inventoryID = "";
         itemName = "";
-        itemCode = "";
         supplierInformation = "";
         stockQuantity = 0;
         minimumStock = 0;
@@ -54,9 +51,6 @@ public class Inventory {
 
     public String getItemName() { return itemName; }
     public void setItemName(String itemName) { this.itemName = itemName; }
-
-    public String getItemCode() { return itemCode; }
-    public void setItemCode(String itemCode) { this.itemCode = itemCode; }
 
     public String getSupplierInformation() { return supplierInformation; }
     public void setSupplierInformation(String supplierInformation) { this.supplierInformation = supplierInformation; }
