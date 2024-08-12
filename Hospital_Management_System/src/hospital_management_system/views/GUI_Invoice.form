@@ -55,7 +55,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="PatientID" alignment="0" max="32767" attributes="0"/>
+          <Component id="PatientID" min="-2" pref="475" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -92,11 +92,18 @@
                                       <Component id="jLabel5" alignment="0" pref="120" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel2" min="-2" pref="82" max="-2" attributes="0"/>
                                       <Component id="jLabel3" min="-2" pref="82" max="-2" attributes="0"/>
-                                      <Component id="jLabel8" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="PatientName" pref="131" max="32767" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                              <Component id="PatientName_display" alignment="0" pref="131" max="32767" attributes="0"/>
+                                              <Component id="PatientID_display" max="32767" attributes="0"/>
+                                              <Component id="PatientName" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -112,33 +119,50 @@
                               <Component id="InvoiceDue_label" alignment="0" min="-2" pref="44" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="InvoiceDue_display" pref="62" max="32767" attributes="0"/>
+                              <Component id="InvoiceDate_display" alignment="1" max="32767" attributes="0"/>
+                              <Component id="InvoiceNo_display" alignment="1" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="InvoiceDue" max="32767" attributes="0"/>
+                              <Component id="InvoiceNo" alignment="0" max="32767" attributes="0"/>
                               <Component id="InvoiceDate" max="32767" attributes="0"/>
-                              <Component id="InvoiceNo" max="32767" attributes="0"/>
+                              <Component id="InvoiceDue" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="BalanceDue_label" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="BalanceDue" min="-2" pref="80" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="265" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="BalanceDue_label" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Component id="BalanceDue" min="-2" pref="80" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="BalanceDue_display" max="32767" attributes="0"/>
                                   </Group>
+                              </Group>
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="AmountPaid_label" min="-2" pref="89" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      <Component id="AmountPaid" min="-2" pref="86" max="-2" attributes="0"/>
+                                      <Component id="AmountPaid_display" max="32767" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="Total_label" min="-2" pref="43" max="-2" attributes="0"/>
                                       <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
-                                      <Component id="Total" max="32767" attributes="0"/>
+                                      <Component id="TotalAmount_display" min="-2" pref="86" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="Total" alignment="0" max="32767" attributes="0"/>
+                              <Component id="AmountPaid" alignment="1" min="-2" pref="86" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -155,6 +179,7 @@
                       <Component id="From_address" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="From_address1" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="InvoiceNo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="InvoiceNo_display" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -167,6 +192,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PatientID_display" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -178,18 +204,23 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="InvoiceDate_label" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="InvoiceDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="InvoiceDate_display" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="InvoiceDue_label" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="InvoiceDue" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="InvoiceDue_display" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                          <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="PatientName_display" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
@@ -202,16 +233,21 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="Total_label" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="Total" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="TotalAmount_display" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="AmountPaid" min="-2" max="-2" attributes="0"/>
-                      <Component id="AmountPaid_label" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="AmountPaid_label" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="AmountPaid_display" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="BalanceDue_label" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="BalanceDue" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BalanceDue_display" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -376,6 +412,46 @@
         <Component class="javax.swing.JLabel" name="AmountPaid">
         </Component>
         <Component class="javax.swing.JLabel" name="BalanceDue">
+        </Component>
+        <Component class="javax.swing.JLabel" name="PatientID_display">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="PatientName_display">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="InvoiceNo_display">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="InvoiceDate_display">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="InvoiceDue_display">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="TotalAmount_display">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="AmountPaid_display">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" "/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="BalanceDue_display">
+          <Properties>
+            <Property name="text" type="java.lang.String" value=" "/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

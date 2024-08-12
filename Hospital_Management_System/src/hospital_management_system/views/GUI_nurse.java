@@ -355,8 +355,15 @@ public class GUI_nurse extends javax.swing.JFrame {
         
         BillingController BillingControllerObj = new BillingController(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
         
+        // InvoiceController invoiceController = new InvoiceController(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
+
         // // Add action listeners
-        // // CheckButton.addActionListener(evt -> billingController.handleCheckButtonActionPerformed(evt));
+        // CheckButton.addActionListener(new java.awt.event.ActionListener() {
+        //     public void actionPerformed(java.awt.event.ActionEvent evt) {
+        //         invoiceController.handleCheckButtonActionPerformed(evt);
+        //     }
+        // });
+        
         // AddServiceButton.addActionListener(evt -> BillingControllerObj.handleAddServiceButtonActionPerformed(evt));
         // InvoiceSaveButton.addActionListener(evt -> {
             //     BillingControllerObj.handleSaveInvoiceButtonActionPerformed(evt);
@@ -2160,8 +2167,6 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addContainerGap(100, Short.MAX_VALUE))
         );
 
-
-        
 
         NurseTab.addTab("Payment", Payment);
 
