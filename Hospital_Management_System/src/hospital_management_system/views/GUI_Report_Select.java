@@ -5,17 +5,25 @@
 package hospital_management_system.views;
 
 import hospital_management_system.controllers.*;
+import javax.swing.*;
+import java.awt.Cursor;
+
 
 /**
  *
  * @author DELL
  */
-public class GUI_Report_Select extends javax.swing.JFrame {
-
+public class GUI_Report_Select extends JFrame {
+    private String role;
+    private String username;
+    
     /**
      * Creates new form GUI_Report_Select
      */
-    public GUI_Report_Select() {
+    public GUI_Report_Select(String role, String username) {
+        this.role = role;
+        this.username = username;
+        
         initComponents();
     }
 
@@ -28,29 +36,29 @@ public class GUI_Report_Select extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        SelectReport = new javax.swing.JLabel();
-        SelectRoleLabel = new javax.swing.JLabel();
-        AgeGroupStatsButton = new javax.swing.JButton();
-        DepartmentDoctorStatsButton = new javax.swing.JButton();
-        InsuranceStatsButton = new javax.swing.JButton();
-        InventoryStatsButton = new javax.swing.JButton();
-        SurgeryStatsButton = new javax.swing.JButton();
-        MonthlyInvoiceStatButton = new javax.swing.JButton();
-        MonthlyPaymentStatButton = new javax.swing.JButton();
-        ExpiringMedicalSuppliesButton = new javax.swing.JButton();
-        backButton = new javax.swing.JLabel();
+        jLabel1 = new JLabel();
+        SelectReport = new JLabel();
+        SelectRoleLabel = new JLabel();
+        AgeGroupStatsButton = new JButton();
+        DepartmentDoctorStatsButton = new JButton();
+        InsuranceStatsButton = new JButton();
+        InventoryStatsButton = new JButton();
+        SurgeryStatsButton = new JButton();
+        MonthlyInvoiceStatButton = new JButton();
+        MonthlyPaymentStatButton = new JButton();
+        ExpiringMedicalSuppliesButton = new JButton();
+        backButton = new JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
         jLabel1.setText("Reporting and Analytics");
 
-        SelectReport.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SelectReport.setHorizontalAlignment(SwingConstants.CENTER);
         SelectReport.setText("What would you like to do?");
 
-        SelectRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        SelectRoleLabel.setHorizontalAlignment(SwingConstants.CENTER);
         SelectRoleLabel.setText("Welcome back, ");
 
         AgeGroupStatsButton.setText("Age Group Stats");
@@ -110,63 +118,70 @@ public class GUI_Report_Select extends javax.swing.JFrame {
         });
 
         backButton.setForeground(new java.awt.Color(0, 51, 255));
-        backButton.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        backButton.setHorizontalAlignment(SwingConstants.LEFT);
         backButton.setText("Back");
+        backButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                // Implement the back functionality here
+                backButtonActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
+                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 49, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(DepartmentDoctorStatsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SurgeryStatsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(InsuranceStatsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(AgeGroupStatsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ExpiringMedicalSuppliesButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(InventoryStatsButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(MonthlyPaymentStatButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(MonthlyInvoiceStatButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(DepartmentDoctorStatsButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(SurgeryStatsButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(InsuranceStatsButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(AgeGroupStatsButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ExpiringMedicalSuppliesButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(InventoryStatsButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MonthlyPaymentStatButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MonthlyInvoiceStatButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(52, 52, 52))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(backButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SelectRoleLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(SelectReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING)
+                            .addComponent(backButton, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(SelectRoleLabel, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(SelectReport, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addContainerGap())))
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(backButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(SelectRoleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(SelectRoleLabel, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
                 .addGap(5, 5, 5)
-                .addComponent(SelectReport, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(SelectReport, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(AgeGroupStatsButton)
                     .addComponent(MonthlyInvoiceStatButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(MonthlyPaymentStatButton)
                     .addComponent(InsuranceStatsButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(InventoryStatsButton)
                     .addComponent(SurgeryStatsButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                     .addComponent(DepartmentDoctorStatsButton)
                     .addComponent(ExpiringMedicalSuppliesButton))
                 .addContainerGap(26, Short.MAX_VALUE))
@@ -174,6 +189,13 @@ public class GUI_Report_Select extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void backButtonActionPerformed(java.awt.event.MouseEvent evt){
+        this.dispose();
+        // Create an object for the home page gui
+        Home_Page_GUI homepage_GUI = new Home_Page_GUI(this.role, this.username);
+        homepage_GUI.setVisible(true);
+    }
 
     private void MonthlyPaymentStatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthlyPaymentStatButtonActionPerformed
         // TODO add your handling code here:
@@ -234,9 +256,9 @@ public class GUI_Report_Select extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -246,7 +268,7 @@ public class GUI_Report_Select extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GUI_Report_Select.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(GUI_Report_Select.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GUI_Report_Select.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -260,17 +282,17 @@ public class GUI_Report_Select extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AgeGroupStatsButton;
-    private javax.swing.JButton DepartmentDoctorStatsButton;
-    private javax.swing.JButton ExpiringMedicalSuppliesButton;
-    private javax.swing.JButton InsuranceStatsButton;
-    private javax.swing.JButton InventoryStatsButton;
-    private javax.swing.JButton MonthlyInvoiceStatButton;
-    private javax.swing.JButton MonthlyPaymentStatButton;
-    private javax.swing.JLabel SelectReport;
-    private javax.swing.JLabel SelectRoleLabel;
-    private javax.swing.JButton SurgeryStatsButton;
-    private javax.swing.JLabel backButton;
-    private javax.swing.JLabel jLabel1;
+    private JButton AgeGroupStatsButton;
+    private JButton DepartmentDoctorStatsButton;
+    private JButton ExpiringMedicalSuppliesButton;
+    private JButton InsuranceStatsButton;
+    private JButton InventoryStatsButton;
+    private JButton MonthlyInvoiceStatButton;
+    private JButton MonthlyPaymentStatButton;
+    private JLabel SelectReport;
+    private JLabel SelectRoleLabel;
+    private JButton SurgeryStatsButton;
+    private JLabel backButton;
+    private JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

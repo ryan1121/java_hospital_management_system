@@ -23,7 +23,6 @@ public class GUI_Check_Data extends javax.swing.JFrame {
     private String tableName;
     private Map<Integer, Object[]> originalData = new HashMap<>();
     private DefaultTableModel tableModel;
-    private JLabel backLabel;
 
     public GUI_Check_Data(String tableName) {
         
@@ -39,26 +38,12 @@ public class GUI_Check_Data extends javax.swing.JFrame {
         data_table = new javax.swing.JTable();
         saveButton = new JButton("Save Changes");
         deleteButton = new JButton("Delete");
-        backLabel = new JLabel("Back"); // 初始化Back按钮
         
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(this.tableName + " Table"));
         jPanel1.setLayout(new BorderLayout());
         
-        // 设置 JLabel 的字体、颜色、对齐方式等
-        backLabel.setFont(new Font("Arial", Font.BOLD, 14));
-        backLabel.setForeground(Color.BLUE);
-        backLabel.setHorizontalAlignment(SwingConstants.LEFT);
-        
-        // 为 JLabel 添加鼠标监听器，使其具有类似按钮的功能
-        backLabel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                // 处理返回操作，比如关闭当前窗口或返回上一个界面
-                dispose();
-            }
-        });
         
         data_table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -74,11 +59,6 @@ public class GUI_Check_Data extends javax.swing.JFrame {
         jScrollPane1.setViewportView(data_table);
 
         jPanel1.add(jScrollPane1, BorderLayout.CENTER);
-        
-        // 将 backLabel 添加到窗口布局中，放在顶部
-        getContentPane().setLayout(new BorderLayout());
-        getContentPane().add(backLabel, BorderLayout.NORTH);  // 将 JLabel 添加到布局中
-        getContentPane().add(jPanel1, BorderLayout.CENTER);
         
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 10));
