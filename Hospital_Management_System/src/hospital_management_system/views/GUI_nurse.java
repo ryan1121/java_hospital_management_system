@@ -66,8 +66,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         information_save = new javax.swing.JButton();
         backButton = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
-        jScrollPane14 = new javax.swing.JScrollPane();
-        StaffScheduleTable1 = new javax.swing.JTable();
+        nurseScrollPane = new javax.swing.JScrollPane();
+        nurseScheduleTable = new javax.swing.JTable();
         jPanel9 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         patient_id = new javax.swing.JTextField();
@@ -606,39 +606,36 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         NurseTab.addTab("Information", jPanel7);
 
-        StaffScheduleTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
-            },
-            new String [] {
-                "Staff ID", "Name", "Start Time ", "End Time", "Date", "Department", "Tasks"
-            }
-        ));
-        StaffScheduleTable1.setIntercellSpacing(new java.awt.Dimension(1, 1));
-        StaffScheduleTable1.setShowHorizontalLines(true);
-        StaffScheduleTable1.setShowVerticalLines(true);
-        jScrollPane14.setViewportView(StaffScheduleTable1);
+        DefaultTableModel nurseModel = new DefaultTableModel(
+            new String[]{"Nurse ID", "Name", "Date", "Start Time", "End Time", "Department", "Tasks"}, 0
+        );
 
+        // Set this model to the nurseScheduleTable
+        nurseScheduleTable.setModel(nurseModel);
+
+        // Set intercell spacing and line visibility for visual consistency
+        nurseScheduleTable.setIntercellSpacing(new java.awt.Dimension(1, 1));
+        nurseScheduleTable.setShowHorizontalLines(true);
+        nurseScheduleTable.setShowVerticalLines(true);
+        nurseScrollPane.setViewportView(nurseScheduleTable);
+
+        WorkScheduleController scheduleController = new WorkScheduleController(null, nurseScheduleTable, null, nurseScrollPane);
+        scheduleController.loadNurseSchedule();
+        
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nurseScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 812, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(41, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel8Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane14, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nurseScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(85, Short.MAX_VALUE))
         );
 
@@ -2668,7 +2665,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JPanel ServiceDetails;
     private javax.swing.JTextField Description_input;
     private javax.swing.JTextField ServiceQuantity_input;
-    private javax.swing.JTable StaffScheduleTable1;
+    private javax.swing.JTable nurseScheduleTable;
     private javax.swing.JLabel StatusOfTransfer;
     private javax.swing.JComboBox<String> StatusOfTransfer_dropdown;
     private javax.swing.JLabel StockQuantity;
@@ -2807,7 +2804,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane12;
     private javax.swing.JScrollPane jScrollPane13;
-    private javax.swing.JScrollPane jScrollPane14;
+    private javax.swing.JScrollPane nurseScrollPane;
     private javax.swing.JScrollPane jScrollPane15;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane5;
