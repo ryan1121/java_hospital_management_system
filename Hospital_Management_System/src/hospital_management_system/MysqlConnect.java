@@ -208,17 +208,72 @@ public class MysqlConnect {
     }
 
     public String generateNewId(String tableName, String idPrefix) {
-        String query = "SELECT COUNT(*) AS total FROM " + tableName;
-        try (PreparedStatement statement = connection.prepareStatement(query);
-             ResultSet resultSet = statement.executeQuery()) {
-            if (resultSet.next()) {
-                int total = resultSet.getInt("total") + 1;
-                return idPrefix + String.format("%03d", total);
+        String idColumnName = "";
+    
+        // 根据表名设置 id_column_name
+        if (tableName.equalsIgnoreCase("Patients")) {
+            idColumnName = "patient_id";
+        } else if (tableName.equalsIgnoreCase("Doctors")) {
+            idColumnName = "doctor_id";
+        } else if (tableName.equalsIgnoreCase("Nurse")) {
+            idColumnName = "nurse_id";
+        } else if (tableName.equalsIgnoreCase("PatientCare")) {
+            idColumnName = "Primary_doctor_id";
+        } else if (tableName.equalsIgnoreCase("Admission")) {
+            idColumnName = "Admission_ID";
+        } else if (tableName.equalsIgnoreCase("Appointment")) {
+            idColumnName = "Appointment_ID";
+        } else if (tableName.equalsIgnoreCase("BedAllocation")) {
+            idColumnName = "bed_allocate_number";
+        } else if (tableName.equalsIgnoreCase("Admin")) {
+            idColumnName = "admin_id";
+        } else if (tableName.equalsIgnoreCase("Prescription")) {
+            idColumnName = "PrescriptionID";
+        } else if (tableName.equalsIgnoreCase("MedicalRecords")) {
+            idColumnName = "medicalRecordID";
+        } else if (tableName.equalsIgnoreCase("Surgery")) {
+            idColumnName = "surgeryID";
+        } else if (tableName.equalsIgnoreCase("Consultations")) {
+            idColumnName = "ConsultationID";
+        } else if (tableName.equalsIgnoreCase("Diagnosis")) {
+            idColumnName = "DiagnosisID";
+        } else if (tableName.equalsIgnoreCase("PatientHistory")) {
+            idColumnName = "HistoryID";
+        } else if (tableName.equalsIgnoreCase("Invoice")) {
+            idColumnName = "InvoiceID";
+        } else if (tableName.equalsIgnoreCase("Billing")) {
+            idColumnName = "InvoiceID"; // 可能需要其他逻辑
+        } else if (tableName.equalsIgnoreCase("DoctorStaffScheduling")) {
+            idColumnName = "DoctorID"; // Scheduling 可能有不同的模式
+        } else if (tableName.equalsIgnoreCase("NurseStaffScheduling")) {
+            idColumnName = "NurseID"; // Scheduling 可能有不同的模式
+        } else if (tableName.equalsIgnoreCase("InventoryManagement")) {
+            idColumnName = "InventoryID";
+        } else if (tableName.equalsIgnoreCase("MedicalSupplyManagement")) {
+            idColumnName = "SupplyID";
+        } else if (tableName.equalsIgnoreCase("TransferManagement")) {
+            idColumnName = "TransferID";
+        } else if (tableName.equalsIgnoreCase("Payment")) {
+            idColumnName = "PaymentID";
+        }
+    
+        String query = "SELECT MAX(CAST(SUBSTRING(" + idColumnName + ", LENGTH(?) + 1) AS UNSIGNED)) AS max_id FROM " + tableName;
+        try (PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, idPrefix);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    String maxId = resultSet.getString("max_id");
+                    if (maxId != null) {
+                        int newIdNum = Integer.parseInt(maxId) + 1;
+                        return idPrefix + String.format("%03d", newIdNum);
+                    }
+                }
             }
         } catch (SQLException e) {
             System.err.println("Cannot execute SQL query!");
             e.printStackTrace();
         }
-        return null;
+        return idPrefix + "001"; // 如果表中没有数据，则返回第一个 ID
     }
+    
 }

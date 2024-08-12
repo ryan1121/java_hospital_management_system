@@ -1,8 +1,7 @@
 package hospital_management_system.views;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import hospital_management_system.MysqlConnect;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
@@ -25,7 +24,6 @@ public class GUI_Check_Data extends javax.swing.JFrame {
     private DefaultTableModel tableModel;
 
     public GUI_Check_Data(String tableName) {
-        
         this.tableName = tableName;
         initComponents();
         loadTableData(tableName);  // 加载数据到表格
@@ -38,28 +36,36 @@ public class GUI_Check_Data extends javax.swing.JFrame {
         data_table = new javax.swing.JTable();
         saveButton = new JButton("Save Changes");
         deleteButton = new JButton("Delete");
-        
+
+        // 设置初始窗口大小，例如宽度为800，高度为600
+        setSize(800, 600);
+
+        // 将窗口居中显示
+        setLocationRelativeTo(null);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(this.tableName + " Table"));
         jPanel1.setLayout(new BorderLayout());
-        
-        
+
         data_table.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object[][]{
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
+            new String[]{
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+
+        // 将JTable和窗口大小同步调整
         jScrollPane1.setViewportView(data_table);
+        jScrollPane1.setPreferredSize(new Dimension(getWidth(), getHeight() - 100));
 
         jPanel1.add(jScrollPane1, BorderLayout.CENTER);
-        
+
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 10, 10));
         buttonPanel.add(saveButton);
@@ -67,24 +73,15 @@ public class GUI_Check_Data extends javax.swing.JFrame {
 
         jPanel1.add(buttonPanel, BorderLayout.SOUTH);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().setLayout(new BorderLayout());
+        getContentPane().add(jPanel1, BorderLayout.CENTER);
 
-        pack();
+        // 添加窗口大小调整监听器
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentResized(java.awt.event.ComponentEvent evt) {
+                resizeTable();
+            }
+        });
 
         saveButton.addActionListener(new ActionListener() {
             @Override
@@ -101,18 +98,18 @@ public class GUI_Check_Data extends javax.swing.JFrame {
         });
     }
 
+    private void resizeTable() {
+        jScrollPane1.setPreferredSize(new Dimension(getWidth(), getHeight() - 100));
+        jScrollPane1.revalidate();
+    }
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-<<<<<<< HEAD:Hospital_Management_System/src/hospital_management_system/views/check_data_gui.java
-                new check_data_gui("Admin").setVisible(true);
-=======
-                new GUI_Check_Data().setVisible(true);
->>>>>>> d73ed3a292c66c489c3584e3531822e88d8b82f8:Hospital_Management_System/src/hospital_management_system/views/GUI_Check_Data.java
+                new GUI_Check_Data("Admin").setVisible(true);
             }
         });
     }
-
 
     private void loadTableData(String tableName) {
         MysqlConnect db = new MysqlConnect();
@@ -145,8 +142,7 @@ public class GUI_Check_Data extends javax.swing.JFrame {
         setupTable(data_table, tableModel, jScrollPane1);
     }
 
-
-        private void setupTable(JTable table, DefaultTableModel model, JScrollPane scrollPane) {
+    private void setupTable(JTable table, DefaultTableModel model, JScrollPane scrollPane) {
         table.setModel(model);
         table.setIntercellSpacing(new Dimension(1, 1));
         table.setShowHorizontalLines(true);
@@ -197,18 +193,18 @@ public class GUI_Check_Data extends javax.swing.JFrame {
 
     private void saveChanges() {
         MysqlConnect db = new MysqlConnect();
-        
+
         // 获取主键列名
         String primaryKeyColumn = getPrimaryKeyColumn();
         if (primaryKeyColumn == null) {
             JOptionPane.showMessageDialog(this, "Unable to determine primary key column.");
             return;
         }
-    
+
         for (int row = 0; row < this.tableModel.getRowCount(); row++) {
             StringBuilder updateQuery = new StringBuilder("UPDATE " + tableName + " SET ");
             boolean modified = false;
-            
+
             Object[] originalRowData = originalData.get(row);
             for (int col = 0; col < this.tableModel.getColumnCount(); col++) {
                 Object originalValue = originalRowData[col];
@@ -227,8 +223,6 @@ public class GUI_Check_Data extends javax.swing.JFrame {
             }
         }
     }
-    
-    
 
     private void deleteSelectedRow() {
         int selectedRow = data_table.getSelectedRow();
@@ -236,46 +230,43 @@ public class GUI_Check_Data extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please select a row to delete.");
             return;
         }
-        
+
         int confirm = JOptionPane.showConfirmDialog(this, "Are you sure you want to delete this row?", "Confirm Delete", JOptionPane.YES_NO_OPTION);
         if (confirm != JOptionPane.YES_OPTION) {
             return;
         }
-        
+
         DefaultTableModel model = (DefaultTableModel) data_table.getModel();
         String id = model.getValueAt(selectedRow, getColumnIndex(getPrimaryKeyColumn())).toString();
-        
+
         MysqlConnect db = new MysqlConnect();
         // 使用主键列名来构建删除条件
         String condition = getPrimaryKeyColumn() + " = '" + id + "'";
         boolean deleteSuccess = db.deleteData(this.tableName, condition);
-        
+
         if (deleteSuccess) {
             model.removeRow(selectedRow);
             JOptionPane.showMessageDialog(this, "Row deleted successfully.");
         } else {
-            JOptionPane.showMessageDialog(this, "Failed to delete the row.");
+            JOptionPane.showMessageDialog(this, "Failed to delete row.");
         }
     }
-    
+
     private String getPrimaryKeyColumn() {
         MysqlConnect db = new MysqlConnect();
-        return db.getPrimaryKeyColumn(tableName);
+        return db.getPrimaryKeyColumn(this.tableName);
     }
-    
+
     private int getColumnIndex(String columnName) {
-        for (int i = 0; i < tableModel.getColumnCount(); i++) {
-            if (tableModel.getColumnName(i).equals(columnName)) {
+        for (int i = 0; i < this.tableModel.getColumnCount(); i++) {
+            if (this.tableModel.getColumnName(i).equalsIgnoreCase(columnName)) {
                 return i;
             }
         }
-        return -1; // Column not found
+        return -1;
     }
-    
-    
-    
 
-    private javax.swing.JTable data_table;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable data_table;
 }

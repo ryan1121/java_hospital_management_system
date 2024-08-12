@@ -181,7 +181,7 @@ public class Data_Tables extends JFrame {
     }
     
     private void buttonActionPerformed(java.awt.event.ActionEvent evt, String tableName) {
-        GUI_Check_Data checkDataGUI = new GUI_Check_Data(tableName, this.username);
+        GUI_Check_Data checkDataGUI = new GUI_Check_Data(tableName);
         checkDataGUI.setVisible(true);
     }
 
