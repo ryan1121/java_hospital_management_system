@@ -1,5 +1,7 @@
 package hospital_management_system.views;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import hospital_management_system.MysqlConnect;
 import javax.swing.*;
 import javax.swing.table.DefaultTableCellRenderer;

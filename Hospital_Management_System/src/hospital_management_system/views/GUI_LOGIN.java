@@ -166,6 +166,7 @@ public class GUI_LOGIN extends javax.swing.JFrame {
         if (validateLogin(ID, password)) {
             JOptionPane.showMessageDialog(jFrame1, "Login successfully!");
             String name = getUserName(ID);
+            
             if (!(this.role == "Patient")){ // if the role type is not patient
                 this.dispose();
                 // Create an object for the home page gui

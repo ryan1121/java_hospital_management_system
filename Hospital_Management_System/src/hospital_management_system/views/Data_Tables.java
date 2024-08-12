@@ -6,6 +6,8 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Data_Tables extends JFrame {
+    private String role;
+    private String username;
 
     private JButton PatientButton;
     private JButton DoctorStaffSchedulingButton;
@@ -44,7 +46,10 @@ public class Data_Tables extends JFrame {
         }
     }
 
-    public Data_Tables(String role) {
+    public Data_Tables(String role, String username) {
+        this.role = role;
+        this.username = username;
+
         initComponents(role);
         configureButtons(role);
     }
@@ -90,10 +95,6 @@ public class Data_Tables extends JFrame {
     // Revalidate and repaint the frame to apply the new layout
     revalidate();
     repaint();
-    }
-
-    public Data_Tables() {
-        initComponents();
     }
 
     private void initComponents(String role) {
@@ -173,9 +174,10 @@ public class Data_Tables extends JFrame {
     }
     
     private void backLabelMouseClicked(java.awt.event.MouseEvent evt) {
-        // Implement the action you want to happen when "Back" is clicked.
-        // Example: You can close the current window or navigate to a previous one.
-        dispose(); // This will close the current window.
+        this.dispose();
+        // Create an object for the home page gui
+        Home_Page_GUI homepage_GUI = new Home_Page_GUI(this.role, this.username);
+        homepage_GUI.setVisible(true);
     }
     
     private void buttonActionPerformed(java.awt.event.ActionEvent evt, String tableName) {

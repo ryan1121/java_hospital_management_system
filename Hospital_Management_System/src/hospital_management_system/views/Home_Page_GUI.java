@@ -16,14 +16,14 @@ public class Home_Page_GUI extends javax.swing.JFrame {
     
     // Define a variable to store the role type of login user
     String role;
-    public static String username;
+    private String username;
 
     public Home_Page_GUI(String role_type, String username) {
         initComponents();
         
-        Home_Page_GUI.username = username; 
+        this.username = username; 
         this.role = role_type;  // assign the login role type to the variable
-        SelectRoleLabel.setText("Welcome back, " + Home_Page_GUI.username);
+        SelectRoleLabel.setText("Welcome back, " + this.username);
 
         if (this.role == "Admin"){  // 只有admin可以看见以及使用data analysis的按钮
             dataAnalysisButton.setVisible(true);
@@ -159,7 +159,7 @@ public class Home_Page_GUI extends javax.swing.JFrame {
     private void CheckDataButtonActionPerformed(java.awt.event.ActionEvent evt) {                                                   
         // TODO add your handling code here:
         this.dispose();
-        Data_Tables DataTableObj = new Data_Tables(this.role);
+        Data_Tables DataTableObj = new Data_Tables(this.role, this.username);
 
         DataTableObj.setVisible(true);
     }                                                  
