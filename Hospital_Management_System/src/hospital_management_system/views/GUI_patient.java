@@ -9,7 +9,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.*;
+import javax.swing.table.*;
+import java.awt.*;
+
 import hospital_management_system.MysqlConnect;
+import hospital_management_system.models.PatientHistory;
 
 /**
  *
@@ -21,8 +26,8 @@ public class GUI_patient extends javax.swing.JFrame {
      * Creates new form GUI_patient
      */
     public GUI_patient(String id) {
-        initComponents();
         this.id = id;
+        initComponents();
         fetchDataAndDisplay();
     }
 
@@ -34,7 +39,6 @@ public class GUI_patient extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
         jPanel1 = new javax.swing.JPanel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel7 = new javax.swing.JPanel();
@@ -79,68 +83,24 @@ public class GUI_patient extends javax.swing.JFrame {
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Personal Information"));
 
         patient_id.setText("patient_id");
-        patient_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_idActionPerformed(evt);
-            }
-        });
         patient_id.setEnabled(false);
-
         jLabel1.setText("Patient ID :");
-
         patient_name.setText("Full Name");
-        patient_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_nameActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Name :");
-
         jLabel15.setText("Gender :");
 
         jLabel16.setText("Date of Birth : ");
 
         patient_email.setText("Email");
-        patient_email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_emailActionPerformed(evt);
-            }
-        });
-
         jLabel4.setText("Email :");
-
         jLabel3.setText("Phone Number :");
 
         patient_phone.setText("phone");
-        patient_phone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_phoneActionPerformed(evt);
-            }
-        });
-
+        
         jLabel17.setText("Address :");
-
         patient_address.setText("Address");
-        patient_address.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_addressActionPerformed(evt);
-            }
-        });
-
         patient_address_line2.setText("line 2");
-        patient_address_line2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_address_line2ActionPerformed(evt);
-            }
-        });
-
         patient_address_line3.setText("line 3");
-        patient_address_line3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_address_line3ActionPerformed(evt);
-            }
-        });
 
         patient_gender.setText("Male");
 
@@ -263,12 +223,6 @@ public class GUI_patient extends javax.swing.JFrame {
 
         jLabel9.setText("Provider Name :");
 
-        providerName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                providerNameActionPerformed(evt);
-            }
-        });
-
         jLabel10.setText("Policy Number  :");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -381,19 +335,40 @@ public class GUI_patient extends javax.swing.JFrame {
         );
 
         jTabbedPane1.addTab("Information", jPanel7);
+        
+        PatientHistory patientHistoryObj = new PatientHistory();
+        ResultSet rs = patientHistoryObj.getPatientHistory(this.id);
 
-        patientHistory_jTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "History ID", "Event Type", "Date of Event", "Details"
+        // 准备 JTable 的模型数据
+        DefaultTableModel tableModel = new DefaultTableModel(
+            new String[] {"History ID", "Event Type", "Date of Event", "Details"}, 0
+        );
+
+        // 处理 ResultSet 数据
+        try {
+            while (rs != null && rs.next()) {
+                String historyID = rs.getString("HistoryID");
+                System.out.println(historyID);
+                String eventType = rs.getString("EventType");
+                System.out.println(eventType);
+                String eventDate = rs.getString("EventDate");
+                System.out.println(eventDate);
+                String details = rs.getString("Details");
+                System.out.println(details);
+
+                // 将数据添加到模型中
+                tableModel.addRow(new Object[] {historyID, eventType, eventDate, details});
             }
-        ));
-        jScrollPane3.setViewportView(patientHistory_jTable);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+       // 设置 JTable 的模型
+        patientHistory_jTable.setModel(tableModel);
+
+        // 设置 JTable 的模型和滚动面板
+        JScrollPane jScrollPane3 = new JScrollPane(patientHistory_jTable);
+        setupTable(patientHistory_jTable, tableModel, jScrollPane3);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -448,34 +423,6 @@ public class GUI_patient extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void patient_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_idActionPerformed
-
-    private void patient_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_nameActionPerformed
-
-    private void patient_phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_phoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_phoneActionPerformed
-
-    private void patient_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_emailActionPerformed
-
-    private void patient_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_addressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_addressActionPerformed
-
-    private void patient_address_line2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_address_line2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_address_line2ActionPerformed
-
-    private void patient_address_line3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_address_line3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_address_line3ActionPerformed
 
     private void backButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
         // TODO add your handling code here:
@@ -574,12 +521,7 @@ public class GUI_patient extends javax.swing.JFrame {
         }
     }   
 
-    private void providerNameActionPerformed(java.awt.event.ActionEvent evt) {                                             
-        // TODO add your handling code here:
-
-    }
-
-     private void fetchDataAndDisplay() {
+    private void fetchDataAndDisplay() {
         MysqlConnect db = new MysqlConnect();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -641,6 +583,77 @@ public class GUI_patient extends javax.swing.JFrame {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    private void setupTable(JTable table, DefaultTableModel model, JScrollPane scrollPane) {
+        table.setModel(model);
+        table.setIntercellSpacing(new Dimension(1, 1));
+        table.setShowHorizontalLines(true);
+        table.setShowVerticalLines(true);
+        table.setCellSelectionEnabled(false);
+        table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    
+        // 自动调整列宽以适应内容
+        for (int column = 0; column < table.getColumnCount(); column++) {
+            TableColumn tableColumn = table.getColumnModel().getColumn(column);
+            int preferredWidth = tableColumn.getMinWidth();
+            int maxWidth = tableColumn.getMaxWidth();
+    
+            for (int row = 0; row < table.getRowCount(); row++) {
+                TableCellRenderer cellRenderer = table.getCellRenderer(row, column);
+                Component c = table.prepareRenderer(cellRenderer, row, column);
+                int width = c.getPreferredSize().width + table.getIntercellSpacing().width;
+                preferredWidth = Math.max(preferredWidth, width);
+    
+                // 设置一个最大宽度，以防止列太宽
+                if (preferredWidth >= maxWidth) {
+                    preferredWidth = maxWidth;
+                    break;
+                }
+            }
+    
+            tableColumn.setPreferredWidth(preferredWidth);
+        }
+    
+        // 设置行高
+        table.setRowHeight(40); // 根据需要调整行高
+    
+        // 设置单元格自动换行的渲染器
+        table.setDefaultRenderer(Object.class, new WrappingCellRenderer());
+    
+        // 确保表头可见
+        table.getTableHeader().setReorderingAllowed(false);
+        scrollPane.setViewportView(table);
+        scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+    }
+    
+    private static class WrappingCellRenderer extends DefaultTableCellRenderer {
+        private final JTextArea textArea;
+    
+        public WrappingCellRenderer() {
+            textArea = new JTextArea();
+            textArea.setLineWrap(true);
+            textArea.setWrapStyleWord(true);
+            textArea.setOpaque(true);
+            textArea.setEditable(false);
+        }
+    
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            textArea.setText(value != null ? value.toString() : "");
+            textArea.setSize(table.getColumnModel().getColumn(column).getWidth(), textArea.getPreferredSize().height);
+            
+            if (isSelected) {
+                textArea.setBackground(table.getSelectionBackground());
+                textArea.setForeground(table.getSelectionForeground());
+            } else {
+                textArea.setBackground(table.getBackground());
+                textArea.setForeground(table.getForeground());
+            }
+    
+            return textArea;
         }
     }
 
