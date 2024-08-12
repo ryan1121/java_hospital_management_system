@@ -35,7 +35,6 @@ public class SupplyManagementController {
         this.supplyExpiryDateInput = supplyExpiryDateInput;
 
         this.model = new SupplyManagement(
-            panel,
             supplyIDInput,
             supplyNameInput,
             supplyStockQuantityInput,
@@ -49,6 +48,8 @@ public class SupplyManagementController {
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
         if (model.save()) {
             SupplyManagement.setNewSupplyID(supplyIDInput); // Reset the new supply ID
+        } else {
+            JOptionPane.showMessageDialog(panel, "Data saved unsuccessfully!");
         }
     }
 

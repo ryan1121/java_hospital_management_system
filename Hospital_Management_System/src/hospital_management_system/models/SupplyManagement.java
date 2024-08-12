@@ -7,17 +7,15 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 public class SupplyManagement {
-    private JPanel panel;
-    private String supplyID;
-    private String supplyName;
-    private int supplyStockQuantity;
-    private int supplyMinimumStock;
-    private int supplyMaximumStock;
-    private String supplierInformation;
-    private String supplyExpiryDate;
+    private JTextField supplyIDInput;
+    private JTextField supplyNameInput;
+    private JSpinner supplyStockQuantityInput;
+    private JSpinner supplyMinimumStockInput;
+    private JSpinner supplyMaximumStockInput;
+    private JTextArea supplierInformationInput;
+    private JFormattedTextField supplyExpiryDateInput;
 
     public SupplyManagement(
-        JPanel panel,
         JTextField supplyIDInput,
         JTextField supplyNameInput,
         JSpinner supplyStockQuantityInput,
@@ -26,48 +24,39 @@ public class SupplyManagement {
         JTextArea supplierInformationInput,
         JFormattedTextField supplyExpiryDateInput
     ) {
-        this.panel = panel;
-        this.supplyID = supplyIDInput.getText();
-        this.supplyName = supplyNameInput.getText();
-        System.out.println("    Check ID 1:" + supplyID);
-
-        System.out.println("    Check NAME 1:" + supplyName);
-        this.supplyStockQuantity = (Integer) supplyStockQuantityInput.getValue();
-        this.supplyMinimumStock = (Integer) supplyMinimumStockInput.getValue();
-        this.supplyMaximumStock = (Integer) supplyMaximumStockInput.getValue();
-        this.supplierInformation = supplierInformationInput.getText();
-        this.supplyExpiryDate = DateTimeUtils.formatDate(supplyExpiryDateInput.getText());
+        this.supplyIDInput = supplyIDInput;
+        this.supplyNameInput = supplyNameInput;
+        this.supplyStockQuantityInput = supplyStockQuantityInput;
+        this.supplyMinimumStockInput = supplyMinimumStockInput;
+        this.supplyMaximumStockInput = supplyMaximumStockInput;
+        this.supplierInformationInput = supplierInformationInput;
+        this.supplyExpiryDateInput = supplyExpiryDateInput;
     }
 
     public boolean save() {
-        System.out.println("    Check ID 2:" + supplyID);
+        String supplyID = supplyIDInput.getText();
+        String supplyName = supplyNameInput.getText();
+        int supplyStockQuantity = (int) supplyStockQuantityInput.getValue();
+        int supplyMinimumStock = (int) supplyMinimumStockInput.getValue();
+        int supplyMaximumStock = (int) supplyMaximumStockInput.getValue();
+        String supplierInformation = supplierInformationInput.getText();
+        String supplyExpiryDate = DateTimeUtils.formatDate(supplyExpiryDateInput.getText());
 
-        System.out.println("    Check NAME 2:" + supplyName);
+        MysqlConnect db = new MysqlConnect();
+        String[] supplyValues = {supplyID, supplyName, String.valueOf(supplyStockQuantity), String.valueOf(supplyMinimumStock), String.valueOf(supplyMaximumStock), supplierInformation, supplyExpiryDate};
 
-        if (supplyID == null || supplyID.isEmpty()) {
-            JOptionPane.showMessageDialog(panel, "You MUST enter supply ID !!");
-            return false;
-        } else if (supplyName == null || supplyName.isEmpty()) {
-            JOptionPane.showMessageDialog(panel, "You MUST enter supply name !!");
-            return false;
-        } else {
-            MysqlConnect db = new MysqlConnect();
-            String[] supplyValues = {supplyID, supplyName, String.valueOf(supplyStockQuantity), String.valueOf(supplyMinimumStock), String.valueOf(supplyMaximumStock), supplierInformation, supplyExpiryDate};
-
-            try {
-                boolean saveResult = db.saveData("MedicalSupplyManagement", "SupplyID, SupplyName, SupplyStockQuantity, SupplyMinimumStock, SupplyMaximumStock, SupplierInformation, SupplyExpiryDate", supplyValues);
-
-                if (saveResult) {
-                    JOptionPane.showMessageDialog(panel, "Medical supply data saved successfully!");
-                    return true;
-                } else {
-                    JOptionPane.showMessageDialog(panel, "Failed to save medical supply data!");
-                    return false;
-                }
-            } catch (SQLException e) {
-                JOptionPane.showMessageDialog(panel, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        try {
+            boolean saveResult = db.saveData("MedicalSupplyManagement", "SupplyID, SupplyName, SupplyStockQuantity, SupplyMinimumStock, SupplyMaximumStock, SupplierInformation, SupplyExpiryDate", supplyValues);
+            if (saveResult) {
+                JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Data saved unsuccessfully!");
                 return false;
             }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
         }
     }
 
@@ -88,24 +77,24 @@ public class SupplyManagement {
     }
     
     // Getters and setters 
-    public String getSupplyID() { return supplyID; }
-    public void setSupplyID(String supplyID) { this.supplyID = supplyID; }
+    public String getSupplyID() { return supplyIDInput; }
+    public void setSupplyID(String supplyIDInput) { this.supplyIDInput = supplyIDInput; }
     
-    public String getSupplyName() { return supplyName; }
-    public void setSupplyName(String supplyName) { this.supplyName = supplyName; }
+    public String getSupplyName() { return supplyNameInput; }
+    public void setSupplyName(String supplyNameInput) { this.supplyNameInput = supplyNameInput; }
     
-    public int getSupplyStockQuantity() { return supplyStockQuantity; }
-    public void setSupplyStockQuantity(int supplyStockQuantity) { this.supplyStockQuantity = supplyStockQuantity; }
+    public int getSupplyStockQuantity() { return supplyStockQuantityInput; }
+    public void setSupplyStockQuantity(int supplyStockQuantityInput) { this.supplyStockQuantityInput = supplyStockQuantityInput; }
     
-    public int getSupplyMinimumStock() { return supplyMinimumStock; }
-    public void setSupplyMinimumStock(int supplyMinimumStock) { this.supplyMinimumStock = supplyMinimumStock; }
+    public int getSupplyMinimumStock() { return supplyMinimumStockInput; }
+    public void setSupplyMinimumStock(int supplyMinimumStockInput) { this.supplyMinimumStockInput = supplyMinimumStockInput; }
     
-    public int getSupplyMaximumStock() { return supplyMaximumStock; }
-    public void setSupplyMaximumStock(int supplyMaximumStock) { this.supplyMaximumStock = supplyMaximumStock; }
+    public int getSupplyMaximumStock() { return supplyMaximumStockInput; }
+    public void setSupplyMaximumStock(int supplyMaximumStockInput) { this.supplyMaximumStockInput = supplyMaximumStockInput; }
 
-    public String getSupplierInformation() { return supplierInformation; }
-    public void setSupplierInformation(String supplierInformation) { this.supplierInformation = supplierInformation; }
+    public String getSupplierInformation() { return supplierInformationInput; }
+    public void setSupplierInformation(String supplierInformationInput) { this.supplierInformationInput = supplierInformationInput; }
     
-    public String getSupplyExpiryDate() { return supplyExpiryDate; }
-    public void setSupplyExpiryDate(String supplyExpiryDate) { this.supplyExpiryDate = supplyExpiryDate; }
+    public String getSupplyExpiryDate() { return supplyExpiryDateInput; }
+    public void setSupplyExpiryDate(String supplyExpiryDateInput) { this.supplyExpiryDateInput = supplyExpiryDateInput; }
 }

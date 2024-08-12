@@ -2224,7 +2224,7 @@
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                                      <Component id="MinimunStock" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="MinimumStock" alignment="0" max="32767" attributes="0"/>
                                                       <Component id="MaximumStock" alignment="0" pref="122" max="32767" attributes="0"/>
                                                       <Component id="StockQuantity" alignment="0" max="32767" attributes="0"/>
                                                   </Group>
@@ -2232,7 +2232,7 @@
                                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                                       <Component id="SupplyMaximumStock_input" alignment="0" pref="81" max="32767" attributes="0"/>
                                                       <Component id="SupplyStockQuantity_input" max="32767" attributes="0"/>
-                                                      <Component id="SupplyMinimunStock_input" alignment="0" max="32767" attributes="0"/>
+                                                      <Component id="SupplyMinimumStock_input" alignment="0" max="32767" attributes="0"/>
                                                   </Group>
                                               </Group>
                                           </Group>
@@ -2265,8 +2265,8 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="MinimunStock" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="SupplyMinimunStock_input" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="MinimumStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="SupplyMinimumStock_input" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -2342,7 +2342,7 @@
                     </Container>
                     <Component class="javax.swing.JSpinner" name="SupplyStockQuantity_input">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="MinimunStock">
+                    <Component class="javax.swing.JLabel" name="MinimumStock">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Minimum Stock Level:"/>
                       </Properties>
@@ -2352,7 +2352,7 @@
                         <Property name="text" type="java.lang.String" value="Maximum Stock Level:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="SupplyMinimunStock_input">
+                    <Component class="javax.swing.JSpinner" name="SupplyMinimumStock_input">
                     </Component>
                     <Component class="javax.swing.JSpinner" name="SupplyMaximumStock_input">
                     </Component>
@@ -2421,13 +2421,13 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="StockQuantity1" max="32767" attributes="0"/>
-                                          <Component id="MinimunStock1" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="MinimumStock1" alignment="0" max="32767" attributes="0"/>
                                           <Component id="MaximumStock1" alignment="0" pref="119" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="InventoryMaximumStock_input1" alignment="1" pref="81" max="32767" attributes="0"/>
-                                          <Component id="InventoryMinimunStock_input1" alignment="1" pref="81" max="32767" attributes="0"/>
+                                          <Component id="InventoryMinimumStock_input1" alignment="1" pref="81" max="32767" attributes="0"/>
                                           <Component id="InventoryStockQuantity_input1" alignment="1" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -2456,8 +2456,8 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="MinimunStock1" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="InventoryMinimunStock_input1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="MinimumStock1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="InventoryMinimumStock_input1" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
@@ -2536,7 +2536,7 @@
                     </Container>
                     <Component class="javax.swing.JSpinner" name="InventoryStockQuantity_input1">
                     </Component>
-                    <Component class="javax.swing.JLabel" name="MinimunStock1">
+                    <Component class="javax.swing.JLabel" name="MinimumStock1">
                       <Properties>
                         <Property name="text" type="java.lang.String" value="Minimum Stock Level:"/>
                       </Properties>
@@ -2546,7 +2546,7 @@
                         <Property name="text" type="java.lang.String" value="Maximum Stock Level:"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JSpinner" name="InventoryMinimunStock_input1">
+                    <Component class="javax.swing.JSpinner" name="InventoryMinimumStock_input1">
                     </Component>
                     <Component class="javax.swing.JSpinner" name="InventoryMaximumStock_input1">
                     </Component>

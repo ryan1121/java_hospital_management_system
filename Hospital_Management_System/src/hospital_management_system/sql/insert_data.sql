@@ -467,7 +467,7 @@ INSERT INTO NurseStaffScheduling (NurseID, StaffScheduleDate, ShiftStartTime, Sh
 
 
 -- 插入 InventoryManagement 表的三条数据
-INSERT INTO InventoryManagement (InventoryID, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimunStock, SupplierInformation, InventoryExpirydate) VALUES
+INSERT INTO InventoryManagement (InventoryID, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimumStock, SupplierInformation, InventoryExpirydate) VALUES
 ('INV001', 'Syringe', 500, 1000, 100, 'MedSupply Co.', '2024-12-31'),
 ('INV002', 'Bandages', 300, 700, 50, 'HealthPro Ltd.', '2025-01-15'),
 ('INV003', 'Antiseptic Solution', 200, 500, 100, 'MediCare Supplies', '2024-11-30'),
@@ -490,7 +490,7 @@ INSERT INTO InventoryManagement (InventoryID, ItemName, InventoryStockQuantity, 
 ('INV020', 'CPAP Machines', 25, 50, 10, 'SleepMed', '2024-11-30');
 
 -- 插入 MedicalSupplyManagement 表的三条数据
-INSERT INTO MedicalSupplyManagement (SupplyID, SupplyName, SupplyStockQuantity, SupplyMinimunStock, SupplyMaximumStock, SupplierInformation, SupplyExpiryDate) VALUES
+INSERT INTO MedicalSupplyManagement (SupplyID, SupplyName, SupplyStockQuantity, SupplyMinimumStock, SupplyMaximumStock, SupplierInformation, SupplyExpiryDate) VALUES
 ('SUP001', 'Pain Reliever', 150, 50, 300, 'PharmaCo', '2024-12-31'),
 ('SUP002', 'Antibiotics', 120, 40, 250, 'MediHealth', '2024-11-15'),
 ('SUP003', 'Antihistamines', 100, 30, 200, 'AllergyCare', '2025-01-10'),

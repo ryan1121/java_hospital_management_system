@@ -253,7 +253,7 @@ CREATE TABLE InventoryManagement (
     ItemName VARCHAR(100),
     InventoryStockQuantity INT,
     InventoryMaximumStock INT,
-    InventoryMinimunStock INT,
+    InventoryMinimumStock INT,
     SupplierInformation TEXT,
     InventoryExpirydate DATE
 );
@@ -263,7 +263,7 @@ CREATE TABLE MedicalSupplyManagement (
     SupplyID VARCHAR(25) PRIMARY KEY,
     SupplyName VARCHAR(100),
     SupplyStockQuantity INT,
-    SupplyMinimunStock INT,
+    SupplyMinimumStock INT,
     SupplyMaximumStock INT,
     SupplierInformation TEXT,
     SupplyExpiryDate DATE

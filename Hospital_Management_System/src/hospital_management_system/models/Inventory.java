@@ -40,13 +40,13 @@ public class Inventory {
         int maxStock = (int) maximumStock.getValue();
         int minStock = (int) minimumStock.getValue();
         String supplierInfo = supplierInformation.getText();
-        String date = expiryDate.getText();
+        String date = DateTimeUtils.formatDate(expiryDate.getText());
 
         MysqlConnect db = new MysqlConnect();
         String[] inventoryValues = {invID, name, String.valueOf(stockQty), String.valueOf(maxStock), String.valueOf(minStock), supplierInfo, date};
 
         try {
-            boolean saveResult = db.saveData("InventoryManagement", "InventoryID, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimunStock, SupplierInformation, InventoryExpirydate", inventoryValues);
+            boolean saveResult = db.saveData("InventoryManagement", "InventoryID, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimumStock, SupplierInformation, InventoryExpirydate", inventoryValues);
             if (saveResult) {
                 JOptionPane.showMessageDialog(null, "Data saved successfully!");
                 return true;

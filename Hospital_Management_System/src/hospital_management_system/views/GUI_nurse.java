@@ -228,7 +228,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         SupplyName_input = new javax.swing.JTextField();
         SupplierInformation_input = new javax.swing.JTextArea();
         SupplyStockQuantity_input = new javax.swing.JSpinner();
-        SupplyMinimunStock_input = new javax.swing.JSpinner();
+        SupplyMinimumStock_input = new javax.swing.JSpinner();
         SupplyMaximumStock_input = new javax.swing.JSpinner();
         SupplyExpiryDate = new javax.swing.JFormattedTextField();
         SupplyExpiryDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
@@ -238,19 +238,29 @@ public class GUI_nurse extends javax.swing.JFrame {
         SupplyID = new javax.swing.JLabel();
         SupplyName = new javax.swing.JLabel();
         StockQuantity = new javax.swing.JLabel();
-        MinimunStock = new javax.swing.JLabel();
+        MinimumStock = new javax.swing.JLabel();
         MaximumStock = new javax.swing.JLabel();
         SupplierInformation = new javax.swing.JLabel();
         ExpiryDate = new javax.swing.JLabel();
         jScrollPane8 = new javax.swing.JScrollPane();
 
-        SupplyManagement SupplyManagementObj = new SupplyManagement(MedicalSupplyManagement, SupplyID_input, SupplyName_input, SupplyStockQuantity_input, SupplyMinimunStock_input, SupplyMaximumStock_input, SupplierInformation_input, SupplyExpiryDate);
+        SupplyManagement SupplyManagementObj = new SupplyManagement(SupplyID_input, SupplyName_input, SupplyStockQuantity_input, SupplyMinimumStock_input, SupplyMaximumStock_input, SupplierInformation_input, SupplyExpiryDate);
         SupplyManagementObj.setNewSupplyID(SupplyID_input);
         SupplyID_input.setEnabled(false);
+        
+        SupplyManagementController supplyManagementController = new SupplyManagementController(MedicalSupplyManagement, SupplyID_input, SupplyName_input, SupplyStockQuantity_input, SupplyMinimumStock_input, SupplyMaximumStock_input, SupplierInformation_input, SupplyExpiryDate);
 
-        SupplyManagementController supplyManagementController = new SupplyManagementController(MedicalSupplyManagement, SupplyID_input, SupplyName_input, SupplyStockQuantity_input, SupplyMinimunStock_input, SupplyMaximumStock_input, SupplierInformation_input, SupplyExpiryDate);
-        System.out.println("    Check: " + SupplyName_input.getText());
+        medical_supply_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supplyManagementController.handleSaveButtonActionPerformed(evt);
+            }
+        });
 
+        medical_supply_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                supplyManagementController.handleClearButtonActionPerformed(evt);
+            }
+        });
 
         //InventoryManagement input fields
         InventoryManagement = new javax.swing.JPanel();
@@ -258,7 +268,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         InventoryItemName_input = new javax.swing.JTextField();
         InventoryStockQuantity_input = new javax.swing.JSpinner();
         InventoryMaximumStock_input = new javax.swing.JSpinner();
-        InventoryMinimunStock_input = new javax.swing.JSpinner();
+        InventoryMinimumStock_input = new javax.swing.JSpinner();
         InventorySupplierInformation_input = new javax.swing.JTextArea();
         InventoryExpirydate_input = new javax.swing.JFormattedTextField();
         inventory_save = new javax.swing.JButton();
@@ -270,14 +280,14 @@ public class GUI_nurse extends javax.swing.JFrame {
         StockQuantity1 = new javax.swing.JLabel();
         SupplierInformation1 = new javax.swing.JLabel();
         jScrollPane9 = new javax.swing.JScrollPane();
-        MinimunStock1 = new javax.swing.JLabel();
+        MinimumStock1 = new javax.swing.JLabel();
         MaximumStock1 = new javax.swing.JLabel();
 
-        Inventory InventoryObj = new Inventory(InventoryID_input, InventoryItemName_input, InventoryStockQuantity_input, InventoryMaximumStock_input, InventoryMinimunStock_input, InventorySupplierInformation_input, InventoryExpirydate_input);
+        Inventory InventoryObj = new Inventory(InventoryID_input, InventoryItemName_input, InventoryStockQuantity_input, InventoryMaximumStock_input, InventoryMinimumStock_input, InventorySupplierInformation_input, InventoryExpirydate_input);
         InventoryObj.setNewInventoryID(InventoryID_input);
         InventoryID_input.setEnabled(false);
 
-        InventoryController inventoryController = new InventoryController(InventoryManagement, InventoryID_input, InventoryItemName_input, InventoryStockQuantity_input, InventoryMaximumStock_input, InventoryMinimunStock_input, InventorySupplierInformation_input, InventoryExpirydate_input);
+        InventoryController inventoryController = new InventoryController(InventoryManagement, InventoryID_input, InventoryItemName_input, InventoryStockQuantity_input, InventoryMaximumStock_input, InventoryMinimumStock_input, InventorySupplierInformation_input, InventoryExpirydate_input);
 
         inventory_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1638,11 +1648,6 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         SupplyName.setText("Supply Name:");
 
-        SupplyName_input.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SupplyName_inputActionPerformed(evt);
-            }
-        });
 
         SupplierInformation.setText("Supplier Information:");
 
@@ -1650,16 +1655,11 @@ public class GUI_nurse extends javax.swing.JFrame {
         SupplierInformation_input.setRows(5);
         jScrollPane8.setViewportView(SupplierInformation_input);
 
-        MinimunStock.setText("Minimum Stock Level:");
+        MinimumStock.setText("Minimum Stock Level:");
 
         MaximumStock.setText("Maximum Stock Level:");
 
         medical_supply_save.setText("Save");
-        medical_supply_save.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                medical_supply_saveActionPerformed(evt);
-            }
-        });
 
         medical_supply_clear.setText("Clear");
 
@@ -1692,14 +1692,14 @@ public class GUI_nurse extends javax.swing.JFrame {
                                     .addComponent(SupplyExpiryDate, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(MedicalSupplyManagementLayout.createSequentialGroup()
                                     .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(MinimunStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(MinimumStock, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(MaximumStock, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
                                         .addComponent(StockQuantity, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(SupplyMaximumStock_input, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                                         .addComponent(SupplyStockQuantity_input)
-                                        .addComponent(SupplyMinimunStock_input))))
+                                        .addComponent(SupplyMinimumStock_input))))
                             .addGap(180, 180, 180))
                         .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING)))
                 .addContainerGap(9, Short.MAX_VALUE))
@@ -1721,8 +1721,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addComponent(SupplyStockQuantity_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MinimunStock)
-                    .addComponent(SupplyMinimunStock_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(MinimumStock)
+                    .addComponent(SupplyMinimumStock_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MedicalSupplyManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MaximumStock)
@@ -1770,7 +1770,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         InventorySupplierInformation_input.setRows(5);
         jScrollPane9.setViewportView(InventorySupplierInformation_input);
 
-        MinimunStock1.setText("Minimum Stock Level:");
+        MinimumStock1.setText("Minimum Stock Level:");
 
         MaximumStock1.setText("Maximum Stock Level:");
 
@@ -1814,12 +1814,12 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addGroup(InventoryManagementLayout.createSequentialGroup()
                         .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(StockQuantity1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(MinimunStock1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(MinimumStock1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(MaximumStock1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(InventoryMaximumStock_input, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
-                            .addComponent(InventoryMinimunStock_input, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
+                            .addComponent(InventoryMinimumStock_input, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 81, Short.MAX_VALUE)
                             .addComponent(InventoryStockQuantity_input, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap(8, Short.MAX_VALUE))
         );
@@ -1840,8 +1840,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addComponent(InventoryStockQuantity_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(MinimunStock1)
-                    .addComponent(InventoryMinimunStock_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(MinimumStock1)
+                    .addComponent(InventoryMinimumStock_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(MaximumStock1)
@@ -2632,7 +2632,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTextField InventoryID_input;
     private javax.swing.JPanel InventoryManagement;
     private javax.swing.JSpinner InventoryMaximumStock_input;
-    private javax.swing.JSpinner InventoryMinimunStock_input;
+    private javax.swing.JSpinner InventoryMinimumStock_input;
     private javax.swing.JSpinner InventoryStockQuantity_input;
     private javax.swing.JPanel Invoice;
     private javax.swing.JButton InvoiceClearButton;
@@ -2647,8 +2647,8 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JLabel MaximumStock1;
     private javax.swing.JComboBox<String> Medication_comboxBox;
     private javax.swing.JLabel Medication_label;
-    private javax.swing.JLabel MinimunStock;
-    private javax.swing.JLabel MinimunStock1;
+    private javax.swing.JLabel MinimumStock;
+    private javax.swing.JLabel MinimumStock1;
     private javax.swing.JLabel Notes_label;
     private javax.swing.JTabbedPane NurseTab;
     private javax.swing.JLabel PatientID;
@@ -2697,7 +2697,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTextField SupplyID_input;
     private javax.swing.JPanel MedicalSupplyManagement;
     private javax.swing.JSpinner SupplyMaximumStock_input;
-    private javax.swing.JSpinner SupplyMinimunStock_input;
+    private javax.swing.JSpinner SupplyMinimumStock_input;
     private javax.swing.JTextField SupplyName_input;
     private javax.swing.JSpinner SupplyStockQuantity_input;
     private javax.swing.JPanel TranferManagement_Panel;
