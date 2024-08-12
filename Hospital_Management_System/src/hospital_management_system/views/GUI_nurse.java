@@ -255,12 +255,12 @@ public class GUI_nurse extends javax.swing.JFrame {
         //InventoryManagement input fields
         InventoryManagement = new javax.swing.JPanel();
         InventoryID_input = new javax.swing.JTextField();
-        ItemName_input = new javax.swing.JTextField();
-        InventorySupplierInformation_input = new javax.swing.JTextArea();
+        InventoryItemName_input = new javax.swing.JTextField();
         InventoryStockQuantity_input = new javax.swing.JSpinner();
-        InventoryMinimunStock_input = new javax.swing.JSpinner();
         InventoryMaximumStock_input = new javax.swing.JSpinner();
-        InventoryExpirydate = new javax.swing.JFormattedTextField();
+        InventoryMinimunStock_input = new javax.swing.JSpinner();
+        InventorySupplierInformation_input = new javax.swing.JTextArea();
+        InventoryExpirydate_input = new javax.swing.JFormattedTextField();
         inventory_save = new javax.swing.JButton();
         inventory_clear = new javax.swing.JButton();
 
@@ -272,6 +272,24 @@ public class GUI_nurse extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         MinimunStock1 = new javax.swing.JLabel();
         MaximumStock1 = new javax.swing.JLabel();
+
+        Inventory InventoryObj = new Inventory(InventoryID_input, InventoryItemName_input, InventoryStockQuantity_input, InventoryMaximumStock_input, InventoryMinimunStock_input, InventorySupplierInformation_input, InventoryExpirydate_input);
+        InventoryObj.setNewInventoryID(InventoryID_input);
+        InventoryID_input.setEnabled(false);
+
+        InventoryController inventoryController = new InventoryController(InventoryManagement, InventoryID_input, InventoryItemName_input, InventoryStockQuantity_input, InventoryMaximumStock_input, InventoryMinimunStock_input, InventorySupplierInformation_input, InventoryExpirydate_input);
+
+        inventory_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inventoryController.handleSaveButtonActionPerformed(evt);
+            }
+        });
+
+        inventory_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                inventoryController.handleClearButtonActionPerformed(evt);
+            }
+        });
 
         Payment = new javax.swing.JPanel();
 
@@ -1736,9 +1754,9 @@ public class GUI_nurse extends javax.swing.JFrame {
             }
         });
 
-        ItemName_input.addActionListener(new java.awt.event.ActionListener() {
+        InventoryItemName_input.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ItemName_inputActionPerformed(evt);
+                InventoryItemName_inputActionPerformed(evt);
             }
         });
 
@@ -1782,11 +1800,11 @@ public class GUI_nurse extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(InventoryID_input, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ItemName_input, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(InventoryItemName_input, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(InventoryManagementLayout.createSequentialGroup()
                         .addComponent(ExpiryDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(InventoryExpirydate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(InventoryExpirydate_input, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(InventoryManagementLayout.createSequentialGroup()
                             .addComponent(inventory_save)
@@ -1815,7 +1833,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ItemName)
-                    .addComponent(ItemName_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(InventoryItemName_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(StockQuantity1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1835,7 +1853,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ExpiryDate1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(InventoryExpirydate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(InventoryExpirydate_input, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(InventoryManagementLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inventory_save)
@@ -2609,7 +2627,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTextField InvoiceID_input;
     private javax.swing.JLabel Instructions_label;
     private javax.swing.JTextField Insurance_Details1;
-    private javax.swing.JFormattedTextField InventoryExpirydate;
+    private javax.swing.JFormattedTextField InventoryExpirydate_input;
     private javax.swing.JLabel InventoryID;
     private javax.swing.JTextField InventoryID_input;
     private javax.swing.JPanel InventoryManagement;
@@ -2624,7 +2642,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTable InvoiceTable;
     private javax.swing.JLabel SupplyName;
     private javax.swing.JLabel ItemName;
-    private javax.swing.JTextField ItemName_input;
+    private javax.swing.JTextField InventoryItemName_input;
     private javax.swing.JLabel MaximumStock;
     private javax.swing.JLabel MaximumStock1;
     private javax.swing.JComboBox<String> Medication_comboxBox;

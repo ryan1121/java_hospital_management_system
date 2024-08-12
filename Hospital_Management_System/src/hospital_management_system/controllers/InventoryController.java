@@ -1,92 +1,60 @@
+package hospital_management_system.controllers;
+
+import hospital_management_system.models.Inventory;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.sql.SQLException;
+import javax.swing.*;
 
 public class InventoryController {
     private Inventory model;
-    private JPanel InventoryManagement;
-    private JTextField InventoryID_input;
-    private JTextField ItemName_input;
-    private JTextArea InventorySupplierInformation_input;
-    private JSpinner InventoryStockQuantity_input;
-    private JSpinner InventoryMinimunStock_input;
-    private JSpinner InventoryMaximumStock_input;
-    private JFormattedTextField InventoryExpirydate;
-    private JButton inventory_save;
-    private JButton inventory_clear;
+    private JPanel panel;
+    private JTextField invIDInput;
+    private JTextField itemNameInput;
+    private JSpinner stockQtyInput;
+    private JSpinner maxStockInput;
+    private JSpinner minStockInput;
+    private JTextArea supplierInfoInput;
+    private JFormattedTextField expiryDateInput;
 
     public InventoryController(
-        JPanel inventoryManagement, 
-        JTextField inventoryID_input, 
-        JTextField itemName_input,
-        JTextArea inventorySupplierInformation_input,
-        JSpinner inventoryStockQuantity_input, 
-        JSpinner inventoryMinimunStock_input,
-        JSpinner inventoryMaximumStock_input, 
-        JFormattedTextField inventoryExpirydate,
-        JButton inventory_save, 
-        JButton inventory_clear
+        JPanel panel,
+        JTextField invIDInput,
+        JTextField itemNameInput,
+        JSpinner stockQtyInput,
+        JSpinner maxStockInput,
+        JSpinner minStockInput,
+        JTextArea supplierInfoInput,
+        JFormattedTextField expiryDateInput
     ) {
-        this.InventoryManagement = inventoryManagement;
-        this.InventoryID_input = inventoryID_input;
-        this.ItemName_input = itemName_input;
-        this.InventorySupplierInformation_input = inventorySupplierInformation_input;
-        this.InventoryStockQuantity_input = inventoryStockQuantity_input;
-        this.InventoryMinimunStock_input = inventoryMinimunStock_input;
-        this.InventoryMaximumStock_input = inventoryMaximumStock_input;
-        this.InventoryExpirydate = inventoryExpirydate;
-        this.inventory_save = inventory_save;
-        this.inventory_clear = inventory_clear;
-
-        // Initialize the model
-        this.model = new Inventory("", "", "", "", 0, 0, 0, null);
-
-        // Add action listeners
-        this.inventory_save.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                saveInventory();
-            }
-        });
-
-        this.inventory_clear.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                clearInventory();
-            }
-        });
+        this.panel = panel;
+        this.invIDInput = invIDInput;
+        this.itemNameInput = itemNameInput;
+        this.stockQtyInput = stockQtyInput;
+        this.maxStockInput = maxStockInput;
+        this.minStockInput = minStockInput;
+        this.supplierInfoInput = supplierInfoInput;
+        this.expiryDateInput = expiryDateInput;
+        this.model = new Inventory(
+            invIDInput, 
+            itemNameInput, 
+            stockQtyInput, 
+            maxStockInput, 
+            minStockInput, 
+            supplierInfoInput, 
+            expiryDateInput
+        );
     }
 
-    // Save inventory data
-    private void saveInventory() {
-        model.setInventoryID(InventoryID_input.getText());
-        model.setItemName(ItemName_input.getText());
-        model.setSupplierInformation(InventorySupplierInformation_input.getText());
-        model.setStockQuantity((int) InventoryStockQuantity_input.getValue());
-        model.setMinimumStock((int) InventoryMinimunStock_input.getValue());
-        model.setMaximumStock((int) InventoryMaximumStock_input.getValue());
-
-        try {
-            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
-            model.setExpiryDate(dateFormat.parse(InventoryExpirydate.getText()));
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public void handleSaveButtonActionPerformed(ActionEvent evt) {
+        if (model.save()) {
+            Inventory.setNewInventoryID(invIDInput);  // Reset the new inventory ID
+        } else {
+            JOptionPane.showMessageDialog(panel, "Data saved unsuccessfully!");
         }
-
-        // Save the model data to the database
-        model.save();
     }
 
-    // Clear inventory fields
-    private void clearInventory() {
-        model.clear();
-        InventoryID_input.setText("");
-        ItemName_input.setText("");
-        InventorySupplierInformation_input.setText("");
-        InventoryStockQuantity_input.setValue(0);
-        InventoryMinimunStock_input.setValue(0);
-        InventoryMaximumStock_input.setValue(0);
-        InventoryExpirydate.setText("");
+    public void handleClearButtonActionPerformed(ActionEvent evt) {
+        model.clear(itemNameInput, stockQtyInput, maxStockInput, minStockInput, supplierInfoInput, expiryDateInput);
+        Inventory.setNewInventoryID(invIDInput); // Ensure the inventoryID is updated
     }
 }

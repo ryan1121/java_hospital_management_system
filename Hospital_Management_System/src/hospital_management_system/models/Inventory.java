@@ -1,48 +1,80 @@
-public class Inventory {
-    private String inventoryID;
-    private String itemName;
-    private String itemCode;
-    private String supplierInformation;
-    private int stockQuantity;
-    private int minimumStock;
-    private int maximumStock;
-    private String expiryDate;
+package hospital_management_system.models;
+import hospital_management_system.MysqlConnect;
+import hospital_management_system.utils.DateTimeUtils;
 
-    // Constructor
+import java.sql.SQLException;
+
+import javax.swing.*;
+
+public class Inventory {
+    private JTextField inventoryID;
+    private JTextField itemName;
+    private JSpinner stockQuantity;
+    private JSpinner maximumStock;
+    private JSpinner minimumStock;
+    private JTextArea supplierInformation;
+    private JFormattedTextField expiryDate;
+
     public Inventory(
-        String inventoryID, 
-        String itemName, 
-        String supplierInformation, 
-        int stockQuantity, 
-        int minimumStock, 
-        int maximumStock, 
-        String expiryDate
+        JTextField inventoryID,
+        JTextField itemName,
+        JSpinner stockQuantity,
+        JSpinner maximumStock,
+        JSpinner minimumStock,
+        JTextArea supplierInformation,
+        JFormattedTextField expiryDate
     ) {
         this.inventoryID = inventoryID;
         this.itemName = itemName;
-        this.supplierInformation = supplierInformation;
         this.stockQuantity = stockQuantity;
-        this.minimumStock = minimumStock;
         this.maximumStock = maximumStock;
+        this.minimumStock = minimumStock;
+        this.supplierInformation = supplierInformation;
         this.expiryDate = expiryDate;
     }
-    
-    // Method to save inventory to the database
-    public void save() {
-        // Implement database save logic here
-        System.out.println("Saving inventory to the database...");
-        // For example, execute SQL insert statement
+
+    public boolean save() {
+        String invID = inventoryID.getText();
+        String name = itemName.getText();
+        int stockQty = (int) stockQuantity.getValue();
+        int maxStock = (int) maximumStock.getValue();
+        int minStock = (int) minimumStock.getValue();
+        String supplierInfo = supplierInformation.getText();
+        String date = expiryDate.getText();
+
+        MysqlConnect db = new MysqlConnect();
+        String[] inventoryValues = {invID, name, String.valueOf(stockQty), String.valueOf(maxStock), String.valueOf(minStock), supplierInfo, date};
+
+        try {
+            boolean saveResult = db.saveData("InventoryManagement", "InventoryID, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimunStock, SupplierInformation, InventoryExpirydate", inventoryValues);
+            if (saveResult) {
+                JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Data saved unsuccessfully!");
+                return false;
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            return false;
+        }
     }
 
-    // Method to clear all fields
-    public void clear() {
-        inventoryID = "";
-        itemName = "";
-        supplierInformation = "";
-        stockQuantity = 0;
-        minimumStock = 0;
-        maximumStock = 0;
-        expiryDate = null;
+    public void clear(JTextField itemName,  JSpinner stockQuantity, JSpinner maximumStock, JSpinner minimumStock, JTextArea supplierInformation, JFormattedTextField expiryDate) {
+        itemName.setText("");
+        stockQuantity.setValue(0);
+        maximumStock.setValue(0);
+        minimumStock.setValue(0);
+        supplierInformation.setText("");
+        expiryDate.setText("");
+    }
+
+    
+    public static String setNewInventoryID(JTextField inventoryID) {
+        MysqlConnect db = new MysqlConnect();
+        String newinventoryID = db.generateNewId("InventoryManagement", "INV");
+        inventoryID.setText(newinventoryID);
+        return newinventoryID;
     }
 
     // Getters and Setters
@@ -64,6 +96,6 @@ public class Inventory {
     public int getMaximumStock() { return maximumStock; }
     public void setMaximumStock(int maximumStock) { this.maximumStock = maximumStock; }
 
-    public Date getExpiryDate() { return expiryDate; }
-    public void setExpiryDate(Date expiryDate) { this.expiryDate = expiryDate; }
+    public String getExpiryDate() { return expiryDate; }
+    public void setExpiryDate(String expiryDate) { this.expiryDate = expiryDate; }
 }
