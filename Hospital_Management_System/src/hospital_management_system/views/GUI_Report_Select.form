@@ -156,7 +156,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="MonthlyInvoiceStatButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Monthyly Invoice Stats"/>
+        <Property name="text" type="java.lang.String" value="monthly Invoice Stats"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MonthlyInvoiceStatButtonActionPerformed"/>
@@ -164,7 +164,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="MonthlyPaymentStatButton">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Monthyly Payment Stats"/>
+        <Property name="text" type="java.lang.String" value="monthly Payment Stats"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MonthlyPaymentStatButtonActionPerformed"/>

@@ -96,14 +96,14 @@ public class GUI_Report_Select extends JFrame {
             }
         });
 
-        MonthlyInvoiceStatButton.setText("Monthyly Invoice Stats");
+        MonthlyInvoiceStatButton.setText("monthly Invoice Stats");
         MonthlyInvoiceStatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MonthlyInvoiceStatButtonActionPerformed(evt);
             }
         });
 
-        MonthlyPaymentStatButton.setText("Monthyly Payment Stats");
+        MonthlyPaymentStatButton.setText("monthly Payment Stats");
         MonthlyPaymentStatButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MonthlyPaymentStatButtonActionPerformed(evt);
