@@ -13,6 +13,8 @@ import hospital_management_system.controllers.InvoiceController;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+
 import java.sql.*;
 
 /**
@@ -21,14 +23,23 @@ import java.sql.*;
  */
 public class GUI_Invoice extends javax.swing.JFrame {
 
-    private Invoice invoiceModel;
-    private InvoiceController invoiceController;
+    private String patientId;
+    private String invoiceId;
+
+    private MysqlConnect db;
 
     /**
      * Creates new form Invoice
      */
-    public GUI_Invoice() {
+    public GUI_Invoice(String invoiceId, String patientId) {
+        db = new MysqlConnect();
+        this.patientId = patientId;
+        this.invoiceId = invoiceId;
+
         initComponents();
+        
+        // Call method to display data
+        displayInvoiceData(invoiceId, patientId);
     }
 
     /**
@@ -51,7 +62,6 @@ public class GUI_Invoice extends javax.swing.JFrame {
         InvoiceDue_label = new javax.swing.JLabel();
         From_address = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        InvoiceTable = new javax.swing.JTable();
         Total_label = new javax.swing.JLabel();
         AmountPaid_label = new javax.swing.JLabel();
         BalanceDue_label = new javax.swing.JLabel();
@@ -70,6 +80,7 @@ public class GUI_Invoice extends javax.swing.JFrame {
         Total = new javax.swing.JLabel();
         AmountPaid = new javax.swing.JLabel();
         BalanceDue = new javax.swing.JLabel();
+
         PatientID_display = new javax.swing.JLabel();
         PatientName_display = new javax.swing.JLabel();
         InvoiceNo_display = new javax.swing.JLabel();
@@ -78,6 +89,7 @@ public class GUI_Invoice extends javax.swing.JFrame {
         TotalAmount_display = new javax.swing.JLabel();
         AmountPaid_display = new javax.swing.JLabel();
         BalanceDue_display = new javax.swing.JLabel();
+        InvoiceTable = new javax.swing.JTable();
 
         jTextField1.setText("jTextField1");
 
@@ -89,7 +101,7 @@ public class GUI_Invoice extends javax.swing.JFrame {
 
         jLabel7.setText("jLabel7");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         PatientID.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Invoice", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
@@ -105,14 +117,17 @@ public class GUI_Invoice extends javax.swing.JFrame {
         InvoiceTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+           
             },
             new String [] {
                 "Description", "RM / item", "QTY", "Total"
             }
-        ));
+        ) {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // All cells are non-editable
+            }
+        });
         jScrollPane2.setViewportView(InvoiceTable);
 
         Total_label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -309,7 +324,69 @@ public class GUI_Invoice extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
+    // Method to fetch and display invoice data
+    public void displayInvoiceData(String invoiceId, String patientId) {
+        // Prepare the query
+        String query = "SELECT Invoice.InvoiceID, Invoice.InvoiceDate, Invoice.InvoiceDue, Invoice.TotalPayment, " +
+                       "Invoice.AmountPaid, Invoice.BalanceDue, Patients.patient_name " +
+                       "FROM Invoice " +
+                       "JOIN Patients ON Invoice.PatientID = Patients.patient_id " +
+                       "WHERE Invoice.InvoiceID = '" + invoiceId + "' AND Invoice.PatientID = '" + patientId +"'";
+
+        try (ResultSet rs = db.executeQuery(query)) {
+            if (rs.next()) {
+                // Assuming columns names in the database
+                String invoiceNo = rs.getString("InvoiceID");
+                String patientName = rs.getString("patient_name");
+                String invoiceDate = rs.getString("InvoiceDate");
+                String invoiceDue = rs.getString("InvoiceDue");
+                String totalAmount = rs.getString("TotalPayment");
+                String amountPaid = rs.getString("AmountPaid");
+                String balanceDue = rs.getString("BalanceDue");
+
+                // Set data to the labels
+                InvoiceNo_display.setText(invoiceNo);
+                InvoiceDate_display.setText(invoiceDate);
+                InvoiceDue_display.setText(invoiceDue);
+                TotalAmount_display.setText(totalAmount);
+                AmountPaid_display.setText(amountPaid);
+                BalanceDue_display.setText(balanceDue);
+                PatientName_display.setText(patientName);
+                PatientID_display.setText(patientId);
+                
+                // Call method to fill invoice table
+                fillInvoiceTable(invoiceId);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    // Method to fill invoice table with service details
+    private void fillInvoiceTable(String invoiceId) {
+        // Prepare query to fetch service details for the invoice
+        String query = "SELECT ServicesDescription, CostPerService, Quantity, TotalPayment FROM Billing WHERE InvoiceID = '" + invoiceId + "'";
+        DefaultTableModel model = (DefaultTableModel) InvoiceTable.getModel();
+
+        try (ResultSet rs = db.executeQuery(query)) {
+            // Clear existing table rows
+            model.setRowCount(0);
+
+            while (rs.next()) {
+                String description = rs.getString("ServicesDescription");
+                double costPerService = rs.getDouble("CostPerService");
+                int quantity = rs.getInt("Quantity");
+                double totalCost = rs.getDouble("TotalPayment");
+
+                // Add row to table
+                model.addRow(new Object[]{description, costPerService, quantity, totalCost});
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(this, "Error fetching invoice items", "Database Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+
 
     /**
      * @param args the command line arguments

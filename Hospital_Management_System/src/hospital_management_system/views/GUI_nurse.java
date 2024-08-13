@@ -5,6 +5,8 @@
 package hospital_management_system.views;
 
 import java.awt.Dimension;
+
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 import hospital_management_system.controllers.*;
@@ -355,14 +357,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         
         BillingController BillingControllerObj = new BillingController(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
         
-        // InvoiceController invoiceController = new InvoiceController(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
-
-        // // Add action listeners
-        // CheckButton.addActionListener(new java.awt.event.ActionListener() {
-        //     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        //         invoiceController.handleCheckButtonActionPerformed(evt);
-        //     }
-        // });
         
         // AddServiceButton.addActionListener(evt -> BillingControllerObj.handleAddServiceButtonActionPerformed(evt));
         // InvoiceSaveButton.addActionListener(evt -> {
@@ -2390,10 +2384,25 @@ public class GUI_nurse extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 465, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 20, Short.MAX_VALUE))
-        );
 
+        );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void CheckButtonActionPerformed(java.awt.event.ActionEvent evt) {
+        // Get the input values
+        String invoiceId = InvoiceID_input.getText().trim();
+        String patientId = InvoicePatientID_input.getText().trim();
+
+        // Validate input
+        if (!invoiceId.isEmpty() && !patientId.isEmpty()) {
+            // Open the invoice GUI with the provided IDs
+            GUI_Invoice invoiceGUI = new GUI_Invoice(invoiceId, patientId);
+            invoiceGUI.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Please enter both Invoice ID and Patient ID.");
+        }
+    }
 
     private void information_clearActionPerformed(java.awt.event.ActionEvent evt){
         nurse_id.setText("");
@@ -2530,13 +2539,6 @@ public class GUI_nurse extends javax.swing.JFrame {
     private void pre_occ1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pre_occ1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_pre_occ1ActionPerformed
-
-    private void CheckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckButtonActionPerformed
-        // Pop out the Invoice details GUI to show the information
-        GUI_Invoice invoiceGUI = new GUI_Invoice();
-        invoiceGUI.setVisible(true);
-
-    }//GEN-LAST:event_CheckButtonActionPerformed
 
     private void nurse_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_emailActionPerformed
         // TODO add your handling code here:
