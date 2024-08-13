@@ -119,26 +119,26 @@ INSERT INTO Admission (Admission_ID, Admission_Date, Admitting_Staff_ID, Admissi
 
 -- 插入 Appointment 表的三条数据
 INSERT INTO Appointment (Appointment_ID, app_patient_id, app_doctor_id, app_date, app_time, appointment_notes, appointment_type, app_status, app_reason, app_location, Admitting_Staff_ID, booking_date, app_cancel) VALUES
-('AP001', 'P001', 'D001', '2024-01-01', '08:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Heart condition', 'Room 101', 'N001', '2024-01-01', FALSE),
-('AP002', 'P002', 'D002', '2024-01-02', '09:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Neurological symptoms', 'Room 102', 'N002', '2024-01-02', FALSE),
-('AP003', 'P003', 'D003', '2024-01-03', '10:00:00', 'Routine', 'Check-up', 'Scheduled', 'Diabetes management', 'Room 103', 'N003', '2024-01-03', FALSE),
-('AP004', 'P004', 'D004', '2024-01-04', '11:00:00', 'Surgical consultation', 'Surgery', 'Scheduled', 'Bone fracture', 'Room 104', 'N004', '2024-01-04', FALSE),
-('AP005', 'P005', 'D005', '2024-01-05', '12:00:00', 'Routine', 'Check-up', 'Scheduled', 'Skin rash', 'Room 105', 'N005', '2024-01-05', FALSE),
-('AP006', 'P006', 'D006', '2024-01-06', '13:00:00', 'Chemotherapy', 'Treatment', 'Scheduled', 'Cancer treatment', 'Room 106', 'N006', '2024-01-06', FALSE),
-('AP007', 'P007', 'D007', '2024-01-07', '14:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Abdominal pain', 'Room 107', 'N007', '2024-01-07', FALSE),
-('AP008', 'P008', 'D008', '2024-01-08', '15:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Breathing issues', 'Room 108', 'N008', '2024-01-08', FALSE),
-('AP009', 'P009', 'D009', '2024-01-09', '16:00:00', 'Routine', 'Check-up', 'Scheduled', 'Rheumatological care', 'Room 109', 'N009', '2024-01-09', FALSE),
-('AP010', 'P010', 'D010', '2024-01-10', '17:00:00', 'Routine', 'Check-up', 'Scheduled', 'Pulmonary issues', 'Room 110', 'N010', '2024-01-10', FALSE),
-('AP011', 'P011', 'D011', '2024-01-11', '18:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Kidney function monitoring', 'Room 111', 'N011', '2024-01-11', FALSE),
-('AP012', 'P012', 'D012', '2024-01-12', '19:00:00', 'Routine', 'Check-up', 'Scheduled', 'Urological care', 'Room 112', 'N012', '2024-01-12', FALSE),
-('AP013', 'P013', 'D013', '2024-01-13', '20:00:00', 'Surgical consultation', 'Surgery', 'Scheduled', 'Eye surgery', 'Room 113', 'N013', '2024-01-13', FALSE),
-('AP014', 'P014', 'D014', '2024-01-14', '21:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Mental health evaluation', 'Room 114', 'N014', '2024-01-14', FALSE),
-('AP015', 'P015', 'D015', '2024-01-15', '22:00:00', 'Routine', 'Check-up', 'Scheduled', 'Allergy testing', 'Room 115', 'N015', '2024-01-15', FALSE),
-('AP016', 'P016', 'D016', '2024-01-16', '23:00:00', 'Routine', 'Check-up', 'Scheduled', 'Blood disorder treatment', 'Room 116', 'N016', '2024-01-16', FALSE),
-('AP017', 'P017', 'D017', '2024-01-17', '08:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Infectious disease treatment', 'Room 117', 'N017', '2024-01-17', FALSE),
-('AP018', 'P018', 'D018', '2024-01-18', '09:00:00', 'Routine', 'Check-up', 'Scheduled', 'Geriatric care', 'Room 118', 'N018', '2024-01-18', FALSE),
-('AP019', 'P019', 'D019', '2024-01-19', '10:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Ear, nose, throat care', 'Room 119', 'N019', '2024-01-19', FALSE),
-('AP020', 'P020', 'D020', '2024-01-20', '11:00:00', 'Surgical consultation', 'Surgery', 'Scheduled', 'Anesthesia required', 'Room 120', 'N020', '2024-01-20', FALSE);
+('AP001', 'P001', 'D001', '2024-01-01', '08:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Heart condition', 'Room 101', 'N001', '2024-01-01', 'N001'),
+('AP002', 'P002', 'D002', '2024-01-02', '09:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Neurological symptoms', 'Room 102', 'N002', '2024-01-02', 'N002'),
+('AP003', 'P003', 'D003', '2024-01-03', '10:00:00', 'Routine', 'Check-up', 'Scheduled', 'Diabetes management', 'Room 103', 'N003', '2024-01-03', 'N003'),
+('AP004', 'P004', 'D004', '2024-01-04', '11:00:00', 'Surgical consultation', 'Surgery', 'Scheduled', 'Bone fracture', 'Room 104', 'N004', '2024-01-04', 'N004'),
+('AP005', 'P005', 'D005', '2024-01-05', '12:00:00', 'Routine', 'Check-up', 'Scheduled', 'Skin rash', 'Room 105', 'N005', '2024-01-05', 'N005'),
+('AP006', 'P006', 'D006', '2024-01-06', '13:00:00', 'Chemotherapy', 'Treatment', 'Scheduled', 'Cancer treatment', 'Room 106', 'N006', '2024-01-06', 'N006'),
+('AP007', 'P007', 'D007', '2024-01-07', '14:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Abdominal pain', 'Room 107', 'N007', '2024-01-07', 'N007'),
+('AP008', 'P008', 'D008', '2024-01-08', '15:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Breathing issues', 'Room 108', 'N008', '2024-01-08', 'N008'),
+('AP009', 'P009', 'D009', '2024-01-09', '16:00:00', 'Routine', 'Check-up', 'Scheduled', 'Rheumatological care', 'Room 109', 'N009', '2024-01-09', 'N009'),
+('AP010', 'P010', 'D010', '2024-01-10', '17:00:00', 'Routine', 'Check-up', 'Scheduled', 'Pulmonary issues', 'Room 110', 'N010', '2024-01-10', 'N010'),
+('AP011', 'P011', 'D011', '2024-01-11', '18:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Kidney function monitoring', 'Room 111', 'N011', '2024-01-11', 'N011'),
+('AP012', 'P012', 'D012', '2024-01-12', '19:00:00', 'Routine', 'Check-up', 'Scheduled', 'Urological care', 'Room 112', 'N012', '2024-01-12', 'N012'),
+('AP013', 'P013', 'D013', '2024-01-13', '20:00:00', 'Surgical consultation', 'Surgery', 'Scheduled', 'Eye surgery', 'Room 113', 'N013', '2024-01-13', 'N013'),
+('AP014', 'P014', 'D014', '2024-01-14', '21:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Mental health evaluation', 'Room 114', 'N014', '2024-01-14', 'N014'),
+('AP015', 'P015', 'D015', '2024-01-15', '22:00:00', 'Routine', 'Check-up', 'Scheduled', 'Allergy testing', 'Room 115', 'N015', '2024-01-15', 'N015'),
+('AP016', 'P016', 'D016', '2024-01-16', '23:00:00', 'Routine', 'Check-up', 'Scheduled', 'Blood disorder treatment', 'Room 116', 'N016', '2024-01-16', 'N016'),
+('AP017', 'P017', 'D017', '2024-01-17', '08:00:00', 'Initial consultation', 'Check-up', 'Scheduled', 'Infectious disease treatment', 'Room 117', 'N017', '2024-01-17', 'N017'),
+('AP018', 'P018', 'D018', '2024-01-18', '09:00:00', 'Routine', 'Check-up', 'Scheduled', 'Geriatric care', 'Room 118', 'N018', '2024-01-18', 'N018'),
+('AP019', 'P019', 'D019', '2024-01-19', '10:00:00', 'Follow-up', 'Check-up', 'Scheduled', 'Ear, nose, throat care', 'Room 119', 'N019', '2024-01-19', 'N019'),
+('AP020', 'P020', 'D020', '2024-01-20', '11:00:00', 'Surgical consultation', 'Surgery', 'Scheduled', 'Anesthesia required', 'Room 120', 'N020', '2024-01-20', 'N020');
 
 -- 插入 BedAllocation 表的三条数据
 INSERT INTO BedAllocation (bed_allocate_number, room_allocate_number, ward_allocate_number, bed_allocation_department, bed_allocation_status, bed_type, bed_patient_id, allocate_date, discharge_date, pre_occ, emergency_equipment) VALUES

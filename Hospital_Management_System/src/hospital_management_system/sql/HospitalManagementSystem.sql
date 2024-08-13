@@ -102,7 +102,7 @@ CREATE TABLE Appointment (
     app_location VARCHAR(255),
     Admitting_Staff_ID VARCHAR(25),
     booking_date DATE,
-    app_cancel BOOLEAN,
+    app_cancel VARCHAR(25),
     FOREIGN KEY (app_patient_id) REFERENCES Patients(patient_id) ON DELETE CASCADE,
     FOREIGN KEY (app_doctor_id) REFERENCES Doctors(doctor_id) ON DELETE CASCADE,
     FOREIGN KEY (Admitting_Staff_ID) REFERENCES Nurse(nurse_id) ON DELETE CASCADE
