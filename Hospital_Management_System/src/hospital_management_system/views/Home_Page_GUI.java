@@ -4,6 +4,8 @@
  */
 package hospital_management_system.views;
 
+import java.awt.Cursor;
+
 /**
  *
  * @author yc
@@ -85,6 +87,12 @@ public class Home_Page_GUI extends javax.swing.JFrame {
 
         LogoutButton.setForeground(new java.awt.Color(255, 0, 0));
         LogoutButton.setText("Log Out");
+        LogoutButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        LogoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                LogoutButtonMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -174,6 +182,10 @@ public class Home_Page_GUI extends javax.swing.JFrame {
         reportSelectGUI.setVisible(true);
     }//GEN-LAST:event_dataAnalysisButtonActionPerformed
 
+    private void LogoutButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
+        // TODO add your handling code here:
+        this.dispose();
+    }
     /**
      * @param args the command line arguments
      */
