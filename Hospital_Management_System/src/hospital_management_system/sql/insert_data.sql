@@ -331,26 +331,26 @@ INSERT INTO PatientHistory (HistoryID, PatientID, EventType, EventDate, Details)
 
 -- 插入 Invoice 表的三条数据
 INSERT INTO Invoice (InvoiceID, InvoiceDate, InvoiceDue, PatientID, TotalPayment, AmountPaid, BalanceDue) VALUES
-('INV001', '2023-01-05', DATE_ADD('2023-01-05', INTERVAL 3 MONTH), 'P001', 500.00, 250.00, 250.00),
-('INV002', '2023-01-20', DATE_ADD('2023-01-20', INTERVAL 3 MONTH), 'P002', 750.00, 300.00, 450.00),
-('INV003', '2023-02-10', DATE_ADD('2023-02-10', INTERVAL 3 MONTH), 'P003', 600.00, 400.00, 200.00),
-('INV004', '2023-02-25', DATE_ADD('2023-02-25', INTERVAL 3 MONTH), 'P004', 850.00, 850.00, 0.00),
-('INV005', '2023-03-15', DATE_ADD('2023-03-15', INTERVAL 3 MONTH), 'P005', 300.00, 100.00, 200.00),
-('INV006', '2023-04-02', DATE_ADD('2023-04-02', INTERVAL 3 MONTH), 'P006', 700.00, 500.00, 200.00),
-('INV007', '2023-04-18', DATE_ADD('2023-04-18', INTERVAL 3 MONTH), 'P007', 400.00, 400.00, 0.00),
-('INV008', '2023-05-09', DATE_ADD('2023-05-09', INTERVAL 3 MONTH), 'P008', 900.00, 450.00, 450.00),
-('INV009', '2023-05-25', DATE_ADD('2023-05-25', INTERVAL 3 MONTH), 'P009', 550.00, 550.00, 0.00),
-('INV010', '2023-06-15', DATE_ADD('2023-06-15', INTERVAL 3 MONTH), 'P010', 250.00, 100.00, 150.00),
-('INV011', '2023-07-01', DATE_ADD('2023-07-01', INTERVAL 3 MONTH), 'P011', 800.00, 600.00, 200.00),
-('INV012', '2023-07-20', DATE_ADD('2023-07-20', INTERVAL 3 MONTH), 'P012', 650.00, 300.00, 350.00),
-('INV013', '2023-08-10', DATE_ADD('2023-08-10', INTERVAL 3 MONTH), 'P013', 500.00, 500.00, 0.00),
-('INV014', '2023-09-05', DATE_ADD('2023-09-05', INTERVAL 3 MONTH), 'P014', 350.00, 150.00, 200.00),
-('INV015', '2023-09-20', DATE_ADD('2023-09-20', INTERVAL 3 MONTH), 'P015', 750.00, 450.00, 300.00),
-('INV016', '2023-10-10', DATE_ADD('2023-10-10', INTERVAL 3 MONTH), 'P016', 600.00, 600.00, 0.00),
+('INV001', '2023-01-05', DATE_ADD('2023-01-05', INTERVAL 3 MONTH), 'P001', 1200.00, 500.00, 700.00),
+('INV002', '2023-01-20', DATE_ADD('2023-01-20', INTERVAL 3 MONTH), 'P002', 850.00, 300.00, 550.00),
+('INV003', '2023-02-10', DATE_ADD('2023-02-10', INTERVAL 3 MONTH), 'P003', 1000.00, 400.00, 600.00),
+('INV004', '2023-02-25', DATE_ADD('2023-02-25', INTERVAL 3 MONTH), 'P004', 2200.00, 850.00, 1350.00),
+('INV005', '2023-03-15', DATE_ADD('2023-03-15', INTERVAL 3 MONTH), 'P005', 900.00, 100.00, 800.00),
+('INV006', '2023-04-02', DATE_ADD('2023-04-02', INTERVAL 3 MONTH), 'P006', 1300.00, 1000.00, 300.00),
+('INV007', '2023-04-18', DATE_ADD('2023-04-18', INTERVAL 3 MONTH), 'P007', 1000.00, 400.00, 600.00),
+('INV008', '2023-05-09', DATE_ADD('2023-05-09', INTERVAL 3 MONTH), 'P008', 1030.00, 450.00, 580.00),
+('INV009', '2023-05-25', DATE_ADD('2023-05-25', INTERVAL 3 MONTH), 'P009', 980.00, 550.00, 430.00),
+('INV010', '2023-06-15', DATE_ADD('2023-06-15', INTERVAL 3 MONTH), 'P010', 1300.00, 1000.00, 300.00),
+('INV011', '2023-07-01', DATE_ADD('2023-07-01', INTERVAL 3 MONTH), 'P011', 1500.00, 600.00, 900.00),
+('INV012', '2023-07-20', DATE_ADD('2023-07-20', INTERVAL 3 MONTH), 'P012', 880.00, 300.00, 580.00),
+('INV013', '2023-08-10', DATE_ADD('2023-08-10', INTERVAL 3 MONTH), 'P013', 850.00, 500.00, 350.00),
+('INV014', '2023-09-05', DATE_ADD('2023-09-05', INTERVAL 3 MONTH), 'P014', 1350.00, 150.00, 1200.00),
+('INV015', '2023-09-20', DATE_ADD('2023-09-20', INTERVAL 3 MONTH), 'P015', 570.00, 450.00, 120.00),
+('INV016', '2023-10-10', DATE_ADD('2023-10-10', INTERVAL 3 MONTH), 'P016', 880.00, 600.00, 280.00),
 ('INV017', '2023-11-05', DATE_ADD('2023-11-05', INTERVAL 3 MONTH), 'P017', 700.00, 350.00, 350.00),
-('INV018', '2023-12-01', DATE_ADD('2023-12-01', INTERVAL 3 MONTH), 'P018', 850.00, 600.00, 250.00),
-('INV019', '2024-01-10', DATE_ADD('2024-01-10', INTERVAL 3 MONTH), 'P019', 450.00, 200.00, 250.00),
-('INV020', '2024-02-05', DATE_ADD('2024-02-05', INTERVAL 3 MONTH), 'P020', 500.00, 500.00, 0.00);
+('INV018', '2023-12-01', DATE_ADD('2023-12-01', INTERVAL 3 MONTH), 'P018', 620.00, 500.00, 120.00),
+('INV019', '2024-01-10', DATE_ADD('2024-01-10', INTERVAL 3 MONTH), 'P019', 570.00, 200.00, 370.00),
+('INV020', '2024-02-05', DATE_ADD('2024-02-05', INTERVAL 3 MONTH), 'P020', 650.00, 500.00, 150.00);
 
 
 
@@ -468,26 +468,26 @@ INSERT INTO NurseStaffScheduling (NurseID, StaffScheduleDate, ShiftStartTime, Sh
 
 -- 插入 InventoryManagement 表的三条数据
 INSERT INTO InventoryManagement (InventoryID, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimumStock, SupplierInformation, InventoryExpirydate) VALUES
-('INV001', 'Syringe', 500, 1000, 100, 'MedSupply Co.', '2024-12-31'),
-('INV002', 'Bandages', 300, 700, 50, 'HealthPro Ltd.', '2025-01-15'),
-('INV003', 'Antiseptic Solution', 200, 500, 100, 'MediCare Supplies', '2024-11-30'),
-('INV004', 'Surgical Masks', 1000, 2000, 200, 'SafeCare Inc.', '2024-10-20'),
-('INV005', 'Gloves', 800, 1500, 150, 'ProtectPlus', '2025-02-28'),
-('INV006', 'Sterilization Kits', 150, 300, 30, 'SterilTech', '2024-09-10'),
-('INV007', 'IV Fluids', 250, 600, 50, 'FluidMed', '2024-12-15'),
-('INV008', 'Gauze', 400, 800, 100, 'GauzePlus', '2025-03-31'),
-('INV009', 'Needles', 600, 1200, 100, 'NeedleWorks', '2024-11-01'),
-('INV010', 'Surgical Instruments', 80, 150, 20, 'SurgiEquip', '2025-01-01'),
-('INV011', 'Thermometers', 100, 200, 20, 'HealthMetrics', '2024-10-05'),
-('INV012', 'Oxygen Cylinders', 30, 60, 10, 'OxygenCo', '2024-08-30'),
-('INV013', 'Nebulizers', 40, 100, 15, 'BreatheWell', '2024-12-25'),
-('INV014', 'Pulse Oximeters', 50, 120, 20, 'PulseCare', '2024-11-15'),
-('INV015', 'Wheelchairs', 20, 40, 5, 'MobilityCorp', '2025-04-10'),
-('INV016', 'Blood Pressure Monitors', 75, 150, 25, 'PressurePro', '2024-09-20'),
-('INV017', 'Stethoscopes', 60, 120, 20, 'StethoTech', '2024-12-05'),
-('INV018', 'Defibrillators', 10, 25, 5, 'HeartSafe', '2024-10-10'),
-('INV019', 'Electrocardiogram Machines', 15, 30, 5, 'CardioPlus', '2025-06-01'),
-('INV020', 'CPAP Machines', 25, 50, 10, 'SleepMed', '2024-11-30');
+('INM001', 'Syringe', 500, 1000, 100, 'MedSupply Co.', '2024-12-31'),
+('INM002', 'Bandages', 300, 700, 50, 'HealthPro Ltd.', '2025-01-15'),
+('INM003', 'Antiseptic Solution', 200, 500, 100, 'MediCare Supplies', '2024-11-30'),
+('INM004', 'Surgical Masks', 1000, 2000, 200, 'SafeCare Inc.', '2024-10-20'),
+('INM005', 'Gloves', 800, 1500, 150, 'ProtectPlus', '2025-02-28'),
+('INM006', 'Sterilization Kits', 150, 300, 30, 'SterilTech', '2024-09-10'),
+('INM007', 'IV Fluids', 250, 600, 50, 'FluidMed', '2024-12-15'),
+('INM008', 'Gauze', 400, 800, 100, 'GauzePlus', '2025-03-31'),
+('INM009', 'Needles', 600, 1200, 100, 'NeedleWorks', '2024-11-01'),
+('INM010', 'Surgical Instruments', 80, 150, 20, 'SurgiEquip', '2025-01-01'),
+('INM011', 'Thermometers', 100, 200, 20, 'HealthMetrics', '2024-10-05'),
+('INM012', 'Oxygen Cylinders', 30, 60, 10, 'OxygenCo', '2024-08-30'),
+('INM013', 'Nebulizers', 40, 100, 15, 'BreatheWell', '2024-12-25'),
+('INM014', 'Pulse Oximeters', 50, 120, 20, 'PulseCare', '2024-11-15'),
+('INM015', 'Wheelchairs', 20, 40, 5, 'MobilityCorp', '2025-04-10'),
+('INM016', 'Blood Pressure Monitors', 75, 150, 25, 'PressurePro', '2024-09-20'),
+('INM017', 'Stethoscopes', 60, 120, 20, 'StethoTech', '2024-12-05'),
+('INM018', 'Defibrillators', 10, 25, 5, 'HeartSafe', '2024-10-10'),
+('INM019', 'Electrocardiogram Machines', 15, 30, 5, 'CardioPlus', '2025-06-01'),
+('INM020', 'CPAP Machines', 25, 50, 10, 'SleepMed', '2024-11-30');
 
 -- 插入 MedicalSupplyManagement 表的三条数据
 INSERT INTO MedicalSupplyManagement (SupplyID, SupplyName, SupplyStockQuantity, SupplyMinimumStock, SupplyMaximumStock, SupplierInformation, SupplyExpiryDate) VALUES

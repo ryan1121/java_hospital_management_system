@@ -15,6 +15,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 
+import java.awt.Font;
 import java.sql.*;
 
 /**
@@ -146,32 +147,43 @@ public class GUI_Invoice extends javax.swing.JFrame {
         From_address1.setText("To:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("Patient ID: ");
+        jLabel2.setText("   Patient ID: ");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel3.setText("Name: ");
+        jLabel3.setText("   Name: ");
 
         jLabel4.setText("456 Jalan Tun Razak,");
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 12)); 
 
         jLabel5.setText("50400 Kuala Lumpur,");
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 12)); 
 
         jLabel6.setText("Malaysia");
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 12)); 
 
         PatientID_display.setText(" ");
+        PatientID_display.setFont(new java.awt.Font("Segoe UI", 0, 12));
 
         PatientName_display.setText(" ");
+        PatientName_display.setFont(new java.awt.Font("Segoe UI", 0, 12));
 
         InvoiceNo_display.setText(" ");
+        InvoiceNo_display.setFont(new java.awt.Font("Segoe UI", 0, 12));
 
         InvoiceDate_display.setText(" ");
+        InvoiceDate_display.setFont(new java.awt.Font("Segoe UI", 0, 12));
 
         InvoiceDue_display.setText(" ");
+        InvoiceDue_display.setFont(new java.awt.Font("Segoe UI", 0, 12));
 
         TotalAmount_display.setText(" ");
+        TotalAmount_display.setFont(new java.awt.Font("Segoe UI", 0, 12));
 
         AmountPaid_display.setText(" ");
+        AmountPaid_display.setFont(new java.awt.Font("Segoe UI", 0, 12));
 
         BalanceDue_display.setText(" ");
+        BalanceDue_display.setFont(new java.awt.Font("Segoe UI", 0, 12));
 
         javax.swing.GroupLayout PatientIDLayout = new javax.swing.GroupLayout(PatientID);
         PatientID.setLayout(PatientIDLayout);
@@ -351,8 +363,8 @@ public class GUI_Invoice extends javax.swing.JFrame {
                 TotalAmount_display.setText(totalAmount);
                 AmountPaid_display.setText(amountPaid);
                 BalanceDue_display.setText(balanceDue);
-                PatientName_display.setText(patientName);
-                PatientID_display.setText(patientId);
+                PatientName_display.setText("   " + patientName);
+                PatientID_display.setText("    " + patientId);
                 
                 // Call method to fill invoice table
                 fillInvoiceTable(invoiceId);

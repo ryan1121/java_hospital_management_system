@@ -72,7 +72,7 @@ public class Inventory {
     
     public static String setNewInventoryID(JTextField inventoryID) {
         MysqlConnect db = new MysqlConnect();
-        String newinventoryID = db.generateNewId("InventoryManagement", "INV");
+        String newinventoryID = db.generateNewId("InventoryManagement", "INM");
         inventoryID.setText(newinventoryID);
         return newinventoryID;
     }
