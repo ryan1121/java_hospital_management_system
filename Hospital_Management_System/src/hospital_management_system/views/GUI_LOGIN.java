@@ -4,6 +4,7 @@
  */
 package hospital_management_system.views;
 
+import java.awt.Cursor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -82,6 +83,7 @@ public class GUI_LOGIN extends javax.swing.JFrame {
         register.setForeground(new java.awt.Color(0, 51, 255));
         register.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         register.setText("Register");
+        register.setCursor(new Cursor(Cursor.HAND_CURSOR));
         register.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 registerMousePressed(evt);
@@ -101,6 +103,7 @@ public class GUI_LOGIN extends javax.swing.JFrame {
 
         backButton.setForeground(new java.awt.Color(0, 51, 255));
         backButton.setText("Back");
+        backButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 backButtonMousePressed(evt);
@@ -173,6 +176,7 @@ public class GUI_LOGIN extends javax.swing.JFrame {
                 Home_Page_GUI homepage_GUI = new Home_Page_GUI(this.role, name);
                 homepage_GUI.setVisible(true);
             } else {    // if the role type is patient
+                this.dispose();
                 GUI_patient PatientGUI = new GUI_patient(ID);
                 PatientGUI.setVisible(true);
             }
