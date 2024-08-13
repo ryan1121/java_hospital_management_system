@@ -4,14 +4,22 @@
  */
 package hospital_management_system.views;
 
+import java.awt.Cursor;
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+import hospital_management_system.MysqlConnect;
 import hospital_management_system.controllers.*;
 import hospital_management_system.views.*;
 import hospital_management_system.models.*;
+import hospital_management_system.utils.DateTimeUtils;
 
 /**
  *
@@ -19,12 +27,14 @@ import hospital_management_system.models.*;
  */
 public class GUI_nurse extends javax.swing.JFrame {
 
-
+    private String username;    
     /**
      * Creates new form GUI_nurse
      */
     public GUI_nurse() {
         initComponents();
+        this.username = Home_Page_GUI.username;
+        fetchDataDisplay();
     }
 
     /**
@@ -416,18 +426,19 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Details"));
 
-        nurse_id.setText("Nurse_ID");
+        nurse_id.setText("");
         nurse_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nurse_idActionPerformed(evt);
             }
         });
+        nurse_id.setEnabled(false);
 
         jLabel1.setText("Nurse ID:");
 
         jLabel2.setText("Name :");
 
-        nurse_name.setText("Name");
+        nurse_name.setText("");
         nurse_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nurse_nameActionPerformed(evt);
@@ -436,7 +447,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel3.setText("Phone Number :");
 
-        nurse_phone.setText("Phone");
+        nurse_phone.setText("");
         nurse_phone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nurse_phoneActionPerformed(evt);
@@ -445,7 +456,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel4.setText("Email :");
 
-        nurse_email.setText("Email");
+        nurse_email.setText("");
         nurse_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nurse_emailActionPerformed(evt);
@@ -454,14 +465,14 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel5.setText("Department :");
 
-        nurse_department.setText("Department");
+        nurse_department.setText("");
         nurse_department.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nurse_departmentActionPerformed(evt);
             }
         });
 
-        nurse_position.setText("Position");
+        nurse_position.setText("");
         nurse_position.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nurse_positionActionPerformed(evt);
@@ -470,7 +481,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel6.setText("Position :");
 
-        nurse_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Not Available" }));
+        nurse_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Not Active" }));
 
         jLabel10.setText("Status :");
 
@@ -527,7 +538,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addComponent(jLabel3)
                                 .addComponent(nurse_phone, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nurse_email, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nurse_email, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGap(105, 105, 105)
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -604,12 +615,29 @@ public class GUI_nurse extends javax.swing.JFrame {
         );
 
         information_clear.setText("Clear");
+        information_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                information_clearActionPerformed(evt);
+            }
+        });
 
         information_save.setText("Save");
+        information_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                information_saveActionPerformed(evt);
+            }
+        });
+
 
         backButton.setForeground(new java.awt.Color(0, 51, 255));
         backButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         backButton.setText("Back");
+        backButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                backButtonMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -678,7 +706,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Personal Information"));
 
-        patient_id.setText("patient_id");
+        patient_id.setText("");
         patient_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_idActionPerformed(evt);
@@ -687,7 +715,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel19.setText("Patient ID :");
 
-        patient_name.setText("First_Name");
+        patient_name.setText("");
         patient_name.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_nameActionPerformed(evt);
@@ -702,7 +730,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel23.setText("Date of Birth : ");
 
-        patient_email.setText("Email");
+        patient_email.setText("");
         patient_email.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_emailActionPerformed(evt);
@@ -713,7 +741,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel25.setText("Phone Number :");
 
-        patient_phone.setText("phone");
+        patient_phone.setText("");
         patient_phone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_phoneActionPerformed(evt);
@@ -722,21 +750,21 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel26.setText("Address :");
 
-        patient_address.setText("Address");
+        patient_address.setText("");
         patient_address.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_addressActionPerformed(evt);
             }
         });
 
-        patient_address_line2.setText("line 2");
+        patient_address_line2.setText("");
         patient_address_line2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_address_line2ActionPerformed(evt);
             }
         });
 
-        patient_address_line3.setText("line 3");
+        patient_address_line3.setText("");
         patient_address_line3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_address_line3ActionPerformed(evt);
@@ -759,7 +787,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                         .addGap(3, 3, 3)
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel21)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel10Layout.createSequentialGroup()
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(jPanel10Layout.createSequentialGroup()
@@ -870,8 +898,18 @@ public class GUI_nurse extends javax.swing.JFrame {
         );
 
         patient_clear.setText("Clear");
+        patient_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patient_clearActionPerformed(evt);
+            }
+        });
 
         patient_save.setText("Save");
+        patient_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patient_saveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
@@ -911,6 +949,10 @@ public class GUI_nurse extends javax.swing.JFrame {
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("Admission"));
 
         jLabel60.setText("Admission ID:");
+        MysqlConnect db = new MysqlConnect();
+        String newAdmissionId = db.generateNewId("Admission", "A");
+        Admission_ID1.setText(newAdmissionId);
+        Admission_ID1.setEnabled(false);
 
         jLabel61.setText("Admission Date:");
 
@@ -935,7 +977,13 @@ public class GUI_nurse extends javax.swing.JFrame {
         });
 
         medical_equipment_need.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "ECG", "Chest X-ray", "MRI", "Blood test", "CT scan", "Pain management",
+        "Physical therapy", "X-ray", "Blood glucose monitor", "Lab tests",
+        "Nebulizer", "Breathing exercises", "Follow-up visit", "Pain relief",
+        "Blood pressure monitor", "Medication", "Joint injections",
+        "Ultrasound", "Eye exam", "Glasses prescription", "Pre-op tests",
+        "Allergy testing", "Emergency surgery", "Recovery care", "Follow-up care",
+        "Oxygen therapy", "Monitoring", "Routine tests", "Health check-up", "Post-op care" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -1025,8 +1073,19 @@ public class GUI_nurse extends javax.swing.JFrame {
         );
 
         admission_save.setText("Save");
+        admission_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admission_saveActionPerformed(evt);
+            }
+        });
 
         admission_clear.setText("Clear");
+        admission_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                admission_clearActionPerformed(evt);
+            }
+        });
+
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -1096,7 +1155,12 @@ public class GUI_nurse extends javax.swing.JFrame {
         bed_type1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", " " }));
 
         emergency_equipment.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = { "ECG machine", "MRI scan", "Blood glucose monitor", "X-ray machine",
+        "Dermatology kit", "IV drip", "Ultrasound machine", "Ventilator",
+        "Joint therapy equipment", "Oxygen concentrator", "Dialysis machine",
+        "Urology kit", "Ophthalmology equipment", "Psychiatry kit", 
+        "Allergy testing kit", "Hematology kit", "Infection control kit",
+        "Geriatrics kit", "ENT equipment", "Anesthesia machine" };
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -1118,8 +1182,18 @@ public class GUI_nurse extends javax.swing.JFrame {
         });
 
         bed_allocate_clear.setText("Clear");
+        bed_allocate_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bed_allocate_clearActionPerformed(evt);
+            }
+        });
 
         bed_allocate_save.setText("Save");
+        bed_allocate_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bed_allocate_saveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -2167,6 +2241,10 @@ public class GUI_nurse extends javax.swing.JFrame {
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Appointment"));
 
         jLabel37.setText("Appointment ID:");
+        String newAppointmentId = db.generateNewId("Appointment", "AP");
+        Appointment_ID.setText(newAppointmentId);
+        Appointment_ID.setEnabled(false);
+
 
         jLabel38.setText("Patient ID:");
 
@@ -2215,8 +2293,18 @@ public class GUI_nurse extends javax.swing.JFrame {
         booking_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/y"))));
 
         appointment_clear.setText("Clear");
+        appointment_clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appointment_clearActionPerformed(evt);
+            }
+        });
 
         appointment_save.setText("Save");
+        appointment_save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                appointment_saveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
@@ -2237,7 +2325,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                                             .addComponent(jLabel37, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                                     .addGroup(jPanel11Layout.createSequentialGroup()
                                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(app_date, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGap(18, 18, 18)
                                         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2404,8 +2492,141 @@ public class GUI_nurse extends javax.swing.JFrame {
         }
     }
 
+    private void fetchDataDisplay() {
+        MysqlConnect db = new MysqlConnect();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            // Establish connection
+            connection = db.getConnection();
+
+            // Create a prepared statement
+            String sql; // Adjust the WHERE clause as needed
+            sql = "SELECT * FROM Nurse WHERE nurse_name = ?";
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1, username);
+
+            // Execute the query
+            resultSet = preparedStatement.executeQuery();
+
+            // Process the result set
+            if (resultSet.next()) {
+                // Retrieve data by column name
+                String id = resultSet.getString("nurse_id");
+                String name = resultSet.getString("nurse_name");
+                String phone = resultSet.getString("nurse_phone");
+                String email = resultSet.getString("nurse_email");
+                String dpt = resultSet.getString("nurse_department");
+                String position = resultSet.getString("nurse_position");
+                String assignWard = resultSet.getString("nurse_assign_wards");
+                String supervising = resultSet.getString("nurse_supervising_doctor");
+                String experience = resultSet.getString("nurse_experience");
+                String qualifications = resultSet.getString("nurse_qualifications");
+
+                // Set text fields with retrieved data
+                nurse_id.setText(id);
+                Admitting_Staff_ID1.setText(id);
+                nurse_name.setText(name);
+                nurse_phone.setText(phone);
+                nurse_email.setText(email);
+                nurse_department.setText(dpt);
+                nurse_position.setText(position);
+                nurse_assign_wards.setText(assignWard);
+                nurse_supervising_doctor.setText(supervising);
+                nurse_experience.setText(experience);
+                nurse_qualifications.setText(qualifications);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private void backButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
+        // TODO add your handling code here:
+        this.dispose();
+
+        Home_Page_GUI homePage = new Home_Page_GUI("Nurse",username);
+        homePage.setVisible(true);
+    }
+    private void information_saveActionPerformed(java.awt.event.ActionEvent evt){
+        MysqlConnect db = new MysqlConnect();
+            String tableName = "Nurse";
+
+            String id = nurse_id.getText(); 
+            String name = nurse_name.getText(); 
+            String phone = nurse_phone.getText(); 
+            String email = nurse_email.getText(); 
+            String department = nurse_department.getText();
+            String position = nurse_position.getText();
+            String assign_wards = nurse_assign_wards.getText();
+            String supervising_doctor = nurse_supervising_doctor.getText();
+            String experience = nurse_experience.getText();
+            String qualifications = nurse_qualifications.getText();
+            String status = nurse_status.getSelectedItem().toString();
+
+            // 初始化更新语句和条件
+            StringBuilder updateBuilder = new StringBuilder();
+            String condition = "nurse_id = '" + id + "'"; 
+        
+            // 仅更新修改过的字段
+            if (!name.isEmpty()) {
+                updateBuilder.append("nurse_name = '").append(name).append("', ");
+            }
+            if (!phone.isEmpty()) {
+                updateBuilder.append("nurse_phone = '").append(phone).append("', ");
+            }
+            if (!email.isEmpty()) {
+                updateBuilder.append("nurse_email = '").append(email).append("', ");
+            }
+            if (!department.isEmpty()) {
+                updateBuilder.append("nurse_department = '").append(department).append("', ");
+            }
+            if (!position.isEmpty()) {
+                updateBuilder.append("nurse_position = '").append(position).append("', ");
+            }
+            if (!assign_wards.isEmpty()) {
+                updateBuilder.append("nurse_assign_wards = '").append(assign_wards).append("', ");
+            }
+            if (!supervising_doctor.isEmpty()) {
+                updateBuilder.append("nurse_supervising_doctor = '").append(supervising_doctor).append("', ");
+            }
+            if (!experience.isEmpty()) {
+                updateBuilder.append("nurse_experience = '").append(experience).append("', ");
+            }
+            if (!qualifications.isEmpty()) {
+                updateBuilder.append("nurse_qualifications = '").append(qualifications).append("', ");
+            }
+            if (!status.isEmpty()) {
+                updateBuilder.append("nurse_status = '").append(status).append("', ");
+            }
+
+            // 移除最后一个逗号和空格
+            String update = updateBuilder.toString();
+            if (update.endsWith(", ")) {
+                update = update.substring(0, update.length() - 2);
+            }
+        
+            // 只有在 update 字符串不为空时才执行更新操作
+            if (!update.isEmpty()) {
+                db.updateData(tableName, update, condition);
+            } else {
+                System.out.println("There is no data to update.");
+            }
+    };
+
     private void information_clearActionPerformed(java.awt.event.ActionEvent evt){
-        nurse_id.setText("");
         nurse_name.setText("");
         nurse_phone.setText("");
         nurse_email.setText("");
@@ -2415,6 +2636,96 @@ public class GUI_nurse extends javax.swing.JFrame {
         nurse_assign_wards.setText("");
         nurse_experience.setText("");
         nurse_qualifications.setText("");
+    };
+
+    private void patient_saveActionPerformed(java.awt.event.ActionEvent evt){
+        MysqlConnect db = new MysqlConnect();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet patientResultSet = null;
+        ResultSet bedResultSet = null;
+    
+        try {
+            // 获取患者记录的条件
+            String patientCondition = "patient_id = '" + patient_id.getText() + "'";
+            
+            // 执行查询患者信息
+            patientResultSet = db.getData("Patients", patientCondition);
+    
+            if (patientResultSet != null && patientResultSet.next()) {
+                // 如果患者记录存在
+                String id = patientResultSet.getString("patient_id");
+                String name = patientResultSet.getString("patient_name");
+                String gender = patientResultSet.getString("patient_gender");
+                String dob = patientResultSet.getString("patient_DOB");
+                String phone = patientResultSet.getString("patient_phone");
+                String email = patientResultSet.getString("patient_email");
+                String address = patientResultSet.getString("patient_address");
+                String address2 = patientResultSet.getString("patient_address_line2");
+                String address3 = patientResultSet.getString("patient_address_line3");
+    
+                // 获取 JComboBox 的模型
+                DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) patient_gender.getModel();
+    
+                // 检查 gender 是否在 JComboBox 的选项中
+                if (model.getIndexOf(gender) != -1) {
+                    patient_gender.setSelectedItem(gender);
+                } else {
+                    patient_gender.setSelectedIndex(0);
+                }
+    
+                // 设置文本字段
+                patient_id.setText(id);
+                patient_name.setText(name);
+                patient_DOB.setText(dob);
+                patient_phone.setText(phone);
+                patient_email.setText(email);
+                patient_address.setText(address);
+                patient_address_line2.setText(address2);
+                patient_address_line3.setText(address3);
+    
+                // 查询床位、房间和病区信息
+                String bedCondition = "bed_patient_id = '" + patient_id.getText() + "'";
+                String bedQuery = "SELECT bed_allocate_number, room_allocate_number, ward_allocate_number FROM BedAllocation WHERE " + bedCondition;
+                
+                // 执行查询床位信息
+                connection = db.getConnection();
+                preparedStatement = connection.prepareStatement(bedQuery);
+                bedResultSet = preparedStatement.executeQuery();
+    
+                if (bedResultSet.next()) {
+                    // 提取床位信息
+                    String ward = bedResultSet.getString("ward_allocate_number");
+                    String bedNumber = bedResultSet.getString("bed_allocate_number");
+                    String roomNumber = bedResultSet.getString("room_allocate_number");
+    
+                    // 设置床位相关字段
+                    patient_ward.setText(ward);
+                    patient_bed_number.setText(bedNumber);
+                    patient_room_number.setText(roomNumber);
+                } else {
+                    // 处理未找到床位记录的情况
+                    patient_ward.setText("");
+                    patient_bed_number.setText("");
+                    patient_room_number.setText("");
+                }
+            } else {
+                // 如果患者记录不存在，显示提示或其他处理逻辑
+                JOptionPane.showMessageDialog(this, "Patient does not exist. Ready to add new record!");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // 关闭资源
+            try {
+                if (patientResultSet != null) patientResultSet.close();
+                if (bedResultSet != null) bedResultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
     };
 
     private void patient_clearActionPerformed(java.awt.event.ActionEvent evt){
@@ -2429,13 +2740,46 @@ public class GUI_nurse extends javax.swing.JFrame {
         patient_ward.setText("");
         patient_bed_number.setText("");
         patient_room_number.setText("");
-        notes.setText("");
     };
 
-    private void admission_clearActionPerformed(java.awt.event.ActionEvent evt){
-        Admission_ID1.setText("");
+    private void admission_saveActionPerformed(java.awt.event.ActionEvent evt){
+        MysqlConnect db = new MysqlConnect();
+        java.util.List<String> selectedItems = medical_equipment_need.getSelectedValuesList();
+        String selectedMed = String.join(",", selectedItems); 
+        String tableName = "Admission";
+
+        String formattedAdmissionDate = DateTimeUtils.formatDate(Admission_Date1.getText());
+
+        String columns = "Admission_ID, Admission_Date, Admitting_Staff_ID, Admission_Status, Admission_Notes, Reason, admission_Patient_ID, Insurance_Details, medical_equipment_need";
+        String[] values = {Admission_ID1.getText(),formattedAdmissionDate, nurse_id.getText(), Admission_Status1.getText(), Admission_Notes1.getText(), Reason1.getText(), admission_Patient_ID.getText(), Insurance_Details1.getText(), selectedMed};
+
+        try {
+            boolean success = db.saveData(tableName, columns, values);
+            if (success) {
+                System.out.println("Data inserted successfully!");
+            } else {
+                System.out.println("Data insertion failed.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error occurred while inserting data.");
+            e.printStackTrace();
+        }
+
+        String newAdmissionId = db.generateNewId("Admission", "A");
+        Admission_ID1.setText(newAdmissionId);
+
+        // reset textfield after saving new doctor information
         Admission_Date1.setText("");
-        Admitting_Staff_ID1.setText("");
+        Admission_Status1.setText("");
+        Admission_Notes1.setText("");
+        Reason1.setText("");
+        admission_Patient_ID.setText("");
+        Insurance_Details1.setText("");
+
+    }
+
+    private void admission_clearActionPerformed(java.awt.event.ActionEvent evt){
+        Admission_Date1.setText("");
         Admission_Status1.setText("");
         Admission_Notes1.setText("");
         Reason1.setText("");
@@ -2443,8 +2787,48 @@ public class GUI_nurse extends javax.swing.JFrame {
         Insurance_Details1.setText("");
     };
 
+    private void appointment_saveActionPerformed(java.awt.event.ActionEvent evt){
+        MysqlConnect db = new MysqlConnect();
+        String tableName = "Appointment";
+
+        String formattedAppDate = DateTimeUtils.formatDate(app_date.getText());
+        String formattedBookingDate = DateTimeUtils.formatDate(booking_date.getText());
+        String formattedTime = DateTimeUtils.formatTime(app_time.getText());
+
+        String columns = "Appointment_ID, app_patient_id, app_doctor_id, app_date, app_time, appointment_notes, appointment_type, app_status, app_reason, app_location, Admitting_Staff_ID, booking_date, app_cancel";
+        String[] values = {Appointment_ID.getText(), app_patient_id.getText(), app_doctor_id.getText(), formattedAppDate, formattedTime, appointment_notes.getText(), appointment_type.getText(), app_status.getText(), app_reason.getText(), app_location.getText(), nurse_id.getText(), formattedBookingDate, app_cancel.getText()};
+        
+        try {
+            boolean success = db.saveData(tableName, columns, values);
+            if (success) {
+                System.out.println("Data inserted successfully!");
+            } else {
+                System.out.println("Data insertion failed.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error occurred while inserting data.");
+            e.printStackTrace();
+        }
+
+        String newAppointmentId = db.generateNewId("Appointment", "AP");
+        Appointment_ID.setText(newAppointmentId);
+
+        // reset textfield after saving new doctor information
+        app_patient_id.setText("");
+        app_doctor_id.setText("");
+        app_date.setText("");
+        app_time.setText("");
+        app_reason.setText("");
+        appointment_type.setText("");
+        app_location.setText("");
+        appointment_notes.setText("");
+        app_cancel.setText("");
+        booking_date.setText("");
+        app_status.setText("");
+
+    }
+
     private void appointment_clearActionPerformed(java.awt.event.ActionEvent evt){
-        Appointment_ID.setText("");
         app_patient_id.setText("");
         app_doctor_id.setText("");
         app_date.setText("");
@@ -2456,6 +2840,41 @@ public class GUI_nurse extends javax.swing.JFrame {
         app_cancel.setText("");
         booking_date.setText("");
     };
+
+    private void bed_allocate_saveActionPerformed(java.awt.event.ActionEvent evt){
+        MysqlConnect db = new MysqlConnect();
+        String selectedEquiqment = emergency_equipment.getSelectedValue();
+        String tableName = "BedAllocation";
+
+        String formattedAllocateDate = DateTimeUtils.formatDate(allocate_date1.getText());
+        String formattedDischargeDate = DateTimeUtils.formatDate(discharge_date1.getText());
+
+        String columns = "bed_allocate_number, room_allocate_number, ward_allocate_number, bed_allocation_department, bed_allocation_status, bed_type, bed_patient_id, allocate_date, discharge_date, pre_occ, emergency_equipment";
+        String[] values = {bed_allocate_number.getText(), room_allocate_number.getText(), ward_allocate_number.getText(), bed_allocation_department.getText(), bed_allocation_status.getSelectedItem().toString(), bed_type1.getSelectedItem().toString(), bed_patient_id1.getText(), formattedAllocateDate, formattedDischargeDate, pre_occ1.getText(), selectedEquiqment};
+        
+        try {
+            boolean success = db.saveData(tableName, columns, values);
+            if (success) {
+                System.out.println("Data inserted successfully!");
+            } else {
+                System.out.println("Data insertion failed.");
+            }
+        } catch (SQLException e) {
+            System.err.println("Error occurred while inserting data.");
+            e.printStackTrace();
+        }
+
+        // reset textfield after saving new bedAllocation information
+        bed_allocate_number.setText("");
+        room_allocate_number.setText("");
+        ward_allocate_number.setText("");
+        bed_allocation_department.setText("");
+        bed_patient_id1.setText("");
+        discharge_date1.setText("");
+        allocate_date1.setText("");
+        pre_occ1.setText("");
+
+    }
 
     private void bed_allocate_clearActionPerformed(java.awt.event.ActionEvent evt){
         bed_allocate_number.setText("");
