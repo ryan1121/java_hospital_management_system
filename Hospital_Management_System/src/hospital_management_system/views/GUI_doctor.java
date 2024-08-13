@@ -152,7 +152,7 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Details"));
 
-        doctor_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Available", "Not Available" }));
+        doctor_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Not Active" }));
 
         jLabel1.setText("Doctor ID:");
 
@@ -300,6 +300,7 @@ public class GUI_doctor extends javax.swing.JFrame {
         backButton.setForeground(new java.awt.Color(0, 51, 255));
         backButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         backButton.setText("Back");
+        backButton.setCursor(new Cursor(Cursor.HAND_CURSOR));
         backButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 backButtonMousePressed(evt);
