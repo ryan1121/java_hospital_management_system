@@ -1,6 +1,6 @@
 package hospital_management_system.controllers;
 
-import hospital_management_system.models.Billing;
+import hospital_management_system.models.BillingAndPayment;
 import hospital_management_system.views.GUI_Invoice;
 
 import java.sql.SQLException;
@@ -9,9 +9,10 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 public class BillingController {
-    private Billing model;
+    private BillingAndPayment model;
     private JPanel Invoice;
 
+    private DefaultTableModel invoiceTableModel;
     private JTextField InvoiceID_input;
     private JTextField InvoicePatientID_input;
     private JFormattedTextField ServiceDate_input;
@@ -19,15 +20,30 @@ public class BillingController {
     private JFormattedTextField CostPerService_input;
     private JTextField ServiceQuantity_input;
 
+    // Payment part
+    private JTextField PaymentAmount_input;
+    private JComboBox<String> PaymentMethod_dropdown;
+    private JComboBox<String> PaymentStatus_dropdown;
+    private JFormattedTextField PaymentProcessingDate_input;
+
+
     public BillingController(
+        DefaultTableModel invoiceTableModel,
         JPanel Invoice,
         JTextField InvoiceID_input,
         JTextField InvoicePatientID_input,
         JFormattedTextField ServiceDate_input,
         JTextField Description_input,
         JFormattedTextField CostPerService_input,
-        JTextField ServiceQuantity_input
+        JTextField ServiceQuantity_input,
+
+        // Payment part
+        JTextField PaymentAmount_input,
+        JComboBox<String> PaymentMethod_dropdown,
+        JComboBox<String> PaymentStatus_dropdown,
+        JFormattedTextField PaymentProcessingDate_input
     ) {
+        this.invoiceTableModel = invoiceTableModel;
         this.Invoice = Invoice;
         this.InvoiceID_input = InvoiceID_input;
         this.InvoicePatientID_input = InvoicePatientID_input;
@@ -36,30 +52,41 @@ public class BillingController {
         this.CostPerService_input = CostPerService_input;
         this.ServiceQuantity_input = ServiceQuantity_input;
 
-        this.model  = new Billing(
-            Invoice,
-            InvoiceID_input,
-            InvoicePatientID_input,
-            ServiceDate_input,
-            Description_input,
-            CostPerService_input,
-            ServiceQuantity_input
-        );
-
+        // Initialize Payment-related fields
+        this.PaymentAmount_input = PaymentAmount_input;
+        this.PaymentMethod_dropdown = PaymentMethod_dropdown;
+        this.PaymentStatus_dropdown = PaymentStatus_dropdown;
+        this.PaymentProcessingDate_input = PaymentProcessingDate_input;
+        
     }
 
     public void handleAddServiceButtonActionPerformed(ActionEvent evt) {
-        model.addService();
+        this.model  = new BillingAndPayment(
+            Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input
+        );
+
+        model.addService(this.invoiceTableModel);
     }
 
-    public void handleSaveInvoiceButtonActionPerformed(ActionEvent evt) {
+    public void handleSaveButtonActionPerformed(ActionEvent evt) {
         model.save();
     }
 
     public void handleClearButtonActionPerformed(ActionEvent evt) {
-        model.clear();
+        model.clear(
+            InvoicePatientID_input,
+            ServiceDate_input,
+            Description_input,
+            CostPerService_input,
+            ServiceQuantity_input,
+            PaymentAmount_input,
+            PaymentMethod_dropdown,
+            PaymentStatus_dropdown,
+            PaymentProcessingDate_input
+        );
 
-        Billing.setNewInvoiceId(InvoiceID_input);
+        // Clear the table model
+        this.invoiceTableModel.setRowCount(0);
     }
 
     public void handleCheckButtonActionPerformed(ActionEvent evt) {

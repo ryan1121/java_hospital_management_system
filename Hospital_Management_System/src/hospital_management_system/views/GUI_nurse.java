@@ -318,7 +318,9 @@ public class GUI_nurse extends javax.swing.JFrame {
         //PaymentProcessing input fields
         PaymentProcessing = new javax.swing.JPanel();
         PaymentID_input = new javax.swing.JTextField();
-        PaymentAmount_input = new javax.swing.JTextField();
+        PaymentAmount_input = new javax.swing.JFormattedTextField();
+        PaymentAmount_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+
         PaymentMethod_dropdown = new javax.swing.JComboBox<>();
         PaymentStatus_dropdown = new javax.swing.JComboBox<>();
         PaymentProcessingDate_input = new javax.swing.JFormattedTextField();
@@ -341,6 +343,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         ServiceDetails = new javax.swing.JPanel();
         Description_input = new javax.swing.JTextField();
         CostPerService_input = new javax.swing.JFormattedTextField();
+        CostPerService_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+
         ServiceDate_input = new javax.swing.JFormattedTextField();
         ServiceQuantity_input = new javax.swing.JTextField();
         InvoiceTable = new javax.swing.JTable();
@@ -356,33 +360,12 @@ public class GUI_nurse extends javax.swing.JFrame {
         Quantity_label = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         
-        Billing BillingObj = new Billing(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
-        BillingObj.setNewInvoiceId(InvoiceID_input);
-        
-        BillingController BillingControllerObj = new BillingController(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
-        
-        Payment PaymentObj = new Payment(PaymentPanel, InvoiceID_input, PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
-        PaymentObj.setNewPaymentId(PaymentID_input);
-        PaymentID_input.setEnabled(false);
+        BillingAndPayment BillingAndPaymentObj = new BillingAndPayment(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
+        BillingAndPaymentObj.setNewInvoiceId(InvoiceID_input);
 
-        PaymentController paymentController = new PaymentController(PaymentPanel, InvoiceID_input, PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
-        
-        
-        // AddServiceButton.addActionListener(evt -> BillingControllerObj.handleAddServiceButtonActionPerformed(evt));
-        // InvoiceSaveButton.addActionListener(evt -> {
-            //     BillingControllerObj.handleSaveInvoiceButtonActionPerformed(evt);
-            // });
-            // InvoiceClearButton.addActionListener(evt -> {
-                //     BillingControllerObj.handleClearButtonActionPerformed(evt);
-                // });
-                
-        InvoiceSaveButton.addActionListener(evt -> {
-            paymentController.handleSaveButtonActionPerformed(evt);
-        });
-        
-        InvoiceClearButton.addActionListener(evt -> {
-            paymentController.handleClearButtonActionPerformed(evt);
-        });
+
+        BillingAndPaymentObj.setNewPaymentId(PaymentID_input);
+        PaymentID_input.setEnabled(false);
                 
                 
         jPanel4 = new javax.swing.JPanel();
@@ -2093,31 +2076,43 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         costPerItem_label.setText("RM/item: ");
 
-        CostPerService_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(java.text.NumberFormat.getCurrencyInstance())));
-
         ServiceDate_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         Quantity_label.setText("Quantity: ");
 
-        InvoiceTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+        javax.swing.table.DefaultTableModel invoiceTableModel = new javax.swing.table.DefaultTableModel(
+            new Object[][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
+            new String[] {
                 "Description", "RM / item", "QTY", "Total"
             }
-        ));
+        );
+        InvoiceTable.setModel(invoiceTableModel);
+
+
+        BillingController BillingControllerObj = new BillingController(invoiceTableModel, Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
+        
+        AddServiceButton.addActionListener(evt -> {
+            BillingControllerObj.handleAddServiceButtonActionPerformed(evt);
+        });
+
+        InvoiceSaveButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BillingControllerObj.handleSaveButtonActionPerformed(evt);
+            }
+        });
+        
+        InvoiceClearButton.addActionListener(evt -> {
+            BillingControllerObj.handleClearButtonActionPerformed(evt);
+        });
+         
         jScrollPane5.setViewportView(InvoiceTable);
 
         AddServiceButton.setText("Add Service");
-        AddServiceButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddServiceButtonActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout ServiceDetailsLayout = new javax.swing.GroupLayout(ServiceDetails);
         ServiceDetails.setLayout(ServiceDetailsLayout);
@@ -3083,7 +3078,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField TransferDate_input;
     private javax.swing.JPanel PaymentPanel;
     private javax.swing.JLabel PaymentAmount;
-    private javax.swing.JTextField PaymentAmount_input;
+    private javax.swing.JFormattedTextField PaymentAmount_input;
     private javax.swing.JLabel PaymentDate;
     private javax.swing.JLabel PaymentID1;
     private javax.swing.JTextField PaymentID_input;
