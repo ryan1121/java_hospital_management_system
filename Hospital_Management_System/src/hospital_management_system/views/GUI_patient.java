@@ -14,7 +14,9 @@ import javax.swing.table.*;
 import java.awt.*;
 
 import hospital_management_system.MysqlConnect;
+import hospital_management_system.controllers.PatientController;
 import hospital_management_system.models.PatientHistory;
+import hospital_management_system.models.PatientModel;
 
 /**
  *
@@ -22,13 +24,16 @@ import hospital_management_system.models.PatientHistory;
  */
 public class GUI_patient extends javax.swing.JFrame {
     String id;
+    private PatientController controller;
     /**
      * Creates new form GUI_patient
      */
     public GUI_patient(String id) {
         this.id = id;
         initComponents();
-        fetchDataAndDisplay();
+        controller = new PatientController(new PatientModel(), this);
+        // fetchDataAndDisplay();
+        controller.fetchDataAndDisplay(id);
     }
 
     /**
@@ -263,7 +268,8 @@ public class GUI_patient extends javax.swing.JFrame {
         patient_clear.setText("Clear");
         patient_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_clearActionPerformed(evt);
+                // patient_clearActionPerformed(evt);
+                controller.clearPatientInfo();
             }
         });
 
@@ -433,21 +439,6 @@ public class GUI_patient extends javax.swing.JFrame {
         Login_GUI.setVisible(true);
     }
 
-    private void patient_clearActionPerformed(java.awt.event.ActionEvent evt){
-        patient_name.setText("");
-        patient_phone.setText("");
-        patient_email.setText("");
-        patient_address.setText("");
-        patient_address_line2.setText("");
-        patient_address_line3.setText("");
-        patient_emergency_name.setText("");
-        patient_emergency_relationship.setText("");
-        patient_emergency_phone.setText("");
-        insuranceID.setText("");
-        providerName.setText("");
-        policyNumber.setText("");
-    }
-
     private void patient_saveActionPerformed(java.awt.event.ActionEvent evt){
         MysqlConnect db = new MysqlConnect();
         String tableName = "Patients";
@@ -521,71 +512,6 @@ public class GUI_patient extends javax.swing.JFrame {
             System.out.println("There is no data to update.");
         }
     }   
-
-    private void fetchDataAndDisplay() {
-        MysqlConnect db = new MysqlConnect();
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-
-        try {
-            // Establish connection
-            connection = db.getConnection();
-            // Create a prepared statement
-            String sql = "SELECT * FROM Patients WHERE patient_id = ?"; // Adjust the WHERE clause as needed
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, id); // Assuming you want to retrieve the row with ID=1
-            // Execute the query
-            resultSet = preparedStatement.executeQuery();
-
-            // Process the result set
-            if (resultSet.next()) {
-                // Retrieve data by column name
-                String id = resultSet.getString("patient_id");
-                String name = resultSet.getString("patient_name");
-                String gender = resultSet.getString("patient_gender");
-                String dob = resultSet.getString("patient_DOB");
-                String phone = resultSet.getString("patient_phone");
-                String email = resultSet.getString("patient_email");
-                String address = resultSet.getString("patient_address");
-                String address2 = resultSet.getString("patient_address_line2");
-                String address3 = resultSet.getString("patient_address_line3");
-                String EmergencyName = resultSet.getString("patient_emergency_name");
-                String EmergencyRelation = resultSet.getString("patient_emergency_relationship");
-                String EmergencyPhone = resultSet.getString("patient_emergency_phone");
-                String ins_ID = resultSet.getString("insuranceID");
-                String pro_Name = resultSet.getString("providerName");
-                String Pol_Number = resultSet.getString("policyNumber");
-                // Set text fields with retrieved data
-                patient_id.setText(id);
-                patient_name.setText(name);
-                patient_gender.setText(gender);
-                patient_DOB.setText(dob);
-                patient_phone.setText(phone);
-                patient_email.setText(email);
-                patient_address.setText(address);
-                patient_address_line2.setText(address2);
-                patient_address_line3.setText(address3);
-                patient_emergency_name.setText(EmergencyName);
-                patient_emergency_relationship.setText(EmergencyRelation);
-                patient_emergency_phone.setText(EmergencyPhone);
-                insuranceID.setText(ins_ID);
-                providerName.setText(pro_Name);
-                policyNumber.setText(Pol_Number);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close resources
-            try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
 
     private void setupTable(JTable table, DefaultTableModel model, JScrollPane scrollPane) {
         table.setModel(model);
@@ -734,4 +660,20 @@ public class GUI_patient extends javax.swing.JFrame {
     private javax.swing.JTextField policyNumber;
     private javax.swing.JTextField providerName;
     // End of variables declaration//GEN-END:variables
+
+    public void setPatientId(String id) { patient_id.setText(id); }
+    public void setPatientName(String name) { patient_name.setText(name); }
+    public void setPatientGender(String gender) { patient_gender.setText(gender); }
+    public void setPatientDOB(String dob) { patient_DOB.setText(dob); }
+    public void setPatientPhone(String phone) { patient_phone.setText(phone); }
+    public void setPatientEmail(String email) { patient_email.setText(email); }
+    public void setPatientAddress(String address) { patient_address.setText(address); }
+    public void setPatientAddressLine2(String addressLine2) { patient_address_line2.setText(addressLine2); }
+    public void setPatientAddressLine3(String addressLine3) { patient_address_line3.setText(addressLine3); }
+    public void setPatientEmergencyName(String emergencyName) { patient_emergency_name.setText(emergencyName); }
+    public void setPatientEmergencyRelationship(String emergencyRelationship) { patient_emergency_relationship.setText(emergencyRelationship); }
+    public void setPatientEmergencyPhone(String emergencyPhone) { patient_emergency_phone.setText(emergencyPhone); }
+    public void setInsuranceID(String insuranceID) { this.insuranceID.setText(insuranceID); }
+    public void setProviderName(String providerName) { this.providerName.setText(providerName); }
+    public void setPolicyNumber(String policyNumber) { this.policyNumber.setText(policyNumber); }
 }
