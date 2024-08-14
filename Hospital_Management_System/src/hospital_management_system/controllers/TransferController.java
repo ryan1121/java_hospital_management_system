@@ -50,6 +50,17 @@ public class TransferController {
     }
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
+        this.model = new Transfer(
+            TransferID_input,
+            TransferPatientID_input,
+            TransferFrom_input,
+            TransferTo_input,
+            TransferDate_input,
+            TransferTime_input,
+            ReasonForTransfer_input,
+            StatusOfTransfer_dropdown
+        );
+        
         if (model.save()) {
             Transfer.setNewTransferId(TransferID_input);  // Reset the new transfer ID
         } else {

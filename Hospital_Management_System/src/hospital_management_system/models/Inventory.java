@@ -7,74 +7,75 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 public class Inventory {
-    private JTextField inventoryID;
-    private JTextField itemName;
-    private JSpinner stockQuantity;
-    private JSpinner maximumStock;
-    private JSpinner minimumStock;
-    private JTextArea supplierInformation;
-    private JFormattedTextField expiryDate;
+    private String inventoryID;
+    private String itemName;
+    private int stockQuantity;
+    private int maximumStock;
+    private int minimumStock;
+    private String supplierInformation;
+    private String expiryDate;
 
     public Inventory(
-        JTextField inventoryID,
-        JTextField itemName,
-        JSpinner stockQuantity,
-        JSpinner maximumStock,
-        JSpinner minimumStock,
-        JTextArea supplierInformation,
-        JFormattedTextField expiryDate
+        JTextField inventoryIDTextField,
+        JTextField itemNameTextField,
+        JSpinner stockQuantitySpinner,
+        JSpinner maximumStockSpinner,
+        JSpinner minimumStockSpinner,
+        JTextArea supplierInformationTextArea,
+        JFormattedTextField expiryDateFormattedTextField
     ) {
-        this.inventoryID = inventoryID;
-        this.itemName = itemName;
-        this.stockQuantity = stockQuantity;
-        this.maximumStock = maximumStock;
-        this.minimumStock = minimumStock;
-        this.supplierInformation = supplierInformation;
-        this.expiryDate = expiryDate;
+        this.inventoryID = inventoryIDTextField.getText();
+        this.itemName = itemNameTextField.getText();
+        this.stockQuantity = (int) stockQuantitySpinner.getValue();
+        this.maximumStock = (int) maximumStockSpinner.getValue();
+        this.minimumStock = (int) minimumStockSpinner.getValue();
+        this.supplierInformation = supplierInformationTextArea.getText();
+        this.expiryDate = DateTimeUtils.formatDate(expiryDateFormattedTextField.getText());
     }
 
     public boolean save() {
-        String invID = inventoryID.getText();
-        String name = itemName.getText();
-        int stockQty = (int) stockQuantity.getValue();
-        int maxStock = (int) maximumStock.getValue();
-        int minStock = (int) minimumStock.getValue();
-        String supplierInfo = supplierInformation.getText();
-        String date = DateTimeUtils.formatDate(expiryDate.getText());
-
-        MysqlConnect db = new MysqlConnect();
-        String[] inventoryValues = {invID, name, String.valueOf(stockQty), String.valueOf(maxStock), String.valueOf(minStock), supplierInfo, date};
-
-        try {
-            boolean saveResult = db.saveData("InventoryManagement", "InventoryID, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimumStock, SupplierInformation, InventoryExpirydate", inventoryValues);
-            if (saveResult) {
-                JOptionPane.showMessageDialog(null, "Data saved successfully!");
-                return true;
-            } else {
-                JOptionPane.showMessageDialog(null, "Data saved unsuccessfully!");
+        System.out.println("Check name: " + itemName);
+        System.out.println("Check ID: " + inventoryID);
+        if (inventoryID == null || inventoryID.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "You MUST enter inventory ID!!");
+            return false;
+        } else if (itemName == null || itemName.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "You MUST enter item name!!");
+            return false;
+        } else {
+            MysqlConnect db = new MysqlConnect();
+            String[] inventoryValues = {inventoryID, itemName, String.valueOf(stockQuantity), String.valueOf(maximumStock), String.valueOf(minimumStock), supplierInformation, expiryDate};
+    
+            try {
+                boolean saveResult = db.saveData("InventoryManagement", "InventoryID, ItemName, InventoryStockQuantity, InventoryMaximumStock, InventoryMinimumStock, SupplierInformation, InventoryExpirydate", inventoryValues);
+                if (saveResult) {
+                    JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Data saved unsuccessfully!");
+                    return false;
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
         }
     }
 
-    public void clear(JTextField itemName,  JSpinner stockQuantity, JSpinner maximumStock, JSpinner minimumStock, JTextArea supplierInformation, JFormattedTextField expiryDate) {
-        itemName.setText("");
-        stockQuantity.setValue(0);
-        maximumStock.setValue(0);
-        minimumStock.setValue(0);
-        supplierInformation.setText("");
-        expiryDate.setText("");
+    public void clear(JTextField itemNameTextField, JSpinner stockQuantitySpinner, JSpinner maximumStockSpinner, JSpinner minimumStockSpinner, JTextArea supplierInformationTextArea, JFormattedTextField expiryDateFormattedTextField) {
+        itemNameTextField.setText("");
+        stockQuantitySpinner.setValue(0);
+        maximumStockSpinner.setValue(0);
+        minimumStockSpinner.setValue(0);
+        supplierInformationTextArea.setText("");
+        expiryDateFormattedTextField.setText("");
     }
 
-    
-    public static String setNewInventoryID(JTextField inventoryID) {
+    public static String setNewInventoryID(JTextField inventoryIDTextField) {
         MysqlConnect db = new MysqlConnect();
-        String newinventoryID = db.generateNewId("InventoryManagement", "INM");
-        inventoryID.setText(newinventoryID);
-        return newinventoryID;
+        String newInventoryID = db.generateNewId("InventoryManagement", "INM");
+        inventoryIDTextField.setText(newInventoryID);
+        return newInventoryID;
     }
 
     // Getters and Setters
@@ -84,17 +85,17 @@ public class Inventory {
     public String getItemName() { return itemName; }
     public void setItemName(String itemName) { this.itemName = itemName; }
 
-    public String getSupplierInformation() { return supplierInformation; }
-    public void setSupplierInformation(String supplierInformation) { this.supplierInformation = supplierInformation; }
-
     public int getStockQuantity() { return stockQuantity; }
     public void setStockQuantity(int stockQuantity) { this.stockQuantity = stockQuantity; }
+
+    public int getMaximumStock() { return maximumStock; }
+    public void setMaximumStock(int maximumStock) { this.maximumStock = maximumStock; }
 
     public int getMinimumStock() { return minimumStock; }
     public void setMinimumStock(int minimumStock) { this.minimumStock = minimumStock; }
 
-    public int getMaximumStock() { return maximumStock; }
-    public void setMaximumStock(int maximumStock) { this.maximumStock = maximumStock; }
+    public String getSupplierInformation() { return supplierInformation; }
+    public void setSupplierInformation(String supplierInformation) { this.supplierInformation = supplierInformation; }
 
     public String getExpiryDate() { return expiryDate; }
     public void setExpiryDate(String expiryDate) { this.expiryDate = expiryDate; }

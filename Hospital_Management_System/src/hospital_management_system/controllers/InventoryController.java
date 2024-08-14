@@ -46,6 +46,16 @@ public class InventoryController {
     }
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
+        this.model = new Inventory(
+            invIDInput, 
+            itemNameInput, 
+            stockQtyInput, 
+            maxStockInput, 
+            minStockInput, 
+            supplierInfoInput, 
+            expiryDateInput
+        );
+        
         if (model.save()) {
             Inventory.setNewInventoryID(invIDInput);  // Reset the new inventory ID
         } else {

@@ -6,14 +6,14 @@ import java.sql.SQLException;
 import javax.swing.*;
 
 public class Transfer {
-    private JTextField TransferID_input;
-    private JTextField TransferPatientID_input;
-    private JTextField TransferFrom_input;
-    private JTextField TransferTo_input;
-    private JFormattedTextField TransferDate_input;
-    private JFormattedTextField TransferTime_input;
-    private JTextArea ReasonForTransfer_input;
-    private JComboBox<String> StatusOfTransfer_dropdown;
+    private String transferID;
+    private String transferPatientID;
+    private String transferFrom;
+    private String transferTo;
+    private String transferDate;
+    private String transferTime;
+    private String reasonForTransfer;
+    private String statusOfTransfer;
 
     public Transfer(
         JTextField TransferID_input,
@@ -25,50 +25,47 @@ public class Transfer {
         JTextArea ReasonForTransfer_input,
         JComboBox<String> StatusOfTransfer_dropdown
     ) {
-        this.TransferID_input = TransferID_input;
-        this.TransferPatientID_input = TransferPatientID_input;
-        this.TransferFrom_input = TransferFrom_input;
-        this.TransferTo_input = TransferTo_input;
-        this.TransferDate_input = TransferDate_input;
-        this.TransferTime_input = TransferTime_input;
-        this.ReasonForTransfer_input = ReasonForTransfer_input;
-        this.StatusOfTransfer_dropdown = StatusOfTransfer_dropdown;
+        this.transferID = TransferID_input.getText();
+        this.transferPatientID = TransferPatientID_input.getText();
+        this.transferFrom = TransferFrom_input.getText();
+        this.transferTo = TransferTo_input.getText();
+        setTransferDate(DateTimeUtils.formatDate(TransferDate_input.getText()));
+        setTransferTime(DateTimeUtils.formatTime(TransferTime_input.getText()));
+        setReasonForTransfer(ReasonForTransfer_input.getText());
+        setStatusOfTransfer((String) StatusOfTransfer_dropdown.getSelectedItem());
     }
 
     public boolean save() {
-        String transferIDValue = TransferID_input.getText();
-        String transferPatientIDValue = TransferPatientID_input.getText();
-        String transferFromValue = TransferFrom_input.getText();
-        String transferToValue = TransferTo_input.getText();
-        String transferDateValue = DateTimeUtils.formatDate(TransferDate_input.getText());
-        String transferTimeValue = DateTimeUtils.formatTime(TransferTime_input.getText());
-        String reasonForTransferValue = ReasonForTransfer_input.getText();
-        String statusOfTransferValue = (String) StatusOfTransfer_dropdown.getSelectedItem();
-
-        if (transferPatientIDValue == null || transferPatientIDValue.isEmpty() || transferFromValue == null || transferFromValue.isEmpty()) {
+        if ((transferPatientID == null || transferPatientID.isEmpty()) || (transferFrom == null || transferFrom.isEmpty())) {
             JOptionPane.showMessageDialog(null, "You MUST enter patient ID and transfer from field!");
             return false;
-        }
+        } else {
+            MysqlConnect db = new MysqlConnect();
+            String[] transferValues = {transferID, transferPatientID, transferFrom, transferTo, transferDate, transferTime, reasonForTransfer, statusOfTransfer};
+            String newPatientHistoryID = db.generateNewId("PatientHistory", "H");
+            String[] historyValues = {newPatientHistoryID, transferPatientID, "Transfer", transferDate, "Transfer from " + transferFrom + " to " + transferTo + " for reason: " + reasonForTransfer + ". Status: " + statusOfTransfer};
+    
+            try {
+                // Save Transfer Data
+                boolean saveTransferResult = db.saveData("TransferManagement", "TransferID, PatientID, TransferFrom, TransferTo, PatientTransferDate, TransferTime, ReasonForTransfer, StatusOfTransfer", transferValues);
+                
+                /// Create a patientHistory model object
+                PatientHistory patientHistoryObj = new PatientHistory();
+    
+                // Save Patient History Data
+                boolean saveHistoryResult = patientHistoryObj.save(historyValues);
 
-        MysqlConnect db = new MysqlConnect();
-        String[] transferValues = {transferIDValue, transferPatientIDValue, transferFromValue, transferToValue, transferDateValue, transferTimeValue, reasonForTransferValue, statusOfTransferValue};
-        String newPatientHistoryID = db.generateNewId("PatientHistory", "H");
-        String[] historyValues = {newPatientHistoryID, transferPatientIDValue, "Transfer", transferDateValue, "Transfer from " + transferFromValue + " to " + transferToValue + " for reason: " + reasonForTransferValue + ". Status: " + statusOfTransferValue};
-
-        try {
-            boolean saveTransferResult = db.saveData("TransferManagement", "TransferID, PatientID, TransferFrom, TransferTo, PatientTransferDate, TransferTime, ReasonForTransfer, StatusOfTransfer", transferValues);
-            boolean saveHistoryResult = db.saveData("PatientHistory", "HistoryID, PatientID, EventType, EventDate, Details", historyValues);
-
-            if (saveTransferResult && saveHistoryResult) {
-                JOptionPane.showMessageDialog(null, "Data saved successfully!");
-                return true;
-            } else {
-                JOptionPane.showMessageDialog(null, "Data saved unsuccessfully!");
+                if (saveTransferResult && saveHistoryResult) {
+                    JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                    return true;
+                } else {
+                    JOptionPane.showMessageDialog(null, "Data saved unsuccessfully!");
+                    return false;
+                }
+            } catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error while saving data: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
-            return false;
         }
     }
 
@@ -96,4 +93,28 @@ public class Transfer {
         TransferID_input.setText(newTransferId);
         return newTransferId;
     }
+
+    public String getTransferID() { return transferID; }
+    public void setTransferID(String transferID) { this.transferID = transferID; }
+
+    public String getTransferPatientID() { return transferPatientID; }
+    public void setTransferPatientID(String transferPatientID) { this.transferPatientID = transferPatientID; }
+
+    public String getTransferFrom() { return transferFrom; }
+    public void setTransferFrom(String transferFrom) { this.transferFrom = transferFrom; }
+
+    public String getTransferTo() { return transferTo; }
+    public void setTransferTo(String transferTo) { this.transferTo = transferTo; }
+
+    public String getTransferDate() { return transferDate; }
+    public void setTransferDate(String transferDate) { this.transferDate = transferDate; }
+
+    public String getTransferTime() { return transferTime; }
+    public void setTransferTime(String transferTime) { this.transferTime = transferTime; }
+
+    public String getReasonForTransfer() { return reasonForTransfer; }
+    public void setReasonForTransfer(String reasonForTransfer) { this.reasonForTransfer = reasonForTransfer; }
+
+    public String getStatusOfTransfer() { return statusOfTransfer; }
+    public void setStatusOfTransfer(String statusOfTransfer) { this.statusOfTransfer = statusOfTransfer; }
 }

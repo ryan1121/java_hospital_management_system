@@ -46,6 +46,16 @@ public class SupplyManagementController {
     }
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
+        this.model = new SupplyManagement(
+            supplyIDInput,
+            supplyNameInput,
+            supplyStockQuantityInput,
+            supplyMinimumStockInput,
+            supplyMaximumStockInput,
+            supplierInformationInput,
+            supplyExpiryDateInput
+        );
+        
         if (model.save()) {
             SupplyManagement.setNewSupplyID(supplyIDInput); // Reset the new supply ID
         } else {
