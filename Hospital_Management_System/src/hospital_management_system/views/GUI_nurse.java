@@ -313,7 +313,7 @@ public class GUI_nurse extends javax.swing.JFrame {
             }
         });
 
-        Payment = new javax.swing.JPanel();
+        PaymentPanel = new javax.swing.JPanel();
 
         //PaymentProcessing input fields
         PaymentProcessing = new javax.swing.JPanel();
@@ -329,12 +329,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         PaymentMethod = new javax.swing.JLabel();
         PaymentAmount = new javax.swing.JLabel();
         PaymentStatus = new javax.swing.JLabel();
-        
-        Payment PaymentObj = new Payment(Payment, InvoiceID_input, PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
-        PaymentObj.setNewPaymentId(PaymentID_input);
-        PaymentID_input.setEnabled(false);
-
-        PaymentController paymentController = new PaymentController(Payment, InvoiceID_input, PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
         
         //Invoice input fields
         Invoice = new javax.swing.JPanel();
@@ -366,6 +360,12 @@ public class GUI_nurse extends javax.swing.JFrame {
         BillingObj.setNewInvoiceId(InvoiceID_input);
         
         BillingController BillingControllerObj = new BillingController(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input);
+        
+        Payment PaymentObj = new Payment(PaymentPanel, InvoiceID_input, PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
+        PaymentObj.setNewPaymentId(PaymentID_input);
+        PaymentID_input.setEnabled(false);
+
+        PaymentController paymentController = new PaymentController(PaymentPanel, InvoiceID_input, PaymentID_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
         
         
         // AddServiceButton.addActionListener(evt -> BillingControllerObj.handleAddServiceButtonActionPerformed(evt));
@@ -1965,7 +1965,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         NurseTab.addTab("Resources", ResourcesManagement);
 
-        PaymentProcessing.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Payment ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        PaymentProcessing.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Payment", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
 
         PaymentID1.setText("Payment ID:");
 
@@ -2204,8 +2204,8 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         InvoiceClearButton.setText("Clear");
 
-        javax.swing.GroupLayout PaymentLayout = new javax.swing.GroupLayout(Payment);
-        Payment.setLayout(PaymentLayout);
+        javax.swing.GroupLayout PaymentLayout = new javax.swing.GroupLayout(PaymentPanel);
+        PaymentPanel.setLayout(PaymentLayout);
         PaymentLayout.setHorizontalGroup(
             PaymentLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PaymentLayout.createSequentialGroup()
@@ -2236,7 +2236,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         );
 
 
-        NurseTab.addTab("Payment", Payment);
+        NurseTab.addTab("Payment", PaymentPanel);
 
         jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Appointment"));
 
@@ -3081,7 +3081,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTextField PatientID_textField;
     private javax.swing.JPanel PatientTransfer;
     private javax.swing.JFormattedTextField TransferDate_input;
-    private javax.swing.JPanel Payment;
+    private javax.swing.JPanel PaymentPanel;
     private javax.swing.JLabel PaymentAmount;
     private javax.swing.JTextField PaymentAmount_input;
     private javax.swing.JLabel PaymentDate;

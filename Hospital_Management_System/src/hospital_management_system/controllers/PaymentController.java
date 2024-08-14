@@ -7,7 +7,7 @@ import javax.swing.*;
 
 public class PaymentController {
     private Payment model;
-    private JPanel Payment;
+    private JPanel panel;
     private JTextField InvoiceID_input;
     private JTextField PaymentID_input;
     private JTextField PaymentAmount_input;
@@ -16,7 +16,7 @@ public class PaymentController {
     private JFormattedTextField PaymentProcessingDate_input;
 
     public PaymentController(
-        JPanel Payment,
+        JPanel panel,
         JTextField PaymentID_input,
         JTextField InvoiceID_input,
         JTextField PaymentAmount_input,
@@ -24,7 +24,7 @@ public class PaymentController {
         JComboBox<String> PaymentStatus_dropdown,
         JFormattedTextField PaymentProcessingDate_input
     ) {
-        this.Payment = Payment;
+        this.panel = panel;
         this.PaymentID_input = PaymentID_input;
         this.InvoiceID_input = InvoiceID_input;
         this.PaymentAmount_input = PaymentAmount_input;
@@ -33,7 +33,7 @@ public class PaymentController {
         this.PaymentProcessingDate_input = PaymentProcessingDate_input;
 
         this.model = new Payment(
-            Payment,
+            panel,
             InvoiceID_input,
             PaymentID_input,
             PaymentAmount_input,
@@ -46,9 +46,9 @@ public class PaymentController {
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
         if (model.save()) {
             Payment.setNewPaymentId(PaymentID_input); // Reset the new transfer ID
-            JOptionPane.showMessageDialog(Payment, "Payment data saved successfully!");
+            JOptionPane.showMessageDialog(panel, "Payment data saved successfully!");
         } else {
-            JOptionPane.showMessageDialog(Payment, "Failed to save payment data.");
+            JOptionPane.showMessageDialog(panel, "Failed to save payment data.");
         }
     }
 
