@@ -8,10 +8,6 @@ import hospital_management_system.controllers.*;
 import hospital_management_system.models.*;
 
 import java.awt.*;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -22,13 +18,15 @@ import javax.swing.table.DefaultTableModel;
  */
 public class GUI_doctor extends javax.swing.JFrame {
     String username;
+    private DoctorController controller;
     /**
      * Creates new form GUI_doctor
      */
     public GUI_doctor(String username) {
         initComponents();
         this.username = username;
-        fetchDataDisplay();
+        controller = new DoctorController(new DoctorModel(), this);
+        controller.fetchDataAndDisplay(username);
     }
 
     /**
@@ -146,7 +144,7 @@ public class GUI_doctor extends javax.swing.JFrame {
         information_clear.setText("Clear");
         information_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                information_clearActionPerformed(evt);
+                controller.clearDoctorInfo();
             }
         });
 
@@ -748,16 +746,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         homePage.setVisible(true);
     }
 
-    private void information_clearActionPerformed(java.awt.event.ActionEvent evt){
-        doctor_name.setText("");
-        doctor_phone.setText("");
-        doctor_email.setText("");
-        doctor_specialization.setText("");
-        doctor_department.setText("");
-        doctor_experience.setText("");
-        doctor_qualifications.setText("");
-    };
-
     private void doctor_departmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_departmentActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_doctor_departmentActionPerformed
@@ -830,57 +818,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_SurgManage_ClearButtonActionPerformed
 
-    private void fetchDataDisplay() {
-        MysqlConnect db = new MysqlConnect();
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-
-        try {
-            // Establish connection
-            connection = db.getConnection();
-            // Create a prepared statement
-            String sql = "SELECT * FROM Doctors WHERE doctor_name = ?"; // Adjust the WHERE clause as needed
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, username); // Assuming you want to retrieve the row with ID=1
-            // Execute the query
-            resultSet = preparedStatement.executeQuery();
-
-            // Process the result set
-            if (resultSet.next()) {
-                // Retrieve data by column name
-                String id = resultSet.getString("doctor_id");
-                String name = resultSet.getString("doctor_name");
-                String phone = resultSet.getString("doctor_phone");
-                String email = resultSet.getString("doctor_email");
-                String specialization = resultSet.getString("doctor_specialization");
-                String department = resultSet.getString("doctor_department");
-                String experience = resultSet.getString("doctor_experience");
-                String qualifications = resultSet.getString("doctor_qualifications");
-                // Set text fields with retrieved data
-                doctor_id.setText(id);
-                doctor_name.setText(name);
-                doctor_phone.setText(phone);
-                doctor_email.setText(email);
-                doctor_specialization.setText(specialization);
-                doctor_department.setText(department);
-                doctor_experience.setText(experience);
-                doctor_qualifications.setText(qualifications);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close resources
-            try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     private void information_saveActionPerformed(java.awt.event.ActionEvent evt){
         MysqlConnect db = new MysqlConnect();
         String tableName = "Doctors";
@@ -893,6 +830,7 @@ public class GUI_doctor extends javax.swing.JFrame {
         String dpt = doctor_department.getText(); 
         String experience = doctor_experience.getText();
         String qualifications = doctor_qualifications.getText();
+        String status = doctor_status.getSelectedItem().toString();
 
     
         // 初始化更新语句和条件
@@ -920,6 +858,9 @@ public class GUI_doctor extends javax.swing.JFrame {
         }
         if (!qualifications.isEmpty()) {
             updateBuilder.append("doctor_qualifications = '").append(qualifications).append("', ");
+        }
+        if (!status.isEmpty()) {
+            updateBuilder.append("doctor_status = '").append(status).append("', ");
         }
     
         // 移除最后一个逗号和空格
@@ -1044,4 +985,40 @@ public class GUI_doctor extends javax.swing.JFrame {
     private javax.swing.JLabel treatmentPlans_label;
     private javax.swing.JLabel treatmentPlans_label10;
     // End of variables declaration//GEN-END:variables
+
+    public void setDoctorId(String id) {
+        doctor_id.setText(id);
+    }
+
+    public void setDoctorName(String name) {
+        doctor_name.setText(name);
+    }
+
+    public void setDoctorPhone(String phone) {
+        doctor_phone.setText(phone);
+    }
+
+    public void setDoctorEmail(String email) {
+        doctor_email.setText(email);
+    }
+
+    public void setDoctorSpecialization(String specialization) {
+        doctor_specialization.setText(specialization);
+    }
+
+    public void setDoctorDepartment(String department) {
+        doctor_department.setText(department);
+    }
+
+    public void setDoctorExperience(String experience) {
+        doctor_experience.setText(experience);
+    }
+
+    public void setDoctorQualifications(String qualifications) {
+        doctor_qualifications.setText(qualifications);
+    }
+
+    public void setDoctorStatus(String status) {
+        doctor_status.setSelectedItem(status);
+    }
 }
