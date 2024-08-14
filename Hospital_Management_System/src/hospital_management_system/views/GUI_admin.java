@@ -14,10 +14,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import javax.sound.midi.MidiDevice;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import hospital_management_system.MysqlConnect;
+import hospital_management_system.controllers.AdminInfoController;
 import hospital_management_system.controllers.WorkScheduleController;
 import hospital_management_system.utils.DateTimeUtils;
 
@@ -28,6 +30,7 @@ import hospital_management_system.utils.DateTimeUtils;
 public class GUI_admin extends javax.swing.JFrame {
     private String username;
     private WorkScheduleController scheduleController;
+    private AdminInfoController Infocontroller;
     private String role; // This will store the selected role
     private static GUI_admin instance;
     /**
@@ -36,7 +39,9 @@ public class GUI_admin extends javax.swing.JFrame {
     public GUI_admin() {
         initComponents();
         this.username = Home_Page_GUI.username;
-        fetchDataDisplay();
+        Infocontroller = new AdminInfoController(admin_id, admin_name, admin_phone, admin_email);
+        Infocontroller.fetchDataDisplay(username);
+
         scheduleController = new WorkScheduleController(DoctorScheduleTable, NurseScheduleTable, doctorScrollPane, nurseScrollPane);
         loadSchedules();
 
@@ -244,14 +249,16 @@ public class GUI_admin extends javax.swing.JFrame {
         admin_save.setText("Save");
         admin_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                admin_saveActionPerformed(evt);
+                // admin_saveActionPerformed(evt);
+                Infocontroller.handleSaveActionPerformed(evt);
             }
         });
 
         admin_clear.setText("Clear");
         admin_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                admin_clearActionPerformed(evt);
+                // admin_clearActionPerformed(evt);
+                Infocontroller.handleClearActionPerformed(evt);
             }
         });
 
@@ -1200,44 +1207,6 @@ public class GUI_admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void admin_saveActionPerformed(java.awt.event.ActionEvent evt){
-        MysqlConnect db = new MysqlConnect();
-            String tableName = "Admin";
-
-            String id = admin_id.getText(); 
-            String name = admin_name.getText(); 
-            String phone = admin_phone.getText(); 
-            String email = admin_email.getText(); 
-
-            // 初始化更新语句和条件
-            StringBuilder updateBuilder = new StringBuilder();
-            String condition = "admin_id = '" + id + "'"; 
-        
-            // 仅更新修改过的字段
-            if (!name.isEmpty()) {
-                updateBuilder.append("admin_name = '").append(name).append("', ");
-            }
-            if (!phone.isEmpty()) {
-                updateBuilder.append("admin_phone = '").append(phone).append("', ");
-            }
-            if (!email.isEmpty()) {
-                updateBuilder.append("admin_email = '").append(email).append("', ");
-            }
-        
-            // 移除最后一个逗号和空格
-            String update = updateBuilder.toString();
-            if (update.endsWith(", ")) {
-                update = update.substring(0, update.length() - 2);
-            }
-        
-            // 只有在 update 字符串不为空时才执行更新操作
-            if (!update.isEmpty()) {
-                db.updateData(tableName, update, condition);
-            } else {
-                System.out.println("There is no data to update.");
-            }
-    }   
-
     private void save_doctorActionPerformed(java.awt.event.ActionEvent evt){
         MysqlConnect db = new MysqlConnect();
         String tableName = "Doctors";
@@ -1348,13 +1317,6 @@ public class GUI_admin extends javax.swing.JFrame {
         insurance_id.setText("");
 
     }
-
-    private void admin_clearActionPerformed(java.awt.event.ActionEvent evt){
-        admin_name.setText("");
-        admin_phone.setText("");
-        admin_email.setText("");
-
-    };
 
     private void clear_doctorActionPerformed(java.awt.event.ActionEvent evt){
         doctor_name.setText("");
@@ -1531,50 +1493,6 @@ public class GUI_admin extends javax.swing.JFrame {
 
         Home_Page_GUI homePage = new Home_Page_GUI(role,username);
         homePage.setVisible(true);
-    }
-
-    private void fetchDataDisplay() {
-        MysqlConnect db = new MysqlConnect();
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-
-        try {
-            // Establish connection
-            connection = db.getConnection();
-            // Create a prepared statement
-            String sql = "SELECT * FROM Admin WHERE admin_name = ?"; // Adjust the WHERE clause as needed
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, username); // Assuming you want to retrieve the row with ID=1
-            // Execute the query
-            resultSet = preparedStatement.executeQuery();
-
-            // Process the result set
-            if (resultSet.next()) {
-                // Retrieve data by column name
-                String id = resultSet.getString("admin_id");
-                String name = resultSet.getString("admin_name");
-                String phone = resultSet.getString("admin_phone");
-                String email = resultSet.getString("admin_email");
-
-                // Set text fields with retrieved data
-                admin_id.setText(id);
-                admin_name.setText(name);
-                admin_phone.setText(phone);
-                admin_email.setText(email);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close resources
-            try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
     }
 
     /**
