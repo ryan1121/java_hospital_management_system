@@ -19,7 +19,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import hospital_management_system.MysqlConnect;
+import hospital_management_system.controllers.AdminAddDoctorController;
+import hospital_management_system.controllers.AdminAddNurseController;
+import hospital_management_system.controllers.AdminAddPatientController;
 import hospital_management_system.controllers.AdminInfoController;
+import hospital_management_system.controllers.DoctorController;
+import hospital_management_system.controllers.PatientController;
 import hospital_management_system.controllers.WorkScheduleController;
 import hospital_management_system.utils.DateTimeUtils;
 
@@ -42,6 +47,10 @@ public class GUI_admin extends javax.swing.JFrame {
         Infocontroller = new AdminInfoController(admin_id, admin_name, admin_phone, admin_email);
         Infocontroller.fetchDataDisplay(username);
 
+        AdminAddDoctorController doctorController = new AdminAddDoctorController(doctor_id, doctor_name, doctor_phone, doctor_email, doctor_specialization, doctor_department, doctor_experience, doctor_qualifications, save_doctor, clear_doctor, doctor_status);
+        AdminAddNurseController nurseController = new AdminAddNurseController(nurse_id, nurse_name, nurse_phone, nurse_email, nurse_position, nurse_department, nurse_assigned_wards, nurse_supervising_doctor, nurse_qualifications, nurse_experience, save_nurse, clear_nurse);
+        AdminAddPatientController patientController = new AdminAddPatientController(patient_id, patient_DOB, patient_gender, patient_phone, patient_name, patient_email, patient_address, patient_address_line2, patient_address_line3, patient_emergency_name, patient_emergency_phone, patient_emergency_relationship, insurance_id, provider_name, policy_number, patient_save, patient_clear);
+        
         scheduleController = new WorkScheduleController(DoctorScheduleTable, NurseScheduleTable, doctorScrollPane, nurseScrollPane);
         loadSchedules();
 
@@ -473,14 +482,14 @@ public class GUI_admin extends javax.swing.JFrame {
         save_doctor.setText("Save");
         save_doctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                save_doctorActionPerformed(evt);
+                // save_doctorActionPerformed(evt);
             }
         });
 
         clear_doctor.setText("Clear");
         clear_doctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clear_doctorActionPerformed(evt);
+                // clear_doctorActionPerformed(evt);
             }
         });
 
@@ -734,12 +743,12 @@ public class GUI_admin extends javax.swing.JFrame {
         clear_nurse.setText("Clear");
         clear_nurse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                clear_nurseActionPerformed(evt);
+                // clear_nurseActionPerformed(evt);
             }
         });
         save_nurse.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                save_nurseActionPerformed(evt);
+                // save_nurseActionPerformed(evt);
             }
         });
 
@@ -1070,14 +1079,14 @@ public class GUI_admin extends javax.swing.JFrame {
         patient_clear.setText("Clear");
         patient_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_clearActionPerformed(evt);
+                // patient_clearActionPerformed(evt);
             }
         });
         
         patient_save.setText("Save");
         patient_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_saveActionPerformed(evt);
+                // patient_saveActionPerformed(evt);
             }
         });
 
@@ -1206,159 +1215,6 @@ public class GUI_admin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void save_doctorActionPerformed(java.awt.event.ActionEvent evt){
-        MysqlConnect db = new MysqlConnect();
-        String tableName = "Doctors";
-        String columns = "doctor_id, doctor_name, doctor_password, doctor_phone, doctor_email, doctor_specialization, doctor_department, doctor_experience, doctor_qualifications";
-        String[] values = {doctor_id.getText(), doctor_name.getText(), "password", doctor_phone.getText(), doctor_email.getText(), doctor_specialization.getText(), doctor_department.getText(), doctor_experience.getText(), doctor_qualifications.getText()};
-
-        try {
-            boolean success = db.saveData(tableName, columns, values);
-            if (success) {
-                System.out.println("Data inserted successfully!");
-            } else {
-                System.out.println("Data insertion failed.");
-            }
-        } catch (SQLException e) {
-            System.err.println("Error occurred while inserting data.");
-            e.printStackTrace();
-        }
-
-        String newDoctorId = db.generateNewId("Doctors", "D");
-        doctor_id.setText(newDoctorId);
-
-        // reset textfield after saving new doctor information
-        doctor_name.setText("");
-        doctor_phone.setText("");
-        doctor_email.setText("");
-        doctor_specialization.setText("");
-        doctor_department.setText("");
-        doctor_experience.setText("");
-        doctor_qualifications.setText("");
-
-    }
-
-    private void save_nurseActionPerformed(java.awt.event.ActionEvent evt){
-        MysqlConnect db = new MysqlConnect();
-        String tableName = "Nurse";
-        String columns = "nurse_id, nurse_name, nurse_password, nurse_email, nurse_phone, nurse_position, nurse_department, nurse_assign_wards, nurse_supervising_doctor, nurse_qualifications, nurse_experience";
-        String[] values = {nurse_id.getText(), nurse_name.getText(), "password", nurse_email.getText(), nurse_phone.getText(), nurse_position.getText(), nurse_department.getText(), nurse_assigned_wards.getText(), nurse_supervising_doctor.getText(), nurse_qualifications.getText(), nurse_experience.getText()};
-
-        try {
-            boolean success = db.saveData(tableName, columns, values);
-            if (success) {
-                System.out.println("Data inserted successfully!");
-            } else {
-                System.out.println("Data insertion failed.");
-            }
-        } catch (SQLException e) {
-            System.err.println("Error occurred while inserting data.");
-            e.printStackTrace();
-        }
-
-        String newNurseId = db.generateNewId("Nurse", "N");
-        nurse_id.setText(newNurseId);
-
-        // reset textfield after saving new doctor information
-        nurse_name.setText("");
-        nurse_phone.setText("");
-        nurse_email.setText("");
-        nurse_department.setText("");
-        nurse_position.setText("");
-        nurse_supervising_doctor.setText("");
-        nurse_assigned_wards.setText("");
-        nurse_experience.setText("");
-        nurse_qualifications.setText("");
-
-    }
-
-    private void patient_saveActionPerformed(java.awt.event.ActionEvent evt){
-        MysqlConnect db = new MysqlConnect();
-        String tableName = "Patients";
-        
-        String formattedDob = DateTimeUtils.formatDate(patient_DOB.getText());
-        String selectedGender = (String) patient_gender.getSelectedItem();
-
-        String columns = "patient_id, patient_DOB, patient_gender, patient_phone, patient_name, patient_password, patient_email, patient_address, patient_address_line2, patient_address_line3, patient_emergency_name, patient_emergency_phone, patient_emergency_relationship, insuranceID, providerName, policyNumber";
-        String[] values = {patient_id.getText(), formattedDob, selectedGender, patient_phone.getText(), patient_name.getText(), "password", patient_email.getText(), patient_address.getText(), patient_address_line2.getText(), patient_address_line3.getText(), patient_emergency_name.getText(), patient_emergency_phone.getText(), patient_emergency_relationship.getText(), insurance_id.getText(), provider_name.getText(), policy_number.getText()};
-
-        try {
-            boolean success = db.saveData(tableName, columns, values);
-            if (success) {
-                System.out.println("Data inserted successfully!");
-            } else {
-                System.out.println("Data insertion failed.");
-            }
-        } catch (SQLException e) {
-            System.err.println("Error occurred while inserting data.");
-            e.printStackTrace();
-        }
-
-        String newPatientId = db.generateNewId("Patients", "P");
-        patient_id.setText(newPatientId);
-
-        // reset textfield after saving new doctor information
-        patient_DOB.setText("");
-        patient_address.setText("");
-        patient_address_line2.setText("");
-        patient_address_line3.setText("");
-        patient_bed_number.setText("");
-        patient_email.setText("");
-        patient_emergency_name.setText("");
-        patient_emergency_phone.setText("");
-        patient_emergency_relationship.setText("");
-        patient_name.setText("");
-        patient_phone.setText("");
-        patient_room_number.setText("");
-        patient_ward_number.setText("");
-        policy_number.setText("");
-        provider_name.setText("");
-        insurance_id.setText("");
-
-    }
-
-    private void clear_doctorActionPerformed(java.awt.event.ActionEvent evt){
-        doctor_name.setText("");
-        doctor_phone.setText("");
-        doctor_email.setText("");
-        doctor_specialization.setText("");
-        doctor_department.setText("");
-        doctor_experience.setText("");
-        doctor_qualifications.setText("");
-    };
-
-    private void patient_clearActionPerformed(java.awt.event.ActionEvent evt){
-        patient_DOB.setText("");
-        patient_address.setText("");
-        patient_address_line2.setText("");
-        patient_address_line3.setText("");
-        patient_bed_number.setText("");
-        patient_email.setText("");
-        patient_emergency_name.setText("");
-        patient_emergency_phone.setText("");
-        patient_emergency_relationship.setText("");
-        patient_name.setText("");
-        patient_phone.setText("");
-        patient_room_number.setText("");
-        patient_ward_number.setText("");
-        policy_number.setText("");
-        provider_name.setText("");
-        insurance_id.setText("");
-    };
-
-    private void clear_nurseActionPerformed(java.awt.event.ActionEvent evt){
-        nurse_name.setText("");
-        nurse_phone.setText("");
-        nurse_email.setText("");
-        nurse_department.setText("");
-        nurse_position.setText("");
-        nurse_supervising_doctor.setText("");
-        nurse_assigned_wards.setText("");
-        nurse_experience.setText("");
-        nurse_qualifications.setText("");
-
-    };
 
     private void nurse_supervising_doctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_supervising_doctorActionPerformed
         // TODO add your handling code here:
