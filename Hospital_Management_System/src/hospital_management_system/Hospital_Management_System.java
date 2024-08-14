@@ -7,7 +7,6 @@ public class Hospital_Management_System {
     public static void main(String[] args) {
         // Create an object for the home page gui
         Role_Page_GUI home_pageGUI = new Role_Page_GUI();
-
         // Set the visibility of the GUI
         home_pageGUI.setVisible(true);
 

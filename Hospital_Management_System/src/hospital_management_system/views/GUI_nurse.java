@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -319,7 +320,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         PaymentProcessing = new javax.swing.JPanel();
         PaymentID_input = new javax.swing.JTextField();
         PaymentAmount_input = new javax.swing.JFormattedTextField();
-        PaymentAmount_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        PaymentAmount_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0.00"))));
 
         PaymentMethod_dropdown = new javax.swing.JComboBox<>();
         PaymentStatus_dropdown = new javax.swing.JComboBox<>();
@@ -343,7 +344,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         ServiceDetails = new javax.swing.JPanel();
         Description_input = new javax.swing.JTextField();
         CostPerService_input = new javax.swing.JFormattedTextField();
-        CostPerService_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
+        CostPerService_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("0.00"))));
 
         ServiceDate_input = new javax.swing.JFormattedTextField();
         ServiceQuantity_input = new javax.swing.JTextField();
@@ -360,11 +361,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         Quantity_label = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
         
-        BillingAndPayment BillingAndPaymentObj = new BillingAndPayment(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
-        BillingAndPaymentObj.setNewInvoiceId(InvoiceID_input);
-
-
-        BillingAndPaymentObj.setNewPaymentId(PaymentID_input);
         PaymentID_input.setEnabled(false);
                 
                 
@@ -1317,7 +1313,15 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         Medication_label.setText("Medication : ");
 
-        Medication_comboxBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        // 2. Retrieve all medical supply names
+        ArrayList<String> supplyNames = SupplyManagementObj.getMedicalSupply();
+
+        // 3. Convert the ArrayList to a String array
+        String[] supplyArray = supplyNames.toArray(new String[0]);
+
+        // 4. Set the model for Medication_comboxBox
+        Medication_comboxBox.setModel(new javax.swing.DefaultComboBoxModel<>(supplyArray));
 
         dosage_label.setText("Dosage : ");
 
@@ -2092,7 +2096,13 @@ public class GUI_nurse extends javax.swing.JFrame {
             }
         );
         InvoiceTable.setModel(invoiceTableModel);
+        
+        BillingAndPayment BillingAndPaymentObj = new BillingAndPayment(Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
+        BillingAndPaymentObj.setNewInvoiceId(InvoiceID_input);
 
+
+        BillingAndPaymentObj.setNewPaymentId(PaymentID_input);
+        
 
         BillingController BillingControllerObj = new BillingController(invoiceTableModel, Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
         
@@ -2480,8 +2490,13 @@ public class GUI_nurse extends javax.swing.JFrame {
         // Validate input
         if (!invoiceId.isEmpty() && !patientId.isEmpty()) {
             // Open the invoice GUI with the provided IDs
-            GUI_Invoice invoiceGUI = new GUI_Invoice(invoiceId, patientId);
-            invoiceGUI.setVisible(true);
+            GUI_Invoice invoiceGUI = new GUI_Invoice();
+            // Call method to display data
+            boolean checkDataResult = invoiceGUI.InvoiceControllerObj.handleDisplayInvoiceData(invoiceId, patientId);
+            
+            if (checkDataResult){
+                invoiceGUI.setVisible(true);
+            }
         } else {
             JOptionPane.showMessageDialog(null, "Please enter both Invoice ID and Patient ID.");
         }

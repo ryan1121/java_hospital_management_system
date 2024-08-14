@@ -1,6 +1,7 @@
 package hospital_management_system.controllers;
 
 import hospital_management_system.models.BillingAndPayment;
+import hospital_management_system.utils.DateTimeUtils;
 import hospital_management_system.views.GUI_Invoice;
 
 import java.sql.SQLException;
@@ -57,19 +58,44 @@ public class BillingController {
         this.PaymentMethod_dropdown = PaymentMethod_dropdown;
         this.PaymentStatus_dropdown = PaymentStatus_dropdown;
         this.PaymentProcessingDate_input = PaymentProcessingDate_input;
-        
-    }
-
-    public void handleAddServiceButtonActionPerformed(ActionEvent evt) {
         this.model  = new BillingAndPayment(
             Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input
         );
+    }
 
-        model.addService(this.invoiceTableModel);
+    public void handleAddServiceButtonActionPerformed(ActionEvent evt) {
+        if (InvoiceID_input.getText().isEmpty() || InvoicePatientID_input.getText().isEmpty() || 
+            ServiceDate_input.getText().isEmpty() || Description_input.getText().isEmpty() ||
+            CostPerService_input.getText().isEmpty() || ServiceQuantity_input.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please fill in all required fields.");
+            return;
+        }
+        
+        this.model.invoiceID = InvoiceID_input.getText();
+        this.model.patientID = InvoicePatientID_input.getText();
+        this.model.setServiceDate(ServiceDate_input.getText());
+        this.model.setDescription(Description_input.getText());
+        this.model.setCostPerService(CostPerService_input.getText());
+        this.model.setServiceQuantity(ServiceQuantity_input.getText());
+
+        // Disable the ID buttons to avoid user alter the id when saving new Invoice
+        InvoiceID_input.setEnabled(false);
+        InvoicePatientID_input.setEnabled(false);
+        
+        // Update the invoiceTableModel after added service
+        this.invoiceTableModel = model.addService(this.invoiceTableModel);
     }
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
-        model.save();
+        this.model.invoiceID = InvoiceID_input.getText();
+        this.model.setPaymentAmount(PaymentAmount_input.getText());
+        this.model.paymentMethod = (String) PaymentMethod_dropdown.getSelectedItem();
+        this.model.paymentStatus = (String) PaymentStatus_dropdown.getSelectedItem();
+        this.model.paymentProcessingDate = DateTimeUtils.formatDate(PaymentProcessingDate_input.getText());
+        // Enable the ID buttons
+        InvoiceID_input.setEnabled(true);
+        InvoicePatientID_input.setEnabled(true);
+        model.save(this.invoiceTableModel);
     }
 
     public void handleClearButtonActionPerformed(ActionEvent evt) {

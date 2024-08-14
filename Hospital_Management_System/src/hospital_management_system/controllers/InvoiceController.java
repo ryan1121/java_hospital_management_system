@@ -50,7 +50,6 @@ public class InvoiceController {
         try {
             List<String> invoiceData = model.getInvoiceDetails(invoiceId, patientId);
             if (invoiceData != null) {
-                System.out.println("check invoiceno: " + InvoiceNo_display + "," + invoiceId);
                 InvoiceNo_display.setText(invoiceData.get(0)); // InvoiceID
                 InvoiceDate_display.setText(invoiceData.get(1)); // InvoiceDate
                 InvoiceDue_display.setText(invoiceData.get(2)); // InvoiceDue

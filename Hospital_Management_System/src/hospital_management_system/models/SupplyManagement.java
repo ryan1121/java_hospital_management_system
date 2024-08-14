@@ -2,7 +2,9 @@ package hospital_management_system.models;
 import hospital_management_system.MysqlConnect;
 import hospital_management_system.utils.DateTimeUtils;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -74,6 +76,22 @@ public class SupplyManagement {
         String newSupplyId = db.generateNewId("MedicalSupplyManagement", "SUP");
         supplyIDInput.setText(newSupplyId);
         return newSupplyId;
+    }
+
+    public ArrayList<String> getMedicalSupply() {
+        MysqlConnect db = new MysqlConnect();
+        ArrayList<String> supplyNames = new ArrayList<>();
+        String query = "SELECT SupplyName FROM MedicalSupplyManagement";
+        
+        try (ResultSet rs = db.executeQuery(query)) {
+            while (rs.next()) {
+                supplyNames.add(rs.getString("SupplyName"));
+            }
+        } catch (SQLException e) {
+            System.err.println("Error fetching medical supplies: " + e.getMessage());
+        }
+
+        return supplyNames;
     }
 
     // Getters and setters 
