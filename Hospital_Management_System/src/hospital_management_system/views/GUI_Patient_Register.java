@@ -160,7 +160,7 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         });
 
         jLabel7.setText("Address :");
-        jLabel7.setPreferredSize(new java.awt.Dimension(52, 16));
+        jLabel7.setPreferredSize(new java.awt.Dimension(56, 16));
 
         registerAddress.setText("");
         registerAddress.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +208,7 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
