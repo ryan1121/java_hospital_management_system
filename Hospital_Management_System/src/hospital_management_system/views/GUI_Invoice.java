@@ -4,11 +4,6 @@
  */
 package hospital_management_system.views;
 
-
-import hospital_management_system.models.InvoiceModel;
-import hospital_management_system.models.Billing;
-import hospital_management_system.models.Invoice;
-import hospital_management_system.MysqlConnect;
 import hospital_management_system.controllers.InvoiceController;
 
 import javax.swing.*;
@@ -23,24 +18,17 @@ import java.sql.*;
  * @author yc
  */
 public class GUI_Invoice extends javax.swing.JFrame {
+    public InvoiceController InvoiceControllerObj;
 
-    private String patientId;
-    private String invoiceId;
-
-    private MysqlConnect db;
 
     /**
      * Creates new form Invoice
      */
-    public GUI_Invoice(String invoiceId, String patientId) {
-        db = new MysqlConnect();
-        this.patientId = patientId;
-        this.invoiceId = invoiceId;
-
+    public GUI_Invoice() {
         initComponents();
         
-        // Call method to display data
-        displayInvoiceData(invoiceId, patientId);
+        // Create an object for Invoice model
+        InvoiceControllerObj = new InvoiceController(InvoicePanel, InvoiceNo_display, InvoiceDate_display, InvoiceDue_display, TotalAmount_display, AmountPaid_display, BalanceDue_display, PatientName_display, PatientID_display, InvoiceTable);
     }
 
     /**
@@ -57,7 +45,7 @@ public class GUI_Invoice extends javax.swing.JFrame {
         jTextArea3 = new javax.swing.JTextArea();
         jTextField2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        PatientID = new javax.swing.JPanel();
+        InvoicePanel = new javax.swing.JPanel();
         InvoiceNo_label = new javax.swing.JLabel();
         InvoiceDate_label = new javax.swing.JLabel();
         InvoiceDue_label = new javax.swing.JLabel();
@@ -104,7 +92,7 @@ public class GUI_Invoice extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        PatientID.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Invoice", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        InvoicePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Invoice", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
 
         InvoiceNo_label.setText("Invoice no:");
 
@@ -185,137 +173,137 @@ public class GUI_Invoice extends javax.swing.JFrame {
         BalanceDue_display.setText(" ");
         BalanceDue_display.setFont(new java.awt.Font("Segoe UI", 0, 12));
 
-        javax.swing.GroupLayout PatientIDLayout = new javax.swing.GroupLayout(PatientID);
-        PatientID.setLayout(PatientIDLayout);
-        PatientIDLayout.setHorizontalGroup(
-            PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PatientIDLayout.createSequentialGroup()
+        javax.swing.GroupLayout InvoicePanelLayout = new javax.swing.GroupLayout(InvoicePanel);
+        InvoicePanel.setLayout(InvoicePanelLayout);
+        InvoicePanelLayout.setHorizontalGroup(
+            InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InvoicePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PatientIDLayout.createSequentialGroup()
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PatientIDLayout.createSequentialGroup()
-                                .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InvoicePanelLayout.createSequentialGroup()
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(InvoicePanelLayout.createSequentialGroup()
+                                .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
-                                .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PatientIDLayout.createSequentialGroup()
-                                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InvoicePanelLayout.createSequentialGroup()
+                                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(PatientName_display, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
                                             .addComponent(PatientID_display, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(PatientName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(jLabel8))))
-                            .addGroup(PatientIDLayout.createSequentialGroup()
+                            .addGroup(InvoicePanelLayout.createSequentialGroup()
                                 .addComponent(From_address, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(101, 101, 101)
                                 .addComponent(From_address1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(29, 29, 29)
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(InvoiceDate_label)
                             .addComponent(InvoiceNo_label)
                             .addComponent(InvoiceDue_label, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(InvoiceDue_display, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE)
                             .addComponent(InvoiceDate_display, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(InvoiceNo_display, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(InvoiceNo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(InvoiceDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(InvoiceDue, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PatientIDLayout.createSequentialGroup()
+                    .addGroup(InvoicePanelLayout.createSequentialGroup()
                         .addGap(265, 265, 265)
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PatientIDLayout.createSequentialGroup()
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(InvoicePanelLayout.createSequentialGroup()
                                 .addComponent(BalanceDue_label)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(PatientIDLayout.createSequentialGroup()
+                                .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(InvoicePanelLayout.createSequentialGroup()
                                         .addComponent(BalanceDue, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addComponent(BalanceDue_display, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                            .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PatientIDLayout.createSequentialGroup()
+                            .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, InvoicePanelLayout.createSequentialGroup()
                                     .addComponent(AmountPaid_label, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(AmountPaid_display, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PatientIDLayout.createSequentialGroup()
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, InvoicePanelLayout.createSequentialGroup()
                                     .addComponent(Total_label, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGap(58, 58, 58)
                                     .addComponent(TotalAmount_display, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Total, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AmountPaid, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
-        PatientIDLayout.setVerticalGroup(
-            PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PatientIDLayout.createSequentialGroup()
+        InvoicePanelLayout.setVerticalGroup(
+            InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(InvoicePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(InvoiceNo_label)
                     .addComponent(From_address)
                     .addComponent(From_address1)
                     .addComponent(InvoiceNo)
                     .addComponent(InvoiceNo_display))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PatientIDLayout.createSequentialGroup()
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InvoicePanelLayout.createSequentialGroup()
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel1)
                             .addComponent(jLabel2))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
                             .addComponent(jLabel8)
                             .addComponent(PatientID_display))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(jLabel3)))
-                    .addGroup(PatientIDLayout.createSequentialGroup()
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(InvoicePanelLayout.createSequentialGroup()
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(InvoiceDate_label)
                             .addComponent(InvoiceDate)
                             .addComponent(InvoiceDate_display))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(InvoiceDue_label)
                             .addComponent(InvoiceDue)
                             .addComponent(InvoiceDue_display))))
-                .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PatientIDLayout.createSequentialGroup()
+                .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(InvoicePanelLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
-                        .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel6)
                             .addComponent(PatientName_display)))
-                    .addGroup(PatientIDLayout.createSequentialGroup()
+                    .addGroup(InvoicePanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(PatientName)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Total_label)
                     .addComponent(Total)
                     .addComponent(TotalAmount_display))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(AmountPaid)
-                    .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(AmountPaid_label)
                         .addComponent(AmountPaid_display)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(PatientIDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(InvoicePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BalanceDue_label)
                     .addComponent(BalanceDue)
                     .addComponent(BalanceDue_display))
@@ -326,79 +314,15 @@ public class GUI_Invoice extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PatientID, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(InvoicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 475, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PatientID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(InvoicePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    // Method to fetch and display invoice data
-    public void displayInvoiceData(String invoiceId, String patientId) {
-        // Prepare the query
-        String query = "SELECT Invoice.InvoiceID, Invoice.InvoiceDate, Invoice.InvoiceDue, Invoice.TotalPayment, " +
-                       "Invoice.AmountPaid, Invoice.BalanceDue, Patients.patient_name " +
-                       "FROM Invoice " +
-                       "JOIN Patients ON Invoice.PatientID = Patients.patient_id " +
-                       "WHERE Invoice.InvoiceID = '" + invoiceId + "' AND Invoice.PatientID = '" + patientId +"'";
-
-        try (ResultSet rs = db.executeQuery(query)) {
-            if (rs.next()) {
-                // Assuming columns names in the database
-                String invoiceNo = rs.getString("InvoiceID");
-                String patientName = rs.getString("patient_name");
-                String invoiceDate = rs.getString("InvoiceDate");
-                String invoiceDue = rs.getString("InvoiceDue");
-                String totalAmount = rs.getString("TotalPayment");
-                String amountPaid = rs.getString("AmountPaid");
-                String balanceDue = rs.getString("BalanceDue");
-
-                // Set data to the labels
-                InvoiceNo_display.setText(invoiceNo);
-                InvoiceDate_display.setText(invoiceDate);
-                InvoiceDue_display.setText(invoiceDue);
-                TotalAmount_display.setText(totalAmount);
-                AmountPaid_display.setText(amountPaid);
-                BalanceDue_display.setText(balanceDue);
-                PatientName_display.setText("   " + patientName);
-                PatientID_display.setText("    " + patientId);
-                
-                // Call method to fill invoice table
-                fillInvoiceTable(invoiceId);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    // Method to fill invoice table with service details
-    private void fillInvoiceTable(String invoiceId) {
-        // Prepare query to fetch service details for the invoice
-        String query = "SELECT ServicesDescription, CostPerService, Quantity, TotalPayment FROM Billing WHERE InvoiceID = '" + invoiceId + "'";
-        DefaultTableModel model = (DefaultTableModel) InvoiceTable.getModel();
-
-        try (ResultSet rs = db.executeQuery(query)) {
-            // Clear existing table rows
-            model.setRowCount(0);
-
-            while (rs.next()) {
-                String description = rs.getString("ServicesDescription");
-                double costPerService = rs.getDouble("CostPerService");
-                int quantity = rs.getInt("Quantity");
-                double totalCost = rs.getDouble("TotalPayment");
-
-                // Add row to table
-                model.addRow(new Object[]{description, costPerService, quantity, totalCost});
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            JOptionPane.showMessageDialog(this, "Error fetching invoice items", "Database Error", JOptionPane.ERROR_MESSAGE);
-        }
-    }
-
 
     /**
      * @param args the command line arguments
@@ -454,7 +378,7 @@ public class GUI_Invoice extends javax.swing.JFrame {
     private javax.swing.JLabel InvoiceNo_display;
     private javax.swing.JLabel InvoiceNo_label;
     private javax.swing.JTable InvoiceTable;
-    private javax.swing.JPanel PatientID;
+    private javax.swing.JPanel InvoicePanel;
     private javax.swing.JLabel PatientID_display;
     private javax.swing.JLabel PatientName;
     private javax.swing.JLabel PatientName_display;
