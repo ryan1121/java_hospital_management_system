@@ -152,8 +152,8 @@ CREATE TABLE MedicalRecords (
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
     DateOfVisit DATE NOT NULL,
-    notes TEXT,
-    treatmentPlans TEXT,
+    notes TEXT NOT NULL,
+    treatmentPlans TEXT NOT NULL,
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE,
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
@@ -165,7 +165,7 @@ CREATE TABLE Surgery (
     DoctorID VARCHAR(25) NOT NULL,
     surgeryType VARCHAR(255) NOT NULL,
     DateOfSurgery DATE NOT NULL,
-    Outcomes TEXT,
+    Outcomes TEXT NOT NULL,
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE,
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
@@ -176,7 +176,7 @@ CREATE TABLE Consultations (
     PatientID VARCHAR(25) NOT NULL,
     DoctorID VARCHAR(25) NOT NULL,
     DateOfConsultation DATE NOT NULL,
-    notes TEXT,
+    notes TEXT NOT NULL,
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE,
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
@@ -188,7 +188,7 @@ CREATE TABLE Diagnosis (
     DoctorID VARCHAR(25) NOT NULL,
     DiagnosisDescription TEXT NOT NULL,
     DateOfDiagnosis DATE NOT NULL,
-    treatmentPlans TEXT,
+    treatmentPlans TEXT NOT NULL,
     FOREIGN KEY (PatientID) REFERENCES Patients(patient_id) ON DELETE CASCADE,
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );

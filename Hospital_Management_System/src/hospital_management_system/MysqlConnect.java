@@ -62,7 +62,7 @@ Example Usage:
 public class MysqlConnect {
     private final String url = "jdbc:mysql://localhost:3306/hospital_management";
     private final String username = "root";
-    private final String password = "sneymoon1234";
+    private final String password = "123456";
     private Connection connection;
 
     public MysqlConnect() {
@@ -97,7 +97,7 @@ public class MysqlConnect {
     }
     
     public String[] getTableColumns(String tableName) {
-        String query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ?";
+        String query = "SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = ? ORDER BY ORDINAL_POSITION";
         try (PreparedStatement statement = connection.prepareStatement(query)) {
             statement.setString(1, tableName);
             ResultSet rs = statement.executeQuery();
