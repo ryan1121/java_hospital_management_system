@@ -4,14 +4,16 @@ import hospital_management_system.utils.DateTimeUtils;
 
 public class StaffScheduling {
     private String staffID;
+    private String staffName;
     private String shiftDate;
     private String shiftStartTime;
     private String shiftEndTime;
     private String department;
     private String tasks;
 
-    public StaffScheduling(String staffID, String shiftDate, String shiftStartTime, String shiftEndTime, String department, String tasks) {
+    public StaffScheduling(String staffID, String staffName, String shiftDate, String shiftStartTime, String shiftEndTime, String department, String tasks) {
         this.staffID = staffID;
+        this.staffName = staffName;
         this.shiftDate = shiftDate;
         this.shiftStartTime = shiftStartTime;
         this.shiftEndTime = shiftEndTime;
@@ -21,6 +23,10 @@ public class StaffScheduling {
 
     public String getStaffID() {
         return staffID;
+    }
+
+    public String getStaffName() {
+        return staffName;
     }
 
     public String getShiftDate() {

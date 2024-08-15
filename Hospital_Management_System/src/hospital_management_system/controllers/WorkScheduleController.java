@@ -43,7 +43,7 @@ public class WorkScheduleController {
             return;
         }
 
-        List<DoctorSchedule> schedules = new ArrayList<>();
+        List<StaffScheduling> schedules = new ArrayList<>();
         String query = "SELECT d.doctor_id AS DoctorID, d.doctor_name AS Name, s.StaffScheduleDate AS Date, s.ShiftStartTime AS StartTime, " +
                        "s.ShiftEndTime AS EndTime, s.Department, s.AssignedTasks " +
                        "FROM DoctorStaffScheduling s " +
@@ -51,10 +51,10 @@ public class WorkScheduleController {
 
         try (ResultSet resultSet = mysqlConnect.executeQuery(query)) {
             while (resultSet.next()) {
-                DoctorSchedule schedule = new DoctorSchedule(
+                StaffScheduling schedule = new StaffScheduling(
                     resultSet.getString("DoctorID"),
                     resultSet.getString("Name"),
-                    resultSet.getDate("Date"),
+                    resultSet.getDate("Date").toString(),
                     resultSet.getTime("StartTime").toString(),
                     resultSet.getTime("EndTime").toString(),
                     resultSet.getString("Department"),
@@ -75,15 +75,15 @@ public class WorkScheduleController {
             }
         };
 
-        for (DoctorSchedule schedule : schedules) {
+        for (StaffScheduling schedule : schedules) {
             doctorModel.addRow(new Object[]{
-                schedule.getDoctorID(),
-                schedule.getName(),
-                schedule.getDate(),
-                schedule.getStartTime(),
-                schedule.getEndTime(),
+                schedule.getStaffID(),
+                schedule.getStaffName(),
+                schedule.getShiftDate(),
+                schedule.getShiftStartTime(),
+                schedule.getShiftEndTime(),
                 schedule.getDepartment(),
-                schedule.getAssignedTasks()
+                schedule.getTasks()
             });
         }
 
@@ -95,7 +95,7 @@ public class WorkScheduleController {
             return;
         }
 
-        List<NurseSchedule> schedules = new ArrayList<>();
+        List<StaffScheduling> schedules = new ArrayList<>();
         String query = "SELECT n.nurse_id AS NurseID, n.nurse_name AS Name, s.StaffScheduleDate AS Date, s.ShiftStartTime AS StartTime, " +
                        "s.ShiftEndTime AS EndTime, s.Department, s.AssignedTasks " +
                        "FROM NurseStaffScheduling s " +
@@ -103,10 +103,10 @@ public class WorkScheduleController {
 
         try (ResultSet resultSet = mysqlConnect.executeQuery(query)) {
             while (resultSet.next()) {
-                NurseSchedule schedule = new NurseSchedule(
+                StaffScheduling schedule = new StaffScheduling(
                     resultSet.getString("NurseID"),
                     resultSet.getString("Name"),
-                    resultSet.getDate("Date"),
+                    resultSet.getDate("Date").toString(),
                     resultSet.getTime("StartTime").toString(),
                     resultSet.getTime("EndTime").toString(),
                     resultSet.getString("Department"),
@@ -127,15 +127,15 @@ public class WorkScheduleController {
             }
         };
 
-        for (NurseSchedule schedule : schedules) {
+        for (StaffScheduling schedule : schedules) {
             nurseModel.addRow(new Object[]{
-                schedule.getNurseID(),
-                schedule.getName(),
-                schedule.getDate(),
-                schedule.getStartTime(),
-                schedule.getEndTime(),
+                schedule.getStaffID(),
+                schedule.getStaffName(),
+                schedule.getShiftDate(),
+                schedule.getShiftStartTime(),
+                schedule.getShiftEndTime(),
                 schedule.getDepartment(),
-                schedule.getAssignedTasks()
+                schedule.getTasks()
             });
         }
 

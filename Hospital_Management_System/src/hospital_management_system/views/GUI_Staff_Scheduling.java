@@ -211,6 +211,7 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
         // Create a StaffScheduling instance with the input values
         StaffScheduling model = new StaffScheduling(
             StaffID_input.getText(),
+            "",
             StaffScheduleDate.getText(),
             ShiftStartTime_input.getText(),
             ShiftEndTime_input.getText(),
