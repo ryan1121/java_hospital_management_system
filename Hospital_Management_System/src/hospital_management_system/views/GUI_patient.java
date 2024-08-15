@@ -108,8 +108,10 @@ public class GUI_patient extends javax.swing.JFrame {
         patient_address_line3.setText("line 3");
 
         patient_gender.setText("Male");
+        patient_gender.setFont(new java.awt.Font("Segoe UI", 0, 12));
 
         patient_DOB.setText("12/01/2004");
+        patient_DOB.setFont(new java.awt.Font("Segoe UI", 0, 12));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
