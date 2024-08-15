@@ -306,17 +306,7 @@ public class BillingAndPayment {
         }
     }
 
-    public void clear(
-        JTextField InvoicePatientID_input,
-        JFormattedTextField ServiceDate_input,
-        JTextField Description_input,
-        JFormattedTextField CostPerService_input,
-        JTextField ServiceQuantity_input,
-        JTextField PaymentAmount_input,
-        JComboBox<String> PaymentMethod_dropdown,
-        JComboBox<String> PaymentStatus_dropdown,
-        JFormattedTextField PaymentProcessingDate_input
-    ) {
+    public void clear(JTextField InvoicePatientID_input, JFormattedTextField ServiceDate_input, JTextField Description_input, JFormattedTextField CostPerService_input, JTextField ServiceQuantity_input, JTextField PaymentAmount_input, JComboBox<String> PaymentMethod_dropdown, JComboBox<String> PaymentStatus_dropdown, JFormattedTextField PaymentProcessingDate_input) {
         InvoicePatientID_input.setText("");
         ServiceDate_input.setText("");
         Description_input.setText("");
@@ -344,19 +334,7 @@ public class BillingAndPayment {
         paymentIDInput.setText(newPaymentID);
         return newPaymentID;
     }
-    
-    private void clearFields() {
-        this.description = "";
-        this.costPerService = 0;
-        this.serviceQuantity = 0;
-        this.paymentAmount = 0;
-        this.paymentMethod = "";
-        this.paymentStatus = "";
-        this.paymentProcessingDate = "";
-    }
 
-    
-    
     
     // Getter and Setter methods
     public String getInvoiceID() {return invoiceID;}
