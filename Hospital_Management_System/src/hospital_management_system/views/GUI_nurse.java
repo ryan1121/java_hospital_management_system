@@ -198,6 +198,13 @@ public class GUI_nurse extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         instructions = new javax.swing.JTextArea();
         PrescriptionID_textField = new javax.swing.JTextField();
+        // 设置 JTextField 的大小
+        Dimension size = new Dimension(120, 20); // 宽度200，高度20
+        PrescriptionID_textField.setPreferredSize(size);
+        PrescriptionDate_textField.setPreferredSize(size);
+        PrescriptionID_textField.setEnabled(false); // 禁用id输入框
+
+
         prescripition_clearButton = new javax.swing.JButton();
         prescription_saveButton = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
@@ -206,6 +213,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         DateOfConsultation_label = new javax.swing.JLabel();
         Notes_label = new javax.swing.JLabel();
         ConsultationID_textField = new javax.swing.JTextField();
+        ConsultationID_textField.setEnabled(false);
+
         notes_textField = new java.awt.TextField();
         consultationManage_saveButton = new javax.swing.JButton();
         consultationManage_clearButton = new javax.swing.JButton();
@@ -1356,12 +1365,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         mgUnit_label.setText("mg");
 
-        PrescriptionDate_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        PrescriptionDate_textField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PrescriptionDate_textFieldActionPerformed(evt);
-            }
-        });
+        PrescriptionDate_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
 
         PrescriptionDate_label.setText("Prescription Date : ");
 
@@ -1374,6 +1378,9 @@ public class GUI_nurse extends javax.swing.JFrame {
         prescripition_clearButton.setText("Clear");
 
         prescription_saveButton.setText("Save");
+        PrescriptionController PrescriptionControllerObj = new PrescriptionController(jPanel13, PrescriptionID_textField, PatientID_textField, DoctorID_textField, Medication_comboxBox, dosage_Spinner, PrescriptionDate_textField, instructions, prescription_saveButton, prescripition_clearButton);
+        ConsultationController ConsultationControllerObj = new ConsultationController(jPanel13, ConsultationID_textField, PatientID_textField, DoctorID_textField, DateOfConsultation_textField, notes_textField, consultationManage_saveButton, consultationManage_clearButton);
+
 
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
@@ -1448,12 +1455,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         ConsultationID_label.setText("Consultation ID : ");
 
-        DateOfConsultation_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
-        DateOfConsultation_textField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DateOfConsultation_textFieldActionPerformed(evt);
-            }
-        });
+        DateOfConsultation_textField.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
 
         DateOfConsultation_label.setText("Date of consultation: ");
 
@@ -2575,10 +2577,6 @@ public class GUI_nurse extends javax.swing.JFrame {
     private void app_locationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_app_locationActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_app_locationActionPerformed
-
-    private void DateOfConsultation_textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DateOfConsultation_textFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DateOfConsultation_textFieldActionPerformed
 
     private void notes_textFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_notes_textFieldActionPerformed
         // TODO add your handling code here:
