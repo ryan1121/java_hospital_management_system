@@ -495,7 +495,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel6.setText("Position :");
 
-        nurse_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Not Active" }));
+        nurse_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Not Active", "" }));
 
         jLabel10.setText("Status :");
 
@@ -546,6 +546,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(nurse_supervising_doctor, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel15)
+                                .addComponent(jLabel6)
                                 .addComponent(nurse_position, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel6Layout.createSequentialGroup()
                             .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -561,7 +562,6 @@ public class GUI_nurse extends javax.swing.JFrame {
                                 .addGroup(jPanel6Layout.createSequentialGroup()
                                     .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addComponent(jLabel7)
-                                        .addComponent(jLabel6)
                                         .addComponent(nurse_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel10)
                                         .addComponent(jLabel8))
@@ -2318,7 +2318,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         app_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/y"))));
 
-        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+        SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a");
         // Create a DateFormatter using the desired format
         DateFormatter dateFormatter = new DateFormatter(timeFormat);
         // Set the formatter to the JFormattedTextField

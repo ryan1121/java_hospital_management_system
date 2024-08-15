@@ -93,7 +93,6 @@ public class NurseInfoModel {
             if (!update.isEmpty()) {
                 return db.updateData(tableName, update, condition);
             } else {
-                System.out.println("No data to update.");
                 return false;
             }
         } catch (Exception e) {

@@ -68,7 +68,7 @@ public class NurseInfoController {
         if (model.save()) {
             JOptionPane.showMessageDialog(null, "Data saved successfully!");
         } else {
-            JOptionPane.showMessageDialog(null, "Data save failed.");
+            JOptionPane.showMessageDialog(null, "No Data Update. Data save failed.");
         }
     }
 
@@ -82,6 +82,7 @@ public class NurseInfoController {
         nurseSupervisingDoctorField.setText("");
         nurseExperienceField.setText("");
         nurseQualificationsField.setText("");
+        nurseStatusField.setSelectedItem("");
     }
 
     public void fetchDataDisplay(String nurseName) {
