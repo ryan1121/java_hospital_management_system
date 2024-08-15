@@ -86,10 +86,15 @@ public class GUI_Check_Data extends javax.swing.JFrame {
         saveButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                saveChanges();
+                try {
+                    saveChanges();
+                } catch (SQLException ex) {
+                    JOptionPane.showMessageDialog(null, "Database error: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace();
+                }
             }
         });
-
+        
         deleteButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -191,39 +196,52 @@ public class GUI_Check_Data extends javax.swing.JFrame {
         }
     }
 
-    private void saveChanges() {
+    private void saveChanges() throws SQLException {
         MysqlConnect db = new MysqlConnect();
-
-        // 获取主键列名
+    
         String primaryKeyColumn = getPrimaryKeyColumn();
         if (primaryKeyColumn == null) {
             JOptionPane.showMessageDialog(this, "Unable to determine primary key column.");
             return;
         }
-
+    
+        boolean hasChanges = false;
+        StringBuilder errorMessages = new StringBuilder();
+    
         for (int row = 0; row < this.tableModel.getRowCount(); row++) {
             StringBuilder updateQuery = new StringBuilder("UPDATE " + tableName + " SET ");
             boolean modified = false;
-
+    
             Object[] originalRowData = originalData.get(row);
             for (int col = 0; col < this.tableModel.getColumnCount(); col++) {
                 Object originalValue = originalRowData[col];
                 Object currentValue = data_table.getValueAt(row, col);
-                if (originalValue != null && !originalValue.equals(currentValue) || originalValue == null && currentValue != null) {
+                if ((originalValue != null && !originalValue.equals(currentValue)) || (originalValue == null && currentValue != null)) {
                     updateQuery.append(this.tableModel.getColumnName(col)).append(" = '").append(currentValue).append("', ");
                     modified = true;
                 }
             }
+    
             if (modified) {
                 updateQuery.delete(updateQuery.length() - 2, updateQuery.length());
-                // 使用主键列来确定更新的记录
-                updateQuery.append(" WHERE ").append(primaryKeyColumn).append(" = '").append(this.tableModel.getValueAt(row, getColumnIndex(primaryKeyColumn))).append("'");
+                updateQuery.append(" WHERE ").append(primaryKeyColumn).append(" = '")
+                           .append(this.tableModel.getValueAt(row, getColumnIndex(primaryKeyColumn))).append("'");
+    
                 db.executeUpdate(updateQuery.toString());
-                JOptionPane.showMessageDialog(this, "Changes saved successfully.");
+                hasChanges = true;
             }
         }
+    
+        if (errorMessages.length() > 0) {
+            JOptionPane.showMessageDialog(this, "There were errors during the save:\n" + errorMessages.toString(), "Save Errors", JOptionPane.ERROR_MESSAGE);
+        } else if (hasChanges) {
+            JOptionPane.showMessageDialog(this, "All changes saved successfully.");
+        } else {
+            JOptionPane.showMessageDialog(this, "No changes detected.");
+        }
     }
-
+    
+    
     private void deleteSelectedRow() {
         int selectedRow = data_table.getSelectedRow();
         if (selectedRow == -1) {
