@@ -184,6 +184,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         pre_occ1 = new javax.swing.JTextField();
         bed_allocate_clear = new javax.swing.JButton();
         bed_allocate_save = new javax.swing.JButton();
+        bed_allocate_checkButton = new javax.swing.JButton();
         jPanel13 = new javax.swing.JPanel();
         jPanel14 = new javax.swing.JPanel();
         PrescriptionID_label = new javax.swing.JLabel();
@@ -1130,9 +1131,6 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("Bed Allocation"));
 
-        String newBedNo = db.generateNewId("BedAllocation", "B");
-        bed_allocate_number.setText(newBedNo);
-
         jLabel69.setText("Bed Type:");
 
         jLabel70.setText("Current Status:");
@@ -1167,9 +1165,9 @@ public class GUI_nurse extends javax.swing.JFrame {
             }
         });
 
-        bed_allocation_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "available", "not available", " " }));
+        bed_allocation_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Occupied" , "Discharged", " " }));
 
-        bed_type1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", " " }));
+        bed_type1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ICU", "General", "Surgical", "" }));
 
         emergency_equipment.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "ECG machine", "MRI scan", "Blood glucose monitor", "X-ray machine",
@@ -1209,6 +1207,13 @@ public class GUI_nurse extends javax.swing.JFrame {
         bed_allocate_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bedAllocationController.handleSaveActionPerformed(evt);
+            }
+        });
+
+        bed_allocate_checkButton.setText("Check");
+        bed_allocate_checkButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bedAllocationController.handleCheckActionPerformed(evt);
             }
         });
 
@@ -1263,12 +1268,16 @@ public class GUI_nurse extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 80, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bed_allocate_save)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(bed_allocate_clear)
-                .addContainerGap())
+                .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel19Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(bed_allocate_checkButton) // Add the "Check" button here
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bed_allocate_save)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bed_allocate_clear)
+                        .addContainerGap())
+                )
         );
         jPanel19Layout.setVerticalGroup(
             jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1322,7 +1331,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addGap(46, 46, 46)
                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bed_allocate_clear)
-                    .addComponent(bed_allocate_save))
+                    .addComponent(bed_allocate_save)
+                    .addComponent(bed_allocate_checkButton)) // Add the "Check" button here
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -1342,6 +1352,137 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        // javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
+        // jPanel19.setLayout(jPanel19Layout);
+        // jPanel19Layout.setHorizontalGroup(
+        //     jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //     .addGroup(jPanel19Layout.createSequentialGroup()
+        //         .addContainerGap()
+        //         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //             .addGroup(jPanel19Layout.createSequentialGroup()
+        //                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //                     .addGroup(jPanel19Layout.createSequentialGroup()
+        //                         .addComponent(jLabel74, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+        //                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //                         .addComponent(bed_allocate_number))
+        //                     .addGroup(jPanel19Layout.createSequentialGroup()
+        //                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        //                             .addComponent(jLabel73, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+        //                             .addComponent(jLabel72, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        //                             .addComponent(jLabel71, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        //                             .addComponent(jLabel70, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        //                             .addComponent(jLabel69, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        //                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //                             .addComponent(bed_allocation_status, 0, 1, Short.MAX_VALUE)
+        //                             .addComponent(bed_allocation_department)
+        //                             .addComponent(ward_allocate_number)
+        //                             .addComponent(room_allocate_number)
+        //                             .addComponent(bed_type1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        //                 .addGap(42, 42, 42)
+        //                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        //                     .addGroup(jPanel19Layout.createSequentialGroup()
+        //                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        //                             .addComponent(jLabel77, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
+        //                             .addComponent(jLabel75, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        //                         .addGap(6, 6, 6)
+        //                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        //                             .addComponent(bed_patient_id1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+        //                             .addComponent(allocate_date1)))
+        //                     .addGroup(jPanel19Layout.createSequentialGroup()
+        //                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+        //                             .addComponent(jLabel78, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        //                             .addComponent(jLabel76, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        //                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //                         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //                             .addComponent(discharge_date1, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+        //                             .addComponent(pre_occ1))))
+        //                 .addGap(21, 21, 21))
+        //             .addGroup(jPanel19Layout.createSequentialGroup()
+        //                 .addComponent(jLabel79)
+        //                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //                 .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
+        //                 .addGap(0, 80, Short.MAX_VALUE))))
+        //     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel19Layout.createSequentialGroup()
+        //         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        //         .addComponent(bed_allocate_save)
+        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //         .addComponent(bed_allocate_clear)
+        //         .addContainerGap())
+        // );
+        // jPanel19Layout.setVerticalGroup(
+        //     jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //     .addGroup(jPanel19Layout.createSequentialGroup()
+        //         .addContainerGap()
+        //         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //             .addGroup(jPanel19Layout.createSequentialGroup()
+        //                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        //                     .addComponent(jLabel74)
+        //                     .addComponent(bed_allocate_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        //                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        //                     .addComponent(jLabel73)
+        //                     .addComponent(room_allocate_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        //                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        //                     .addComponent(ward_allocate_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        //                     .addComponent(jLabel72))
+        //                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        //                     .addComponent(bed_allocation_department, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        //                     .addComponent(jLabel71))
+        //                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        //                     .addComponent(bed_allocation_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        //                     .addComponent(jLabel70)))
+        //             .addGroup(jPanel19Layout.createSequentialGroup()
+        //                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        //                     .addComponent(jLabel75)
+        //                     .addComponent(bed_patient_id1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        //                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        //                     .addComponent(jLabel77)
+        //                     .addComponent(allocate_date1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        //                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        //                     .addComponent(discharge_date1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        //                     .addComponent(jLabel76))
+        //                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //                 .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        //                     .addComponent(jLabel78)
+        //                     .addComponent(pre_occ1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        //             .addComponent(jLabel69)
+        //             .addComponent(bed_type1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+        //         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //             .addComponent(jLabel79)
+        //             .addComponent(jScrollPane13, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+        //         .addGap(46, 46, 46)
+        //         .addGroup(jPanel19Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        //             .addComponent(bed_allocate_clear)
+        //             .addComponent(bed_allocate_save))
+        //         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        // );
+
+        // javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        // jPanel5.setLayout(jPanel5Layout);
+        // jPanel5Layout.setHorizontalGroup(
+        //     jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //     .addGroup(jPanel5Layout.createSequentialGroup()
+        //         .addGap(181, 181, 181)
+        //         .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        //         .addContainerGap(204, Short.MAX_VALUE))
+        // );
+        // jPanel5Layout.setVerticalGroup(
+        //     jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        //     .addGroup(jPanel5Layout.createSequentialGroup()
+        //         .addContainerGap()
+        //         .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+        //         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        // );
 
         NurseTab.addTab("Bed Allocation", jPanel5);
 
@@ -2811,6 +2952,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JButton bed_allocate_clear;
     private javax.swing.JTextField bed_allocate_number;
     private javax.swing.JButton bed_allocate_save;
+    private javax.swing.JButton bed_allocate_checkButton;
     private javax.swing.JTextField bed_allocation_department;
     private javax.swing.JComboBox<String> bed_allocation_status;
     private javax.swing.JTextField bed_patient_id1;

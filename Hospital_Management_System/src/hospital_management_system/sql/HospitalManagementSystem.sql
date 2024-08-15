@@ -110,7 +110,7 @@ CREATE TABLE Appointment (
 
 -- 创建 BedAllocation 表
 CREATE TABLE BedAllocation (
-    bed_allocate_number VARCHAR(25) PRIMARY KEY,
+    bed_allocate_number VARCHAR(25),
     room_allocate_number VARCHAR(25),
     ward_allocate_number VARCHAR(25),
     bed_allocation_department VARCHAR(255),

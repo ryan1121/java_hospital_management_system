@@ -4,6 +4,9 @@
  */
 package hospital_management_system.models;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import hospital_management_system.MysqlConnect;
@@ -63,6 +66,25 @@ public class BedAllocationModel {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public ResultSet fetchBedInfo(String bedAllocateNumber) {
+        MysqlConnect db = new MysqlConnect();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        try {
+            connection = db.getConnection();
+            String query = "SELECT * FROM BedAllocation WHERE bed_allocate_number = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, bedAllocateNumber);
+            resultSet = preparedStatement.executeQuery();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return resultSet;
     }
 
     // Getters and setters for all fields

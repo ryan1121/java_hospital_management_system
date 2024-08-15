@@ -73,7 +73,7 @@ public class NurseAppointmentController {
 
         if (appointmentID.isEmpty() || patientID.isEmpty() || doctorID.isEmpty() || 
         formattedAppDate.isEmpty() || formattedTime.isEmpty() || reason.isEmpty() || 
-            appointmentType.isEmpty() || location.isEmpty() || formattedBookingDate.isEmpty()) {
+            appointmentType.isEmpty() || location.isEmpty() || formattedBookingDate.isEmpty() || status.isEmpty() || cancelReason.isEmpty()) {
             
             JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
