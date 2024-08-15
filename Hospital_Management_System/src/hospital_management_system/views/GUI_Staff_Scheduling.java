@@ -86,7 +86,7 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
 
         ShiftEndTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("h:mm a"))));
         
-        StaffScheduleDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        StaffScheduleDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
 
         javax.swing.GroupLayout StaffSchedulingLayout = new javax.swing.GroupLayout(StaffScheduling);
         StaffScheduling.setLayout(StaffSchedulingLayout);
