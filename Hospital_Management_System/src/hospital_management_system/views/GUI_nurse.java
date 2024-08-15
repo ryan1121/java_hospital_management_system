@@ -10,11 +10,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.DateFormatter;
 
 import hospital_management_system.MysqlConnect;
 import hospital_management_system.controllers.*;
@@ -28,14 +30,38 @@ import hospital_management_system.utils.DateTimeUtils;
  */
 public class GUI_nurse extends javax.swing.JFrame {
 
-    private String username;    
+    private String username;
+    private NurseInfoController nurseController;
+    private NurseGetPatientController patientController;  
+    private NurseAdmissionController admissionController;
+    private NurseAppointmentController appointmentController;
+    private BedAllocationController bedAllocationController;    
     /**
      * Creates new form GUI_nurse
      */
     public GUI_nurse() {
         initComponents();
         this.username = Home_Page_GUI.username;
-        fetchDataDisplay();
+        nurseController = new NurseInfoController(nurse_id, nurse_name, nurse_phone, nurse_email,
+                                                  nurse_department, nurse_position, nurse_assign_wards,
+                                                  nurse_supervising_doctor, nurse_experience, nurse_qualifications,
+                                                  nurse_status);
+        nurseController.fetchDataDisplay(username);
+
+        patientController = new NurseGetPatientController(patient_id, patient_name, patient_DOB, patient_phone, patient_email,
+                                                      patient_address, patient_address_line2, patient_address_line3,
+                                                      patient_ward, patient_bed_number, patient_room_number, patient_gender);
+
+        admissionController = new NurseAdmissionController(Admission_ID1, Admission_Date1, nurse_id, Admission_Status1, Admission_Notes1, Reason1,
+                                                        admission_Patient_ID, Insurance_Details1, medical_equipment_need);
+
+        appointmentController = new NurseAppointmentController(
+                                                            Appointment_ID, app_patient_id, app_doctor_id, app_date, app_time, appointment_notes,
+                                                            appointment_type, app_status, app_reason, app_location, nurse_id, booking_date, app_cancel);
+        
+        bedAllocationController = new BedAllocationController(bed_allocate_number, room_allocate_number, ward_allocate_number, bed_allocation_department,
+                                                            bed_allocation_status, bed_type1, bed_patient_id1, allocate_date1, discharge_date1,
+                                                            pre_occ1, emergency_equipment);
     }
 
     /**
@@ -596,14 +622,14 @@ public class GUI_nurse extends javax.swing.JFrame {
         information_clear.setText("Clear");
         information_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                information_clearActionPerformed(evt);
+                nurseController.handleClearActionPerformed(evt);
             }
         });
 
         information_save.setText("Save");
         information_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                information_saveActionPerformed(evt);
+                nurseController.handleSaveActionPerformed(evt);
             }
         });
 
@@ -879,14 +905,14 @@ public class GUI_nurse extends javax.swing.JFrame {
         patient_clear.setText("Clear");
         patient_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_clearActionPerformed(evt);
+                patientController.handleClearActionPerformed();
             }
         });
 
         patient_save.setText("Save");
         patient_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_saveActionPerformed(evt);
+                patientController.fetchPatientData();
             }
         });
 
@@ -1054,14 +1080,14 @@ public class GUI_nurse extends javax.swing.JFrame {
         admission_save.setText("Save");
         admission_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                admission_saveActionPerformed(evt);
+                admissionController.handleSaveActionPerformed(evt);
             }
         });
 
         admission_clear.setText("Clear");
         admission_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                admission_clearActionPerformed(evt);
+                admissionController.handleClearActionPerformed(evt);
             }
         });
 
@@ -1095,6 +1121,9 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder("Bed Allocation"));
 
+        String newBedNo = db.generateNewId("BedAllocation", "B");
+        bed_allocate_number.setText(newBedNo);
+
         jLabel69.setText("Bed Type:");
 
         jLabel70.setText("Current Status:");
@@ -1113,7 +1142,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel77.setText("Allocation Date:");
 
-        jLabel78.setText("Previous Occupants:");
+        jLabel78.setText("Patient Status:");
 
         jLabel79.setText("Emergency Equipment:");
 
@@ -1163,14 +1192,14 @@ public class GUI_nurse extends javax.swing.JFrame {
         bed_allocate_clear.setText("Clear");
         bed_allocate_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bed_allocate_clearActionPerformed(evt);
+                bedAllocationController.handleClearActionPerformed(evt);
             }
         });
 
         bed_allocate_save.setText("Save");
         bed_allocate_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bed_allocate_saveActionPerformed(evt);
+                bedAllocationController.handleSaveActionPerformed(evt);
             }
         });
 
@@ -2287,7 +2316,12 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         app_date.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/y"))));
 
-        app_time.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getTimeInstance(java.text.DateFormat.SHORT))));
+        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+        // Create a DateFormatter using the desired format
+        DateFormatter dateFormatter = new DateFormatter(timeFormat);
+        // Set the formatter to the JFormattedTextField
+        app_time.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(dateFormatter));
+
 
         app_location.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -2300,14 +2334,14 @@ public class GUI_nurse extends javax.swing.JFrame {
         appointment_clear.setText("Clear");
         appointment_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                appointment_clearActionPerformed(evt);
+                appointmentController.handleClearActionPerformed(evt);
             }
         });
 
         appointment_save.setText("Save");
         appointment_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                appointment_saveActionPerformed(evt);
+                appointmentController.handleSaveActionPerformed(evt);
             }
         });
 
@@ -2502,67 +2536,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         }
     }
 
-    private void fetchDataDisplay() {
-        MysqlConnect db = new MysqlConnect();
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-
-        try {
-            // Establish connection
-            connection = db.getConnection();
-
-            // Create a prepared statement
-            String sql; // Adjust the WHERE clause as needed
-            sql = "SELECT * FROM Nurse WHERE nurse_name = ?";
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, username);
-
-            // Execute the query
-            resultSet = preparedStatement.executeQuery();
-
-            // Process the result set
-            if (resultSet.next()) {
-                // Retrieve data by column name
-                String id = resultSet.getString("nurse_id");
-                String name = resultSet.getString("nurse_name");
-                String phone = resultSet.getString("nurse_phone");
-                String email = resultSet.getString("nurse_email");
-                String dpt = resultSet.getString("nurse_department");
-                String position = resultSet.getString("nurse_position");
-                String assignWard = resultSet.getString("nurse_assign_wards");
-                String supervising = resultSet.getString("nurse_supervising_doctor");
-                String experience = resultSet.getString("nurse_experience");
-                String qualifications = resultSet.getString("nurse_qualifications");
-
-                // Set text fields with retrieved data
-                nurse_id.setText(id);
-                Admitting_Staff_ID1.setText(id);
-                nurse_name.setText(name);
-                nurse_phone.setText(phone);
-                nurse_email.setText(email);
-                nurse_department.setText(dpt);
-                nurse_position.setText(position);
-                nurse_assign_wards.setText(assignWard);
-                nurse_supervising_doctor.setText(supervising);
-                nurse_experience.setText(experience);
-                nurse_qualifications.setText(qualifications);
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // Close resources
-            try {
-                if (resultSet != null) resultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
     private void backButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
         // TODO add your handling code here:
         this.dispose();
@@ -2570,332 +2543,6 @@ public class GUI_nurse extends javax.swing.JFrame {
         Home_Page_GUI homePage = new Home_Page_GUI("Nurse",username);
         homePage.setVisible(true);
     }
-    private void information_saveActionPerformed(java.awt.event.ActionEvent evt){
-        MysqlConnect db = new MysqlConnect();
-            String tableName = "Nurse";
-
-            String id = nurse_id.getText(); 
-            String name = nurse_name.getText(); 
-            String phone = nurse_phone.getText(); 
-            String email = nurse_email.getText(); 
-            String department = nurse_department.getText();
-            String position = nurse_position.getText();
-            String assign_wards = nurse_assign_wards.getText();
-            String supervising_doctor = nurse_supervising_doctor.getText();
-            String experience = nurse_experience.getText();
-            String qualifications = nurse_qualifications.getText();
-            String status = nurse_status.getSelectedItem().toString();
-
-            // 初始化更新语句和条件
-            StringBuilder updateBuilder = new StringBuilder();
-            String condition = "nurse_id = '" + id + "'"; 
-        
-            // 仅更新修改过的字段
-            if (!name.isEmpty()) {
-                updateBuilder.append("nurse_name = '").append(name).append("', ");
-            }
-            if (!phone.isEmpty()) {
-                updateBuilder.append("nurse_phone = '").append(phone).append("', ");
-            }
-            if (!email.isEmpty()) {
-                updateBuilder.append("nurse_email = '").append(email).append("', ");
-            }
-            if (!department.isEmpty()) {
-                updateBuilder.append("nurse_department = '").append(department).append("', ");
-            }
-            if (!position.isEmpty()) {
-                updateBuilder.append("nurse_position = '").append(position).append("', ");
-            }
-            if (!assign_wards.isEmpty()) {
-                updateBuilder.append("nurse_assign_wards = '").append(assign_wards).append("', ");
-            }
-            if (!supervising_doctor.isEmpty()) {
-                updateBuilder.append("nurse_supervising_doctor = '").append(supervising_doctor).append("', ");
-            }
-            if (!experience.isEmpty()) {
-                updateBuilder.append("nurse_experience = '").append(experience).append("', ");
-            }
-            if (!qualifications.isEmpty()) {
-                updateBuilder.append("nurse_qualifications = '").append(qualifications).append("', ");
-            }
-            if (!status.isEmpty()) {
-                updateBuilder.append("nurse_status = '").append(status).append("', ");
-            }
-
-            // 移除最后一个逗号和空格
-            String update = updateBuilder.toString();
-            if (update.endsWith(", ")) {
-                update = update.substring(0, update.length() - 2);
-            }
-        
-            // 只有在 update 字符串不为空时才执行更新操作
-            if (!update.isEmpty()) {
-                db.updateData(tableName, update, condition);
-            } else {
-                System.out.println("There is no data to update.");
-            }
-    };
-
-    private void information_clearActionPerformed(java.awt.event.ActionEvent evt){
-        nurse_name.setText("");
-        nurse_phone.setText("");
-        nurse_email.setText("");
-        nurse_department.setText("");
-        nurse_position.setText("");
-        nurse_supervising_doctor.setText("");
-        nurse_assign_wards.setText("");
-        nurse_experience.setText("");
-        nurse_qualifications.setText("");
-    };
-
-    private void patient_saveActionPerformed(java.awt.event.ActionEvent evt){
-        MysqlConnect db = new MysqlConnect();
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-        ResultSet patientResultSet = null;
-        ResultSet bedResultSet = null;
-    
-        try {
-            // 获取患者记录的条件
-            String patientCondition = "patient_id = '" + patient_id.getText() + "'";
-            
-            // 执行查询患者信息
-            patientResultSet = db.getData("Patients", patientCondition);
-    
-            if (patientResultSet != null && patientResultSet.next()) {
-                // 如果患者记录存在
-                String id = patientResultSet.getString("patient_id");
-                String name = patientResultSet.getString("patient_name");
-                String gender = patientResultSet.getString("patient_gender");
-                String dob = patientResultSet.getString("patient_DOB");
-                String phone = patientResultSet.getString("patient_phone");
-                String email = patientResultSet.getString("patient_email");
-                String address = patientResultSet.getString("patient_address");
-                String address2 = patientResultSet.getString("patient_address_line2");
-                String address3 = patientResultSet.getString("patient_address_line3");
-    
-                // 获取 JComboBox 的模型
-                DefaultComboBoxModel<String> model = (DefaultComboBoxModel<String>) patient_gender.getModel();
-    
-                // 检查 gender 是否在 JComboBox 的选项中
-                if (model.getIndexOf(gender) != -1) {
-                    patient_gender.setSelectedItem(gender);
-                } else {
-                    patient_gender.setSelectedIndex(0);
-                }
-    
-                // 设置文本字段
-                patient_id.setText(id);
-                patient_name.setText(name);
-                patient_DOB.setText(dob);
-                patient_phone.setText(phone);
-                patient_email.setText(email);
-                patient_address.setText(address);
-                patient_address_line2.setText(address2);
-                patient_address_line3.setText(address3);
-    
-                // 查询床位、房间和病区信息
-                String bedCondition = "bed_patient_id = '" + patient_id.getText() + "'";
-                String bedQuery = "SELECT bed_allocate_number, room_allocate_number, ward_allocate_number FROM BedAllocation WHERE " + bedCondition;
-                
-                // 执行查询床位信息
-                connection = db.getConnection();
-                preparedStatement = connection.prepareStatement(bedQuery);
-                bedResultSet = preparedStatement.executeQuery();
-    
-                if (bedResultSet.next()) {
-                    // 提取床位信息
-                    String ward = bedResultSet.getString("ward_allocate_number");
-                    String bedNumber = bedResultSet.getString("bed_allocate_number");
-                    String roomNumber = bedResultSet.getString("room_allocate_number");
-    
-                    // 设置床位相关字段
-                    patient_ward.setText(ward);
-                    patient_bed_number.setText(bedNumber);
-                    patient_room_number.setText(roomNumber);
-                } else {
-                    // 处理未找到床位记录的情况
-                    patient_ward.setText("");
-                    patient_bed_number.setText("");
-                    patient_room_number.setText("");
-                }
-            } else {
-                // 如果患者记录不存在，显示提示或其他处理逻辑
-                JOptionPane.showMessageDialog(this, "Patient does not exist. Ready to add new record!");
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } finally {
-            // 关闭资源
-            try {
-                if (patientResultSet != null) patientResultSet.close();
-                if (bedResultSet != null) bedResultSet.close();
-                if (preparedStatement != null) preparedStatement.close();
-                if (connection != null) connection.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        }
-    };
-
-    private void patient_clearActionPerformed(java.awt.event.ActionEvent evt){
-        patient_id.setText("");
-        patient_name.setText("");
-        patient_DOB.setText("");
-        patient_phone.setText("");
-        patient_email.setText("");
-        patient_address.setText("");
-        patient_address_line2.setText("");
-        patient_address_line3.setText("");
-        patient_ward.setText("");
-        patient_bed_number.setText("");
-        patient_room_number.setText("");
-    };
-
-    private void admission_saveActionPerformed(java.awt.event.ActionEvent evt){
-        MysqlConnect db = new MysqlConnect();
-        java.util.List<String> selectedItems = medical_equipment_need.getSelectedValuesList();
-        String selectedMed = String.join(",", selectedItems); 
-        String tableName = "Admission";
-
-        String formattedAdmissionDate = DateTimeUtils.formatDate(Admission_Date1.getText());
-
-        String columns = "Admission_ID, Admission_Date, Admitting_Staff_ID, Admission_Status, Admission_Notes, Reason, admission_Patient_ID, Insurance_Details, medical_equipment_need";
-        String[] values = {Admission_ID1.getText(),formattedAdmissionDate, nurse_id.getText(), Admission_Status1.getText(), Admission_Notes1.getText(), Reason1.getText(), admission_Patient_ID.getText(), Insurance_Details1.getText(), selectedMed};
-
-        try {
-            boolean success = db.saveData(tableName, columns, values);
-            if (success) {
-                System.out.println("Data inserted successfully!");
-            } else {
-                System.out.println("Data insertion failed.");
-            }
-        } catch (SQLException e) {
-            System.err.println("Error occurred while inserting data.");
-            e.printStackTrace();
-        }
-
-        String newAdmissionId = db.generateNewId("Admission", "A");
-        Admission_ID1.setText(newAdmissionId);
-
-        // reset textfield after saving new doctor information
-        Admission_Date1.setText("");
-        Admission_Status1.setText("");
-        Admission_Notes1.setText("");
-        Reason1.setText("");
-        admission_Patient_ID.setText("");
-        Insurance_Details1.setText("");
-
-    }
-
-    private void admission_clearActionPerformed(java.awt.event.ActionEvent evt){
-        Admission_Date1.setText("");
-        Admission_Status1.setText("");
-        Admission_Notes1.setText("");
-        Reason1.setText("");
-        admission_Patient_ID.setText("");
-        Insurance_Details1.setText("");
-    };
-
-    private void appointment_saveActionPerformed(java.awt.event.ActionEvent evt){
-        MysqlConnect db = new MysqlConnect();
-        String tableName = "Appointment";
-
-        String formattedAppDate = DateTimeUtils.formatDate(app_date.getText());
-        String formattedBookingDate = DateTimeUtils.formatDate(booking_date.getText());
-        String formattedTime = DateTimeUtils.formatTime(app_time.getText());
-
-        String columns = "Appointment_ID, app_patient_id, app_doctor_id, app_date, app_time, appointment_notes, appointment_type, app_status, app_reason, app_location, Admitting_Staff_ID, booking_date, app_cancel";
-        String[] values = {Appointment_ID.getText(), app_patient_id.getText(), app_doctor_id.getText(), formattedAppDate, formattedTime, appointment_notes.getText(), appointment_type.getText(), app_status.getText(), app_reason.getText(), app_location.getText(), nurse_id.getText(), formattedBookingDate, app_cancel.getText()};
-        
-        try {
-            boolean success = db.saveData(tableName, columns, values);
-            if (success) {
-                System.out.println("Data inserted successfully!");
-            } else {
-                System.out.println("Data insertion failed.");
-            }
-        } catch (SQLException e) {
-            System.err.println("Error occurred while inserting data.");
-            e.printStackTrace();
-        }
-
-        String newAppointmentId = db.generateNewId("Appointment", "AP");
-        Appointment_ID.setText(newAppointmentId);
-
-        // reset textfield after saving new doctor information
-        app_patient_id.setText("");
-        app_doctor_id.setText("");
-        app_date.setText("");
-        app_time.setText("");
-        app_reason.setText("");
-        appointment_type.setText("");
-        app_location.setText("");
-        appointment_notes.setText("");
-        app_cancel.setText("");
-        booking_date.setText("");
-        app_status.setText("");
-
-    }
-
-    private void appointment_clearActionPerformed(java.awt.event.ActionEvent evt){
-        app_patient_id.setText("");
-        app_doctor_id.setText("");
-        app_date.setText("");
-        app_time.setText("");
-        app_reason.setText("");
-        appointment_type.setText("");
-        app_location.setText("");
-        appointment_notes.setText("");
-        app_cancel.setText("");
-        booking_date.setText("");
-    };
-
-    private void bed_allocate_saveActionPerformed(java.awt.event.ActionEvent evt){
-        MysqlConnect db = new MysqlConnect();
-        String selectedEquiqment = emergency_equipment.getSelectedValue();
-        String tableName = "BedAllocation";
-
-        String formattedAllocateDate = DateTimeUtils.formatDate(allocate_date1.getText());
-        String formattedDischargeDate = DateTimeUtils.formatDate(discharge_date1.getText());
-
-        String columns = "bed_allocate_number, room_allocate_number, ward_allocate_number, bed_allocation_department, bed_allocation_status, bed_type, bed_patient_id, allocate_date, discharge_date, pre_occ, emergency_equipment";
-        String[] values = {bed_allocate_number.getText(), room_allocate_number.getText(), ward_allocate_number.getText(), bed_allocation_department.getText(), bed_allocation_status.getSelectedItem().toString(), bed_type1.getSelectedItem().toString(), bed_patient_id1.getText(), formattedAllocateDate, formattedDischargeDate, pre_occ1.getText(), selectedEquiqment};
-        
-        try {
-            boolean success = db.saveData(tableName, columns, values);
-            if (success) {
-                System.out.println("Data inserted successfully!");
-            } else {
-                System.out.println("Data insertion failed.");
-            }
-        } catch (SQLException e) {
-            System.err.println("Error occurred while inserting data.");
-            e.printStackTrace();
-        }
-
-        // reset textfield after saving new bedAllocation information
-        bed_allocate_number.setText("");
-        room_allocate_number.setText("");
-        ward_allocate_number.setText("");
-        bed_allocation_department.setText("");
-        bed_patient_id1.setText("");
-        discharge_date1.setText("");
-        allocate_date1.setText("");
-        pre_occ1.setText("");
-
-    }
-
-    private void bed_allocate_clearActionPerformed(java.awt.event.ActionEvent evt){
-        bed_allocate_number.setText("");
-        room_allocate_number.setText("");
-        ward_allocate_number.setText("");
-        bed_allocation_department.setText("");
-        bed_patient_id1.setText("");
-        discharge_date1.setText("");
-        allocate_date1.setText("");
-        pre_occ1.setText("");
-    };
 
     private void patient_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_idActionPerformed
         // TODO add your handling code here:

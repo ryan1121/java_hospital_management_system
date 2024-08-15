@@ -88,7 +88,14 @@ public class BillingController {
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
         this.model.invoiceID = InvoiceID_input.getText();
-        this.model.setPaymentAmount(PaymentAmount_input.getText());
+        // Initialize payment details
+        if (!PaymentAmount_input.getText().isEmpty()) {
+            this.model.setPaymentAmount(PaymentAmount_input.getText());
+        } else {
+            this.model.paymentAmount = 0;
+        }
+
+        
         this.model.paymentMethod = (String) PaymentMethod_dropdown.getSelectedItem();
         this.model.paymentStatus = (String) PaymentStatus_dropdown.getSelectedItem();
         this.model.paymentProcessingDate = DateTimeUtils.formatDate(PaymentProcessingDate_input.getText());
@@ -110,6 +117,8 @@ public class BillingController {
             PaymentStatus_dropdown,
             PaymentProcessingDate_input
         );
+
+        model.setNewInvoiceId(InvoiceID_input);
 
         // Clear the table model
         this.invoiceTableModel.setRowCount(0);

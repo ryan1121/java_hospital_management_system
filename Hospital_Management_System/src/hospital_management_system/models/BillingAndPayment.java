@@ -76,7 +76,6 @@ public class BillingAndPayment {
 
         // Initialize newInvoiceId
         setNewInvoiceId(invoiceIDTextField);
-        
     }
 
     private double parseDouble(String value, String fieldName) {
@@ -143,7 +142,7 @@ public class BillingAndPayment {
     public void save(DefaultTableModel invoiceTable) {
         try {
             MysqlConnect db = new MysqlConnect();
-            System.out.println("Testtest");
+            
             if ((serviceDate == null||serviceDate.isEmpty()) && !paymentProcessingDate.isEmpty()) {
                 // Case 2: When serviceDate is empty and paymentProcessingDate is not empty
                 System.out.println("Case 2: When serviceDate is empty and paymentProcessingDate is not empty");
@@ -186,8 +185,6 @@ public class BillingAndPayment {
                 
                 return;
             }
-
-            System.out.println(123123123);
             
             // Calculate TotalPayment as the sum of the 4th column of the invoiceTable
             BigDecimal totalPayment = BigDecimal.ZERO;
@@ -199,6 +196,8 @@ public class BillingAndPayment {
                 }
             }
 
+            System.out.println("This is the totalPayment : " + totalPayment);
+
     
             // Set InvoiceDue as InvoiceDate + 3 months
             String invoiceDate = serviceDate; // Ensure serviceDate is not null
@@ -206,10 +205,13 @@ public class BillingAndPayment {
                 throw new IllegalArgumentException("Service date cannot be null or empty.");
             }
 
+            System.out.println("This is the invoiceDate : " + invoiceDate);
+
+
             String invoiceDue = DateTimeUtils.addMonths(invoiceDate, 3);
 
-    
-            if (!serviceDate.isEmpty() && (paymentProcessingDate == null||paymentProcessingDate.isEmpty())) {
+            
+            if (serviceDate != null && !serviceDate.isEmpty() && (paymentProcessingDate == null || paymentProcessingDate.isEmpty())) {
                 System.out.println("Case 1: When serviceDate is not empty and paymentProcessingDate is empty");
     
                 // Save Invoice data
@@ -239,7 +241,7 @@ public class BillingAndPayment {
                 }
                 
                 JOptionPane.showMessageDialog(panel, "Billing data saved Successfully!");  
-            } else if (!(serviceDate == null||serviceDate.isEmpty()) && !(paymentProcessingDate == null||paymentProcessingDate.isEmpty())) {
+            } else {
                 // Case 3: When both serviceDate and paymentProcessingDate are not empty
                 System.out.println("Case 3: When both serviceDate and paymentProcessingDate are not empty");
 
@@ -268,7 +270,8 @@ public class BillingAndPayment {
                         db.saveData("Billing", "InvoiceID, ServicesDescription, CostPerService, Quantity, TotalPayment", billingValues);
                     }
                 }
-    
+                
+                
                 // Update Invoice table for payment
                 ResultSet rs = db.getData("Invoice", "InvoiceID = '" + invoiceID + "'");
                 if (rs.next()) {
@@ -279,7 +282,7 @@ public class BillingAndPayment {
                     amountPaid = amountPaid.add(payingAmount);
                     balanceDue = balanceDue.subtract(payingAmount);
     
-                    String updateInvoice = "AmountPaid = " + amountPaid + ", BalanceDue = " + balanceDue;
+                    String updateInvoice = "AmountPaid = " + amountPaid.toString() + ", BalanceDue = " + balanceDue.toString();
                     db.updateData("Invoice", updateInvoice, "InvoiceID = '" + invoiceID + "'");
                 }
     
@@ -287,11 +290,13 @@ public class BillingAndPayment {
                 String[] paymentValues = {
                     db.generateNewId("Payment", "PAY"),
                     invoiceID,
-                    paymentAmount,
-                    paymentProcessingDate
+                    String.valueOf(paymentAmount),
+                    paymentProcessingDate,
+                    paymentMethod,
+                    paymentStatus
                 };
-                db.saveData("Payment", "PaymentID, InvoiceID, PaymentAmount, PaymentProcessingDate", paymentValues);
-
+                db.saveData("Payment", "PaymentID, InvoiceID, PaymentAmount, PaymentDate, PaymentMethod, PaymentStatus", paymentValues);
+                
                 JOptionPane.showMessageDialog(panel, "Billing & Payment Data saved Successfully!");
             }
             
@@ -350,13 +355,30 @@ public class BillingAndPayment {
         this.paymentProcessingDate = "";
     }
 
+    
+    
+    
     // Getter and Setter methods
     public String getInvoiceID() {return invoiceID;}
-    public void setInvoiceID(String invoiceID) {this.invoiceID = invoiceID;}
-
+    public void setInvoiceID(String invoiceID) {
+        if (invoiceID != null && invoiceID.startsWith("INV")) {
+            this.invoiceID = invoiceID;
+        } else {
+            JOptionPane.showMessageDialog(panel, "Invoice ID must start with 'INV'.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    // public void setInvoiceID(String invoiceID) {this.invoiceID = invoiceID;}
+    
     public String getPatientID() {return patientID;}
-    public void setPatientID(String patientID) {this.patientID = patientID;}
-
+    public void setPatientID(String patientID) {
+        if (patientID != null && patientID.startsWith("P")) {
+            this.patientID = patientID;
+        } else {
+            JOptionPane.showMessageDialog(panel, "Patient ID must start with 'P'.", "Input Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    // public void setPatientID(String patientID) {this.patientID = patientID;}
+    
     public String getDescription() {return description;}
     public void setDescription(String description) {this.description = description;}
 
