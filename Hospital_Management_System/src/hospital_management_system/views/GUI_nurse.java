@@ -134,6 +134,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         patient_bed_number = new javax.swing.JTextField();
         patient_clear = new javax.swing.JButton();
         patient_save = new javax.swing.JButton();
+        patient_check = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
         jLabel60 = new javax.swing.JLabel();
@@ -721,7 +722,9 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder("Personal Information"));
 
-        patient_id.setText("");
+        MysqlConnect db = new MysqlConnect();
+        String newId = db.generateNewId("Patients", "P");
+        patient_id.setText(newId);
         patient_id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patient_idActionPerformed(evt);
@@ -737,7 +740,7 @@ public class GUI_nurse extends javax.swing.JFrame {
             }
         });
 
-        patient_gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
+        patient_gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female","" }));
 
         jLabel21.setText("Name :");
 
@@ -820,7 +823,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel23)
-                            .addComponent(patient_DOB, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE)
+                            .addComponent(patient_DOB, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
                             .addComponent(patient_email)))
                     .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addComponent(patient_id, javax.swing.GroupLayout.Alignment.LEADING)
@@ -922,6 +925,14 @@ public class GUI_nurse extends javax.swing.JFrame {
         patient_save.setText("Save");
         patient_save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                // patientController.fetchPatientData();
+                patientController.handleSaveActionPerformed();
+            }
+        });
+
+        patient_check.setText("Check");
+        patient_check.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patientController.fetchPatientData();
             }
         });
@@ -937,6 +948,8 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                        .addComponent(patient_check)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(patient_save)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(patient_clear)
@@ -952,6 +965,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(274, 274, 274)
                         .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(patient_check)
                             .addComponent(patient_clear)
                             .addComponent(patient_save))
                         .addGap(11, 11, 11))
@@ -964,7 +978,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         jPanel18.setBorder(javax.swing.BorderFactory.createTitledBorder("Admission"));
 
         jLabel60.setText("Admission ID:");
-        MysqlConnect db = new MysqlConnect();
+        
         String newAdmissionId = db.generateNewId("Admission", "A");
         Admission_ID1.setText(newAdmissionId);
         Admission_ID1.setEnabled(false);
@@ -3078,6 +3092,7 @@ public class GUI_nurse extends javax.swing.JFrame {
     private javax.swing.JTextField patient_phone;
     private javax.swing.JTextField patient_room_number;
     private javax.swing.JButton patient_save;
+    private javax.swing.JButton patient_check;
     private javax.swing.JTextField patient_ward;
     private javax.swing.JTextField pre_occ1;
     private javax.swing.JButton prescripition_clearButton;

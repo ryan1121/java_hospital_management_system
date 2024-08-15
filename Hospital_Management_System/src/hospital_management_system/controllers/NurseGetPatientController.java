@@ -12,7 +12,10 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import hospital_management_system.MysqlConnect;
+import hospital_management_system.models.AdminAddPatientModel;
 import hospital_management_system.models.NurseGetPatientModel;
+import hospital_management_system.utils.DateTimeUtils;
 
 /**
  *
@@ -112,9 +115,48 @@ public class NurseGetPatientController {
 
             } else {
                 JOptionPane.showMessageDialog(null, "Patient does not exist. Ready to add new record!");
+                MysqlConnect db = new MysqlConnect();
+                String newId = db.generateNewId("Patients", "P");
+                patientIDField.setText(newId);
+                patientNameField.setText("");
+                patientDOBField.setText("");
+                patientPhoneField.setText("");
+                patientEmailField.setText("");
+                patientAddressField.setText("");
+                patientAddressLine2Field.setText("");
+                patientAddressLine3Field.setText("");
+                patientWardField.setText("");
+                patientBedNumberField.setText("");
+                patientRoomNumberField.setText("");
+                patientGenderComboBox.setSelectedItem(""); 
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public void handleSaveActionPerformed(){
+        String patientID = patientIDField.getText();
+        String patientDOB = DateTimeUtils.formatDate(patientDOBField.getText());
+        String patientGender = (String) patientGenderComboBox.getSelectedItem();
+        String patientPhone = patientPhoneField.getText();
+        String patientName = patientNameField.getText();
+        String patientEmail = patientEmailField.getText();
+        String patientAddress = patientAddressField.getText();
+        String patientAddressLine2 = patientAddressLine2Field.getText();
+        String patientAddressLine3 = patientAddressLine3Field.getText();
+        String ward = patientWardField.getText();
+        String bedNumber = patientBedNumberField.getText();
+        String roomNumber = patientRoomNumberField.getText();
+
+        NurseGetPatientModel patient = new NurseGetPatientModel(patientID, patientName, patientDOB, patientPhone, patientEmail, 
+                                      patientAddress, patientAddressLine2, patientAddressLine3, ward, bedNumber, roomNumber, patientGender);
+
+        boolean success = patient.save();
+        if (success) {
+            JOptionPane.showMessageDialog(null, "Data saved successfully!");
+        } else {
+            JOptionPane.showMessageDialog(null, "Failed to save data.");
         }
     }
 
@@ -130,6 +172,6 @@ public class NurseGetPatientController {
         patientWardField.setText("");
         patientBedNumberField.setText("");
         patientRoomNumberField.setText("");
-        patientGenderComboBox.setSelectedIndex(0); // Assuming first item is default
+        patientGenderComboBox.setSelectedItem(""); // Assuming first item is default
     }
 }

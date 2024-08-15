@@ -45,6 +45,33 @@ public class NurseGetPatientModel {
         this.roomNumber = roomNumber;
     }
 
+    public boolean save() {
+        MysqlConnect db = new MysqlConnect();
+        String tableName = "Patients";
+        String columns = "patient_id, patient_DOB, patient_gender, patient_phone, patient_name, patient_password, patient_email, patient_address, patient_address_line2, patient_address_line3";
+        String[] values = {patientID, dob, gender, phone, name, "password", email, address, address2, address3};
+
+        String bedTableName = "BedAllocation";
+        String bedColumns = "bed_allocate_number, room_allocate_number, ward_allocate_number, bed_patient_id";
+        String[] bedValues = {bedNumber, roomNumber, ward, patientID}; 
+
+        try {
+            // Save patient data
+            boolean patientSaved = db.saveData(tableName, columns, values);
+            boolean bedAllocationSaved = db.saveData(bedTableName, bedColumns, bedValues);
+    
+            if (!patientSaved || !bedAllocationSaved) {
+                return false; // Return false if saving patient data fails
+            }
+    
+            return true; // Return true if both saves are successful
+        } catch (SQLException e) {
+            System.err.println("Error while saving data: " + e.getMessage());
+            return false;
+        }
+        
+    }
+
     public ResultSet fetchPatient(String patientID) {
         MysqlConnect db = new MysqlConnect();
         Connection connection = null;
