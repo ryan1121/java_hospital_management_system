@@ -22,7 +22,7 @@ public class DateTimeUtils {
     
     public static String formatTime(String timeStr) {
         try {
-            SimpleDateFormat inputFormat = new SimpleDateFormat("h:mm a");
+            SimpleDateFormat inputFormat = new SimpleDateFormat("hh:mm a");
             SimpleDateFormat outputFormat = new SimpleDateFormat("HH:mm:ss");
             Date time = inputFormat.parse(timeStr);
             return outputFormat.format(time);

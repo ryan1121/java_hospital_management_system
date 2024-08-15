@@ -62,7 +62,7 @@ public class NurseAppointmentController {
         System.out.println(trytime);
 
         if (formattedTime == null) {
-            System.out.println("Invalid time format. Please enter the time in 'h:mm a' format.");
+            System.out.println("Invalid time format. Please enter the time in 'hh:mm a' format.");
             return;
         }
 
