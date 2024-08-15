@@ -233,6 +233,7 @@ CREATE TABLE DoctorStaffScheduling (
     ShiftEndTime TIME,
     Department VARCHAR(100),
     AssignedTasks TEXT,
+    PRIMARY KEY (DoctorID, StaffScheduleDate),  -- 复合主键
     FOREIGN KEY (DoctorID) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
@@ -244,6 +245,7 @@ CREATE TABLE NurseStaffScheduling (
     ShiftEndTime TIME,
     Department VARCHAR(100),
     AssignedTasks TEXT,
+    PRIMARY KEY (NurseID, StaffScheduleDate),  -- 复合主键
     FOREIGN KEY (NurseID) REFERENCES Nurse(nurse_id) ON DELETE CASCADE
 );
 
