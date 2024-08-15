@@ -61,11 +61,6 @@ public class NurseAppointmentController {
         String trytime = DateTimeUtils.formatTime("8:00 PM");
         System.out.println(trytime);
 
-        if (formattedTime == null) {
-            System.out.println("Invalid time format. Please enter the time in 'hh:mm a' format.");
-            return;
-        }
-
         var patientID = app_patient_id.getText();
         String doctorID = app_doctor_id.getText();
         String notes = appointment_notes.getText();
@@ -75,6 +70,14 @@ public class NurseAppointmentController {
         String location = app_location.getText();
         String admittingStaffID = nurse_id.getText();
         String cancelReason = app_cancel.getText();
+
+        if (appointmentID.isEmpty() || patientID.isEmpty() || doctorID.isEmpty() || 
+        formattedAppDate.isEmpty() || formattedTime.isEmpty() || reason.isEmpty() || 
+            appointmentType.isEmpty() || location.isEmpty() || formattedBookingDate.isEmpty()) {
+            
+            JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         model = new NurseAppointmentModel(
             appointmentID, patientID, doctorID, formattedAppDate, formattedTime, notes, 
