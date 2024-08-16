@@ -9,7 +9,9 @@ import hospital_management_system.models.*;
 
 import java.awt.*;
 
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -212,6 +214,8 @@ public class GUI_doctor extends javax.swing.JFrame {
         jLabel8.setText("Qualifications : ");
 
         jLabel7.setText("Experience :");
+        Border border = BorderFactory.createLineBorder(Color.GRAY, 1); // Black border with 1-pixel width
+        doctor_experience.setBorder(border);
 
         jLabel10.setText("Status :");
 

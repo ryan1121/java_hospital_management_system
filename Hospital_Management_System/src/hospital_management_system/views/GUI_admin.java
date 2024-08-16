@@ -4,6 +4,7 @@
  */
 package hospital_management_system.views;
 
+import java.awt.Color;
 import java.awt.Frame;
 import java.awt.Cursor;
 import java.sql.Connection;
@@ -15,8 +16,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.sound.midi.MidiDevice;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 
 import hospital_management_system.MysqlConnect;
 import hospital_management_system.controllers.AdminAddDoctorController;
@@ -373,7 +376,7 @@ public class GUI_admin extends javax.swing.JFrame {
 
         jLabel6.setText("Department :");
 
-        doctor_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Not Active" }));
+        doctor_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Not Active", "" }));
 
         jLabel10.setText("Status :");
 
@@ -381,9 +384,10 @@ public class GUI_admin extends javax.swing.JFrame {
 
         jLabel8.setText("Qualifications : ");
 
-        jScrollPane1.setViewportView(doctor_experience);
+        jLabel7.setText("Experience : ");
 
-        jLabel7.setText("Experience :");
+        Border border = BorderFactory.createLineBorder(Color.GRAY, 1); // Black border with 1-pixel width
+        doctor_experience.setBorder(border);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -414,8 +418,8 @@ public class GUI_admin extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(jLabel7)
                             .addComponent(jLabel6)
-                            .addComponent(jScrollPane2)
-                            .addComponent(jScrollPane1)
+                            .addComponent(jScrollPane2) // Retain scroll pane for doctor_qualifications
+                            .addComponent(doctor_experience) // Directly add doctor_experience without jScrollPane1
                             .addComponent(doctor_department, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel18Layout.createSequentialGroup()
@@ -431,6 +435,7 @@ public class GUI_admin extends javax.swing.JFrame {
                     .addComponent(doctor_phone))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
+
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel18Layout.createSequentialGroup()
@@ -444,7 +449,7 @@ public class GUI_admin extends javax.swing.JFrame {
                         .addComponent(doctor_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel18Layout.createSequentialGroup()
                         .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(doctor_experience, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))) // Set the height of doctor_experience as needed
                 .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel18Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
@@ -627,6 +632,7 @@ public class GUI_admin extends javax.swing.JFrame {
         jScrollPane4.setViewportView(nurse_experience);
 
         jLabel20.setText("Experience :");
+        nurse_experience.setBorder(border);
 
         jLabel21.setText("Assigned Wards :");
 
