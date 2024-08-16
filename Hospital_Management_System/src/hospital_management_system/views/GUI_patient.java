@@ -510,8 +510,9 @@ public class GUI_patient extends javax.swing.JFrame {
         // 只有在 update 字符串不为空时才执行更新操作
         if (!update.isEmpty()) {
             db.updateData(tableName, update, condition);
+            JOptionPane.showMessageDialog(this, "Data save successfully!");
         } else {
-            System.out.println("There is no data to update.");
+            JOptionPane.showMessageDialog(null, "There is no data to update!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }   
 
