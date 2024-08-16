@@ -36,6 +36,7 @@ public class DoctorController {
         model.setDoctorDepartment("");
         model.setDoctorExperience("");
         model.setDoctorQualifications("");
+        view.getDoctor_status().setSelectedItem("");
         updateView();
     }
 

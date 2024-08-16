@@ -150,7 +150,7 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Details"));
 
-        doctor_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Not Active" }));
+        doctor_status.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Active", "Not Active", "" }));
 
         jLabel1.setText("Doctor ID:");
 
@@ -211,8 +211,6 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jLabel8.setText("Qualifications : ");
 
-        jScrollPane1.setViewportView(doctor_experience);
-
         jLabel7.setText("Experience :");
 
         jLabel10.setText("Status :");
@@ -243,9 +241,9 @@ public class GUI_doctor extends javax.swing.JFrame {
                             .addComponent(jLabel7)
                             .addComponent(jLabel6)
                             .addComponent(jLabel8)
+                            .addComponent(doctor_experience)
                             .addComponent(jScrollPane2)
-                            .addComponent(doctor_department)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(doctor_department, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -277,15 +275,15 @@ public class GUI_doctor extends javax.swing.JFrame {
                                 .addComponent(doctor_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addGap(22, 22, 22)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(doctor_experience, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(16, 16, 16)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2)
-                            .addComponent(doctor_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(doctor_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27)
                         .addComponent(jLabel3)))
                 .addGap(21, 21, 21)
@@ -294,6 +292,7 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addComponent(doctor_status, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 25, Short.MAX_VALUE))
         );
+
 
         backButton.setForeground(new java.awt.Color(0, 51, 255));
         backButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -872,8 +871,9 @@ public class GUI_doctor extends javax.swing.JFrame {
         // 只有在 update 字符串不为空时才执行更新操作
         if (!update.isEmpty()) {
             db.updateData(tableName, update, condition);
+            JOptionPane.showMessageDialog(this, "Date save successfully!");
         } else {
-            System.out.println("There is no data to update.");
+            JOptionPane.showMessageDialog(null, "There is no data update!", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }   
 
@@ -1021,4 +1021,9 @@ public class GUI_doctor extends javax.swing.JFrame {
     public void setDoctorStatus(String status) {
         doctor_status.setSelectedItem(status);
     }
+
+    public javax.swing.JComboBox<String> getDoctor_status() {
+        return doctor_status;
+    }
+    
 }
