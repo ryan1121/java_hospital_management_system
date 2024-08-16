@@ -59,6 +59,7 @@ public class Transfer {
                     JOptionPane.showMessageDialog(null, "Data saved successfully!");
                     return true;
                 } else {
+                    JOptionPane.showMessageDialog(null, "Data saved unsuccessfully!");
                     return false;
                 }
             } catch (SQLException e) {

@@ -63,9 +63,7 @@ public class TransferController {
         
         if (model.save()) {
             Transfer.setNewTransferId(TransferID_input);  // Reset the new transfer ID
-        } else {
-            JOptionPane.showMessageDialog(PatientTransfer, "Data saved unsuccessfully!");
-        }
+        } 
     }
 
     public void handleClearButtonActionPerformed(ActionEvent evt) {
