@@ -40,7 +40,7 @@ public class GUI_Report_Select extends JFrame {
         SelectReport = new JLabel();
         SelectRoleLabel = new JLabel();
         AgeGroupStatsButton = new JButton();
-        DepartmentDoctorStatsButton = new JButton();
+        DoctorDepartmentStatsButton = new JButton();
         InsuranceStatsButton = new JButton();
         InventoryStatsButton = new JButton();
         SurgeryStatsButton = new JButton();
@@ -68,10 +68,10 @@ public class GUI_Report_Select extends JFrame {
             }
         });
 
-        DepartmentDoctorStatsButton.setText("Department Doctor Stats");
-        DepartmentDoctorStatsButton.addActionListener(new java.awt.event.ActionListener() {
+        DoctorDepartmentStatsButton.setText("Doctor Department Stats");
+        DoctorDepartmentStatsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                DepartmentDoctorStatsButtonActionPerformed(evt);
+                DoctorDepartmentStatsButtonActionPerformed(evt);
             }
         });
 
@@ -138,7 +138,7 @@ public class GUI_Report_Select extends JFrame {
                     .addGroup(GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 49, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(DepartmentDoctorStatsButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(DoctorDepartmentStatsButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(SurgeryStatsButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(InsuranceStatsButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(AgeGroupStatsButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -182,7 +182,7 @@ public class GUI_Report_Select extends JFrame {
                     .addComponent(SurgeryStatsButton))
                 .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(GroupLayout.Alignment.BASELINE)
-                    .addComponent(DepartmentDoctorStatsButton)
+                    .addComponent(DoctorDepartmentStatsButton)
                     .addComponent(ExpiringMedicalSuppliesButton))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
@@ -228,11 +228,11 @@ public class GUI_Report_Select extends JFrame {
         SurgeryStatsObj.showSurgeryStats();
     }//GEN-LAST:event_SurgeryStatsButtonActionPerformed
 
-    private void DepartmentDoctorStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DepartmentDoctorStatsButtonActionPerformed
+    private void DoctorDepartmentStatsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoctorDepartmentStatsButtonActionPerformed
         // TODO add your handling code here:
-        DepartmentDoctorStats DepartmentDoctorStatsObj = new DepartmentDoctorStats();
-        DepartmentDoctorStatsObj.showDepartmentDoctorStats();
-    }//GEN-LAST:event_DepartmentDoctorStatsButtonActionPerformed
+        DoctorDepartmentStats DoctorDepartmentStatsObj = new DoctorDepartmentStats();
+        DoctorDepartmentStatsObj.showDoctorDepartmentStats();
+    }//GEN-LAST:event_DoctorDepartmentStatsButtonActionPerformed
 
     private void MonthlyInvoiceStatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthlyInvoiceStatButtonActionPerformed
         // TODO add your handling code here:
@@ -283,7 +283,7 @@ public class GUI_Report_Select extends JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private JButton AgeGroupStatsButton;
-    private JButton DepartmentDoctorStatsButton;
+    private JButton DoctorDepartmentStatsButton;
     private JButton ExpiringMedicalSuppliesButton;
     private JButton InsuranceStatsButton;
     private JButton InventoryStatsButton;

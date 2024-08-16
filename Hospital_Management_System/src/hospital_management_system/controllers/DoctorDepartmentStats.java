@@ -12,9 +12,9 @@ import javax.swing.*;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class DepartmentDoctorStats {
+public class DoctorDepartmentStats {
 
-    public static void showDepartmentDoctorStats() {
+    public static void showDoctorDepartmentStats() {
         MysqlConnect db = new MysqlConnect();
         DefaultPieDataset dataset = new DefaultPieDataset();
 
@@ -42,7 +42,7 @@ public class DepartmentDoctorStats {
         ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(560, 370));
 
-        JFrame frame = new JFrame("Department Doctor Stats");
+        JFrame frame = new JFrame("Doctor Department Stats");
         frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
         frame.add(chartPanel);
         frame.pack();
