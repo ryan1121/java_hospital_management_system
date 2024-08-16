@@ -6,6 +6,8 @@ package hospital_management_system.controllers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -13,7 +15,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import hospital_management_system.MysqlConnect;
-import hospital_management_system.models.AdminAddPatientModel;
 import hospital_management_system.models.NurseGetPatientModel;
 import hospital_management_system.utils.DateTimeUtils;
 
@@ -135,33 +136,70 @@ public class NurseGetPatientController {
         }
     }
 
-    public void handleSaveActionPerformed(){
-        String patientID = patientIDField.getText();
-        String patientDOB = DateTimeUtils.formatDate(patientDOBField.getText());
+    public void handleSaveActionPerformed() {
+        // Collect data from UI
+        String patientID = patientIDField.getText().trim();
+        String patientDOB = DateTimeUtils.formatDate(patientDOBField.getText().trim());
         String patientGender = (String) patientGenderComboBox.getSelectedItem();
-        String patientPhone = patientPhoneField.getText();
-        String patientName = patientNameField.getText();
-        String patientEmail = patientEmailField.getText();
-        String patientAddress = patientAddressField.getText();
-        String patientAddressLine2 = patientAddressLine2Field.getText();
-        String patientAddressLine3 = patientAddressLine3Field.getText();
-        String ward = patientWardField.getText();
-        String bedNumber = patientBedNumberField.getText();
-        String roomNumber = patientRoomNumberField.getText();
-
-        NurseGetPatientModel patient = new NurseGetPatientModel(patientID, patientName, patientDOB, patientPhone, patientEmail, 
-                                      patientAddress, patientAddressLine2, patientAddressLine3, ward, bedNumber, roomNumber, patientGender);
-
-        boolean success = patient.save();
-        if (success) {
-            JOptionPane.showMessageDialog(null, "Data saved successfully!");
+        String patientPhone = patientPhoneField.getText().trim();
+        String patientName = patientNameField.getText().trim();
+        String patientEmail = patientEmailField.getText().trim();
+        String patientAddress = patientAddressField.getText().trim();
+        String patientAddressLine2 = patientAddressLine2Field.getText().trim();
+        String patientAddressLine3 = patientAddressLine3Field.getText().trim();
+        String ward = patientWardField.getText().trim();
+        String bedNumber = patientBedNumberField.getText().trim();
+        String roomNumber = patientRoomNumberField.getText().trim();
+    
+        // Validate input
+        if (isValidInput(patientID, patientDOB, patientPhone, patientName, patientEmail, patientAddress, ward, bedNumber, roomNumber)) {
+            NurseGetPatientModel patient = new NurseGetPatientModel(patientID, patientName, patientDOB, patientPhone, patientEmail, 
+                                          patientAddress, patientAddressLine2, patientAddressLine3, ward, bedNumber, roomNumber, patientGender);
+    
+            boolean success = patient.save();
+            if (success) {
+                JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                handleClearActionPerformed(); // Clear fields after successful save
+            } else {
+                JOptionPane.showMessageDialog(null, "Failed to save data. Please check your input and try again.");
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Failed to save data.");
+            JOptionPane.showMessageDialog(null, "Invalid input. Please ensure all fields are filled correctly.");
         }
     }
 
+    private boolean isValidInput(String patientID, String patientDOB, String patientPhone, String patientName, String patientEmail, 
+                             String patientAddress, String ward, String bedNumber, String roomNumber) {
+        // Add your validation logic here, such as regex checks, non-empty fields, etc.
+        return !patientID.isEmpty() && !patientDOB.isEmpty() && !patientPhone.isEmpty() && !patientName.isEmpty() &&
+            isValidEmail(patientEmail) && !patientAddress.isEmpty() && !ward.isEmpty() && !bedNumber.isEmpty() &&
+            !roomNumber.isEmpty() && isValidPhone(patientPhone);
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isValidPhone(String phone) {
+        String phoneRegex = "01\\d-\\d{7,8}";
+        Pattern pattern = Pattern.compile(phoneRegex);
+        if (phone == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
+    }
+
     public void handleClearActionPerformed() {
-        patientIDField.setText("");
+        MysqlConnect db = new MysqlConnect();
+        String newId = db.generateNewId("Patients", "P");
+        patientIDField.setText(newId);
         patientNameField.setText("");
         patientDOBField.setText("");
         patientPhoneField.setText("");
@@ -172,6 +210,6 @@ public class NurseGetPatientController {
         patientWardField.setText("");
         patientBedNumberField.setText("");
         patientRoomNumberField.setText("");
-        patientGenderComboBox.setSelectedItem(""); // Assuming first item is default
+        patientGenderComboBox.setSelectedItem("");
     }
 }
