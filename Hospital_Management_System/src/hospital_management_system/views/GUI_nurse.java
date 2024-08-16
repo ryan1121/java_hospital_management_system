@@ -237,7 +237,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         TransferTime_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("hh:mm a"))));
         StatusOfTransfer_dropdown = new javax.swing.JComboBox<>();
         TransferDate_input = new javax.swing.JFormattedTextField();
-        TransferDate_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        TransferDate_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
         Transfer_clearButton = new javax.swing.JButton();
         Transfer_saveButton = new javax.swing.JButton();
         
@@ -281,7 +281,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         SupplyMinimumStock_input = new javax.swing.JSpinner();
         SupplyMaximumStock_input = new javax.swing.JSpinner();
         SupplyExpiryDate = new javax.swing.JFormattedTextField();
-        SupplyExpiryDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        SupplyExpiryDate.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
         medical_supply_save = new javax.swing.JButton();
         medical_supply_clear = new javax.swing.JButton();
 
@@ -362,7 +362,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         PaymentMethod_dropdown = new javax.swing.JComboBox<>();
         PaymentStatus_dropdown = new javax.swing.JComboBox<>();
         PaymentProcessingDate_input = new javax.swing.JFormattedTextField();
-        PaymentProcessingDate_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        PaymentProcessingDate_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
 
         PaymentID1 = new javax.swing.JLabel();
         PaymentDate = new javax.swing.JLabel();
@@ -789,7 +789,7 @@ public class GUI_nurse extends javax.swing.JFrame {
             }
         });
 
-        patient_DOB.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        patient_DOB.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -1195,9 +1195,9 @@ public class GUI_nurse extends javax.swing.JFrame {
         });
         jScrollPane13.setViewportView(emergency_equipment);
 
-        discharge_date1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        discharge_date1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
 
-        allocate_date1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        allocate_date1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
         allocate_date1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 allocate_date1ActionPerformed(evt);
@@ -1792,7 +1792,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                     .addGroup(TransferManagement_PanelLayout.createSequentialGroup()
                         .addGroup(TransferManagement_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(TransferManagement_PanelLayout.createSequentialGroup()
-                                .addComponent(StatusOfTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(StatusOfTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(TransferManagement_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(TransferManagement_PanelLayout.createSequentialGroup()
@@ -1862,7 +1862,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addComponent(jScrollPane15, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(TransferManagement_PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(StatusOfTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(StatusOfTransfer, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(StatusOfTransfer_dropdown))
                 .addContainerGap(32, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TransferManagement_PanelLayout.createSequentialGroup()
@@ -2266,7 +2266,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         costPerItem_label.setText("RM/item: ");
 
-        ServiceDate_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        ServiceDate_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
 
         Quantity_label.setText("Quantity: ");
 

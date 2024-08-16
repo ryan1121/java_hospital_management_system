@@ -106,7 +106,7 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
                                 .addGroup(StaffSchedulingLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(ShiftStartTime_input, javax.swing.GroupLayout.DEFAULT_SIZE, 105, Short.MAX_VALUE)
                                     .addComponent(ShiftEndTime_input)))
-                            .addComponent(AssignedTasks, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(AssignedTasks, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(StaffSchedulingLayout.createSequentialGroup()
                                 .addComponent(Department)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
