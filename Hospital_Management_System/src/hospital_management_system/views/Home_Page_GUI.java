@@ -185,6 +185,8 @@ public class Home_Page_GUI extends javax.swing.JFrame {
     private void LogoutButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
         // TODO add your handling code here:
         this.dispose();
+        GUI_LOGIN Login = new GUI_LOGIN(role);
+        Login.setVisible(true);
     }
     /**
      * @param args the command line arguments
