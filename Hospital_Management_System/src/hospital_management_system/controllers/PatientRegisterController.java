@@ -156,7 +156,7 @@ public class PatientRegisterController {
     }
 
     private boolean isValidPhone(String phone) {
-        String phoneRegex = "01\\d-\\d{7}";
+        String phoneRegex = "01\\d-\\d{7,8}";
         Pattern pattern = Pattern.compile(phoneRegex);
         if (phone == null) {
             return false;
