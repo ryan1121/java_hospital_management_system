@@ -58,19 +58,11 @@ public class NurseGetPatientModel {
         try {
             // Save patient data
             boolean patientSaved = db.saveData(tableName, columns, values);
-    
-            if (!patientSaved) {
-                return false; // Return false if saving patient data fails
-            }
-    
-            // Save bed allocation data
             boolean bedAllocationSaved = db.saveData(bedTableName, bedColumns, bedValues);
     
-            if (!bedAllocationSaved) {
-                return false; // Return false if saving bed allocation data fails
-            }
-    
-            return true; // Return true if both saves are successful
+            return !(!patientSaved && !bedAllocationSaved); // Return false if saving patient data fails
+            // Return true if both saves are successful
+            
         } catch (SQLException e) {
             System.err.println("Error while saving data: " + e.getMessage());
             return false;

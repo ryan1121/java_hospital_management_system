@@ -137,7 +137,6 @@ public class NurseGetPatientController {
     }
 
     public void handleSaveActionPerformed() {
-        // Collect data from UI
         String patientID = patientIDField.getText().trim();
         String patientDOB = DateTimeUtils.formatDate(patientDOBField.getText().trim());
         String patientGender = (String) patientGenderComboBox.getSelectedItem();
@@ -150,11 +149,22 @@ public class NurseGetPatientController {
         String ward = patientWardField.getText().trim();
         String bedNumber = patientBedNumberField.getText().trim();
         String roomNumber = patientRoomNumberField.getText().trim();
-    
+        
         // Validate input
         if (isValidInput(patientID, patientDOB, patientPhone, patientName, patientEmail, patientAddress, ward, bedNumber, roomNumber)) {
-            NurseGetPatientModel patient = new NurseGetPatientModel(patientID, patientName, patientDOB, patientPhone, patientEmail, 
-                                          patientAddress, patientAddressLine2, patientAddressLine3, ward, bedNumber, roomNumber, patientGender);
+            NurseGetPatientModel patient = new NurseGetPatientModel(
+                                            patientID, 
+                                            patientName, 
+                                            patientGender, 
+                                            patientDOB,
+                                            patientPhone,
+                                            patientEmail, 
+                                            patientAddress,
+                                            patientAddressLine2,
+                                            patientAddressLine3, 
+                                            bedNumber, 
+                                            roomNumber,
+                                            ward);
     
             boolean success = patient.save();
             if (success) {
@@ -169,11 +179,28 @@ public class NurseGetPatientController {
     }
 
     private boolean isValidInput(String patientID, String patientDOB, String patientPhone, String patientName, String patientEmail, 
-                             String patientAddress, String ward, String bedNumber, String roomNumber) {
-        // Add your validation logic here, such as regex checks, non-empty fields, etc.
-        return !patientID.isEmpty() && !patientDOB.isEmpty() && !patientPhone.isEmpty() && !patientName.isEmpty() &&
-            isValidEmail(patientEmail) && !patientAddress.isEmpty() && !ward.isEmpty() && !bedNumber.isEmpty() &&
-            !roomNumber.isEmpty() && isValidPhone(patientPhone);
+                                String patientAddress, String ward, String bedNumber, String roomNumber) {
+        
+        // First, validate the phone number
+        if (!isValidPhone(patientPhone)) {
+            JOptionPane.showMessageDialog(null, "Invalid phone number.");
+            return false;
+        }
+
+        // Then, validate the email
+        if (!isValidEmail(patientEmail)) {
+            JOptionPane.showMessageDialog(null, "Invalid email address.");
+            return false;
+        }
+
+        // Lastly, validate the remaining fields
+        if (patientID.isEmpty() || patientDOB.isEmpty() || patientName.isEmpty() || patientAddress.isEmpty() || 
+            ward.isEmpty() || bedNumber.isEmpty() || roomNumber.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please fill in all required fields.");
+            return false;
+        }
+
+        return true;
     }
 
     private boolean isValidEmail(String email) {
