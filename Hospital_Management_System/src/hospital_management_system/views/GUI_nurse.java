@@ -2449,9 +2449,9 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel43.setText("Status:");
 
-        jLabel44.setText("Cancelled_By:");
+        jLabel44.setText("Cancelled By:");
 
-        jLabel45.setText("Booking_Date:");
+        jLabel45.setText("Booking Date:");
 
         jLabel47.setText("Notes:");
 
