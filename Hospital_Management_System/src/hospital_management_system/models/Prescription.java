@@ -37,6 +37,14 @@ public class Prescription {
     }
 
     public boolean save() {
+        int dosageValue;
+        try {
+            dosageValue = Integer.parseInt(dosage); // Convert String dosage to int for validation
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(panel, "Invalid input! Please enter a valid number for dosage.");
+            return false; // Stop the process if parsing fails
+        }
+
         if ((patientID == null || patientID.isEmpty()) && (doctorID == null || doctorID.isEmpty())) {
             JOptionPane.showMessageDialog(panel, "You MUST enter patient ID and doctor ID !!");
             return false;
@@ -45,6 +53,9 @@ public class Prescription {
             return false;
         } else if (doctorID == null || doctorID.isEmpty()) {
             JOptionPane.showMessageDialog(panel, "You MUST enter doctor ID !!");
+            return false;
+        } else if (dosageValue <= 0) {
+            JOptionPane.showMessageDialog(panel, "Dosage must not be less than 0 !!");
             return false;
         } else {
             MysqlConnect db = new MysqlConnect();
