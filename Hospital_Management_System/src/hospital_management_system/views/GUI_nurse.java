@@ -4,6 +4,7 @@
  */
 package hospital_management_system.views;
 
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.sql.Connection;
@@ -13,8 +14,10 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.text.DateFormatter;
 
@@ -506,6 +509,8 @@ public class GUI_nurse extends javax.swing.JFrame {
         jLabel8.setText("Qualifications : ");
 
         jScrollPane1.setViewportView(nurse_experience);
+        Border border = BorderFactory.createLineBorder(Color.GRAY, 1); 
+        nurse_experience.setBorder(border);
 
         jLabel7.setText("Experience :");
 

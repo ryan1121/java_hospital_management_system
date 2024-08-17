@@ -74,7 +74,7 @@ public class GUI_LOGIN extends javax.swing.JFrame {
 
         Username.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        Password.setText("jPasswordField1");
+        Password.setText("");
 
         jLabel1.setText("Password");
 
