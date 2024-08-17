@@ -47,67 +47,33 @@ public class NurseGetPatientModel {
 
     public boolean save() {
         MysqlConnect db = new MysqlConnect();
-        Connection conn = null;
-        PreparedStatement pstmtPatient = null;
-        PreparedStatement pstmtBedAllocation = null;
-    
-        String patientSQL = "INSERT INTO Patients (patient_id, patient_DOB, patient_gender, patient_phone, patient_name, patient_password, patient_email, patient_address, patient_address_line2, patient_address_line3) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        String bedAllocationSQL = "INSERT INTO BedAllocation (bed_allocate_number, room_allocate_number, ward_allocate_number, bed_patient_id) VALUES (?, ?, ?, ?)";
-    
+        String tableName = "Patients";
+        String columns = "patient_id, patient_DOB, patient_gender, patient_phone, patient_name, patient_password, patient_email, patient_address, patient_address_line2, patient_address_line3";
+        String[] values = {patientID, dob, gender, phone, name, "password", email, address, address2, address3};
+
+        String bedTableName = "BedAllocation";
+        String bedColumns = "bed_allocate_number, room_allocate_number, ward_allocate_number, bed_patient_id";
+        String[] bedValues = {bedNumber,roomNumber,ward,patientID}; 
+
         try {
-            conn = db.getConnection();
-            conn.setAutoCommit(false); // Start transaction
-    
             // Save patient data
-            pstmtPatient = conn.prepareStatement(patientSQL);
-            pstmtPatient.setString(1, patientID);
-            pstmtPatient.setString(2, dob);
-            pstmtPatient.setString(3, gender);
-            pstmtPatient.setString(4, phone);
-            pstmtPatient.setString(5, name);
-            pstmtPatient.setString(6, "password"); // Consider a more secure method for storing passwords
-            pstmtPatient.setString(7, email);
-            pstmtPatient.setString(8, address);
-            pstmtPatient.setString(9, address2);
-            pstmtPatient.setString(10, address3);
+            boolean patientSaved = db.saveData(tableName, columns, values);
     
-            boolean patientSaved = pstmtPatient.executeUpdate() > 0;
+            if (!patientSaved) {
+                return false; // Return false if saving patient data fails
+            }
     
             // Save bed allocation data
-            pstmtBedAllocation = conn.prepareStatement(bedAllocationSQL);
-            pstmtBedAllocation.setString(1, bedNumber);
-            pstmtBedAllocation.setString(2, roomNumber);
-            pstmtBedAllocation.setString(3, ward);
-            pstmtBedAllocation.setString(4, patientID);
+            boolean bedAllocationSaved = db.saveData(bedTableName, bedColumns, bedValues);
     
-            boolean bedAllocationSaved = pstmtBedAllocation.executeUpdate() > 0;
-    
-            if (patientSaved && bedAllocationSaved) {
-                conn.commit(); // Commit transaction if both saves are successful
-                return true;
-            } else {
-                conn.rollback(); // Rollback transaction if any save fails
-                return false;
+            if (!bedAllocationSaved) {
+                return false; // Return false if saving bed allocation data fails
             }
+    
+            return true; // Return true if both saves are successful
         } catch (SQLException e) {
             System.err.println("Error while saving data: " + e.getMessage());
-            if (conn != null) {
-                try {
-                    conn.rollback(); // Rollback transaction on error
-                } catch (SQLException ex) {
-                    System.err.println("Error while rolling back transaction: " + ex.getMessage());
-                }
-            }
             return false;
-        } finally {
-            // Clean up resources
-            try {
-                if (pstmtPatient != null) pstmtPatient.close();
-                if (pstmtBedAllocation != null) pstmtBedAllocation.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                System.err.println("Error while closing resources: " + e.getMessage());
-            }
         }
     }
 
