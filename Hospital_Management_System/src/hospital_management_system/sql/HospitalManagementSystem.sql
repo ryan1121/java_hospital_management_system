@@ -63,17 +63,6 @@ CREATE TABLE Nurse (
     FOREIGN KEY (nurse_supervising_doctor) REFERENCES Doctors(doctor_id) ON DELETE CASCADE
 );
 
--- 创建 PatientCare 表
-CREATE TABLE PatientCare (
-    Primary_doctor_id VARCHAR(25),
-    assigned_nurse_id VARCHAR(25),
-    dietary_restrictions TEXT,
-    patient_progress_note TEXT,
-    discharge_date DATE,
-    FOREIGN KEY (Primary_doctor_id) REFERENCES Doctors(doctor_id) ON DELETE CASCADE,
-    FOREIGN KEY (assigned_nurse_id) REFERENCES Nurse(nurse_id) ON DELETE CASCADE
-);
-
 -- 创建 Admission 表
 CREATE TABLE Admission (
     Admission_ID VARCHAR(25) PRIMARY KEY,

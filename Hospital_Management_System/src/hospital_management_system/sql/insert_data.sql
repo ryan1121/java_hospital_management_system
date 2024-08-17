@@ -69,30 +69,6 @@ INSERT INTO Nurse (nurse_id, nurse_name, nurse_password, nurse_email, nurse_phon
 ('N019', 'Nurse Steve', 'password19', 'nurse.steve@example.com', '1234567892', 'Staff Nurse', 'Otolaryngology', 'Ward 19', 'D019', 'RN', '10 years', 'Active', '2024-01-19', '02:00:00', 'Night Shift'),
 ('N020', 'Nurse Tina', 'password20', 'nurse.tina@example.com', '2234567892', 'Staff Nurse', 'Anesthesiology', 'Ward 20', 'D020', 'RN', '11 years', 'Active', '2024-01-20', '03:00:00', 'Night Shift');
 
--- 插入 PatientCare 表的三条数据
-INSERT INTO PatientCare (Primary_doctor_id, assigned_nurse_id, dietary_restrictions, patient_progress_note, discharge_date) VALUES
-('D001', 'N001', 'No restrictions', 'Patient is recovering well.', '2024-02-01'),
-('D002', 'N002', 'Low sodium', 'Patient shows improvement.', '2024-02-02'),
-('D003', 'N003', 'Diabetic diet', 'Patient is stable.', '2024-02-03'),
-('D004', 'N004', 'Gluten-free', 'Patient needs further observation.', '2024-02-04'),
-('D005', 'N005', 'No restrictions', 'Patient is ready for discharge.', '2024-02-05'),
-('D006', 'N006', 'Low sugar', 'Patient is under treatment.', '2024-02-06'),
-('D007', 'N007', 'No restrictions', 'Patient is responding to medication.', '2024-02-07'),
-('D008', 'N008', 'Vegetarian', 'Patient is recovering as expected.', '2024-02-08'),
-('D009', 'N009', 'Low fat', 'Patient requires more tests.', '2024-02-09'),
-('D010', 'N010', 'No restrictions', 'Patient’s condition is stable.', '2024-02-10'),
-('D011', 'N011', 'High protein', 'Patient is making good progress.', '2024-02-11'),
-('D012', 'N012', 'No restrictions', 'Patient is showing positive signs.', '2024-02-12'),
-('D013', 'N013', 'Low cholesterol', 'Patient is stable and improving.', '2024-02-13'),
-('D014', 'N014', 'No restrictions', 'Patient is on the path to recovery.', '2024-02-14'),
-('D015', 'N015', 'Low sodium', 'Patient is recovering well.', '2024-02-15'),
-('D016', 'N016', 'No restrictions', 'Patient’s condition is stable.', '2024-02-16'),
-('D017', 'N017', 'Gluten-free', 'Patient is under observation.', '2024-02-17'),
-('D018', 'N018', 'Diabetic diet', 'Patient is responding well to treatment.', '2024-02-18'),
-('D019', 'N019', 'Low fat', 'Patient is recovering as expected.', '2024-02-19'),
-('D020', 'N020', 'No restrictions', 'Patient is in good condition.', '2024-02-20');
-
-
 -- 插入 Admission 表的三条数据
 INSERT INTO Admission (Admission_ID, Admission_Date, Admitting_Staff_ID, Admission_Status, Admission_Notes, Reason, admission_Patient_ID, Insurance_Details, medical_equipment_need
 ) VALUES
