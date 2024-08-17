@@ -161,10 +161,11 @@ public class NurseGetPatientController {
                                             patientEmail, 
                                             patientAddress,
                                             patientAddressLine2,
-                                            patientAddressLine3, 
-                                            bedNumber, 
-                                            roomNumber,
-                                            ward);
+                                            patientAddressLine3,
+                                            ward,
+                                            bedNumber,
+                                            roomNumber
+                                            );
     
             boolean success = patient.save();
             if (success) {

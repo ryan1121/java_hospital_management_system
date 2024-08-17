@@ -66,34 +66,103 @@ public class BedAllocationController {
         String formattedDischargeDate = DateTimeUtils.formatDate(discharge_date1.getText());
         String preOccupation = pre_occ1.getText();
         String selectedEquipment = emergency_equipment.getSelectedValue();
-
+    
+        // Validate input fields
         if (bedAllocateNumber.isEmpty() || roomAllocateNumber.isEmpty() || wardAllocateNumber.isEmpty() || 
-        department.isEmpty() || status.isEmpty() || bedType.isEmpty() || patientID.isEmpty() || 
-        formattedAllocateDate.isEmpty() || preOccupation.isEmpty() || selectedEquipment.isEmpty()) {
+            department.isEmpty() || status.isEmpty() || bedType.isEmpty() || patientID.isEmpty() || 
+            formattedAllocateDate.isEmpty() || preOccupation.isEmpty() || selectedEquipment.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please fill in all required fields.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+    
+        // Initialize database connection
+        MysqlConnect db = new MysqlConnect();
 
         model = new BedAllocationModel(
             bedAllocateNumber, roomAllocateNumber, wardAllocateNumber, department, status, bedType,
             patientID, formattedAllocateDate, formattedDischargeDate, preOccupation, selectedEquipment
         );
-
-        if (model.save()) {
-            JOptionPane.showMessageDialog(null, "Data inserted successfully!");
-            // Reset text fields after saving new bed allocation information
-            MysqlConnect db = new MysqlConnect();
-            String newBedNo = db.generateNewId("BedAllocation", "B");
-            bed_allocate_number.setText(newBedNo);
-            room_allocate_number.setText("");
-            ward_allocate_number.setText("");
-            bed_allocation_department.setText("");
-            bed_patient_id1.setText("");
-            discharge_date1.setText("");
-            allocate_date1.setText("");
-            pre_occ1.setText("");
-        } else {
-            JOptionPane.showMessageDialog(null, "No Data Update.");
+    
+        // Check if the bed allocation number exists
+        String condition = "bed_allocate_number = '" + bedAllocateNumber + "'";
+        ResultSet bedExistsResult = db.getData("BedAllocation", condition);
+    
+        try {
+            if (bedExistsResult.next()) {
+                // Record exists, perform update
+                StringBuilder updateBuilder = new StringBuilder();
+    
+                // Only update fields that are not empty
+                if (!roomAllocateNumber.isEmpty()) {
+                    updateBuilder.append("room_allocate_number = '").append(roomAllocateNumber).append("', ");
+                }
+                if (!wardAllocateNumber.isEmpty()) {
+                    updateBuilder.append("ward_allocate_number = '").append(wardAllocateNumber).append("', ");
+                }
+                if (!department.isEmpty()) {
+                    updateBuilder.append("bed_allocation_department = '").append(department).append("', ");
+                }
+                if (!status.isEmpty()) {
+                    updateBuilder.append("bed_allocation_status = '").append(status).append("', ");
+                }
+                if (!bedType.isEmpty()) {
+                    updateBuilder.append("bed_type = '").append(bedType).append("', ");
+                }
+                if (!patientID.isEmpty()) {
+                    updateBuilder.append("bed_patient_id = '").append(patientID).append("', ");
+                }
+                if (!formattedAllocateDate.isEmpty()) {
+                    updateBuilder.append("allocate_date = '").append(formattedAllocateDate).append("', ");
+                }
+                if (!formattedDischargeDate.isEmpty()) {
+                    updateBuilder.append("discharge_date = '").append(formattedDischargeDate).append("', ");
+                }
+                if (!preOccupation.isEmpty()) {
+                    updateBuilder.append("pre_occ = '").append(preOccupation).append("', ");
+                }
+                if (!selectedEquipment.isEmpty()) {
+                    updateBuilder.append("emergency_equipment = '").append(selectedEquipment).append("', ");
+                }
+    
+                // Remove the last comma and space
+                String update = updateBuilder.toString();
+                if (update.endsWith(", ")) {
+                    update = update.substring(0, update.length() - 2);
+                }
+    
+                // Only perform the update if the update string is not empty
+                if (!update.isEmpty()) {
+                    boolean updateSuccess = db.updateData("BedAllocation", update, condition);
+                    if (updateSuccess) {
+                        JOptionPane.showMessageDialog(null, "Data updated successfully!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to update data. Please try again.");
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "There is no data to update!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } else {
+                // Record does not exist, perform insert
+                boolean saveSuccess = model.save();
+                if (saveSuccess) {
+                    JOptionPane.showMessageDialog(null, "Data inserted successfully!");
+    
+                    // Reset text fields after saving new bed allocation information
+                    String newBedNo = db.generateNewId("BedAllocation", "B");
+                    bed_allocate_number.setText(newBedNo);
+                    room_allocate_number.setText("");
+                    ward_allocate_number.setText("");
+                    bed_allocation_department.setText("");
+                    bed_patient_id1.setText("");
+                    discharge_date1.setText("");
+                    allocate_date1.setText("");
+                    pre_occ1.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to insert data. Please try again.");
+                }
+            }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "Error checking bed allocation: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
