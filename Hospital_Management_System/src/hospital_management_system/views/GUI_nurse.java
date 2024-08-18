@@ -150,7 +150,10 @@ public class GUI_nurse extends javax.swing.JFrame {
         jLabel66 = new javax.swing.JLabel();
         jLabel67 = new javax.swing.JLabel();
         jLabel68 = new javax.swing.JLabel();
-        Admission_Date1 = new javax.swing.JTextField();
+        Admission_Date1 = new javax.swing.JFormattedTextField();
+
+        Admission_Date1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
+
         Admitting_Staff_ID1 = new javax.swing.JTextField();
         Admission_Status1 = new javax.swing.JTextField();
         Admission_Notes1 = new javax.swing.JTextField();
@@ -2843,7 +2846,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddServiceButton;
-    private javax.swing.JTextField Admission_Date1;
+    private javax.swing.JFormattedTextField Admission_Date1;
     private javax.swing.JTextField Admission_ID1;
     private javax.swing.JTextField Admission_Notes1;
     private javax.swing.JTextField Admission_Status1;
