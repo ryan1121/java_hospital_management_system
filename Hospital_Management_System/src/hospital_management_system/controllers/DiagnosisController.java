@@ -43,6 +43,9 @@ public class DiagnosisController {
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
         if (model.save()) {
             Diagnosis.setNewDiagnosisId(diagnosisIDTextField);  // reset the new diagnosis ID
+
+            // Clear the inputs
+            model.clear(dateOfDiagnosisTextField, diagnosisDescriptionTextArea, treatmentPlansTextArea);
         }
     }
 

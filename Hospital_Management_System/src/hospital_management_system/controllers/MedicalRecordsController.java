@@ -44,6 +44,9 @@ public class MedicalRecordsController {
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
         if (model.save()) {
             MedicalRecords.setNewMedicalRecordId(medicalRecordIDTextField);  // reset the new medical record ID
+
+            // Clear the inputs
+            model.clear(dateOfVisitTextField, notesTextField, treatmentPlansTextArea);
         }
     }
 

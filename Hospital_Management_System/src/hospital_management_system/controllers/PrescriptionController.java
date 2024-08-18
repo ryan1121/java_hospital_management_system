@@ -74,6 +74,9 @@ public class PrescriptionController {
         );
         if (model.save()) {
             Prescription.setNewPrescriptionId(prescriptionIDTextField);  // reset the new prescription ID
+            
+            // After save, clear the inputs
+            model.clear(Medication_comboxBox, dosage_Spinner, prescriptionDateTextField, instructionsTextArea);
         }
     }
 

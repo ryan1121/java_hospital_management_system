@@ -41,6 +41,9 @@ public class SurgeryController {
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
         if (model.save()) {
             Surgery.setNewSurgeryId(surgeryIDTextField);  // reset the new Surgery ID
+
+            // Clear the inputs
+            model.clear(surgeryTypeComboBox, dateOfSurgeryTextField, outcomesTextField);
         }
     }
 

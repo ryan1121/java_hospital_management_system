@@ -68,6 +68,8 @@ public class ConsultationController {
         String doctorID = doctorIDTextField.getText().trim();
         if (model.save()) {
             Consultation.setNewConsultationId(consultationIDTextField);  // reset the new consultation ID
+            // After save, clear the inputs
+            model.clear(dateOfConsultationTextField, notes_textField);
         }
     }
 
