@@ -139,7 +139,7 @@ public class BillingAndPayment {
         return invoiceTable;
     }
 
-    public void save(DefaultTableModel invoiceTable) {
+    public boolean save(DefaultTableModel invoiceTable) {
         try {
             MysqlConnect db = new MysqlConnect();
             
@@ -160,7 +160,7 @@ public class BillingAndPayment {
                     if (amountPaid.add(payingAmount).compareTo(totalPayment) > 0) {
                         // If amountPaid exceeds totalPayment, show a warning and stop the operation
                         JOptionPane.showMessageDialog(panel, "Payment exceeds the total amount due. Please enter a valid payment amount.");
-                        return;
+                        return false;
                     }
                     
                     amountPaid = amountPaid.add(payingAmount);
@@ -183,7 +183,7 @@ public class BillingAndPayment {
                 
                 JOptionPane.showMessageDialog(panel, "Payment data saved Successfully!");
                 
-                return;
+                return true;
             }
             
             // Calculate TotalPayment as the sum of the 4th column of the invoiceTable
@@ -241,9 +241,21 @@ public class BillingAndPayment {
                 }
                 
                 JOptionPane.showMessageDialog(panel, "Billing data saved Successfully!");  
+
+                return true;
             } else {
                 // Case 3: When both serviceDate and paymentProcessingDate are not empty
                 System.out.println("Case 3: When both serviceDate and paymentProcessingDate are not empty");
+                
+                BigDecimal payingAmount = new BigDecimal(paymentAmount);
+
+
+                // Check if adding the payment would exceed the total payment
+                if (payingAmount.compareTo(totalPayment) > 0) {
+                    // If amountPaid exceeds totalPayment, show a warning and stop the operation
+                    JOptionPane.showMessageDialog(panel, "Payment exceeds the total amount due. Please enter a valid payment amount.");
+                    return false;
+                }
 
                 // Save Invoice data
                 String[] invoiceValues = {
@@ -277,7 +289,6 @@ public class BillingAndPayment {
                 if (rs.next()) {
                     BigDecimal amountPaid = rs.getBigDecimal("AmountPaid");
                     BigDecimal balanceDue = rs.getBigDecimal("BalanceDue");
-                    BigDecimal payingAmount = new BigDecimal(paymentAmount);
     
                     amountPaid = amountPaid.add(payingAmount);
                     balanceDue = balanceDue.subtract(payingAmount);
@@ -298,11 +309,15 @@ public class BillingAndPayment {
                 db.saveData("Payment", "PaymentID, InvoiceID, PaymentAmount, PaymentDate, PaymentMethod, PaymentStatus", paymentValues);
                 
                 JOptionPane.showMessageDialog(panel, "Billing & Payment Data saved Successfully!");
+
+                return true;
             }
             
         } catch (SQLException e) {
             System.err.println("Error occurred while saving data!");
             e.printStackTrace();
+
+            return false;
         }
     }
 

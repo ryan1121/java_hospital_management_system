@@ -2298,20 +2298,20 @@ public class GUI_nurse extends javax.swing.JFrame {
         BillingAndPaymentObj.setNewPaymentId(PaymentID_input);
         
 
-        BillingController BillingControllerObj = new BillingController(invoiceTableModel, Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
+        BillingAndPaymentController BillingAndPaymentControllerObj = new BillingAndPaymentController(invoiceTableModel, Invoice, InvoiceID_input, InvoicePatientID_input, ServiceDate_input, Description_input, CostPerService_input, ServiceQuantity_input, PaymentAmount_input, PaymentMethod_dropdown, PaymentStatus_dropdown, PaymentProcessingDate_input);
         
         AddServiceButton.addActionListener(evt -> {
-            BillingControllerObj.handleAddServiceButtonActionPerformed(evt);
+            BillingAndPaymentControllerObj.handleAddServiceButtonActionPerformed(evt);
         });
 
         InvoiceSaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BillingControllerObj.handleSaveButtonActionPerformed(evt);
+                BillingAndPaymentControllerObj.handleSaveButtonActionPerformed(evt);
             }
         });
         
         InvoiceClearButton.addActionListener(evt -> {
-            BillingControllerObj.handleClearButtonActionPerformed(evt);
+            BillingAndPaymentControllerObj.handleClearButtonActionPerformed(evt);
         });
          
         jScrollPane5.setViewportView(InvoiceTable);

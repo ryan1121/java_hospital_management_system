@@ -63,6 +63,9 @@ public class TransferController {
         
         if (model.save()) {
             Transfer.setNewTransferId(TransferID_input);  // Reset the new transfer ID
+
+            // Clear the inputs
+            model.clear(TransferPatientID_input, TransferFrom_input, TransferTo_input, TransferDate_input, TransferTime_input, ReasonForTransfer_input, StatusOfTransfer_dropdown);
         } 
     }
 

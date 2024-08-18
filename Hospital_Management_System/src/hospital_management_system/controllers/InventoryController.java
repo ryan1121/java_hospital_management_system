@@ -58,6 +58,8 @@ public class InventoryController {
         
         if (model.save()) {
             Inventory.setNewInventoryID(invIDInput);  // Reset the new inventory ID
+            // Clear the input
+            model.clear(itemNameInput, stockQtyInput, maxStockInput, minStockInput, supplierInfoInput, expiryDateInput);
         } else {
             JOptionPane.showMessageDialog(panel, "Data saved unsuccessfully!");
         }

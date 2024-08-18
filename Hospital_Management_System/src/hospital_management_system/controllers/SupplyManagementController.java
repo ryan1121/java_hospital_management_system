@@ -58,6 +58,8 @@ public class SupplyManagementController {
         
         if (model.save()) {
             SupplyManagement.setNewSupplyID(supplyIDInput); // Reset the new supply ID
+            // Clear the inputs
+            model.clear(supplyNameInput, supplyStockQuantityInput, supplyMinimumStockInput, supplyMaximumStockInput, supplierInformationInput, supplyExpiryDateInput);
         } else {
             JOptionPane.showMessageDialog(panel, "Data saved unsuccessfully!");
         }

@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-public class BillingController {
+public class BillingAndPaymentController {
     private BillingAndPayment model;
     private JPanel Invoice;
 
@@ -28,7 +28,7 @@ public class BillingController {
     private JFormattedTextField PaymentProcessingDate_input;
 
 
-    public BillingController(
+    public BillingAndPaymentController(
         DefaultTableModel invoiceTableModel,
         JPanel Invoice,
         JTextField InvoiceID_input,
@@ -100,9 +100,27 @@ public class BillingController {
         this.model.paymentStatus = (String) PaymentStatus_dropdown.getSelectedItem();
         this.model.paymentProcessingDate = DateTimeUtils.formatDate(PaymentProcessingDate_input.getText());
         // Enable the ID buttons
-        InvoiceID_input.setEnabled(true);
-        InvoicePatientID_input.setEnabled(true);
-        model.save(this.invoiceTableModel);
+        if (model.save(this.invoiceTableModel)){
+            InvoiceID_input.setEnabled(true);
+            InvoicePatientID_input.setEnabled(true);
+
+            model.clear(
+                InvoicePatientID_input,
+                ServiceDate_input,
+                Description_input,
+                CostPerService_input,
+                ServiceQuantity_input,
+                PaymentAmount_input,
+                PaymentMethod_dropdown,
+                PaymentStatus_dropdown,
+                PaymentProcessingDate_input
+            );
+
+            // Clear the table model
+            this.invoiceTableModel.setRowCount(0);
+
+            model.setNewInvoiceId(InvoiceID_input);
+        };
     }
 
     public void handleClearButtonActionPerformed(ActionEvent evt) {
