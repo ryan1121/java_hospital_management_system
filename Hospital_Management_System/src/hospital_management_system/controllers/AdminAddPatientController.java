@@ -6,6 +6,8 @@ package hospital_management_system.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -94,16 +96,27 @@ public class AdminAddPatientController {
         String providerName = providerNameField.getText();
         String policyNumber = policyNumberField.getText();
 
-        AdminAddPatientModel patient = new AdminAddPatientModel(patientID, patientDOB, patientGender, patientPhone, patientName, "password", patientEmail, 
+        if (isValidPhone(patientPhone)) {
+            if (isValidEmail(patientEmail)) {
+
+                AdminAddPatientModel patient = new AdminAddPatientModel(patientID, patientDOB, patientGender, patientPhone, patientName, "password", patientEmail, 
                                       patientAddress, patientAddressLine2, patientAddressLine3, patientEmergencyName, patientEmergencyPhone, 
                                       patientEmergencyRelationship, insuranceID, providerName, policyNumber);
 
-        boolean success = patient.save();
-        if (success) {
-            JOptionPane.showMessageDialog(null, "Data saved successfully!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Failed to save data.");
+                boolean success = patient.save();
+                if (success) {
+                    JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Failed to save data.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalid Email !");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Invalid Phone Number!");
         }
+
+        
     }
 
     private void clearPatientActionPerformed(ActionEvent evt) {
@@ -120,5 +133,25 @@ public class AdminAddPatientController {
         insuranceIDField.setText("");
         providerNameField.setText("");
         policyNumberField.setText("");
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isValidPhone(String phone) {
+        String phoneRegex = "01\\d-\\d{7,8}";
+        Pattern pattern = Pattern.compile(phoneRegex);
+        if (phone == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
     }
 }

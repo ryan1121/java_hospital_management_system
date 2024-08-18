@@ -5,6 +5,8 @@
 package hospital_management_system.controllers;
 
 import java.awt.event.ActionEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
@@ -60,15 +62,23 @@ public class NurseInfoController {
         String nurseExperience = nurseExperienceField.getText();
         String nurseQualifications = nurseQualificationsField.getText();
         String nurseStatus = nurseStatusField.getSelectedItem().toString();
-
-        model = new NurseInfoModel(nurseID, nurseName, nursePhone, nurseEmail, nurseDepartment, 
+        
+        if (isValidPhone(nursePhone)) {
+            if (isValidEmail(nurseEmail)) {
+                model = new NurseInfoModel(nurseID, nurseName, nursePhone, nurseEmail, nurseDepartment, 
                                    nursePosition, nurseAssignWards, nurseSupervisingDoctor, 
                                    nurseExperience, nurseQualifications, nurseStatus);
 
-        if (model.save()) {
-            JOptionPane.showMessageDialog(null, "Data saved successfully!");
-        } else {
-            JOptionPane.showMessageDialog(null, "No Data Update. Data save failed.");
+                if (model.save()) {
+                    JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "No Data Update. Data save failed.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalid Email !");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Invalid Phone Number!");
         }
     }
 
@@ -102,5 +112,25 @@ public class NurseInfoController {
         } else {
             JOptionPane.showMessageDialog(null, "No data found for the given nurse name.");
         }
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isValidPhone(String phone) {
+        String phoneRegex = "01\\d-\\d{7,8}";
+        Pattern pattern = Pattern.compile(phoneRegex);
+        if (phone == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
     }
 }

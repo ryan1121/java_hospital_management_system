@@ -8,6 +8,8 @@ import hospital_management_system.controllers.*;
 import hospital_management_system.models.*;
 
 import java.awt.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
@@ -835,51 +837,78 @@ public class GUI_doctor extends javax.swing.JFrame {
         String qualifications = doctor_qualifications.getText();
         String status = doctor_status.getSelectedItem().toString();
 
-    
-        // 初始化更新语句和条件
-        StringBuilder updateBuilder = new StringBuilder();
-        String condition = "doctor_id = '" + doctorId + "'"; 
-    
-        // 仅更新修改过的字段
-        if (!name.isEmpty()) {
-            updateBuilder.append("doctor_name = '").append(name).append("', ");
-        }
-        if (!phone.isEmpty()) {
-            updateBuilder.append("doctor_phone = '").append(phone).append("', ");
-        }
-        if (!email.isEmpty()) {
-            updateBuilder.append("doctor_email = '").append(email).append("', ");
-        }
-        if (!specialization.isEmpty()) {
-            updateBuilder.append("doctor_specialization = '").append(specialization).append("', ");
-        }
-        if (!dpt.isEmpty()) {
-            updateBuilder.append("doctor_department = '").append(dpt).append("', ");
-        }
-        if (!experience.isEmpty()) {
-            updateBuilder.append("doctor_experience = '").append(experience).append("', ");
-        }
-        if (!qualifications.isEmpty()) {
-            updateBuilder.append("doctor_qualifications = '").append(qualifications).append("', ");
-        }
-        if (!status.isEmpty()) {
-            updateBuilder.append("doctor_status = '").append(status).append("', ");
-        }
-    
-        // 移除最后一个逗号和空格
-        String update = updateBuilder.toString();
-        if (update.endsWith(", ")) {
-            update = update.substring(0, update.length() - 2);
-        }
-    
-        // 只有在 update 字符串不为空时才执行更新操作
-        if (!update.isEmpty()) {
-            db.updateData(tableName, update, condition);
-            JOptionPane.showMessageDialog(this, "Date save successfully!");
-        } else {
-            JOptionPane.showMessageDialog(null, "There is no data update!", "Error", JOptionPane.ERROR_MESSAGE);
-        }
+        if (isValidPhone(doctor_phone.getText())) {
+            if (isValidEmail(doctor_email.getText())) {
+                 // 初始化更新语句和条件
+                StringBuilder updateBuilder = new StringBuilder();
+                String condition = "doctor_id = '" + doctorId + "'"; 
+            
+                // 仅更新修改过的字段
+                if (!name.isEmpty()) {
+                    updateBuilder.append("doctor_name = '").append(name).append("', ");
+                }
+                if (!phone.isEmpty()) {
+                    updateBuilder.append("doctor_phone = '").append(phone).append("', ");
+                }
+                if (!email.isEmpty()) {
+                    updateBuilder.append("doctor_email = '").append(email).append("', ");
+                }
+                if (!specialization.isEmpty()) {
+                    updateBuilder.append("doctor_specialization = '").append(specialization).append("', ");
+                }
+                if (!dpt.isEmpty()) {
+                    updateBuilder.append("doctor_department = '").append(dpt).append("', ");
+                }
+                if (!experience.isEmpty()) {
+                    updateBuilder.append("doctor_experience = '").append(experience).append("', ");
+                }
+                if (!qualifications.isEmpty()) {
+                    updateBuilder.append("doctor_qualifications = '").append(qualifications).append("', ");
+                }
+                if (!status.isEmpty()) {
+                    updateBuilder.append("doctor_status = '").append(status).append("', ");
+                }
+            
+                // 移除最后一个逗号和空格
+                String update = updateBuilder.toString();
+                if (update.endsWith(", ")) {
+                    update = update.substring(0, update.length() - 2);
+                }
+            
+                // 只有在 update 字符串不为空时才执行更新操作
+                if (!update.isEmpty()) {
+                    db.updateData(tableName, update, condition);
+                    JOptionPane.showMessageDialog(this, "Date save successfully!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "There is no data update!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalid Email !");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Invalid Phone Number!");
+        } 
     }   
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isValidPhone(String phone) {
+        String phoneRegex = "01\\d-\\d{7,8}";
+        Pattern pattern = Pattern.compile(phoneRegex);
+        if (phone == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
+    }
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,8 @@ package hospital_management_system.controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -75,38 +77,44 @@ public class AdminAddDoctorController {
         String doctorExperience = doctorExperienceField.getText().trim();
         String doctorQualifications = doctorQualificationsField.getText().trim();
         String doctorStatus = doctorStatusComboBox.getSelectedItem().toString().trim();
-    
-        // Validate that none of the fields are empty
-        if (doctorID.isEmpty() || doctorName.isEmpty() || doctorPhone.isEmpty() || doctorEmail.isEmpty() ||
-            doctorSpecialization.isEmpty() || doctorDepartment.isEmpty() || doctorExperience.isEmpty() ||
-            doctorQualifications.isEmpty() || doctorStatus.isEmpty()) {
+        
+        if (isValidPhone(doctorPhone)) {
+            if (isValidEmail(doctorEmail)) {
+                if (!doctorID.isEmpty() && !doctorName.isEmpty() && !doctorPhone.isEmpty() && !doctorEmail.isEmpty() &&
+                !doctorSpecialization.isEmpty() && !doctorDepartment.isEmpty() && !doctorExperience.isEmpty() &&
+                !doctorQualifications.isEmpty() && !doctorStatus.isEmpty()) {
+                    // Proceed with saving the data if all fields are filled
+                    AdminAddDoctorModel doctor = new AdminAddDoctorModel(doctorID, doctorName, "password", doctorPhone, doctorEmail, 
+                                                                        doctorSpecialization, doctorDepartment, doctorExperience, 
+                                                                        doctorQualifications, doctorStatus);
             
-            // Display error message if any field is empty
-            JOptionPane.showMessageDialog(null, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
-            // Proceed with saving the data if all fields are filled
-            AdminAddDoctorModel doctor = new AdminAddDoctorModel(doctorID, doctorName, "password", doctorPhone, doctorEmail, 
-                                                                 doctorSpecialization, doctorDepartment, doctorExperience, 
-                                                                 doctorQualifications, doctorStatus);
-    
-            boolean success = doctor.save();
-            if (success) {
-                JOptionPane.showMessageDialog(null, "Data saved successfully!");
-                MysqlConnect db = new MysqlConnect();
-                String newDoctorId = db.generateNewId("Doctors", "D");
-                doctorIDField.setText(newDoctorId);
-                doctorNameField.setText("");
-                doctorPhoneField.setText("");
-                doctorEmailField.setText("");
-                doctorSpecializationField.setText("");
-                doctorDepartmentField.setText("");
-                doctorExperienceField.setText("");
-                doctorQualificationsField.setText("");
-                doctorStatusComboBox.setSelectedItem("");
-            } else {
-                JOptionPane.showMessageDialog(null, "Failed to save data.", "Error", JOptionPane.ERROR_MESSAGE);
+                    boolean success = doctor.save();
+                    if (success) {
+                        JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                        MysqlConnect db = new MysqlConnect();
+                        String newDoctorId = db.generateNewId("Doctors", "D");
+                        doctorIDField.setText(newDoctorId);
+                        doctorNameField.setText("");
+                        doctorPhoneField.setText("");
+                        doctorEmailField.setText("");
+                        doctorSpecializationField.setText("");
+                        doctorDepartmentField.setText("");
+                        doctorExperienceField.setText("");
+                        doctorQualificationsField.setText("");
+                        doctorStatusComboBox.setSelectedItem("");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to save data.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+   
+                } else {
+                    JOptionPane.showMessageDialog(null, "Please fill in all fields.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalid Email !");
             }
-        }
+        }else{
+            JOptionPane.showMessageDialog(null, "Invalid Phone Number!");
+        } 
     }
     
 
@@ -119,6 +127,26 @@ public class AdminAddDoctorController {
         doctorExperienceField.setText("");
         doctorQualificationsField.setText("");
         doctorStatusComboBox.setSelectedItem("");
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isValidPhone(String phone) {
+        String phoneRegex = "01\\d-\\d{7,8}";
+        Pattern pattern = Pattern.compile(phoneRegex);
+        if (phone == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
     }
 
 }

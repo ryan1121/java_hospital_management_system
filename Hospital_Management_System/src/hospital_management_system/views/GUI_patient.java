@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.*;
 import javax.swing.table.*;
@@ -458,63 +460,91 @@ public class GUI_patient extends javax.swing.JFrame {
         String ins_ID = insuranceID.getText(); 
         String provider_name = providerName.getText(); 
         String policyNo = policyNumber.getText(); 
-    
-        // 初始化更新语句和条件
-        StringBuilder updateBuilder = new StringBuilder();
-        String condition = "patient_id = '" + patientId + "'"; 
-    
-        // 仅更新修改过的字段
-        if (!name.isEmpty()) {
-            updateBuilder.append("patient_name = '").append(name).append("', ");
-        }
-        if (!phone.isEmpty()) {
-            updateBuilder.append("patient_phone = '").append(phone).append("', ");
-        }
-        if (!email.isEmpty()) {
-            updateBuilder.append("patient_email = '").append(email).append("', ");
-        }
-        if (!address.isEmpty()) {
-            updateBuilder.append("patient_address = '").append(address).append("', ");
-        }
-        if (!addressLine2.isEmpty()) {
-            updateBuilder.append("patient_address_line2 = '").append(addressLine2).append("', ");
-        }
-        if (!addressLine3.isEmpty()) {
-            updateBuilder.append("patient_address_line3 = '").append(addressLine3).append("', ");
-        }
-        if (!emergencyName.isEmpty()) {
-            updateBuilder.append("patient_emergency_name = '").append(emergencyName).append("', ");
-        }
-        if (!emergencyRelationship.isEmpty()) {
-            updateBuilder.append("patient_emergency_relationship = '").append(emergencyRelationship).append("', ");
-        }
-        if (!emergencyPhone.isEmpty()) {
-            updateBuilder.append("patient_emergency_phone = '").append(emergencyPhone).append("', ");
-        }
-        if (!ins_ID.isEmpty()) {
-            updateBuilder.append("insuranceID = '").append(ins_ID).append("', ");
-        }
-        if (!provider_name.isEmpty()) {
-            updateBuilder.append("providerName = '").append(provider_name).append("', ");
-        }
-        if (!policyNo.isEmpty()) {
-            updateBuilder.append("policyNumber = '").append(policyNo).append("', ");
-        }
-    
-        // 移除最后一个逗号和空格
-        String update = updateBuilder.toString();
-        if (update.endsWith(", ")) {
-            update = update.substring(0, update.length() - 2);
-        }
-    
-        // 只有在 update 字符串不为空时才执行更新操作
-        if (!update.isEmpty()) {
-            db.updateData(tableName, update, condition);
-            JOptionPane.showMessageDialog(this, "Data save successfully!");
-        } else {
-            JOptionPane.showMessageDialog(null, "There is no data to update!", "Error", JOptionPane.ERROR_MESSAGE);
+        if (isValidPhone(phone)) {
+            if (isValidEmail(email)) {
+                // 初始化更新语句和条件
+                StringBuilder updateBuilder = new StringBuilder();
+                String condition = "patient_id = '" + patientId + "'"; 
+            
+                // 仅更新修改过的字段
+                if (!name.isEmpty()) {
+                    updateBuilder.append("patient_name = '").append(name).append("', ");
+                }
+                if (!phone.isEmpty()) {
+                    updateBuilder.append("patient_phone = '").append(phone).append("', ");
+                }
+                if (!email.isEmpty()) {
+                    updateBuilder.append("patient_email = '").append(email).append("', ");
+                }
+                if (!address.isEmpty()) {
+                    updateBuilder.append("patient_address = '").append(address).append("', ");
+                }
+                if (!addressLine2.isEmpty()) {
+                    updateBuilder.append("patient_address_line2 = '").append(addressLine2).append("', ");
+                }
+                if (!addressLine3.isEmpty()) {
+                    updateBuilder.append("patient_address_line3 = '").append(addressLine3).append("', ");
+                }
+                if (!emergencyName.isEmpty()) {
+                    updateBuilder.append("patient_emergency_name = '").append(emergencyName).append("', ");
+                }
+                if (!emergencyRelationship.isEmpty()) {
+                    updateBuilder.append("patient_emergency_relationship = '").append(emergencyRelationship).append("', ");
+                }
+                if (!emergencyPhone.isEmpty()) {
+                    updateBuilder.append("patient_emergency_phone = '").append(emergencyPhone).append("', ");
+                }
+                if (!ins_ID.isEmpty()) {
+                    updateBuilder.append("insuranceID = '").append(ins_ID).append("', ");
+                }
+                if (!provider_name.isEmpty()) {
+                    updateBuilder.append("providerName = '").append(provider_name).append("', ");
+                }
+                if (!policyNo.isEmpty()) {
+                    updateBuilder.append("policyNumber = '").append(policyNo).append("', ");
+                }
+            
+                // 移除最后一个逗号和空格
+                String update = updateBuilder.toString();
+                if (update.endsWith(", ")) {
+                    update = update.substring(0, update.length() - 2);
+                }
+            
+                // 只有在 update 字符串不为空时才执行更新操作
+                if (!update.isEmpty()) {
+                    db.updateData(tableName, update, condition);
+                    JOptionPane.showMessageDialog(this, "Data save successfully!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "There is no data to update!", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalid Email !");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Invalid Phone Number!");
         }
     }   
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isValidPhone(String phone) {
+        String phoneRegex = "01\\d-\\d{7,8}";
+        Pattern pattern = Pattern.compile(phoneRegex);
+        if (phone == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
+    }
 
     private void setupTable(JTable table, DefaultTableModel model, JScrollPane scrollPane) {
         table.setModel(model);

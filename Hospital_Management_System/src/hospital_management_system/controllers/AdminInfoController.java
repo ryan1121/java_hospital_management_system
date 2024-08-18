@@ -5,6 +5,8 @@
 package hospital_management_system.controllers;
 
 import java.awt.event.ActionEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -35,13 +37,23 @@ public class AdminInfoController {
         String adminPhone = adminPhoneField.getText();
         String adminEmail = adminEmailField.getText();
 
-        model = new AdminInfoModel(adminID, adminName, adminPhone, adminEmail);
+        if (isValidPhone(adminPhone)) {
+            if (isValidEmail(adminEmail)) {
+                model = new AdminInfoModel(adminID, adminName, adminPhone, adminEmail);
 
-        if (model.save()) {
-            JOptionPane.showMessageDialog(null, "Data saved successfully!");
-        } else {
-            JOptionPane.showMessageDialog(null, "Data save failed.");
+                if (model.save()) {
+                    JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                } else {
+                    JOptionPane.showMessageDialog(null, "Data save failed.");
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalid Email !");
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "Invalid Phone Number!");
         }
+
+        
     }
 
     public void handleClearActionPerformed(ActionEvent evt) {
@@ -60,5 +72,25 @@ public class AdminInfoController {
         } else {
             JOptionPane.showMessageDialog(null, "No data found for the given ID.");
         }
+    }
+
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        Pattern pattern = Pattern.compile(emailRegex);
+        if (email == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private boolean isValidPhone(String phone) {
+        String phoneRegex = "01\\d-\\d{7,8}";
+        Pattern pattern = Pattern.compile(phoneRegex);
+        if (phone == null) {
+            return false;
+        }
+        Matcher matcher = pattern.matcher(phone);
+        return matcher.matches();
     }
 }
