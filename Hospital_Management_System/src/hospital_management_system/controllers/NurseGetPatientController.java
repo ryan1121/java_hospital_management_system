@@ -6,6 +6,9 @@ package hospital_management_system.controllers;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -85,9 +88,15 @@ public class NurseGetPatientController {
                 String address2 = patientResultSet.getString("patient_address_line2");
                 String address3 = patientResultSet.getString("patient_address_line3");
 
+                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd"); // Assuming this is the format in the database
+                SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+        
+                Date date = inputFormat.parse(dob1);
+                String formattedDOB = outputFormat.format(date);
+
                 // Set data to fields
                 patientNameField.setText(name1);
-                patientDOBField.setText(dob1);
+                patientDOBField.setText(formattedDOB);
                 patientPhoneField.setText(phone1);
                 patientEmailField.setText(email1);
                 patientAddressField.setText(address1);
@@ -131,7 +140,7 @@ public class NurseGetPatientController {
                 patientRoomNumberField.setText("");
                 patientGenderComboBox.setSelectedItem(""); 
             }
-        } catch (SQLException e) {
+        } catch (SQLException | ParseException e) {
             e.printStackTrace();
         }
     }

@@ -74,7 +74,8 @@ CREATE TABLE Admission (
     admission_Patient_ID VARCHAR(25),
     Insurance_Details TEXT,
     medical_equipment_need TEXT,
-    FOREIGN KEY (admission_Patient_ID) REFERENCES Patients(patient_id) ON DELETE CASCADE
+    FOREIGN KEY (admission_Patient_ID) REFERENCES Patients(patient_id) ON DELETE CASCADE,
+    FOREIGN KEY (Admitting_Staff_ID) REFERENCES Nurse(nurse_id) ON DELETE CASCADE
 );
 
 -- 创建 Appointment 表

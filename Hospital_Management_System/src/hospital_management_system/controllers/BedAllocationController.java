@@ -7,6 +7,9 @@ package hospital_management_system.controllers;
 import java.awt.event.ActionEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JComboBox;
 import javax.swing.JList;
@@ -209,6 +212,15 @@ public class BedAllocationController {
                     String discharge_date = bedResultSet.getString("discharge_date");
                     String patientStatus = bedResultSet.getString("pre_occ");
                     String equipment = bedResultSet.getString("emergency_equipment");
+
+                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd"); // Assuming this is the format in the database
+                    SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
+            
+                    Date date = inputFormat.parse(allocate_date);
+                    String formattedAllocationDate = outputFormat.format(date);
+
+                    Date date2 = inputFormat.parse(discharge_date);
+                    String formattedDisDate = outputFormat.format(date2);
     
                     // Set data to fields
                     bed_allocate_number.setText(bed);
@@ -218,15 +230,15 @@ public class BedAllocationController {
                     bed_allocation_status.setSelectedItem(bedStatus);
                     bed_type1.setSelectedItem(type);
                     bed_patient_id1.setText(bedPatientID);
-                    discharge_date1.setText(discharge_date);
-                    allocate_date1.setText(allocate_date);
+                    discharge_date1.setText(formattedDisDate);
+                    allocate_date1.setText(formattedAllocationDate);
                     pre_occ1.setText(patientStatus);
                     emergency_equipment.setSelectedValue(equipment, true);
 
                 } else {
                     JOptionPane.showMessageDialog(null, "Information of this bed does not exist.");
                 }
-            } catch (SQLException e) {
+            } catch (SQLException | ParseException e) {
                 e.printStackTrace();
             }
         }

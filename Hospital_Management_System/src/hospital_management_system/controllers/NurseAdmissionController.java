@@ -22,7 +22,7 @@ public class NurseAdmissionController {
     private NurseAdmissionModel model;
     private JTextField Admission_ID1;
     private JTextField Admission_Date1;
-    private JTextField nurse_id;
+    private JTextField Admitting_Staff_ID1;
     private JTextField Admission_Status1;
     private JTextField Admission_Notes1;
     private JTextField Reason1;
@@ -30,12 +30,12 @@ public class NurseAdmissionController {
     private JTextField Insurance_Details1;
     private JList<String> medical_equipment_need;
 
-    public NurseAdmissionController(JTextField Admission_ID1, JTextField Admission_Date1, JTextField nurse_id,
+    public NurseAdmissionController(JTextField Admission_ID1, JTextField Admission_Date1, JTextField Admitting_Staff_ID1,
                                     JTextField Admission_Status1, JTextField Admission_Notes1, JTextField Reason1,
                                     JTextField admission_Patient_ID, JTextField Insurance_Details1, JList<String> medical_equipment_need) {
         this.Admission_ID1 = Admission_ID1;
         this.Admission_Date1 = Admission_Date1;
-        this.nurse_id = nurse_id;
+        this.Admitting_Staff_ID1 = Admitting_Staff_ID1;
         this.Admission_Status1 = Admission_Status1;
         this.Admission_Notes1 = Admission_Notes1;
         this.Reason1 = Reason1;
@@ -47,7 +47,7 @@ public class NurseAdmissionController {
     public void handleSaveActionPerformed(ActionEvent evt) {
         String admissionID = Admission_ID1.getText();
         String formattedAdmissionDate = DateTimeUtils.formatDate(Admission_Date1.getText());
-        String admittingStaffID = nurse_id.getText();
+        String admittingStaffID = Admitting_Staff_ID1.getText();
         String admissionStatus = Admission_Status1.getText();
         String admissionNotes = Admission_Notes1.getText();
         String reason = Reason1.getText();

@@ -50,6 +50,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                                                   nurse_supervising_doctor, nurse_experience, nurse_qualifications,
                                                   nurse_status);
         nurseController.fetchDataDisplay(username);
+        Admitting_Staff_ID1.setText(nurse_id.getText());
 
         patientController = new NurseGetPatientController(patient_id, patient_name, patient_DOB, patient_phone, patient_email,
                                                       patient_address, patient_address_line2, patient_address_line3,
@@ -995,6 +996,8 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         jLabel62.setText("Admitting Staff ID:");
 
+        Admitting_Staff_ID1.setEnabled(false);
+        
         jLabel63.setText("Admission Status:");
 
         jLabel64.setText("Admission Notes:");
