@@ -328,6 +328,7 @@ public class GUI_nurse extends javax.swing.JFrame {
         InventoryMinimumStock_input = new javax.swing.JSpinner();
         InventorySupplierInformation_input = new javax.swing.JTextArea();
         InventoryExpirydate_input = new javax.swing.JFormattedTextField();
+        InventoryExpirydate_input.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/mm/y"))));
         inventory_save = new javax.swing.JButton();
         inventory_clear = new javax.swing.JButton();
 

@@ -225,10 +225,7 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
         // Delegate the save operation to the scheduleController
         if (scheduleController.saveSchedule(role)) {
             // Refresh the table if save is successful
-            JOptionPane.showMessageDialog(this, "Schedule added successfully", "Success", JOptionPane.INFORMATION_MESSAGE);
             refreshCurrentScheduleTable();
-        } else {
-            JOptionPane.showMessageDialog(this, "Error while saving schedule", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 
