@@ -158,30 +158,120 @@ public class NurseGetPatientController {
         String ward = patientWardField.getText().trim();
         String bedNumber = patientBedNumberField.getText().trim();
         String roomNumber = patientRoomNumberField.getText().trim();
-        
+    
+        MysqlConnect db = new MysqlConnect();
+    
         // Validate input
         if (isValidInput(patientID, patientDOB, patientPhone, patientName, patientEmail, patientAddress, ward, bedNumber, roomNumber)) {
-            NurseGetPatientModel patient = new NurseGetPatientModel(
-                                            patientID, 
-                                            patientName, 
-                                            patientGender, 
-                                            patientDOB,
-                                            patientPhone,
-                                            patientEmail, 
-                                            patientAddress,
-                                            patientAddressLine2,
-                                            patientAddressLine3,
-                                            ward,
-                                            bedNumber,
-                                            roomNumber
-                                            );
-    
-            boolean success = patient.save();
-            if (success) {
-                JOptionPane.showMessageDialog(null, "Data saved successfully!");
-                handleClearActionPerformed(); // Clear fields after successful save
-            } else {
-                JOptionPane.showMessageDialog(null, "Failed to save data. Please check your input and try again.");
+
+            // Check if patientID exists in the database
+            String conditionCheck = "patient_id = '" + patientID + "'";
+            ResultSet patientExists = db.getData("Patients", conditionCheck);
+                
+            try{
+                if (patientExists.next()) {
+                    // Update existing record in Patients table
+                    StringBuilder updateBuilder = new StringBuilder();
+                    String condition = "patient_id = '" + patientID + "'";
+                    String BedCondition = "bed_patient_id = '" + patientID + "'";
+        
+                    if (!patientID.isEmpty()) {
+                        updateBuilder.append("patient_id = '").append(patientID).append("', ");
+                    }
+                    if (!patientName.isEmpty()) {
+                        updateBuilder.append("patient_name = '").append(patientName).append("', ");
+                    }
+                    if (!patientGender.isEmpty()) {
+                        updateBuilder.append("patient_gender = '").append(patientGender).append("', ");
+                    }
+                    if (!patientDOB.isEmpty()) {
+                        updateBuilder.append("patient_DOB = '").append(patientDOB).append("', ");
+                    }
+                    if (!patientPhone.isEmpty()) {
+                        updateBuilder.append("patient_phone = '").append(patientPhone).append("', ");
+                    }
+                    if (!patientEmail.isEmpty()) {
+                        updateBuilder.append("patient_email = '").append(patientEmail).append("', ");
+                    }
+                    if (!patientAddress.isEmpty()) {
+                        updateBuilder.append("patient_address = '").append(patientAddress).append("', ");
+                    }
+                    if (!patientAddressLine2.isEmpty()) {
+                        updateBuilder.append("patient_address_line2 = '").append(patientAddressLine2).append("', ");
+                    }
+                    if (!patientAddressLine3.isEmpty()) {
+                        updateBuilder.append("patient_address_line3 = '").append(patientAddressLine3).append("', ");
+                    }
+        
+                    // Remove the last comma and space
+                    String update = updateBuilder.toString();
+                    if (update.endsWith(", ")) {
+                        update = update.substring(0, update.length() - 2);
+                    }
+        
+                    // Only perform the update if the update string is not empty
+                    if (!update.isEmpty()) {
+                        boolean updateSuccess = db.updateData("Patients", update, condition);
+                        if (updateSuccess) {
+                            JOptionPane.showMessageDialog(null, "Patient data updated successfully!");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Failed to update patient data. Please try again.");
+                        }
+                    }
+        
+                    // Update BedAllocation table
+                    updateBuilder.setLength(0); // Clear the updateBuilder
+                    if (!ward.isEmpty()) {
+                        updateBuilder.append("ward_allocate_number = '").append(ward).append("', ");
+                    }
+                    if (!bedNumber.isEmpty()) {
+                        updateBuilder.append("bed_allocate_number = '").append(bedNumber).append("', ");
+                    }
+                    if (!roomNumber.isEmpty()) {
+                        updateBuilder.append("room_allocate_number = '").append(roomNumber).append("', ");
+                    }
+        
+                    // Remove the last comma and space
+                    update = updateBuilder.toString();
+                    if (update.endsWith(", ")) {
+                        update = update.substring(0, update.length() - 2);
+                    }
+        
+                    if (!update.isEmpty()) {
+                        boolean bedUpdateSuccess = db.updateData("BedAllocation", update, BedCondition);
+                        if (bedUpdateSuccess) {
+                            JOptionPane.showMessageDialog(null, "Bed allocation updated successfully!");
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Failed to update bed allocation. Please try again.");
+                        }
+                    }
+                } else {
+                    // Save new patient data
+                    NurseGetPatientModel patient = new NurseGetPatientModel(
+                                                patientID, 
+                                                patientName, 
+                                                patientGender, 
+                                                patientDOB,
+                                                patientPhone,
+                                                patientEmail, 
+                                                patientAddress,
+                                                patientAddressLine2,
+                                                patientAddressLine3,
+                                                ward,
+                                                bedNumber,
+                                                roomNumber
+                                                );
+        
+                    boolean success = patient.save();
+                    if (success) {
+                        JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                        handleClearActionPerformed(); // Clear fields after successful save
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Failed to save data. Please check your input and try again.");
+                    }
+                }
+            }catch (SQLException e) {
+                JOptionPane.showMessageDialog(null, "Error checking bed allocation: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         } else {
             JOptionPane.showMessageDialog(null, "Invalid input. Please ensure all fields are filled correctly.");
