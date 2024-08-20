@@ -90,7 +90,7 @@ public class GUI_LOGIN extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 24)); 
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setText("LOGIN");
 

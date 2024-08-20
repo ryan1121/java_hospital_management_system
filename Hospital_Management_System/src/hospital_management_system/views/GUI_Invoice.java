@@ -92,7 +92,7 @@ public class GUI_Invoice extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        InvoicePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Invoice", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); // NOI18N
+        InvoicePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Invoice", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 18))); 
 
         InvoiceNo_label.setText("Invoice no:");
 
@@ -100,7 +100,7 @@ public class GUI_Invoice extends javax.swing.JFrame {
 
         InvoiceDue_label.setText("Due:");
 
-        From_address.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        From_address.setFont(new java.awt.Font("Segoe UI", 1, 12)); 
         From_address.setText("From:");
 
         InvoiceTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -119,25 +119,25 @@ public class GUI_Invoice extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(InvoiceTable);
 
-        Total_label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        Total_label.setFont(new java.awt.Font("Segoe UI", 1, 12)); 
         Total_label.setText("Total:");
 
-        AmountPaid_label.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        AmountPaid_label.setFont(new java.awt.Font("Segoe UI", 1, 12)); 
         AmountPaid_label.setText("Amount Paid:");
 
-        BalanceDue_label.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        BalanceDue_label.setFont(new java.awt.Font("Segoe UI", 1, 14)); 
         BalanceDue_label.setText("Balance Due:");
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 12)); 
         jLabel1.setText("WellSpring Hospital");
 
-        From_address1.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        From_address1.setFont(new java.awt.Font("Segoe UI", 1, 12)); 
         From_address1.setText("To:");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); 
         jLabel2.setText("   Patient ID: ");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 12)); 
         jLabel3.setText("   Name: ");
 
         jLabel4.setText("456 Jalan Tun Razak,");

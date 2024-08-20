@@ -10,55 +10,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
-/*
-Example Usage: 
-    // 创建 MysqlConnect 对象
-    MysqlConnect db = new MysqlConnect();
-
-    // 1. Get Data
-    String[] values = {"3", "1", "2", "Severe Cold", "2024-07-21", "Rest and Medication"};
-    try {
-        boolean saveResult = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", values);
-        System.out.println("Data saved: " + saveResult);
-    } catch (SQLException e) {
-        System.err.println("Error while saving data!");
-        e.printStackTrace();
-    }
-
-    2. Execute command
-    // 查询每个部门的患者数量
-    String query = "SELECT doctor_department, COUNT(patient_id) AS patient_count FROM Patients " +
-                    "JOIN Doctors ON Patients.doctor_id = Doctors.doctor_id " +
-                    "GROUP BY doctor_department";
-
-    try (ResultSet rs = db.executeQuery(query)) {
-        while (rs.next()) {
-            String department = rs.getString("doctor_department");
-            int count = rs.getInt("patient_count");
-            dataset.setValue(department, count);
-        }
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-        
-    // 3. Save Data
-    String[] values = {"3", "1", "2", "Severe Cold", "2024-07-21", "Rest and Medication"};
-    boolean saveSuccess = db.saveData("Diagnosis", "DiagnosisID, PatientID, DoctorID, DiagnosisDescription, DateOfDiagnosis, treatmentPlans", values);
-    System.out.println("Data saved: " + saveSuccess);
-
-    // 4. Update Data
-    boolean updateSuccess = db.updateData("Diagnosis", "DiagnosisDescription = 'Mild Cold'", "DiagnosisID = '3'");
-    System.out.println("Data updated: " + updateSuccess);
-
-    // 5. Delete Data
-    boolean deleteSuccess = db.deleteData("Diagnosis", "DiagnosisID = '3'");
-    System.out.println("Data deleted: " + deleteSuccess);
-
-    // 6. Generate New ID
-    String newPatientId = db.generateNewId("Patients", "P");
-    System.out.println("New Patient ID: " + newPatientId);
-*/
 public class MysqlConnect {
     private final String url = "jdbc:mysql://localhost:3306/hospital_management";
     private final String username = "root";
@@ -126,25 +77,21 @@ public class MysqlConnect {
     }
 
     /**
-     * 保存数据到指定的表中
-     * @param tableName 表名
-     * @param columns 列名，以逗号分隔
-     * @param values 插入的值
-     * @return 如果插入成功返回 true，否则返回 false
-     * @throws SQLException SQL 执行异常
+     * @param tableName 
+     * @param columns 
+     * @param values 
+     * @return
+     * @throws SQLException 
      */
     public boolean saveData(String tableName, String columns, String[] values) throws SQLException {
-        // 构建 SQL 插入语句
         String placeholders = String.join(", ", Collections.nCopies(values.length, "?"));
         String sql = "INSERT INTO " + tableName + " (" + columns + ") VALUES (" + placeholders + ")";
         
         try (PreparedStatement stmt = connection.prepareStatement(sql)) {
-            // 设置参数
             for (int i = 0; i < values.length; i++) {
                 stmt.setString(i + 1, values[i]);
             }
             
-            // 执行插入操作
             int rowsAffected = stmt.executeUpdate();
             return rowsAffected > 0;
         } catch (SQLException e) {
@@ -210,7 +157,6 @@ public class MysqlConnect {
     public String generateNewId(String tableName, String idPrefix) {
         String idColumnName = "";
     
-        // 根据表名设置 id_column_name
         if (tableName.equalsIgnoreCase("Patients")) {
             idColumnName = "patient_id";
         } else if (tableName.equalsIgnoreCase("Doctors")) {
@@ -242,11 +188,11 @@ public class MysqlConnect {
         } else if (tableName.equalsIgnoreCase("Invoice")) {
             idColumnName = "InvoiceID";
         } else if (tableName.equalsIgnoreCase("Billing")) {
-            idColumnName = "InvoiceID"; // 可能需要其他逻辑
+            idColumnName = "InvoiceID";  
         } else if (tableName.equalsIgnoreCase("DoctorStaffScheduling")) {
-            idColumnName = "DoctorID"; // Scheduling 可能有不同的模式
+            idColumnName = "DoctorID"; 
         } else if (tableName.equalsIgnoreCase("NurseStaffScheduling")) {
-            idColumnName = "NurseID"; // Scheduling 可能有不同的模式
+            idColumnName = "NurseID"; 
         } else if (tableName.equalsIgnoreCase("InventoryManagement")) {
             idColumnName = "InventoryID";
         } else if (tableName.equalsIgnoreCase("MedicalSupplyManagement")) {
@@ -273,7 +219,7 @@ public class MysqlConnect {
             System.err.println("Cannot execute SQL query!");
             e.printStackTrace();
         }
-        return idPrefix + "001"; // 如果表中没有数据，则返回第一个 ID
+        return idPrefix + "001"; 
     }
     
 }

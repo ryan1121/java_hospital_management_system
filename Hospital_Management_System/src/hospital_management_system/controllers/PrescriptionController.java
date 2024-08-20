@@ -61,7 +61,6 @@ public class PrescriptionController {
     }
 
     public void handleSaveButtonActionPerformed(ActionEvent evt) {
-        // 在创建 Prescription 前读取最新的输入值
         this.model = new Prescription(
             panel,
             prescriptionIDTextField,

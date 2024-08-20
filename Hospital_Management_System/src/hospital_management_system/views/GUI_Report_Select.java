@@ -51,7 +51,7 @@ public class GUI_Report_Select extends JFrame {
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); 
         jLabel1.setHorizontalAlignment(SwingConstants.CENTER);
         jLabel1.setText("Reporting and Analytics");
 

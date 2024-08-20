@@ -207,11 +207,10 @@ public class GUI_nurse extends javax.swing.JFrame {
         jScrollPane7 = new javax.swing.JScrollPane();
         instructions = new javax.swing.JTextArea();
         PrescriptionID_textField = new javax.swing.JTextField();
-        // 设置 JTextField 的大小
-        Dimension size = new Dimension(120, 20); // 宽度200，高度20
+        Dimension size = new Dimension(120, 20); 
         PrescriptionID_textField.setPreferredSize(size);
         PrescriptionDate_textField.setPreferredSize(size);
-        PrescriptionID_textField.setEnabled(false); // 禁用id输入框
+        PrescriptionID_textField.setEnabled(false); 
 
 
         prescripition_clearButton = new javax.swing.JButton();
@@ -1512,7 +1511,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         NurseTab.addTab("Bed Allocation", jPanel5);
 
-        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Prescription", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Prescription", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         PrescriptionID_label.setText("Prescription ID : ");
 
@@ -1618,7 +1617,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consultation Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel15.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Consultation Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         ConsultationID_label.setText("Consultation ID : ");
 
@@ -1732,7 +1731,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         NurseTab.addTab("Patient Care", jPanel13);
 
-        TranferManagement_Panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Transfer Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        TranferManagement_Panel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Transfer Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         TransferFrom.setText("Transfer from:");
 
@@ -1904,7 +1903,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         NurseTab.addTab("Patient Transfer", PatientTransfer);
 
-        MedicalSupplyManagement.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medical Supply Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        MedicalSupplyManagement.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medical Supply Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         SupplyID.setText("Supply ID:");
 
@@ -2008,7 +2007,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        InventoryManagement.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Inventory Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        InventoryManagement.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Inventory Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         ItemName.setText("Item Name:");
 
@@ -2150,7 +2149,7 @@ public class GUI_nurse extends javax.swing.JFrame {
 
         NurseTab.addTab("Resources", ResourcesManagement);
 
-        PaymentProcessing.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Payment", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        PaymentProcessing.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Payment", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         PaymentID1.setText("Payment ID:");
 
@@ -2219,9 +2218,9 @@ public class GUI_nurse extends javax.swing.JFrame {
         );        
 
 
-        Invoice.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Invoice", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        Invoice.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Invoice", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
-        InvoiceDetails.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Invoice Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        InvoiceDetails.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Invoice Details", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         InvoiceID2.setText("Invoice ID:");
 
@@ -2270,7 +2269,7 @@ public class GUI_nurse extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        ServiceDetails.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Service Details\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        ServiceDetails.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Service Details\n", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         DateOfService1.setText("Date of Service:");
 
@@ -2706,7 +2705,6 @@ public class GUI_nurse extends javax.swing.JFrame {
     }
 
     private void backButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
-        // TODO add your handling code here:
         this.dispose();
 
         Home_Page_GUI homePage = new Home_Page_GUI("Nurse",username);

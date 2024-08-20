@@ -111,27 +111,21 @@ public class GUI_doctor extends javax.swing.JFrame {
         Notes_label8 = new javax.swing.JLabel();
         medicalRecord_notesTextField = new javax.swing.JTextField();
         medicalRecordID_textField = new javax.swing.JTextField();
-        // 设置 JTextField 的大小
-        Dimension size = new Dimension(200, 20); // 宽度200，高度20
+        Dimension size = new Dimension(200, 20); 
         medicalRecordID_textField.setPreferredSize(size);
-        // 设置Combobox的大小
         surgeryType_comboBox.setPreferredSize(size);
 
         MedRecord_SaveButton = new javax.swing.JButton();
         MedRecord_ClearButton = new javax.swing.JButton();
 
-        // 创建一个Diagnosis Model object
         hospital_management_system.models.Diagnosis DiagnosisObj = new hospital_management_system.models.Diagnosis(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
         DiagnosisObj.setNewDiagnosisId(DiagnosisID_textField);
         DiagnosisID_textField.setEnabled(false);
 
-
-        // 创建一个Surgery Model object
         Surgery getNewSurgeryIdObj = new Surgery(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
         getNewSurgeryIdObj.setNewSurgeryId(surgeryID_textField);
         surgeryID_textField.setEnabled(false);
 
-        // 创建一个MedicalRecords Model object
         MedicalRecords getNewMedicalRecordIdObj = new MedicalRecords(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
         getNewMedicalRecordIdObj.setNewMedicalRecordId(medicalRecordID_textField);
         medicalRecordID_textField.setEnabled(false);
@@ -376,7 +370,7 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Work Schedule", jPanel8);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diagnosis Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Diagnosis Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         DiagnosisID_label.setText("Diagnosis ID : ");
 
@@ -399,7 +393,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         Diagnosis_SaveButton.setText("Save");
         Diagnosis_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个Diagnosis Controller Object
                 DiagnosisController DiagnosisControllerObj = new DiagnosisController(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
                 DiagnosisControllerObj.handleSaveButtonActionPerformed(evt);
             }
@@ -408,7 +401,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         Diagnosis_ClearButton.setText("Clear");
         Diagnosis_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个Diagnosis Controller Object
                 DiagnosisController DiagnosisControllerObj = new DiagnosisController(jPanel3, patientID_textField, doctorID_textField, DiagnosisID_textField, DateOfDiagnosis_textField, DiagnosisDescription_TextArea, treatmentPlans_TextArea);
                 DiagnosisControllerObj.handleClearButtonActionPerformed(evt);
             }
@@ -477,7 +469,7 @@ public class GUI_doctor extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Surgery Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Surgery Management", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         prescriptionID_label.setText("Surgery ID : ");
 
@@ -494,7 +486,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         SurgManage_SaveButton.setText("Save");
         SurgManage_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个SurgeryController Object
                 SurgeryController SurgeryObj = new SurgeryController(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
                 SurgeryObj.handleSaveButtonActionPerformed(evt);
             }
@@ -503,7 +494,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         SurgManage_ClearButton.setText("Clear");
         SurgManage_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个SurgeryController Object
                 SurgeryController SurgeryObj = new SurgeryController(jPanel3, patientID_textField, doctorID_textField, surgeryID_textField, surgeryType_comboBox, DateOfSurgery_textField, Outcomes_textField);
                 SurgeryObj.handleClearButtonActionPerformed(evt);
             }
@@ -571,7 +561,7 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         DoctorID_label.setText("Doctor ID : ");
 
-        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medical Record Mangement", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        jPanel19.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Medical Record Mangement", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         medicalRecordID_label8.setText("Medical Record ID : ");
 
@@ -590,7 +580,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         MedRecord_SaveButton.setText("Save");
         MedRecord_SaveButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个MedicalRecordsController Object
                 MedicalRecordsController MedicalRecordsObj = new MedicalRecordsController(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
                 MedicalRecordsObj.handleSaveButtonActionPerformed(evt);
             }
@@ -599,7 +588,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         MedRecord_ClearButton.setText("Clear");
         MedRecord_ClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // 创建一个MedicalRecordsController Object
                 MedicalRecordsController MedicalRecordsObj = new MedicalRecordsController(jPanel3, patientID_textField, doctorID_textField, medicalRecordID_textField, medicalRecord_dateOfVisitTextField, medicalRecord_notesTextField, medical_record_treatmentPlansTextField);
                 MedicalRecordsObj.handleClearButtonActionPerformed(evt);
             }
@@ -743,7 +731,6 @@ public class GUI_doctor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
-        // TODO add your handling code here:
         this.dispose();
         String role = "Doctor";
 
@@ -777,9 +764,6 @@ public class GUI_doctor extends javax.swing.JFrame {
 
 
     private void Diagnosis_SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagnosis_SaveButtonActionPerformed
-
-        // TODO add your handling code here:
-
         String patientID = patientID_textField.getText();
         String doctorID = doctorID_textField.getText();
 
@@ -839,11 +823,9 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         if (isValidPhone(doctor_phone.getText())) {
             if (isValidEmail(doctor_email.getText())) {
-                 // 初始化更新语句和条件
                 StringBuilder updateBuilder = new StringBuilder();
                 String condition = "doctor_id = '" + doctorId + "'"; 
             
-                // 仅更新修改过的字段
                 if (!name.isEmpty()) {
                     updateBuilder.append("doctor_name = '").append(name).append("', ");
                 }
@@ -869,13 +851,11 @@ public class GUI_doctor extends javax.swing.JFrame {
                     updateBuilder.append("doctor_status = '").append(status).append("', ");
                 }
             
-                // 移除最后一个逗号和空格
                 String update = updateBuilder.toString();
                 if (update.endsWith(", ")) {
                     update = update.substring(0, update.length() - 2);
                 }
             
-                // 只有在 update 字符串不为空时才执行更新操作
                 if (!update.isEmpty()) {
                     db.updateData(tableName, update, condition);
                     JOptionPane.showMessageDialog(this, "Date save successfully!");

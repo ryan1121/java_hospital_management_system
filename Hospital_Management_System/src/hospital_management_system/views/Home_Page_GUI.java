@@ -54,7 +54,7 @@ public class Home_Page_GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        TitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        TitleLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); 
         TitleLabel.setText("Hospital Management System");
 
         SelectRoleLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);

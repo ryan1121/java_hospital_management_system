@@ -34,7 +34,6 @@ public class GUI_patient extends javax.swing.JFrame {
         this.id = id;
         initComponents();
         controller = new PatientController(new PatientModel(), this);
-        // fetchDataAndDisplay();
         controller.fetchDataAndDisplay(id);
     }
 
@@ -272,7 +271,6 @@ public class GUI_patient extends javax.swing.JFrame {
         patient_clear.setText("Clear");
         patient_clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                // patient_clearActionPerformed(evt);
                 controller.clearPatientInfo();
             }
         });
@@ -350,12 +348,10 @@ public class GUI_patient extends javax.swing.JFrame {
         PatientHistory patientHistoryObj = new PatientHistory();
         ResultSet rs = patientHistoryObj.getPatientHistory(this.id);
 
-        // 准备 JTable 的模型数据
         DefaultTableModel tableModel = new DefaultTableModel(
             new String[] {"History ID", "Event Type", "Date of Event", "Details"}, 0
         );
 
-        // 处理 ResultSet 数据
         try {
             while (rs != null && rs.next()) {
                 String historyID = rs.getString("HistoryID");
@@ -367,17 +363,14 @@ public class GUI_patient extends javax.swing.JFrame {
                 String details = rs.getString("Details");
                 System.out.println(details);
 
-                // 将数据添加到模型中
                 tableModel.addRow(new Object[] {historyID, eventType, eventDate, details});
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
 
-       // 设置 JTable 的模型
         patientHistory_jTable.setModel(tableModel);
 
-        // 设置 JTable 的模型和滚动面板
         JScrollPane jScrollPane3 = new JScrollPane(patientHistory_jTable);
         setupTable(patientHistory_jTable, tableModel, jScrollPane3);
 
@@ -436,7 +429,6 @@ public class GUI_patient extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButton1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
-        // TODO add your handling code here:
         this.dispose();
 
         GUI_LOGIN Login_GUI = new GUI_LOGIN("Patient");
@@ -462,11 +454,9 @@ public class GUI_patient extends javax.swing.JFrame {
         String policyNo = policyNumber.getText(); 
         if (isValidPhone(phone)) {
             if (isValidEmail(email)) {
-                // 初始化更新语句和条件
                 StringBuilder updateBuilder = new StringBuilder();
                 String condition = "patient_id = '" + patientId + "'"; 
             
-                // 仅更新修改过的字段
                 if (!name.isEmpty()) {
                     updateBuilder.append("patient_name = '").append(name).append("', ");
                 }
@@ -504,13 +494,11 @@ public class GUI_patient extends javax.swing.JFrame {
                     updateBuilder.append("policyNumber = '").append(policyNo).append("', ");
                 }
             
-                // 移除最后一个逗号和空格
                 String update = updateBuilder.toString();
                 if (update.endsWith(", ")) {
                     update = update.substring(0, update.length() - 2);
                 }
             
-                // 只有在 update 字符串不为空时才执行更新操作
                 if (!update.isEmpty()) {
                     db.updateData(tableName, update, condition);
                     JOptionPane.showMessageDialog(this, "Data save successfully!");
@@ -554,7 +542,6 @@ public class GUI_patient extends javax.swing.JFrame {
         table.setCellSelectionEnabled(false);
         table.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
     
-        // 自动调整列宽以适应内容
         for (int column = 0; column < table.getColumnCount(); column++) {
             TableColumn tableColumn = table.getColumnModel().getColumn(column);
             int preferredWidth = tableColumn.getMinWidth();
@@ -566,7 +553,6 @@ public class GUI_patient extends javax.swing.JFrame {
                 int width = c.getPreferredSize().width + table.getIntercellSpacing().width;
                 preferredWidth = Math.max(preferredWidth, width);
     
-                // 设置一个最大宽度，以防止列太宽
                 if (preferredWidth >= maxWidth) {
                     preferredWidth = maxWidth;
                     break;
@@ -576,13 +562,10 @@ public class GUI_patient extends javax.swing.JFrame {
             tableColumn.setPreferredWidth(preferredWidth);
         }
     
-        // 设置行高
-        table.setRowHeight(40); // 根据需要调整行高
+        table.setRowHeight(40); 
     
-        // 设置单元格自动换行的渲染器
         table.setDefaultRenderer(Object.class, new WrappingCellRenderer());
     
-        // 确保表头可见
         table.getTableHeader().setReorderingAllowed(false);
         scrollPane.setViewportView(table);
         scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);

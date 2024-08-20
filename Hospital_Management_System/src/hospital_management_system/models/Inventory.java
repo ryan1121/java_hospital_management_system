@@ -34,8 +34,6 @@ public class Inventory {
     }
 
     public boolean save() {
-        System.out.println("Check name: " + itemName);
-        System.out.println("Check ID: " + inventoryID);
         if (inventoryID == null || inventoryID.isEmpty()) {
             JOptionPane.showMessageDialog(null, "You MUST enter inventory ID!!");
             return false;

@@ -62,7 +62,7 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
 
-        StaffScheduling.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Staff Scheduling", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); // NOI18N
+        StaffScheduling.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Staff Scheduling", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 12))); 
 
         StaffID.setText("Staff ID:");
 
