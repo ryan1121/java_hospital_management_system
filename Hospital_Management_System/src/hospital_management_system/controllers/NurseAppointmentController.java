@@ -59,7 +59,6 @@ public class NurseAppointmentController {
         String formattedBookingDate = DateTimeUtils.formatDate(booking_date.getText());
         String formattedTime = DateTimeUtils.formatTime(app_time.getText());
         String trytime = DateTimeUtils.formatTime("8:00 PM");
-        System.out.println(trytime);
 
         var patientID = app_patient_id.getText();
         String doctorID = app_doctor_id.getText();

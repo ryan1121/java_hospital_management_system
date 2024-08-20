@@ -21,12 +21,9 @@ public class MysqlConnect {
     }
 
     private void connect() {
-        System.out.println("Connecting database ...");
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            System.out.println("Driver loaded!");
             connection = DriverManager.getConnection(url, username, password);
-            System.out.println("Database connected!");
         } catch (ClassNotFoundException | SQLException e) {
             throw new IllegalStateException("Cannot connect to the database!", e);
         }

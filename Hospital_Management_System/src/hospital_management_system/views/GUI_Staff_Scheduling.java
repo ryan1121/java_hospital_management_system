@@ -200,7 +200,6 @@ public class GUI_Staff_Scheduling extends javax.swing.JFrame {
 
     private void SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {
         String role = GUI_admin.getInstance().getRole();
-        System.out.println("Current Role in Save Operation: " + role);
 
         // Ensure that the role variable is properly set before calling this method
         if (role == null || role.trim().isEmpty()) {

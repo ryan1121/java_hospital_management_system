@@ -47,7 +47,6 @@ public class Surgery {
             MysqlConnect db = new MysqlConnect();
             String[] surgeryValues = {surgeryID, patientID, doctorID, surgeryType, dateOfSurgery, outcomes};
             String newPatientHistoryID = db.generateNewId("PatientHistory", "H");
-            System.out.println("Check: "+newPatientHistoryID);
             
             String[] historyValues = {newPatientHistoryID, patientID, "Surgery", dateOfSurgery, "Surgery performed: " + surgeryType + " by Doctor ID " + doctorID + ". Outcomes: " + outcomes};
             

@@ -34,7 +34,6 @@ public class Data_Tables extends JFrame {
     private JLabel BackLabel;
 
     public List<String> getAllowedButtons(String role) {
-        System.out.println("Current role is " + role);
         if (role.equals("Admin")) {
             return Arrays.asList("AdminButton", "PatientButton", "DoctorStaffSchedulingButton", "NurseStaffScheduleButton", "PrescriptionButton", "DiagnosisButton", "InvoiceButton", "InventotryButton", "MedicalRecordsButton", "AdmissionButton", "BillingButton", "SurgeryButton", "PaymentButton", "PatientTransferButton", "BedAllocationButton", "ConsultationsButton", "MedicalSupplyButton", "AppointmentButton", "PatientHistoryButton");
         } else if (role.equals("Doctor")) {

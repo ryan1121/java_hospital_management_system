@@ -145,9 +145,7 @@ public class BillingAndPayment {
             
             if ((serviceDate == null||serviceDate.isEmpty()) && !paymentProcessingDate.isEmpty()) {
                 // Case 2: When serviceDate is empty and paymentProcessingDate is not empty
-                System.out.println("Case 2: When serviceDate is empty and paymentProcessingDate is not empty");
 
-    
                 // Update Invoice table for payment
                 ResultSet rs = db.getData("Invoice", "InvoiceID = '" + invoiceID + "'");
                 if (rs.next()) {
@@ -212,8 +210,8 @@ public class BillingAndPayment {
 
             
             if (serviceDate != null && !serviceDate.isEmpty() && (paymentProcessingDate == null || paymentProcessingDate.isEmpty())) {
-                System.out.println("Case 1: When serviceDate is not empty and paymentProcessingDate is empty");
-    
+                //Case 1: When serviceDate is not empty and paymentProcessingDate is empty    
+
                 // Save Invoice data
                 String[] invoiceValues = {
                     invoiceID,
@@ -245,7 +243,6 @@ public class BillingAndPayment {
                 return true;
             } else {
                 // Case 3: When both serviceDate and paymentProcessingDate are not empty
-                System.out.println("Case 3: When both serviceDate and paymentProcessingDate are not empty");
                 
                 BigDecimal payingAmount = new BigDecimal(paymentAmount);
 
@@ -336,7 +333,6 @@ public class BillingAndPayment {
     public String setNewInvoiceId(JTextField invoiceIDTextField) {
         MysqlConnect db = new MysqlConnect();
         newInvoiceId = db.generateNewId("Invoice", "INV");
-        System.out.println("Generated New Invoice ID: " + newInvoiceId);
         
         invoiceIDTextField.setText(newInvoiceId);
         this.newInvoiceId = newInvoiceId;

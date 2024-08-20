@@ -1290,7 +1290,6 @@ public class GUI_admin extends javax.swing.JFrame {
         } else if (selectedIndex == 1) {
             role = "Nurse";
         }
-        System.out.println("Updated Role: " + role); // Debug statement
     }
 
     public static synchronized GUI_admin getInstance() {
