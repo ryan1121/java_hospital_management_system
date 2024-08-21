@@ -201,19 +201,7 @@ public class GUI_admin extends javax.swing.JFrame {
 
         jLabel40.setText("Name:");
 
-        admin_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                admin_nameActionPerformed(evt);
-            }
-        });
-
         jLabel41.setText("Phone Number:");
-
-        admin_phone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                admin_phoneActionPerformed(evt);
-            }
-        });
 
         jLabel42.setText("Email:");
 
@@ -322,11 +310,7 @@ public class GUI_admin extends javax.swing.JFrame {
         MysqlConnect db = new MysqlConnect();
         String newDoctorId = db.generateNewId("Doctors", "D");
         doctor_id.setText(newDoctorId);
-        doctor_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_idActionPerformed(evt);
-            }
-        });
+
         doctor_id.setEnabled(false);
 
         jLabel1.setText("Doctor ID: ");
@@ -334,45 +318,20 @@ public class GUI_admin extends javax.swing.JFrame {
         jLabel2.setText("Name :");
 
         doctor_name.setText("");
-        doctor_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_nameActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Phone Number :");
 
         doctor_phone.setText("");
-        doctor_phone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_phoneActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("Email :");
 
         doctor_email.setText("");
-        doctor_email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_emailActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Specialization :");
 
         doctor_specialization.setText("");
-        doctor_specialization.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_specializationActionPerformed(evt);
-            }
-        });
 
         doctor_department.setText("");
-        doctor_department.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_departmentActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Department :");
 
@@ -571,11 +530,7 @@ public class GUI_admin extends javax.swing.JFrame {
 
         String newNurseId = db.generateNewId("Nurse", "N");
         nurse_id.setText(newNurseId);
-        nurse_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nurse_idActionPerformed(evt);
-            }
-        });
+
         nurse_id.setEnabled(false);
 
         jLabel11.setText("Nurse ID: ");
@@ -583,45 +538,20 @@ public class GUI_admin extends javax.swing.JFrame {
         jLabel12.setText("Name :");
 
         nurse_name.setText("");
-        nurse_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nurse_nameActionPerformed(evt);
-            }
-        });
 
         jLabel13.setText("Phone Number :");
 
         nurse_phone.setText("");
-        nurse_phone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nurse_phoneActionPerformed(evt);
-            }
-        });
 
         jLabel14.setText("Email :");
 
         nurse_email.setText("");
-        nurse_email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nurse_emailActionPerformed(evt);
-            }
-        });
 
         jLabel15.setText("Department :");
 
         nurse_department.setText("");
-        nurse_department.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nurse_departmentActionPerformed(evt);
-            }
-        });
 
         nurse_position.setText("");
-        nurse_position.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nurse_positionActionPerformed(evt);
-            }
-        });
 
         jLabel16.setText("Position :");
 
@@ -637,20 +567,10 @@ public class GUI_admin extends javax.swing.JFrame {
         jLabel21.setText("Assigned Wards :");
 
         nurse_assigned_wards.setText("");
-        nurse_assigned_wards.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nurse_assigned_wardsActionPerformed(evt);
-            }
-        });
 
         jLabel22.setText("Supervising Doctor :");
 
         nurse_supervising_doctor.setText("");
-        nurse_supervising_doctor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nurse_supervising_doctorActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
@@ -821,20 +741,10 @@ public class GUI_admin extends javax.swing.JFrame {
 
         String newPatientId = db.generateNewId("Patients", "P");
         patient_id.setText(newPatientId);
-        patient_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_idActionPerformed(evt);
-            }
-        });
+
         patient_id.setEnabled(false);
 
         jLabel23.setText("Patient ID :");
-
-        patient_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_nameActionPerformed(evt);
-            }
-        });
 
         patient_gender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male", "Female" }));
 
@@ -844,44 +754,17 @@ public class GUI_admin extends javax.swing.JFrame {
 
         jLabel27.setText("Date of Birth : ");
 
-        patient_email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_emailActionPerformed(evt);
-            }
-        });
-
         jLabel28.setText("Email :");
 
         jLabel29.setText("Phone Number :");
 
-        patient_phone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_phoneActionPerformed(evt);
-            }
-        });
-
         jLabel30.setText("Address :");
 
         patient_address.setText("");
-        patient_address.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_addressActionPerformed(evt);
-            }
-        });
 
         patient_address_line2.setText("");
-        patient_address_line2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_address_line2ActionPerformed(evt);
-            }
-        });
 
         patient_address_line3.setText("");
-        patient_address_line3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                patient_address_line3ActionPerformed(evt);
-            }
-        });
 
         patient_DOB.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/y"))));
 
@@ -1003,84 +886,11 @@ public class GUI_admin extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        // jPanel11.setBorder(javax.swing.BorderFactory.createTitledBorder("Emergency Contact"));
-
         patient_emergency_relationship.setText("");
 
         patient_emergency_name.setText("");
 
         patient_emergency_phone.setText("");
-
-        // javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        // jPanel11.setLayout(jPanel11Layout);
-        // jPanel11Layout.setHorizontalGroup(
-        //     jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        //     .addGroup(jPanel11Layout.createSequentialGroup()
-        //         .addContainerGap()
-        //         .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        //             .addComponent(patient_emergency_name, javax.swing.GroupLayout.DEFAULT_SIZE, 427, Short.MAX_VALUE)
-        //             .addComponent(patient_emergency_relationship)
-        //             .addComponent(patient_emergency_phone)
-        //             .addComponent(jLabel31))
-        //         .addGap(45, 45, 45))
-        // );
-        // jPanel11Layout.setVerticalGroup(
-        //     jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        //     .addGroup(jPanel11Layout.createSequentialGroup()
-        //         .addContainerGap()
-        //         .addComponent(jLabel31)
-        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        //         .addComponent(patient_emergency_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        //         .addComponent(patient_emergency_relationship, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        //         .addComponent(patient_emergency_phone, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        //         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        // );
-
-        // jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Bed Information"));
-
-        // jLabel37.setText("Room Number:");
-
-        // jLabel38.setText("Bed Number:");
-
-        // jLabel17.setText("Ward Number:");
-
-        // javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        // jPanel5.setLayout(jPanel5Layout);
-        // jPanel5Layout.setHorizontalGroup(
-        //     jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        //     .addGroup(jPanel5Layout.createSequentialGroup()
-        //         .addContainerGap()
-        //         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-        //             .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        //             .addComponent(jLabel38, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        //             .addComponent(jLabel37, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        //         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        //             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        //                 .addComponent(patient_room_number, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-        //                 .addComponent(patient_bed_number, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-        //             .addComponent(patient_ward_number, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-        //         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        // );
-        // jPanel5Layout.setVerticalGroup(
-        //     jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-        //     .addGroup(jPanel5Layout.createSequentialGroup()
-        //         .addContainerGap()
-        //         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-        //             .addComponent(jLabel17)
-        //             .addComponent(patient_ward_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        //         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-        //             .addComponent(jLabel37)
-        //             .addComponent(patient_room_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        //         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-        //         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-        //             .addComponent(jLabel38)
-        //             .addComponent(patient_bed_number, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        //         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        // );
 
         patient_clear.setText("Clear");
         patient_clear.addActionListener(new java.awt.event.ActionListener() {
@@ -1103,12 +913,6 @@ public class GUI_admin extends javax.swing.JFrame {
         jLabel33.setText("Provider Name :");
 
         jLabel34.setText("Policy Number  :");
-
-        policy_number.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                policy_numberActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel19Layout = new javax.swing.GroupLayout(jPanel19);
         jPanel19.setLayout(jPanel19Layout);
@@ -1222,62 +1026,6 @@ public class GUI_admin extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nurse_supervising_doctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_supervising_doctorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nurse_supervising_doctorActionPerformed
-
-    private void nurse_assigned_wardsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_assigned_wardsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nurse_assigned_wardsActionPerformed
-
-    private void nurse_positionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_positionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nurse_positionActionPerformed
-
-    private void nurse_departmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_departmentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nurse_departmentActionPerformed
-
-    private void nurse_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nurse_emailActionPerformed
-
-    private void nurse_phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_phoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nurse_phoneActionPerformed
-
-    private void nurse_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nurse_nameActionPerformed
-
-    private void nurse_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nurse_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nurse_idActionPerformed
-
-    private void doctor_departmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_departmentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_departmentActionPerformed
-
-    private void doctor_specializationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_specializationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_specializationActionPerformed
-
-    private void doctor_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_emailActionPerformed
-
-    private void doctor_phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_phoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_phoneActionPerformed
-
-    private void doctor_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_nameActionPerformed
-
-    private void doctor_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_idActionPerformed
-
     private void loadSchedules() {
         scheduleController.loadDoctorSchedule();
         scheduleController.loadNurseSchedule();
@@ -1307,45 +1055,6 @@ public class GUI_admin extends javax.swing.JFrame {
         this.role = role;
     }
 
-    private void patient_address_line3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_address_line3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_address_line3ActionPerformed
-
-    private void patient_address_line2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_address_line2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_address_line2ActionPerformed
-
-    private void patient_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_addressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_addressActionPerformed
-
-    private void patient_phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_phoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_phoneActionPerformed
-
-    private void patient_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_emailActionPerformed
-
-    private void patient_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_nameActionPerformed
-
-    private void patient_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patient_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_patient_idActionPerformed
-
-    private void policy_numberActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_policy_numberActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_policy_numberActionPerformed
-
-    private void admin_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_admin_nameActionPerformed
-
-    private void admin_phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_admin_phoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_admin_phoneActionPerformed
 
     private void backButtonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_backButtonMousePressed
         this.dispose();

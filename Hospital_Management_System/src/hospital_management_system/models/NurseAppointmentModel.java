@@ -50,7 +50,7 @@ public class NurseAppointmentModel {
 
     // Default constructor
     public NurseAppointmentModel() {
-        // Initialize fields if needed
+        
     }
 
     public boolean save() {

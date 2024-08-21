@@ -221,16 +221,6 @@ public class GUI_LOGIN extends javax.swing.JFrame {
         }
         
         return userName;
-
-        // try (ResultSet rs = db.executeQuery(query)) {
-        //     if (rs != null && rs.next()) {
-        //         userName = rs.getString(1); // Get the first column in the result set
-        //     }
-        // } catch (SQLException e) {
-        //     e.printStackTrace();
-        // }
-        
-        // return userName;
     }
 
     private boolean validateLogin(String userID, String pw) {

@@ -56,7 +56,7 @@ public class AdminInfoModel {
             if (!update.isEmpty()) {
                 return db.updateData(tableName, update, condition);
             } else {
-                System.out.println("No data to update.");
+                JOptionPane.showMessageDialog(null, "No data to update.", "Warning", JOptionPane.WARNING_MESSAGE);
                 return false;
             }
         } catch (Exception e) {

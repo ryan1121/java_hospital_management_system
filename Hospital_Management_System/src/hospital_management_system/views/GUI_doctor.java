@@ -154,54 +154,24 @@ public class GUI_doctor extends javax.swing.JFrame {
 
         doctor_id.setText("");
         doctor_id.setEnabled(false);
-        doctor_id.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_idActionPerformed(evt);
-            }
-        });
 
         doctor_name.setText(username);
-        doctor_name.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_nameActionPerformed(evt);
-            }
-        });
 
         jLabel2.setText("Name :");
 
         jLabel3.setText("Phone Number :");
 
         doctor_phone.setText("");
-        doctor_phone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_phoneActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("Email :");
 
         doctor_email.setText("");
-        doctor_email.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_emailActionPerformed(evt);
-            }
-        });
 
         jLabel5.setText("Specialization :");
 
         doctor_specialization.setText("");
-        doctor_specialization.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_specializationActionPerformed(evt);
-            }
-        });
 
         doctor_department.setText("");
-        doctor_department.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                doctor_departmentActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Department :");
 
@@ -737,31 +707,6 @@ public class GUI_doctor extends javax.swing.JFrame {
         Home_Page_GUI homePage = new Home_Page_GUI(role,username);
         homePage.setVisible(true);
     }
-
-    private void doctor_departmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_departmentActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_departmentActionPerformed
-
-    private void doctor_specializationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_specializationActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_specializationActionPerformed
-
-    private void doctor_emailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_emailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_emailActionPerformed
-
-    private void doctor_phoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_phoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_phoneActionPerformed
-
-    private void doctor_nameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_nameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_nameActionPerformed
-
-    private void doctor_idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doctor_idActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_doctor_idActionPerformed
-
 
     private void Diagnosis_SaveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Diagnosis_SaveButtonActionPerformed
         String patientID = patientID_textField.getText();

@@ -213,7 +213,7 @@ public class BedAllocationController {
                     String patientStatus = bedResultSet.getString("pre_occ");
                     String equipment = bedResultSet.getString("emergency_equipment");
 
-                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd"); // Assuming this is the format in the database
+                    SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd"); 
                     SimpleDateFormat outputFormat = new SimpleDateFormat("dd/MM/yyyy");
             
                     Date date = inputFormat.parse(allocate_date);

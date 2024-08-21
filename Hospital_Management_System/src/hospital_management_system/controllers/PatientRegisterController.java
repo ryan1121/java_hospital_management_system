@@ -69,11 +69,11 @@ public class PatientRegisterController {
         else {
             if (password.equals(confirmPassword)) {
                 if (isValidPhone(model.getPhone())) {
-                    System.out.println("Valid Phone");
+                    
                     if (isValidEmail(model.getEmail())) {
-                        System.out.println("Valid Email");
+                        
                         if (isValidPhone(model.getEmergencyPhone())) {
-                            System.out.println("Valid Phone");
+                            
                             // Perform further processing, such as saving the data to a database or displaying it in a message dialog
                             String message = "Name: " + model.getName() + "\nDate of Birth: " + model.getDob() + "\nPhone: " + model.getPhone() + "\nEmail: " + model.getEmail() + "\nAddress: " + model.getAddress1() + ", " + model.getAddress2() + ", " + model.getAddress3() + "\nGender: " + model.getGender() + "\nEmergency Section" + "\nName: " + model.getEmergencyName() + "\nPhone: " + model.getEmergencyPhone() + "\nRelationship: " + model.getEmergencyRelation();
                             JOptionPane.showMessageDialog(view, message, "Registration Information", JOptionPane.INFORMATION_MESSAGE);
@@ -99,9 +99,9 @@ public class PatientRegisterController {
                             try {
                                 boolean success = db.saveData(tableName, columns, values);
                                 if (success) {
-                                    System.out.println("Data inserted successfully!");
+                                    JOptionPane.showMessageDialog(null, "Data inserted successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
                                 } else {
-                                    System.out.println("Data insertion failed.");
+                                    JOptionPane.showMessageDialog(null, "Data insertion failed.", "Error", JOptionPane.ERROR_MESSAGE);
                                 }
                             } catch (SQLException e) {
                                 System.err.println("Error occurred while inserting data.");

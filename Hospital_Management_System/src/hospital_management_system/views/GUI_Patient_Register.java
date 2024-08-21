@@ -133,55 +133,25 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         jLabel1.setText("Name :");
 
         registerName.setText("");
-        registerName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerNameActionPerformed(evt);
-            }
-        });
 
         jLabel4.setText("Date of Birth :");
 
         jLabel5.setText("Phone Number : ");
 
         registerPhone.setText("");
-        registerPhone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerPhoneActionPerformed(evt);
-            }
-        });
-
+        
         jLabel6.setText("Email : ");
 
         registerEmail.setText("");
-        registerEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerEmailActionPerformed(evt);
-            }
-        });
 
         jLabel7.setText("Address :");
         jLabel7.setPreferredSize(new java.awt.Dimension(56, 16));
 
         registerAddress.setText("");
-        registerAddress.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerAddressActionPerformed(evt);
-            }
-        });
 
         registerAddress_line2.setText("");
-        registerAddress_line2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerAddress_line2ActionPerformed(evt);
-            }
-        });
 
         registerAddress_line3.setText("");
-        registerAddress_line3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerAddress_line3ActionPerformed(evt);
-            }
-        });
 
         registerDOB.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("dd/MM/y"))));
 
@@ -370,29 +340,6 @@ public class GUI_Patient_Register extends javax.swing.JFrame {
         this.passwordTextField = passwordTextField;
     }
 
-    private void registerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerNameActionPerformed
-
-    private void registerPhoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerPhoneActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerPhoneActionPerformed
-
-    private void registerEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerEmailActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerEmailActionPerformed
-
-    private void registerAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerAddressActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerAddressActionPerformed
-
-    private void registerAddress_line2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerAddress_line2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerAddress_line2ActionPerformed
-
-    private void registerAddress_line3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerAddress_line3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_registerAddress_line3ActionPerformed
     private void resetActionPerformed(java.awt.event.ActionEvent evt) {
 
     }
