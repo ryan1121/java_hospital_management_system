@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 
+import hospital_management_system.MysqlConnect;
 import hospital_management_system.models.AdminAddNurseModel;
 
 /**
@@ -87,6 +88,18 @@ public class AdminAddNurseController {
                 boolean success = nurse.save();
                 if (success) {
                     JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                    MysqlConnect db = new MysqlConnect();
+                    String newNurseId = db.generateNewId("Nurse", "N");
+                    nurseIDField.setText(newNurseId);
+                    nurseNameField.setText("");
+                    nursePhoneField.setText("");
+                    nurseEmailField.setText("");
+                    nursePositionField.setText("");
+                    nurseDepartmentField.setText("");
+                    nurseAssignedWardsField.setText("");
+                    nurseSupervisingDoctorField.setText("");
+                    nurseQualificationsField.setText("");
+                    nurseExperienceField.setText("");
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to save data.");
                 }

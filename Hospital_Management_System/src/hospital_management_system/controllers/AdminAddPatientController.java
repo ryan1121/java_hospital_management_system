@@ -14,6 +14,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
+import hospital_management_system.MysqlConnect;
 import hospital_management_system.models.AdminAddPatientModel;
 import hospital_management_system.utils.DateTimeUtils;
 
@@ -106,6 +107,22 @@ public class AdminAddPatientController {
                 boolean success = patient.save();
                 if (success) {
                     JOptionPane.showMessageDialog(null, "Data saved successfully!");
+                    MysqlConnect db = new MysqlConnect();
+                    String newPatientId = db.generateNewId("Patients", "P");
+                    patientIDField.setText(newPatientId);
+                    patientDOBField.setText("");
+                    patientPhoneField.setText("");
+                    patientNameField.setText("");
+                    patientEmailField.setText("");
+                    patientAddressField.setText("");
+                    patientAddressLine2Field.setText("");
+                    patientAddressLine3Field.setText("");
+                    patientEmergencyNameField.setText("");
+                    patientEmergencyPhoneField.setText("");
+                    patientEmergencyRelationshipField.setText("");
+                    insuranceIDField.setText("");
+                    providerNameField.setText("");
+                    policyNumberField.setText("");
                 } else {
                     JOptionPane.showMessageDialog(null, "Failed to save data.");
                 }
